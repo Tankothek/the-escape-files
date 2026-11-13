@@ -15,12 +15,6 @@ const homepageTranslations = {
   ko: ['홈','주간 분석','기사','지식 베이스','분석 · 배경 · EscapeHub 동향','모든 파일','전체 시리즈 보기','요약과 해설','용어, 답변과 배경','추천 Escape File','파일 열기','아카이브로 이동','언어','파일 검색']
 };
 
-const featureGerman = {
-  '011': ['Wähle dein Netzwerk', 'Welches Netzwerk passt zu deinem Projekt? Zielgruppe, Kosten und Funktionen helfen bei der Wahl.'],
-  '010': ['Nach dem Start', 'Wie Creator nach der ersten Phase weiterhin an Handelsgebühren beteiligt sein können.'],
-  '009': ['Wohin gehen die Gebühren?', 'Welche Möglichkeiten Creator bei der Verteilung ihres Gebührenanteils haben.']
-};
-
 const featureFiles = files.filter(file => file.cover && file.status === 'published').slice(-3).reverse();
 let featureIndex = 0;
 let homepageLanguage = 'en';
@@ -32,7 +26,7 @@ function setFeature(index) {
   const image = document.querySelector('#featuredImage');
   image.src = file.cover;
   image.alt = 'File ' + file.id;
-  const localized = homepageLanguage === 'de' && featureGerman[file.id];
+  const localized = homepageLanguage === 'de' && germanFiles[file.id];
   const title = document.querySelector('#featuredTitle');
   const summary = document.querySelector('#featuredSummary');
   title.textContent = '#' + file.id + ' – ' + (localized ? localized[0] : file.title);
@@ -53,6 +47,25 @@ for (const [index, file] of featureFiles.entries()) {
   document.querySelector('#featurePages').append(control);
 }
 
+const germanKnowledge = {
+  "0": "Offizielle Quellen",
+  "1": "Handelsgebühren",
+  "2": "Möglichkeiten für Ersteller",
+  "3": "Starts mit Whitelist",
+  "4": "Offene Fragen",
+  "5": "OFFIZIELLE DOKUMENTATION",
+  "6": "REDAKTIONELLE EINORDNUNG",
+  "7": "Offizielle Dokumentation und redaktionelle Einordnung im Überblick.",
+  "8": "EscapeHub dokumentiert eine Handelsgebühr von 1,2 % während der Preisbildungskurve. Davon gehen 0,5 % an die Ersteller und 0,7 % an das Protokoll. Beim Wechsel in die nächste Handelsphase ändern sich die Gebühren.",
+  "9": "Ersteller können ihren Anteil behalten, auf mehrere Wallets aufteilen oder als Cashback an Handelnde zurückgeben.",
+  "10": "Die Whitelist wird zusammen mit dem Token erstellt und auf der Blockchain geprüft. Die Adressen stehen fest. Der Ersteller kann den Handel dauerhaft öffnen. Auch beim Wechsel in die nächste Handelsphase wird der Handel öffentlich.",
+  "11": "Offizielle Dokumentation lesen ↗",
+  "12": "Stand der Dokumentationsprüfung: 12. November 2026.",
+  "13": "Starttermin von $ESC, genaue Zuteilung für Rückkäufe und die endgültigen Produktabläufe sind in diesem Archiv noch offen. Die Files halten den Stand der jeweiligen Ausgabe fest."
+};
+const knowledgeNodes = [...document.querySelectorAll('[data-knowledge]')]
+  .map(node => ({node, english:node.textContent}));
+
 function applyHomepageLanguage(code) {
   homepageLanguage = Object.hasOwn(homepageTranslations, code) ? code : 'en';
   document.documentElement.lang = homepageLanguage;
@@ -65,6 +78,11 @@ function applyHomepageLanguage(code) {
   const search = document.querySelector('#search');
   search.placeholder = labels.search + '…';
   search.setAttribute('aria-label', labels.search);
+  document.querySelector('#knowledge').lang = homepageLanguage === 'de' ? 'de' : 'en';
+  for (const {node, english} of knowledgeNodes) {
+    node.textContent = homepageLanguage === 'de' ? germanKnowledge[node.dataset.knowledge] : english;
+  }
+  setArchiveLanguage(homepageLanguage);
   setFeature(featureIndex);
 }
 
@@ -91,22 +109,5 @@ languagePicker.addEventListener('change', () => {
   try { localStorage.setItem('tankothek-language', homepageLanguage); } catch {}
 });
 
-const articleGrid = document.querySelector('#articlesGrid');
-for (const [week, entry] of Object.entries(WEEKS)) {
-  if (!entry.articleUrl) continue;
-  const card = document.createElement('article');
-  card.className = 'week-card';
-  const heading = document.createElement('h3');
-  const article = document.createElement('a');
-  article.href = entry.articleUrl;
-  article.textContent = entry.article + ' ↗';
-  article.target = '_blank';
-  article.rel = 'noopener noreferrer';
-  const marker = document.createElement('span');
-  marker.className = 'eyebrow';
-  marker.textContent = 'WEEK ' + week.padStart(2, '0') + ' · PARAGRAPH';
-  heading.append(article);
-  card.append(marker, heading);
-  articleGrid.append(card);
-}
 applyHomepageLanguage(initialHomepageLanguage());
+updateReaderFromUrl();

@@ -111,3 +111,18 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
   .panorama::before { mask-image:linear-gradient(90deg,transparent,#0005 50%,#000 90%); }
   .featured-cover img { object-position:center 25%; }
 }
+
+/* Keep navigation and controls usable when labels wrap. */
+.site-nav { flex-wrap:wrap; column-gap:clamp(16px,3.8vw,65px); }
+.site-nav a { white-space:normal; }
+.language-picker { flex-shrink:0; }
+.search:focus-within { border-color:var(--cyan); }
+.front-title > div,.select-filters label,.card-body { min-width:0; }
+.card-body,.featured-copy,.week-card,.reader-text { overflow-wrap:anywhere; }
+.archive-note { margin:0 0 22px; padding:14px 18px; }
+.featured-action { padding-inline:14px; }
+@media(max-width:640px) {
+  .site-nav { column-gap:17px; }
+  .site-nav a { min-height:40px; }
+  .front-title h1 { overflow-wrap:normal; }
+}

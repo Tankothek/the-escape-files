@@ -1,8 +1,8 @@
 const WEEKS = {
-  1:{title:'Whitelisted Launches',article:'Community First',articleUrl:'https://paragraph.com/@tankothek-2c2d/community-first'},
-  2:{title:'Creator Rewards',article:'From an Idea to a Token',articleUrl:null},
-  3:{title:'Networks & Discovery',article:'Several Networks – One Platform',articleUrl:null},
-  4:{title:'Bonding & DEX Graduation',article:'Your Token Has Launched. What Happens Next?',articleUrl:null},
+  1:{title:'Whitelisted Launches',article:'Community First, Then the Open Market',articleUrl:'https://paragraph.com/@tankothek-2c2d/community-first'},
+  2:{title:'Creator Rewards',article:'From an Idea to a Token: What EscapeHub Makes Possible',articleUrl:'https://paragraph.com/@tankothek-2c2d/from-an-idea-to-a-token-what-escapehub-makes-possible'},
+  3:{title:'Networks & Discovery',article:'Several Networks, One Platform: How EscapeHub Aims to Bring Ideas and People Together',articleUrl:'https://paragraph.com/@tankothek-2c2d/several-networks-one-platform'},
+  4:{title:'Bonding & DEX Graduation',article:'Your Token Has Launched. What Happens Next?',articleUrl:'https://paragraph.com/@tankothek-2c2d/your-token-has-launched-what-happens-next'},
   5:{title:'Platform Revenue, $ESC & Buybacks',article:'EscapeHub Launches First: How the Platform, Presale and $ESC Connect',articleUrl:null},
   6:{title:'Launch Week: First Steps',article:'Saturday deep dive',articleUrl:null}
 };
@@ -85,3 +85,158 @@ Object.assign(files.find(file => file.id === '028'), {
   body: 'File 028 covers adding crypto funds by card, Apple Pay or Google Pay. Funding an account and buying a project token are separate steps.', note: ''
 });
 WEEKS[6].article = 'Getting started with EscapeHub';
+
+const germanFiles = {
+  "001": [
+    "Warum mit Whitelist starten?",
+    "Wie früher Zugang eine Community vor automatisierten Käufen zum Start schützen kann.",
+    "Wie früher Zugang eine Community vor automatisierten Käufen zum Start schützen kann."
+  ],
+  "002": [
+    "Kein Zeitfenster für Sniper",
+    "Token und Whitelist werden gemeinsam erstellt. Der Schutz greift damit ab dem Start.",
+    "Token und Whitelist werden gemeinsam erstellt. Der Schutz greift damit ab dem Start."
+  ],
+  "003": [
+    "Auf der Blockchain festgelegt",
+    "Die Whitelist wird auf der Blockchain gespeichert und geprüft. Nach der Erstellung lässt sie sich nicht bearbeiten.",
+    "Die Whitelist wird auf der Blockchain gespeichert und geprüft. Nach der Erstellung lässt sie sich nicht bearbeiten."
+  ],
+  "004": [
+    "Wer bekommt Zugang?",
+    "Während der geschlossenen Phase können Wallets auf der Whitelist kaufen. Verkäufe bleiben möglich.",
+    "Während der geschlossenen Phase können Wallets auf der Whitelist kaufen. Verkäufe bleiben möglich."
+  ],
+  "005": [
+    "Wann öffnet sich der Handel?",
+    "Ersteller können den Handel dauerhaft öffnen. Auch der Übergang in die nächste Handelsphase beendet die Whitelist.",
+    "Ersteller können den Handel dauerhaft öffnen. Auch der Übergang in die nächste Handelsphase beendet die Whitelist."
+  ],
+  "006": [
+    "Ein Anteil für die Ersteller",
+    "Wie EscapeHub Ersteller an Handelsgebühren beteiligt.",
+    "Diese Woche: Wie Handelsgebühren Projekte unterstützen.\n\nIn EscapeHubs Modell erhalten Ersteller einen Gebührenanteil, wenn ihre Token gekauft oder verkauft werden.\n\nMorgen: ein Rechenbeispiel."
+  ],
+  "007": [
+    "Was bedeutet 0,5 %?",
+    "Ein Rechenbeispiel für den Gebührenanteil bei einem Handel über 100 US-Dollar.",
+    "Ein Handel über $100: Laut EscapeHub entfallen in der Startphase $0.50 auf den Ersteller des digitalen Werts und $0.70 auf die Plattform. Zusammen sind das $1.20 Handelsgebühr.\n\nMorgen: Wofür lässt sich der Anteil nutzen?"
+  ],
+  "008": [
+    "Den nächsten Schritt finanzieren",
+    "Wie Gebühreneinnahmen Entwicklung, Design oder den nächsten Projektschritt unterstützen können.",
+    "Eine Funktion, die sich die Community wünscht: Ein Projekt könnte seinen Anteil an EscapeHubs Handelsgebühren nutzen, um die Umsetzung mitzufinanzieren.\n\nDas Bild zeigt mögliche Verwendungen.\n\nMorgen: Wer bekommt den Anteil?"
+  ],
+  "009": [
+    "Wer bekommt den Gebührenanteil?",
+    "Welche Möglichkeiten Ersteller bei der Verteilung ihres Gebührenanteils haben.",
+    "Wer bekommt den Gebührenanteil?\n\nEscapeHubs Modell bietet Erstellern digitaler Werte drei Optionen: behalten, mit anderen teilen oder an Käufer und Verkäufer zurückgeben.\n\nMorgen: Wie geht es nach der Startphase weiter?"
+  ],
+  "010": [
+    "Nach dem Start",
+    "Der Gebührenanteil für Ersteller kann auch nach der Startphase weiterlaufen.",
+    "In EscapeHubs Modell erhalten Token-Ersteller auch nach der Startphase einen Teil der Handelsgebühren.\n\nMorgen auf Paragraph: Wie Handelsgebühren ein Projekt unterstützen können."
+  ],
+  "011": [
+    "Wähle dein Netzwerk",
+    "Zielgruppe, Kosten und benötigte Funktionen helfen bei der Wahl des Netzwerks.",
+    "Wo soll dein Token starten? Beachte, wen du erreichen möchtest, die Kosten und die Funktionen, die dein Projekt braucht.\n\nDiese Woche: mehrere Netzwerke, eine Plattform."
+  ],
+  "012": [
+    "Mehrere Netzwerke, eine Plattform",
+    "Mehrere unterstützte Netzwerke innerhalb einer Plattform.",
+    "Mehrere unterstützte Netzwerke innerhalb einer Plattform."
+  ],
+  "013": [
+    "Mach deinen Token auffindbar",
+    "Bei der Suche nach neuen Token geht es auch darum, die Idee hinter dem Projekt zu verstehen.",
+    "Bei der Suche nach neuen Token geht es auch darum, die Idee hinter dem Projekt zu verstehen."
+  ],
+  "014": [
+    "Deine Token im Überblick",
+    "Die Plattform zeigt Token aus verschiedenen Netzwerken in einer gemeinsamen Übersicht.",
+    "Die Plattform zeigt Token aus verschiedenen Netzwerken in einer gemeinsamen Übersicht."
+  ],
+  "015": [
+    "Teile deinen Token verständlich",
+    "Ein Token-Link lässt sich zusammen mit der Idee hinter dem Projekt teilen.",
+    "Ein Token-Link lässt sich zusammen mit der Idee hinter dem Projekt teilen."
+  ],
+  "016": [
+    "Woher kommt der erste Preis?",
+    "Der Startpreis ergibt sich aus einer festgelegten Berechnung.",
+    "Der Startpreis ergibt sich aus einer festgelegten Berechnung."
+  ],
+  "017": [
+    "Bleibt der Startpreis gleich?",
+    "Käufe und Verkäufe ändern den Preis entlang der Preisbildungskurve.",
+    "Käufe und Verkäufe ändern den Preis entlang der Preisbildungskurve."
+  ],
+  "018": [
+    "Wann beginnt die nächste Phase?",
+    "Der Token wechselt automatisch in die nächste Phase, sobald die Bedingungen dafür erfüllt sind.",
+    "Der Token wechselt automatisch in die nächste Phase, sobald die Bedingungen dafür erfüllt sind."
+  ],
+  "019": [
+    "Gleicher Token, nächste Phase",
+    "Auf Solana läuft der Handel anschließend auf EscapeSwap weiter. Token und Netzwerk bleiben gleich.",
+    "Auf Solana läuft der Handel anschließend auf EscapeSwap weiter. Token und Netzwerk bleiben gleich."
+  ],
+  "020": [
+    "Nach dem Start auf EVM",
+    "In EVM-Netzwerken kann der Handel anschließend über Börsen wie Uniswap weiterlaufen.",
+    "In EVM-Netzwerken kann der Handel anschließend über Börsen wie Uniswap weiterlaufen."
+  ],
+  "021": [
+    "Eine Plattform, zwei Starts",
+    "Der Start des EscapeHub Launchpads und der Start von $ESC sind zwei getrennte Meilensteine.",
+    "Der Start des EscapeHub Launchpads und der Start von $ESC sind zwei getrennte Meilensteine."
+  ],
+  "022": [
+    "Die Plattform finanziert den nächsten Schritt",
+    "Laut damaliger Planung können Einnahmen des Launchpads helfen, die verbleibende Finanzierung des Vorverkaufs zu decken.",
+    "Laut damaliger Planung können Einnahmen des Launchpads helfen, die verbleibende Finanzierung des Vorverkaufs zu decken."
+  ],
+  "023": [
+    "Wie Rückkäufe funktionieren sollen",
+    "Die damalige Planung sieht einen Zusammenhang zwischen Plattformgebühren und künftigen $ESC-Rückkäufen vor.",
+    "Die damalige Planung sieht einen Zusammenhang zwischen Plattformgebühren und künftigen $ESC-Rückkäufen vor."
+  ],
+  "024": [
+    "$ESC bietet weitere Möglichkeiten",
+    "Mögliche Einsatzbereiche für $ESC umfassen Plattformvorteile und Premium-Funktionen.",
+    "Mögliche Einsatzbereiche für $ESC umfassen Plattformvorteile und Premium-Funktionen."
+  ],
+  "025": [
+    "Nach dem Rückkauf",
+    "Die damalige Planung beschreibt, wie zurückgekaufte $ESC gesperrt werden könnten.",
+    "Die damalige Planung beschreibt, wie zurückgekaufte $ESC gesperrt werden könnten."
+  ],
+  "026": [
+    "Noch eine Woche",
+    "Die Ausgabe kündigte den Web- und Android-Start für den 16. November um 15 Uhr UTC an. Die Freigabe für iOS stand noch aus.",
+    "Die Ausgabe kündigte den Web- und Android-Start für den 16. November um 15 Uhr UTC an. Die Freigabe für iOS stand noch aus."
+  ],
+  "027": [
+    "Dein Zugang",
+    "Anmeldung und Zugang zur integrierten Wallet.",
+    "Anmeldung und Zugang zur integrierten Wallet."
+  ],
+  "028": [
+    "Dein Guthaben",
+    "Guthaben per Karte, Apple Pay oder Google Pay hinzufügen. Das Aufladen und der Kauf eines Projekt-Tokens sind getrennte Schritte.",
+    "Guthaben per Karte, Apple Pay oder Google Pay hinzufügen. Das Aufladen und der Kauf eines Projekt-Tokens sind getrennte Schritte."
+  ],
+  "029": [
+    "Erst entdecken, dann kaufen",
+    "Projekte entdecken, Details lesen und interessante Projekte vor dem Kauf auf einer Merkliste sammeln.",
+    "Projekte entdecken, Details lesen und interessante Projekte vor dem Kauf auf einer Merkliste sammeln."
+  ],
+  "030": [
+    "Kaufen ohne zusätzliche Pop-ups",
+    "Die integrierte Wallet ermöglicht Käufe und Verkäufe ohne eigene Wallet-Bestätigung für jeden Handel.",
+    "Die integrierte Wallet ermöglicht Käufe und Verkäufe ohne eigene Wallet-Bestätigung für jeden Handel."
+  ]
+};
+
+WEEKS[1].articleDe = { title:'Erst die Community, dann der offene Markt', url:'https://paragraph.com/@tankothek-2c2d/erst-die-community' };
