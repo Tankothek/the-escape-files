@@ -74,3 +74,14 @@ const files = FILES.map(f=>{const id=String(f.n).padStart(3,'0');const original=
 
 files.forEach(f=>{f.title=f.title.replace(/\$esc/g,"$ESC");});
 WEEKS[5].article="EscapeHub Launches First: How the Platform, Presale and $ESC Fit Together";
+
+Object.assign(files.find(file => file.id === '011'), {"cover": "file-011.png", "original": true, "title": "Choose Your Network", "body": "Where should your token start? Consider the people you want to reach, the costs and the features your project needs.\n\nThis week: several networks, one platform."});
+Object.assign(files.find(file => file.id === '027'), {
+  title: 'Your account', topic: 'Signing in and using the integrated wallet.',
+  body: 'File 027 covers signing in and accessing EscapeHub’s integrated wallet.', note: ''
+});
+Object.assign(files.find(file => file.id === '028'), {
+  title: 'Adding funds', topic: 'Funding your account by card, Apple Pay or Google Pay.',
+  body: 'File 028 covers adding crypto funds by card, Apple Pay or Google Pay. Funding an account and buying a project token are separate steps.', note: ''
+});
+WEEKS[6].article = 'Getting started with EscapeHub';
