@@ -48,18 +48,124 @@ for (const [index, file] of featureFiles.entries()) {
   document.querySelector('#featurePages').append(control);
 }
 
-const germanKnowledge = {
-  "0": "Offizielle Quellen",
-  "1": "Handelsgebühren",
-  "2": "Möglichkeiten für Ersteller",
-  "3": "Starts mit Whitelist",
-  "5": "OFFIZIELLE DOKUMENTATION",
-  "7": "Offizielle Dokumentation und redaktionelle Einordnung im Überblick.",
-  "8": "EscapeHub dokumentiert eine Handelsgebühr von 1,2 % während der Preisbildungskurve. Davon gehen 0,5 % an die Ersteller und 0,7 % an das Protokoll. Beim Wechsel in die nächste Handelsphase ändern sich die Gebühren.",
-  "9": "Ersteller können ihren Anteil behalten, auf mehrere Wallets aufteilen oder als Cashback an Handelnde zurückgeben.",
-  "10": "Die Whitelist wird zusammen mit dem Token erstellt und auf der Blockchain geprüft. Die Adressen stehen fest. Der Ersteller kann den Handel dauerhaft öffnen. Auch beim Wechsel in die nächste Handelsphase wird der Handel öffentlich.",
-  "11": "Offizielle Dokumentation lesen ↗",
-  "12": "Stand der Dokumentationsprüfung: 12. November 2026."
+const knowledgeTranslations = {
+  "de": {
+    "0": "Offizielle Quellen",
+    "1": "Handelsgebühren",
+    "2": "Möglichkeiten für Ersteller",
+    "3": "Starts mit Whitelist",
+    "5": "OFFIZIELLE DOKUMENTATION",
+    "7": "Dokumentation von EscapeHub zu Gebühren und Starts mit eingeschränktem Zugang.",
+    "8": "EscapeHub dokumentiert eine Handelsgebühr von 1,2 % während der Preisbildungskurve. Davon gehen 0,5 % an die Ersteller und 0,7 % an das Protokoll. Beim Wechsel in die nächste Handelsphase ändern sich die Gebühren.",
+    "9": "Ersteller können ihren Anteil behalten, auf mehrere Wallets aufteilen oder als Cashback an Handelnde zurückgeben.",
+    "10": "Die Whitelist wird zusammen mit dem Token erstellt und auf der Blockchain geprüft. Die Adressen stehen fest. Der Ersteller kann den Handel dauerhaft öffnen. Auch beim Wechsel in die nächste Handelsphase wird der Handel öffentlich.",
+    "11": "Offizielle Dokumentation lesen (Englisch) ↗",
+    "12": "Stand der Dokumentationsprüfung: 12. November 2026."
+  },
+  "es": {
+    "0": "Fuentes oficiales",
+    "1": "Comisiones de trading",
+    "2": "Opciones para los creadores",
+    "3": "Lanzamientos con lista de permitidos",
+    "5": "DOCUMENTACIÓN OFICIAL",
+    "7": "Documentación de EscapeHub sobre comisiones y lanzamientos con acceso restringido.",
+    "8": "EscapeHub indica una comisión del 1,2 % por operación durante la fase de la curva de vinculación. El 0,5 % corresponde al creador y el 0,7 % al protocolo. Las tarifas cambian al pasar a la siguiente fase.",
+    "9": "Los creadores pueden conservar su parte, repartirla entre varias billeteras o devolverla a quienes operan con el token como reembolso.",
+    "10": "La lista se crea junto con el token y se aplica en la blockchain. Las direcciones quedan fijas. El creador puede abrir el mercado de forma permanente. El paso a la siguiente fase también abre el mercado al público.",
+    "11": "Leer la documentación oficial (en inglés) ↗",
+    "12": "Documentación consultada el 12 de noviembre de 2026."
+  },
+  "fr": {
+    "0": "Sources officielles",
+    "1": "Frais de transaction",
+    "2": "Options pour les créateurs",
+    "3": "Lancements avec liste d’accès",
+    "5": "DOCUMENTATION OFFICIELLE",
+    "7": "La documentation d’EscapeHub sur les frais et les lancements à accès restreint.",
+    "8": "EscapeHub indique des frais de 1,2 % par transaction pendant la phase de la courbe de prix. Le créateur reçoit 0,5 % et le protocole 0,7 %. Les frais changent au passage à la phase suivante.",
+    "9": "Les créateurs peuvent conserver leur part, la répartir entre plusieurs portefeuilles ou la reverser aux personnes qui échangent le jeton sous forme de cashback.",
+    "10": "La liste est créée avec le jeton et appliquée sur la blockchain. Les adresses inscrites sont fixes. Le créateur peut ouvrir les échanges définitivement. Le passage à la phase suivante rend aussi les échanges publics.",
+    "11": "Lire la documentation officielle (en anglais) ↗",
+    "12": "Documentation consultée le 12 novembre 2026."
+  },
+  "pt": {
+    "0": "Fontes oficiais",
+    "1": "Taxas de negociação",
+    "2": "Opções para criadores",
+    "3": "Lançamentos com lista de permissões",
+    "5": "DOCUMENTAÇÃO OFICIAL",
+    "7": "Documentação da EscapeHub sobre taxas e lançamentos com acesso restrito.",
+    "8": "A EscapeHub informa uma taxa de 1,2% por operação na fase da curva de preço. O criador recebe 0,5% e o protocolo recebe 0,7%. As taxas mudam na fase seguinte.",
+    "9": "Os criadores podem manter sua parte, dividi-la entre carteiras ou devolvê-la a quem negocia o token na forma de cashback.",
+    "10": "A lista é criada junto com o token e aplicada na blockchain. Os endereços ficam fixos. O criador pode liberar as negociações de forma permanente. A passagem para a próxima fase também abre o mercado ao público.",
+    "11": "Ler a documentação oficial (em inglês) ↗",
+    "12": "Documentação consultada em 12 de novembro de 2026."
+  },
+  "tr": {
+    "0": "Resmî kaynaklar",
+    "1": "İşlem ücretleri",
+    "2": "Oluşturucuların seçenekleri",
+    "3": "İzin listeli lansmanlar",
+    "5": "RESMÎ BELGELER",
+    "7": "EscapeHub’ın işlem ücretleri ve kısıtlı erişimli lansmanlar hakkındaki belgeleri.",
+    "8": "EscapeHub, fiyat eğrisi aşamasında işlem başına %1,2 ücret belirtir. Bunun %0,5’i oluşturucuya, %0,7’si protokole gider. Bir sonraki aşamaya geçildiğinde ücretler değişir.",
+    "9": "Oluşturucular paylarını tutabilir, cüzdanlar arasında bölüştürebilir veya tokenı alıp satanlara geri ödeme olarak aktarabilir.",
+    "10": "İzin listesi tokenla birlikte oluşturulur ve blok zincirinde uygulanır. Adresler sabittir. Oluşturucu işlemleri kalıcı olarak herkese açabilir. Sonraki aşamaya geçiş de işlemleri herkese açar.",
+    "11": "Resmî belgeleri oku (İngilizce) ↗",
+    "12": "Belgeler 12 Kasım 2026 tarihinde kontrol edildi."
+  },
+  "ru": {
+    "0": "Официальные источники",
+    "1": "Торговые комиссии",
+    "2": "Варианты для создателей",
+    "3": "Запуск со списком допуска",
+    "5": "ОФИЦИАЛЬНАЯ ДОКУМЕНТАЦИЯ",
+    "7": "Документация EscapeHub о комиссиях и запусках с ограниченным доступом.",
+    "8": "EscapeHub указывает комиссию 1,2 % за сделку на этапе кривой цены. Создатель получает 0,5 %, а протокол — 0,7 %. При переходе к следующему этапу ставки меняются.",
+    "9": "Создатель может оставить свою долю, распределить её между кошельками или вернуть участникам торговли в виде кешбэка.",
+    "10": "Список создаётся вместе с токеном и применяется в блокчейне. Адреса в списке фиксированы. Создатель может открыть торги навсегда. При переходе к следующему этапу торги также становятся общедоступными.",
+    "11": "Читать официальную документацию (на английском) ↗",
+    "12": "Документация проверена 12 ноября 2026 г."
+  },
+  "zh-CN": {
+    "0": "官方来源",
+    "1": "交易手续费",
+    "2": "创作者的分配选项",
+    "3": "白名单发行",
+    "5": "官方文档",
+    "7": "EscapeHub 关于手续费和限制访问发行的官方文档。",
+    "8": "EscapeHub 的文档显示，在价格曲线阶段，每笔交易的手续费为 1.2%，其中 0.5% 归创作者，0.7% 归协议。进入下一阶段后费率会变化。",
+    "9": "创作者可保留自己的份额、将其分给多个钱包，或以返现方式返还给代币交易者。",
+    "10": "白名单与代币同时创建，并在链上执行。名单中的地址固定。创作者可永久开放交易。进入下一阶段后，交易也会向公众开放。",
+    "11": "阅读官方文档（英文）↗",
+    "12": "文档核对日期：2026 年 11 月 12 日。"
+  },
+  "ja": {
+    "0": "公式情報",
+    "1": "取引手数料",
+    "2": "作成者の選択肢",
+    "3": "許可リスト付きローンチ",
+    "5": "公式ドキュメント",
+    "7": "手数料とアクセスを制限したローンチに関する EscapeHub の公式ドキュメントです。",
+    "8": "EscapeHub によると、価格曲線の段階では取引ごとに 1.2% の手数料がかかります。内訳は作成者に 0.5%、プロトコルに 0.7% です。次の段階に進むと料率が変わります。",
+    "9": "作成者は取り分を受け取る、複数のウォレットに分配する、または取引者にキャッシュバックする方法を選べます。",
+    "10": "許可リストはトークンと同時に作成され、ブロックチェーン上で適用されます。一覧のアドレスは固定です。作成者は取引を恒久的に公開できます。次の段階に進むと、取引は自動的に公開されます。",
+    "11": "公式ドキュメントを読む（英語）↗",
+    "12": "ドキュメント確認日：2026年11月12日。"
+  },
+  "ko": {
+    "0": "공식 출처",
+    "1": "거래 수수료",
+    "2": "생성자의 선택지",
+    "3": "허용 목록으로 출시",
+    "5": "공식 문서",
+    "7": "수수료와 접근 제한 출시를 다룬 EscapeHub 공식 문서입니다.",
+    "8": "EscapeHub에 따르면 가격 곡선 단계에서는 거래마다 1.2%의 수수료가 부과됩니다. 생성자에게 0.5%, 프로토콜에 0.7%가 돌아갑니다. 다음 단계로 넘어가면 수수료율이 달라집니다.",
+    "9": "생성자는 자신의 몫을 받거나 여러 지갑에 나누거나 토큰 거래자에게 캐시백으로 돌려줄 수 있습니다.",
+    "10": "허용 목록은 토큰과 함께 생성되며 블록체인에서 적용됩니다. 등록 주소는 고정됩니다. 생성자는 거래를 영구적으로 공개할 수 있습니다. 다음 단계로 넘어가면 거래도 공개됩니다.",
+    "11": "공식 문서 읽기 (영어) ↗",
+    "12": "문서 확인일: 2026년 11월 12일."
+  }
 };
 const knowledgeNodes = [...document.querySelectorAll('[data-knowledge]')]
   .map(node => ({node, english:node.textContent}));
@@ -175,9 +281,9 @@ function applyHomepageLanguage(code) {
   const search = document.querySelector('#search');
   search.placeholder = labels.search + '…';
   search.setAttribute('aria-label', labels.search);
-  document.querySelector('#knowledge').lang = homepageLanguage === 'de' ? 'de' : 'en';
+  document.querySelector('#knowledge').lang = homepageLanguage;
   for (const {node, english} of knowledgeNodes) {
-    node.textContent = homepageLanguage === 'de' ? germanKnowledge[node.dataset.knowledge] : english;
+    node.textContent = knowledgeTranslations[homepageLanguage]?.[node.dataset.knowledge] ?? english;
   }
   setArchiveLanguage(homepageLanguage);
   setFeature(featureIndex);

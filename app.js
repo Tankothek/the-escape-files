@@ -72,6 +72,7 @@ for (const [language, locale] of Object.entries(fileLocales)) {
 archiveStrings.en.file = 'File';
 archiveStrings.de.file = 'File';
 
+const englishSourceLabels = {"de": "Englisch", "es": "en inglés", "fr": "en anglais", "pt": "em inglês", "tr": "İngilizce", "ru": "на английском", "zh-CN": "英文", "ja": "英語", "ko": "영어"};
 const strings = () => archiveStrings[archiveLanguage];
 const formatFileDate = date => new Intl.DateTimeFormat(
   archiveLanguage === 'pt' ? 'pt-BR' : archiveLanguage,
@@ -218,6 +219,8 @@ function renderReader(file) {
   const copy = strings();
   const {title,body,original} = fileText(file);
   const source = SOURCES[file.source];
+  const languageNote = file.source !== 'home' && englishSourceLabels[archiveLanguage];
+  const sourceLabel = copy.source + (languageNote ? ' (' + languageNote + ')' : '') + ' · ' + (source?.name || '');
   const cover = file.cover
     ? `<img class="reader-img" src="${escapeHTML(file.cover)}" alt="${copy.cover} · ${copy.file} ${file.id}">`
     : poster(file);
@@ -228,7 +231,7 @@ function renderReader(file) {
     <p class="label">${original ? copy.originalText : copy.summary}</p>
     <p>${escapeHTML(body)}</p>
     <div class="reader-links">${externalLink(file.x,copy.post)}
-      ${externalLink(source?.url,copy.source + ' · ' + source?.name)}
+      ${externalLink(source?.url,sourceLabel)}
       ${externalLink(weeklyArticle(WEEKS[file.week]).url,copy.paragraph)}
       ${externalLink(file.cover,copy.cover)}</div>
     <p class="edition">${copy.snapshot}</p>
