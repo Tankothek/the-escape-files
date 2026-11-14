@@ -292,6 +292,28 @@ function fileAtHash() {
   return files.find(file => location.hash === '#file-' + file.id);
 }
 
+const desktopReader = matchMedia('(min-width:900px) and (min-height:541px)');
+
+function fitDesktopReader() {
+  const reader = $('#reader');
+  const content = $('#readerContent');
+  const openedFile = content.firstElementChild;
+  const lockHeight = () => {
+    if (reader.open && desktopReader.matches && content.firstElementChild === openedFile &&
+        !reader.style.getPropertyValue('--reader-height')) {
+      reader.style.setProperty('--reader-height', reader.getBoundingClientRect().height + 'px');
+    }
+  };
+  const cover = content.querySelector('.reader-img');
+  if (cover && !cover.complete) cover.decode().then(lockHeight, lockHeight);
+  else lockHeight();
+}
+
+desktopReader.addEventListener('change', () => {
+  $('#reader').style.removeProperty('--reader-height');
+  if ($('#reader').open && desktopReader.matches) fitDesktopReader();
+});
+
 function renderReader(file) {
   if (!file) return;
   if (file.status !== 'planned' && lastReadId !== file.id) {
@@ -321,7 +343,7 @@ function renderReader(file) {
     readerLink(previous, previousLabel, 'previous', '‹') + readerLink(next, nextLabel, 'next', '›');
   $('#readerContent').innerHTML = `<div class="reader-heading">
     <div class="eyebrow">${copy.file} ${file.id} · ${copy.week} ${weekNumber(file.week)} · ${formatFileDate(file.date)}</div>
-    <h2 id="readerTitle" tabindex="-1">${escapeHTML(title)}</h2>
+    <h2 id="readerTitle" tabindex="-1">${escapeHTML(title.replace(/\bPop-ups\b/gi, word => word.replace('-', '‑')))}</h2>
   </div>
   ${cover}
   <div class="reader-text">
@@ -332,7 +354,12 @@ function renderReader(file) {
       ${externalLink(source?.url,sourceLabel)}
       ${externalLink(article.url,articleLinkLabel(article,copy.paragraph))}</div>
   </div>`;
-  if (!$('#reader').open) $('#reader').showModal();
+  const reader = $('#reader');
+  if (!reader.open) {
+    reader.style.removeProperty('--reader-height');
+    reader.showModal();
+  }
+  if (desktopReader.matches && !reader.style.getPropertyValue('--reader-height')) fitDesktopReader();
   $('#readerScroll').scrollTop = 0;
 }
 
