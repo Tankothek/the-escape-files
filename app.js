@@ -28,7 +28,6 @@ const archiveStrings = {
     source:'Official source', post:'Original post on X', paragraph:'Read on Paragraph', cover:'View original cover',
     stored:'Saved on this device', removed:'Removed from saved files',
     archive:'Escape Files archive', weeks:'Weekly analyses',
-    archiveNote:'The archive includes original covers from the published series. File 026 is still missing its cover.',
     snapshot:'The File documents the state of the series at the time of publication.',
     range:(count,total)=>`${count} of ${total} files`,
     explore:count=>`Explore ${count} files`
@@ -44,7 +43,6 @@ const archiveStrings = {
     source:'Offizielle Quelle', post:'Originalbeitrag auf X', paragraph:'Auf Paragraph lesen', cover:'Originalcover ansehen',
     stored:'Auf diesem Gerät gemerkt', removed:'Aus der Merkliste entfernt',
     archive:'Escape Files Archiv', weeks:'Wochenanalysen',
-    archiveNote:'Die Cover stammen aus der veröffentlichten Serie. Das Cover zu File 026 fehlt noch.',
     snapshot:'Das File dokumentiert den Stand zum Zeitpunkt der jeweiligen Ausgabe.',
     range:(count,total)=>`${count} von ${total} Files`,
     explore:count=>`${count} Files ansehen`

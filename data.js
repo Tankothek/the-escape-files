@@ -242,12 +242,13 @@ const germanFiles = {
 WEEKS[1].articleDe = { title:'Erst die Community, dann der offene Markt', url:'https://paragraph.com/@tankothek-2c2d/erst-die-community' };
 
 // Cover images matched to the published File numbers on Tankothek’s X account.
-const recoveredCovers = ["001", "002", "003", "004", "005", "012", "013", "014", "015", "016", "017", "018", "019", "020", "021", "022", "023", "024", "025", "027", "028", "029", "030"];
+const recoveredCovers = ["001", "002", "003", "004", "005", "012", "013", "014", "015", "016", "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029", "030"];
 for (const file of files) {
   if (recoveredCovers.includes(file.id)) file.cover = `file-${file.id}.webp`;
 }
 
 const weekSixPosts = {
+  '026': ['2119837424687751245', 'One week to go.', 'Noch eine Woche'],
   '027': ['2120199812926644488', 'Your wallet. Built in.', 'Deine Wallet. Direkt integriert.'],
   '028': ['2120562205565542464', 'A familiar way to start.', 'Vertraut einsteigen.'],
   '029': ['2120925338783932436', 'Explore before you buy.', 'Erst entdecken, dann kaufen'],
