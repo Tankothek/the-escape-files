@@ -52,16 +52,13 @@ const germanKnowledge = {
   "1": "Handelsgebühren",
   "2": "Möglichkeiten für Ersteller",
   "3": "Starts mit Whitelist",
-  "4": "Offene Fragen",
   "5": "OFFIZIELLE DOKUMENTATION",
-  "6": "REDAKTIONELLE EINORDNUNG",
   "7": "Offizielle Dokumentation und redaktionelle Einordnung im Überblick.",
   "8": "EscapeHub dokumentiert eine Handelsgebühr von 1,2 % während der Preisbildungskurve. Davon gehen 0,5 % an die Ersteller und 0,7 % an das Protokoll. Beim Wechsel in die nächste Handelsphase ändern sich die Gebühren.",
   "9": "Ersteller können ihren Anteil behalten, auf mehrere Wallets aufteilen oder als Cashback an Handelnde zurückgeben.",
   "10": "Die Whitelist wird zusammen mit dem Token erstellt und auf der Blockchain geprüft. Die Adressen stehen fest. Der Ersteller kann den Handel dauerhaft öffnen. Auch beim Wechsel in die nächste Handelsphase wird der Handel öffentlich.",
   "11": "Offizielle Dokumentation lesen ↗",
-  "12": "Stand der Dokumentationsprüfung: 12. November 2026.",
-  "13": "Starttermin von $ESC, genaue Zuteilung für Rückkäufe und die endgültigen Produktabläufe sind in diesem Archiv noch offen. Die Files halten den Stand der jeweiligen Ausgabe fest."
+  "12": "Stand der Dokumentationsprüfung: 12. November 2026."
 };
 const knowledgeNodes = [...document.querySelectorAll('[data-knowledge]')]
   .map(node => ({node, english:node.textContent}));
