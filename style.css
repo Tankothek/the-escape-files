@@ -352,17 +352,22 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 .guide-card h3 { hyphens:auto; }
 .guide-card ol { display:grid; gap:7px; margin:16px 0 0; padding-inline-start:1.6em; }
 .guide-card li::marker { color:#f0b952; font-weight:700; }
-.guide-card button {
+.guide-card a {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
   width:100%;
   min-height:44px;
-  padding:8px;
-  border:1px solid transparent;
+  padding:8px 10px;
+  border:1px solid #675333;
   border-radius:7px;
-  background:transparent;
-  color:var(--ink);
-  text-align:start;
+  background:#e4b45b0d;
+  color:#ffd074;
 }
-.guide-card button:hover { background:#ffffff09; border-color:var(--line); }
+.guide-card a > span:first-child { min-width:0; text-decoration:underline; text-underline-offset:.18em; }
+.guide-card a > [aria-hidden] { flex-shrink:0; font-size:1.15em; }
+.guide-card a:hover,.guide-card a:focus-visible { background:#e4b45b22; border-color:#e4b45b; }
 .reader-pagination {
   display:flex;
   flex-wrap:wrap;

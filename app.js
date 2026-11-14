@@ -228,7 +228,7 @@ function renderGuide() {
     <h3>${pathLabels[index]}</h3>
     <ol>${path.map(number => {
       const file = files.find(candidate => candidate.n === number);
-      return `<li><button type="button" data-open="${file.id}">${escapeHTML(fileText(file).title)}</button></li>`;
+      return `<li><a href="#file-${file.id}" data-open="${file.id}"><span>${escapeHTML(fileText(file).title)}</span><span aria-hidden="true">→</span></a></li>`;
     }).join('')}</ol>
   </article>`).join('');
 }
@@ -331,7 +331,11 @@ document.addEventListener('click', event => {
   }
 
   const open = event.target.closest('[data-open]');
-  if (open) openFile(open.dataset.open);
+  if (open) {
+    if (open.matches('a') && (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)) return;
+    event.preventDefault();
+    openFile(open.dataset.open);
+  }
 
   const bookmark = event.target.closest('[data-save]');
   if (bookmark) {
