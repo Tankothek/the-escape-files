@@ -4,7 +4,7 @@ const WEEKS = {
   3:{title:'Networks & Discovery',article:'Several Networks, One Platform: How EscapeHub Aims to Bring Ideas and People Together',articleUrl:'https://paragraph.com/@tankothek-2c2d/several-networks-one-platform'},
   4:{title:'Bonding & DEX Graduation',article:'Your Token Has Launched. What Happens Next?',articleUrl:'https://paragraph.com/@tankothek-2c2d/your-token-has-launched-what-happens-next'},
   5:{title:'Platform Revenue, $ESC & Buybacks',article:'EscapeHub Launches First: How the Platform, Presale and $ESC Connect',articleUrl:null},
-  6:{title:'Launch Week: First Steps',article:'Saturday deep dive',articleUrl:null}
+  6:{title:'Launch Week: First Steps',article:'Getting Started with EscapeHub: From Signing In to Your First Purchase',articleUrl:'https://paragraph.com/@tankothek-2c2d/getting-started-with-escapehub'}
 };
 
 const XIDS = [
