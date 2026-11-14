@@ -337,8 +337,7 @@ function renderReader(file) {
     <p>${escapeHTML(body)}</p>
     <div class="reader-links">${externalLink(file.x,copy.post)}
       ${externalLink(source?.url,sourceLabel)}
-      ${externalLink(article.url,articleLinkLabel(article,copy.paragraph))}
-      ${externalLink(file.cover,copy.cover)}</div>
+      ${externalLink(article.url,articleLinkLabel(article,copy.paragraph))}</div>
     <p class="edition">${copy.snapshot}</p>
     <nav class="reader-pagination" aria-label="${readingLabel}">
       ${readerLink(previous, previousLabel, '←')}
