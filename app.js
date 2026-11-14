@@ -320,7 +320,7 @@ function renderReader(file) {
     renderLastRead();
   }
   const copy = strings();
-  const {title,body,original} = fileText(file);
+  const {title,body} = fileText(file);
   const readerBody = body.split(/\n\s*\n/)
     .filter(paragraph => !/^(?:this week|tomorrow(?: on Paragraph)?|diese Woche|morgen(?: auf Paragraph)?):/i.test(paragraph.trim()))
     .join('\n\n');
@@ -348,7 +348,6 @@ function renderReader(file) {
   </div>
   ${cover}
   <div class="reader-text">
-    <p class="label">${original ? copy.originalText : copy.summary}</p>
     <p>${escapeHTML(readerBody)}</p>
     <div class="reader-links">${externalLink(file.x,copy.post)}
       ${externalLink(source?.url,sourceLabel)}
