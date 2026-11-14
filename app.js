@@ -321,6 +321,9 @@ function renderReader(file) {
   }
   const copy = strings();
   const {title,body,original} = fileText(file);
+  const readerBody = body.split(/\n\s*\n/)
+    .filter(paragraph => !/^(?:this week|tomorrow(?: on Paragraph)?|diese Woche|morgen(?: auf Paragraph)?):/i.test(paragraph.trim()))
+    .join('\n\n');
   const source = SOURCES[file.source];
   const article = weeklyArticle(WEEKS[file.week]);
   const languageNote = file.source !== 'home' && englishSourceLabels[archiveLanguage];
@@ -346,7 +349,7 @@ function renderReader(file) {
   ${cover}
   <div class="reader-text">
     <p class="label">${original ? copy.originalText : copy.summary}</p>
-    <p>${escapeHTML(body)}</p>
+    <p>${escapeHTML(readerBody)}</p>
     <div class="reader-links">${externalLink(file.x,copy.post)}
       ${externalLink(source?.url,sourceLabel)}
       ${externalLink(article.url,articleLinkLabel(article,copy.paragraph))}</div>
