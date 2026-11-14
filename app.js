@@ -87,6 +87,19 @@ const topicTitle = tag => localizedTopics[archiveLanguage]?.[tag] ?? tag;
 const topics = [...new Set(files.flatMap(file => file.tags))];
 const cleanSearch = text => text.toLowerCase().normalize('NFD').replace(/\p{M}/gu, '');
 
+const sortLabels = {
+  en: ['Newest first', 'Oldest first'],
+  de: ['Neueste zuerst', 'Älteste zuerst'],
+  es: ['Más recientes primero', 'Más antiguos primero'],
+  fr: ['Les plus récents en premier', 'Les plus anciens en premier'],
+  pt: ['Mais recentes primeiro', 'Mais antigos primeiro'],
+  tr: ['Önce en yeniler', 'Önce en eskiler'],
+  ru: ['Сначала новые', 'Сначала старые'],
+  'zh-CN': ['最新优先', '最早优先'],
+  ja: ['新しい順', '古い順'],
+  ko: ['최신순', '오래된 순']
+};
+
 function setOptions(id, options) {
   const select = $(id);
   const previous = select.value;
@@ -103,7 +116,8 @@ function setArchiveLanguage(language) {
   });
   $('.filters').setAttribute('aria-label',copy.view);
   $('#close').setAttribute('aria-label',copy.close);
-  setOptions('#sort', [['asc',copy.number + ' ↑'],['desc',copy.number + ' ↓']]);
+  const [newest, oldest] = sortLabels[archiveLanguage];
+  setOptions('#sort', [['desc',newest],['asc',oldest]]);
   setOptions('#week', [['all',copy.allWeeks], ...Object.keys(WEEKS).map(n =>
     [n,`${copy.week} ${weekNumber(n)} · ${weekTitle(Number(n))}`])]);
   setOptions('#topic', [['all',copy.allTopics], ...topics.map(tag => [tag,topicTitle(tag)])
@@ -159,6 +173,7 @@ function renderArchive() {
       ...file.tags.map(topicTitle), ...(germanFiles[file.id] || []), title, summary, body, weekTitle(file.week)].join(' '));
     return terms.every(term => haystack.includes(term));
   });
+  shown.sort((first, second) => first.date.localeCompare(second.date) || first.id.localeCompare(second.id));
   if ($('#sort').value === 'desc') shown.reverse();
   $('#grid').innerHTML = shown.map(fileCard).join('');
   $('#empty').hidden = Boolean(shown.length);
@@ -259,7 +274,7 @@ function resetArchive() {
   filter = 'all';
   $('#search').value = '';
   for (const id of ['#week','#topic','#status']) $(id).value = 'all';
-  $('#sort').value = 'asc';
+  $('#sort').value = 'desc';
 }
 
 document.addEventListener('click', event => {
@@ -297,6 +312,7 @@ document.addEventListener('click', event => {
   if (week) {
     resetArchive();
     $('#week').value = week.dataset.week;
+    $('#sort').value = 'asc';
     renderArchive();
     location.hash = 'library';
     $('#archiveTitle').focus({preventScroll:true});
@@ -305,7 +321,11 @@ document.addEventListener('click', event => {
 });
 
 $('#search').addEventListener('input',renderArchive);
-for (const id of ['#sort','#week','#topic','#status']) $(id).addEventListener('change',renderArchive);
+for (const id of ['#sort','#topic','#status']) $(id).addEventListener('change',renderArchive);
+$('#week').addEventListener('change', () => {
+  $('#sort').value = $('#week').value === 'all' ? 'desc' : 'asc';
+  renderArchive();
+});
 $('#reset').addEventListener('click',() => {
   resetArchive();
   renderArchive();
