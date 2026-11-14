@@ -331,7 +331,6 @@ function renderReader(file) {
     <div class="reader-links">${externalLink(file.x,copy.post)}
       ${externalLink(source?.url,sourceLabel)}
       ${externalLink(article.url,articleLinkLabel(article,copy.paragraph))}</div>
-    <p class="edition">${copy.snapshot}</p>
   </div>`;
   if (!$('#reader').open) $('#reader').showModal();
   $('#readerScroll').scrollTop = 0;
