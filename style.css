@@ -411,3 +411,38 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 .reader-pagination button:hover { border-color:#e4b45b; }
 .reader-pagination button > [aria-hidden] { color:#f0b952; }
 .reader-pagination small { display:block; color:var(--muted); }
+
+.last-read {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 16px;
+  margin:0 0 16px;
+  padding:8px 14px;
+  border:1px solid var(--line);
+  border-inline-start:2px solid #e4b45b;
+  border-radius:8px;
+  background:var(--surface);
+}
+.last-read[hidden] { display:none; }
+.last-read h3 { margin:0; font-size:14px; }
+.last-read a,.glossary-card a,.reader-related a {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  min-height:44px;
+  color:#ffd074;
+  font-size:14px;
+  overflow-wrap:anywhere;
+}
+.last-read a:hover,.glossary-card a:hover,.reader-related a:hover { color:var(--ink); }
+.glossary,.reader-related { border-top:1px solid var(--line); }
+.glossary { margin-top:28px; padding-top:24px; }
+.glossary-card { display:flex; flex-direction:column; align-items:flex-start; padding:16px; }
+.glossary-card h4 { margin:0; font-size:17px; }
+.glossary-card h4 small { color:var(--muted); font-weight:400; }
+.glossary-card p { margin:8px 0; }
+.glossary-card a { margin-top:auto; }
+.reader-related { margin-top:22px; padding-top:16px; }
+.reader-related h3 { margin:0; font-size:17px; }
+.reader-related ul { list-style:none; margin:4px 0 0; padding:0; }

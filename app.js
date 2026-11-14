@@ -77,6 +77,52 @@ const guideLabels = {
 };
 const guidePaths = [[27, 28, 29, 30], [11, 1, 4, 18], [12, 6, 16, 21]];
 const readingOrder = files.filter(file => file.status !== 'planned').sort((a, b) => a.n - b.n);
+const lastReadKey = 'escape-files-last-read';
+let lastReadId;
+try { lastReadId = localStorage.getItem(lastReadKey); } catch {}
+
+function fileLink(file, label, inReader = false) {
+  const action = inReader ? 'data-reader-step' : 'data-open';
+  return `<a href="#file-${file.id}" ${action}="${file.id}">
+    <span>${escapeHTML(label)}</span><span aria-hidden="true"> →</span>
+  </a>`;
+}
+
+function renderLastRead() {
+  const file = readingOrder.find(candidate => candidate.id === lastReadId);
+  const container = $('#lastRead');
+  container.hidden = !file;
+  if (!file) return;
+  const [, label] = glossaryTranslations[archiveLanguage][0];
+  container.innerHTML = `<h3>${label}</h3>${fileLink(file, '#' + file.id + ' · ' + fileText(file).title)}`;
+}
+
+function renderGlossary() {
+  const [labels, ...entries] = glossaryTranslations[archiveLanguage];
+  $('#glossaryTitle').textContent = labels[0];
+  $('#glossaryGrid').innerHTML = glossaryTerms.map(([term, id], index) => {
+    const [title, definition] = entries[index];
+    const file = files.find(candidate => candidate.id === id);
+    const showEnglish = title.toLowerCase() !== term.toLowerCase();
+    return `<article class="week-card glossary-card">
+      <h4>${escapeHTML(title)}${showEnglish ? ` <small lang="en">(${escapeHTML(term)})</small>` : ''}</h4>
+      <p>${escapeHTML(definition)}</p>
+      ${fileLink(file, strings().file + ' ' + id + ' · ' + fileText(file).title)}
+    </article>`;
+  }).join('');
+}
+
+function relatedFiles(file) {
+  return readingOrder.filter(candidate => candidate !== file)
+    .map(candidate => ({
+      file:candidate,
+      relevance:2 * candidate.tags.filter(tag => file.tags.includes(tag)).length + Number(candidate.week === file.week)
+    }))
+    .filter(candidate => candidate.relevance > 0)
+    .sort((a, b) => b.relevance - a.relevance || Math.abs(a.file.n - file.n) - Math.abs(b.file.n - file.n))
+    .slice(0, 3)
+    .map(candidate => candidate.file);
+}
 const formatFileDate = date => new Intl.DateTimeFormat(
   archiveLanguage === 'pt' ? 'pt-BR' : archiveLanguage,
   {dateStyle:'medium', timeZone:'UTC'}
@@ -140,6 +186,8 @@ function setArchiveLanguage(language) {
   renderWeeks();
   renderArticles();
   renderGuide();
+  renderLastRead();
+  renderGlossary();
   renderArchive();
   if ($('#reader').open) renderReader(fileAtHash());
 }
@@ -258,6 +306,11 @@ function fileAtHash() {
 
 function renderReader(file) {
   if (!file) return;
+  if (file.status !== 'planned' && lastReadId !== file.id) {
+    lastReadId = file.id;
+    try { localStorage.setItem(lastReadKey, lastReadId); } catch {}
+    renderLastRead();
+  }
   const copy = strings();
   const {title,body,original} = fileText(file);
   const source = SOURCES[file.source];
@@ -270,6 +323,8 @@ function renderReader(file) {
   const [,,,, readingLabel, previousLabel, nextLabel] = guideLabels[archiveLanguage];
   const previous = readingOrder.findLast(candidate => candidate.n < file.n);
   const next = readingOrder.find(candidate => candidate.n > file.n);
+  const related = relatedFiles(file);
+  const relatedLabel = glossaryTranslations[archiveLanguage][0][2];
   const readerLink = (target, label, arrow) => target
     ? `<button type="button" data-reader-step="${target.id}"><span aria-hidden="true">${arrow}</span>
       <span>${label}<small>${copy.file} ${target.id}</small></span></button>`
@@ -289,6 +344,10 @@ function renderReader(file) {
       ${readerLink(previous, previousLabel, '←')}
       ${readerLink(next, nextLabel, '→')}
     </nav>
+    ${related.length ? `<section class="reader-related" aria-labelledby="relatedTitle">
+      <h3 id="relatedTitle">${relatedLabel}</h3>
+      <ul>${related.map(target => `<li>${fileLink(target, '#' + target.id + ' · ' + fileText(target).title, true)}</li>`).join('')}</ul>
+    </section>` : ''}
   </div>${cover}`;
   if (!$('#reader').open) $('#reader').showModal();
   $('#reader').scrollTop = 0;
@@ -322,6 +381,8 @@ function resetArchive() {
 document.addEventListener('click', event => {
   const readerStep = event.target.closest('[data-reader-step]');
   if (readerStep) {
+    if (readerStep.matches('a') && (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)) return;
+    event.preventDefault();
     history.replaceState(history.state, '', '#file-' + readerStep.dataset.readerStep);
     updateReaderFromUrl();
     $('#readerTitle').focus({preventScroll:true});
