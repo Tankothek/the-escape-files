@@ -323,3 +323,24 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 }
 .feature-play[hidden] { display:none; }
 .feature-play:hover { background:#ffffff12; }
+
+.back-to-top {
+  position:fixed;
+  z-index:10;
+  right:calc(clamp(14px, 2.5vw, 30px) + env(safe-area-inset-right));
+  bottom:calc(16px + env(safe-area-inset-bottom));
+  display:grid;
+  place-items:center;
+  width:46px;
+  height:46px;
+  padding:0;
+  border:1px solid #e4b45b;
+  border-radius:50%;
+  background:#10141f;
+  color:#ffd074;
+  font:700 24px/1 system-ui,sans-serif;
+  box-shadow:0 4px 16px #0008;
+}
+.back-to-top[hidden] { display:none; }
+.back-to-top:hover { background:#292219; }
+.back-to-top:focus-visible { outline:2px solid currentColor; outline-offset:3px; }

@@ -19,6 +19,38 @@ const featureFiles = files.filter(file => file.cover && file.status === 'publish
 let featureIndex = 0;
 let homepageLanguage = 'en';
 const languagePicker = document.querySelector('#language');
+const backToTop = document.querySelector('#backToTop');
+const pageStart = document.querySelector('#start');
+const backToTopLabels = {
+  en: 'Back to top',
+  de: 'Nach oben',
+  es: 'Volver arriba',
+  fr: 'Retour en haut',
+  pt: 'Voltar ao topo',
+  tr: 'Başa dön',
+  ru: 'Наверх',
+  'zh-CN': '返回顶部',
+  ja: 'ページの先頭へ',
+  ko: '맨 위로'
+};
+const backToTopThreshold = 160;
+let previousScrollTop = Math.max(0, window.scrollY);
+
+window.addEventListener('scroll', () => {
+  const scrollTop = Math.max(0, window.scrollY);
+  if (scrollTop <= backToTopThreshold || scrollTop > previousScrollTop) {
+    backToTop.hidden = true;
+  } else if (scrollTop < previousScrollTop) {
+    backToTop.hidden = false;
+  }
+  previousScrollTop = scrollTop;
+}, {passive:true});
+
+backToTop.addEventListener('click', () => {
+  pageStart.focus({preventScroll:true});
+  window.scrollTo({top:0});
+});
+
 const featureCard = document.querySelector('#featured');
 const firstFeatureSlide = featureCard.querySelector('.featured-slide');
 const featureSlides = featureFiles.map((file, index) => {
@@ -471,6 +503,8 @@ function applyHomepageLanguage(code) {
     element.textContent = labels[element.dataset.label];
   }
   languagePicker.setAttribute('aria-label', labels.language);
+  backToTop.title = backToTopLabels[homepageLanguage];
+  backToTop.setAttribute('aria-label', backToTop.title);
   const search = document.querySelector('#search');
   search.placeholder = labels.search + '…';
   search.setAttribute('aria-label', labels.search);
