@@ -549,6 +549,7 @@ function applyHomepageLanguage(code) {
   for (const {node, english} of knowledgeNodes) {
     node.textContent = knowledgeTranslations[homepageLanguage]?.[node.dataset.knowledge] ?? english;
   }
+  renderLearn(homepageLanguage);
   setArchiveLanguage(homepageLanguage);
   renderFeatureText();
   setFeature(featureIndex);
