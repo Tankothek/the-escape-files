@@ -50,55 +50,24 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
   .language-picker:has(select:focus-visible) { border-color:Highlight; }
 }
 .front { padding:0 clamp(16px,3.25vw,54px) 16px; }
-.front-hero { position:relative; isolation:isolate; display:grid; align-items:start; justify-items:center; height:clamp(222px,16.3vw,273px); }
-.earth-art { position:absolute; z-index:-1; inset:auto 0 0; height:38%; overflow:hidden; }
-.earth-art::before { content:""; display:block; width:100%; aspect-ratio:1672 / 94; background:url(design-art.png) center 47.12% / 100% auto no-repeat; mask-image:linear-gradient(transparent,#000 25%); }
-.front-title { display:flex; align-items:center; gap:clamp(18px,2.5vw,42px); margin-top:clamp(32px,2.8vw,50px); }
-.front-title > div { padding-left:clamp(14px,1.6vw,27px); border-left:1px solid #b4a98c; }
+.front-hero {
+  display:grid;
+  align-items:start;
+  justify-items:center;
+  min-height:clamp(260px,24vw,370px);
+  margin-bottom:18px;
+  padding:clamp(29px,4vw,58px) 18px 90px;
+  border-bottom:1px solid #9c762f;
+  border-radius:0 0 16px 16px;
+  background:
+    linear-gradient(180deg,#080b10b8 0%,#080b1088 39%,transparent 74%,#080b106e 100%),
+    #0a101a url(escapehub-token-hero.jpg) center 96% / cover no-repeat;
+}
+.front-title { text-align:center; max-width:100%; text-shadow:0 2px 18px #080b10; }
 .front-title h1 { margin:0; font-size:clamp(37px,5.55vw,90px); line-height:1.04; font-weight:700; letter-spacing:-.045em; font-style:italic; }
 .front-title em { color:#ffd36b; background:var(--gold-fill); background-clip:text; -webkit-text-fill-color:transparent; }
 .front-title p { color:#e1e5ed; font-size:clamp(13px,1.59vw,25px); margin:.55em 0 0; }
 .portal-icon { display:block; flex-shrink:0; background-image:url(design-art.png); background-repeat:no-repeat; }
-.front-token {
-  position:relative;
-  display:grid;
-  place-items:center;
-  flex:none;
-  width:clamp(66px,9.65vw,162px);
-  aspect-ratio:165 / 129;
-}
-.token-disc {
-  position:relative;
-  width:72%;
-  aspect-ratio:1;
-  border-radius:50%;
-  background:radial-gradient(circle,#294859 0%,#101b27 62%,transparent 63%),var(--gold-fill);
-  box-shadow:0 0 clamp(6px,1vw,15px) #39bdde48;
-}
-.token-disc::before,
-.token-disc::after {
-  content:"";
-  position:absolute;
-}
-.token-disc::before {
-  inset:9%;
-  border:1px solid #eabb6a;
-  border-radius:50%;
-}
-.token-disc::after {
-  inset:27% 33%;
-  background:linear-gradient(110deg,#f9df9b 0 49%,#ca903d 49% 100%);
-  clip-path:polygon(50% 0,100% 54%,50% 100%,0 54%);
-}
-.token-spark {
-  position:absolute;
-  top:1%;
-  right:5%;
-  color:#9deaff;
-  font-size:clamp(13px,2.6vw,37px);
-  line-height:1;
-  text-shadow:0 0 12px #32b9dc70;
-}
 .portals { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(12px,1.45vw,24px); }
 .portals a { min-width:0; min-height:clamp(108px,9vw,147px); display:flex; align-items:center; gap:clamp(10px,1.65vw,27px); padding:10px clamp(12px,1.5vw,26px); border:1px solid var(--gold-edge); border-radius:15px; background:linear-gradient(125deg,#0d1118,#080b10); transition:border-color .2s,background .2s; }
 .portals a:hover,.featured:hover { border-color:#e4b45b; }
@@ -257,13 +226,14 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
   .site-nav a { padding:10px 0; font-size:12px; }
   .language-picker { margin-left:0; }
   .language-picker select { padding-block:6px; }
-  .front-hero { height:163px; }
-  .front-title { gap:10px; margin-top:24px; }
-  .front-token { width:52px; }
+  .front-hero {
+    min-height:224px;
+    padding:26px 10px 92px;
+    background-position:center, center bottom;
+    background-size:auto, 100% auto;
+  }
   .front-title h1 { font-size:clamp(24px,6.45vw,40px); }
   .front-title p { font-size:12px; }
-  .earth-art { height:47px; inset-inline:-16px; }
-  .earth-art::before { width:155%; margin-left:-27.5%; }
   .portals { grid-template-columns:1fr; gap:9px; }
   .portals a { min-height:70px; padding:7px 16px; }
   .portal-icon { width:50px; }
@@ -274,7 +244,6 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
   .featured-action { justify-self:start; margin:12px 16px 16px; }
 }
 .portal-icon { mask-image:radial-gradient(ellipse 79% 78%,#000 69%,transparent 100%); }
-.earth-art { mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); }
 @media (max-width:640px) {
   .panorama::before { mask-image:linear-gradient(90deg,transparent,#0005 50%,#000 90%); }
   .featured-cover img { object-position:center 25%; }
