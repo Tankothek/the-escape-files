@@ -21,6 +21,36 @@ let homepageLanguage = 'en';
 const languagePicker = document.querySelector('#language');
 const backToTop = document.querySelector('#backToTop');
 const pageStart = document.querySelector('#start');
+const navToggle = document.querySelector('#navToggle');
+const navLabels = {
+  en: ['Menu', 'Navigation'], de: ['Menü', 'Navigation'], es: ['Menú', 'Navegación'],
+  fr: ['Menu', 'Navigation'], pt: ['Menu', 'Navegação'], tr: ['Menü', 'Gezinme'],
+  ru: ['Меню', 'Навигация'], 'zh-CN': ['菜单', '导航'],
+  ja: ['メニュー', 'ナビゲーション'], ko: ['메뉴', '탐색']
+};
+
+function setNavigationOpen(open) {
+  navToggle.setAttribute('aria-expanded', String(open));
+}
+
+navToggle.addEventListener('click', () => {
+  setNavigationOpen(navToggle.getAttribute('aria-expanded') !== 'true');
+});
+document.addEventListener('click', event => {
+  const links = document.querySelector('#navLinks');
+  if (navToggle.getAttribute('aria-expanded') !== 'true' || navToggle.contains(event.target)) return;
+  if (!links.contains(event.target) || event.target.closest('a')) {
+    if (links.contains(document.activeElement)) navToggle.focus({preventScroll:true});
+    setNavigationOpen(false);
+  }
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+    setNavigationOpen(false);
+    if (navToggle.offsetWidth) navToggle.focus({preventScroll:true});
+  }
+});
+matchMedia('(max-width:767px) and (orientation:portrait)').addEventListener('change', () => setNavigationOpen(false));
 const backToTopLabels = {
   en: 'Back to top',
   de: 'Nach oben',
@@ -47,6 +77,10 @@ window.addEventListener('scroll', () => {
 }, {passive:true});
 
 backToTop.addEventListener('click', () => {
+  if (location.hash && location.hash !== '#start' && !fileAtHash()) {
+    history.replaceState(history.state, '', '#start');
+    updateReaderFromUrl();
+  }
   pageStart.focus({preventScroll:true});
   window.scrollTo({top:0});
 });
@@ -494,6 +528,9 @@ function applyHomepageLanguage(code) {
   homepageLanguage = Object.hasOwn(homepageTranslations, code) ? code : 'en';
   document.documentElement.lang = homepageLanguage;
   languagePicker.value = homepageLanguage;
+  const [menuLabel, navigationLabel] = navLabels[homepageLanguage];
+  document.querySelector('#navToggleLabel').textContent = menuLabel;
+  navToggle.closest('nav').setAttribute('aria-label', navigationLabel);
   const aboutCopy = aboutTranslations[homepageLanguage];
   for (const { node, english } of aboutNodes) {
     node.textContent = aboutCopy?.[node.dataset.about] ?? english;

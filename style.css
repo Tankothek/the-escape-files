@@ -46,6 +46,8 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 }
 .site-nav a { position:relative; display:block; padding:17px 0; font-size:clamp(12px,1.3vw,19px); white-space:nowrap; }
 .site-nav .nav-current { color:#ffcc64; box-shadow:inset 0 -3px #f0bc54; }
+.nav-links { display:contents; }
+.nav-toggle { display:none; }
 .language-picker { display:flex; align-items:center; gap:5px; margin-left:auto; border:1px solid #edb63a; border-radius:32px; padding:0 9px; }
 .language-picker select { background:transparent; border:0; padding:9px 0; color:var(--ink); max-width:115px; }
 .language-picker option { background:#111721; }
@@ -317,6 +319,57 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 }
 .feature-play[hidden] { display:none; }
 .feature-play:hover { background:#ffffff12; }
+
+@media (max-width:767px) and (orientation:portrait) {
+  .site-nav { position:relative; z-index:11; flex-wrap:nowrap; justify-content:space-between; gap:12px; min-height:60px; padding:7px 16px; }
+  .nav-toggle {
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    min-height:44px;
+    padding:0 12px;
+    border:1px solid var(--line);
+    border-radius:9px;
+    background:var(--surface);
+    color:var(--ink);
+    font-size:14px;
+    font-weight:600;
+  }
+  .nav-toggle-icon {
+    width:16px;
+    height:12px;
+    border-block:2px solid currentColor;
+    color:#ffd074;
+    background:linear-gradient(currentColor,currentColor) center / 100% 2px no-repeat;
+    border-radius:1px;
+  }
+  .nav-toggle[aria-expanded=true] { border-color:var(--gold-edge); }
+  .site-nav .language-picker { margin-left:auto; min-height:44px; }
+  .site-nav .language-picker select { font-size:16px; }
+  .nav-links {
+    display:none;
+    position:absolute;
+    top:100%;
+    left:16px;
+    right:16px;
+    padding:5px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:var(--surface);
+    box-shadow:0 14px 30px #0008;
+  }
+  .nav-toggle[aria-expanded=true] + .nav-links { display:grid; }
+  .site-nav .nav-links a {
+    display:flex;
+    align-items:center;
+    gap:5px;
+    min-height:44px;
+    padding:8px 12px;
+    border-radius:6px;
+    font-size:15px;
+  }
+  .site-nav .nav-links .nav-current { box-shadow:inset 2px 0 #f0bc54; background:#f0bc5412; }
+}
 
 .back-to-top {
   position:fixed;
