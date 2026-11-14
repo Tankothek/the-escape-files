@@ -15,7 +15,7 @@ const glossaryTerms = [
 
 const glossaryTranslations = {
   en: [
-    ['Glossary', 'Recently opened', 'Related files'],
+    ['Glossary', 'Recently opened'],
     ['Whitelist', 'A list of wallet addresses allowed to buy a token during a restricted launch.'],
     ['Sniper bot', 'A program that tries to buy a token as soon as trading opens.'],
     ['On-chain', 'Recorded or executed directly on a blockchain.'],
@@ -30,7 +30,7 @@ const glossaryTranslations = {
     ['Buyback', 'A project’s purchase of its own tokens from the market.']
   ],
   de: [
-    ['Glossar', 'Zuletzt gelesen', 'Passende Files'],
+    ['Glossar', 'Zuletzt gelesen'],
     ['Whitelist', 'Eine Liste von Wallet-Adressen, die bei einem Start mit eingeschränktem Zugang kaufen dürfen.'],
     ['Sniper-Bot', 'Ein Programm, das versucht, einen Token direkt bei Handelsstart zu kaufen.'],
     ['On-Chain', 'Direkt auf einer Blockchain gespeichert oder ausgeführt.'],
@@ -45,7 +45,7 @@ const glossaryTranslations = {
     ['Buyback', 'Der Rückkauf eigener Token durch ein Projekt am Markt.']
   ],
   es: [
-    ['Glosario', 'Abierto recientemente', 'Archivos relacionados'],
+    ['Glosario', 'Abierto recientemente'],
     ['Lista de permitidos', 'Lista de direcciones de billeteras autorizadas a comprar un token durante un lanzamiento restringido.'],
     ['Bot de compra instantánea', 'Programa que intenta comprar un token en cuanto comienza la negociación.'],
     ['En cadena', 'Registrado o ejecutado directamente en una cadena de bloques.'],
@@ -60,7 +60,7 @@ const glossaryTranslations = {
     ['Recompra', 'Compra por parte de un proyecto de sus propios tokens en el mercado.']
   ],
   fr: [
-    ['Glossaire', 'Consulté récemment', 'Dossiers associés'],
+    ['Glossaire', 'Consulté récemment'],
     ['Liste d’autorisation', 'Liste des adresses de portefeuilles autorisées à acheter un jeton lors d’un lancement restreint.'],
     ['Bot d’achat instantané', 'Programme qui tente d’acheter un jeton dès l’ouverture des échanges.'],
     ['Sur la blockchain', 'Enregistré ou exécuté directement sur une blockchain.'],
@@ -75,7 +75,7 @@ const glossaryTranslations = {
     ['Rachat', 'Achat par un projet de ses propres jetons sur le marché.']
   ],
   pt: [
-    ['Glossário', 'Aberto recentemente', 'Arquivos relacionados'],
+    ['Glossário', 'Aberto recentemente'],
     ['Lista de permissões', 'Lista de endereços de carteiras autorizadas a comprar um token durante um lançamento restrito.'],
     ['Robô de compra instantânea', 'Programa que tenta comprar um token assim que a negociação começa.'],
     ['Na blockchain', 'Registrado ou executado diretamente em uma blockchain.'],
@@ -90,7 +90,7 @@ const glossaryTranslations = {
     ['Recompra', 'Compra de tokens no mercado pelo próprio projeto que os emitiu.']
   ],
   tr: [
-    ['Sözlük', 'Son açılan dosya', 'İlgili dosyalar'],
+    ['Sözlük', 'Son açılan dosya'],
     ['İzin listesi', 'Kısıtlı bir lansmanda token satın almasına izin verilen cüzdan adreslerinin listesi.'],
     ['Keskin nişancı botu', 'Alım satım açılır açılmaz token almaya çalışan program.'],
     ['Zincir üstü', 'Doğrudan blokzincirde kaydedilen veya yürütülen işlem.'],
@@ -105,7 +105,7 @@ const glossaryTranslations = {
     ['Geri alım', 'Bir projenin kendi tokenlarını piyasadan satın alması.']
   ],
   ru: [
-    ['Глоссарий', 'Недавно открытое', 'Связанные выпуски'],
+    ['Глоссарий', 'Недавно открытое'],
     ['Список разрешённых адресов', 'Список кошельков, которым разрешено покупать токен на этапе ограниченного запуска.'],
     ['Бот-снайпер', 'Программа, которая пытается купить токен сразу после открытия торгов.'],
     ['Ончейн', 'Записано или выполнено непосредственно в блокчейне.'],
@@ -120,7 +120,7 @@ const glossaryTranslations = {
     ['Обратный выкуп', 'Покупка проектом собственных токенов на рынке.']
   ],
   'zh-CN': [
-    ['术语表', '最近打开', '相关档案'],
+    ['术语表', '最近打开'],
     ['白名单', '在受限发行阶段获准购买代币的钱包地址列表。'],
     ['抢购机器人', '尝试在交易开放后立即购买代币的程序。'],
     ['链上', '直接记录在区块链上或由区块链执行。'],
@@ -135,7 +135,7 @@ const glossaryTranslations = {
     ['回购', '项目方从市场买回自己的代币。']
   ],
   ja: [
-    ['用語集', '最近開いたファイル', '関連ファイル'],
+    ['用語集', '最近開いたファイル'],
     ['ホワイトリスト', '購入が制限されたローンチで、トークンを購入できるウォレットアドレスの一覧。'],
     ['スナイパーボット', '取引開始と同時にトークンの購入を試みるプログラム。'],
     ['オンチェーン', 'ブロックチェーン上で直接記録または実行されること。'],
@@ -150,7 +150,7 @@ const glossaryTranslations = {
     ['買い戻し', 'プロジェクトが自ら発行したトークンを市場から購入すること。']
   ],
   ko: [
-    ['용어집', '최근에 연 파일', '관련 파일'],
+    ['용어집', '최근에 연 파일'],
     ['화이트리스트', '제한된 출시 기간에 토큰을 구매할 수 있는 지갑 주소 목록.'],
     ['스나이퍼 봇', '거래가 열리자마자 토큰을 구매하려는 프로그램.'],
     ['온체인', '블록체인에서 직접 기록되거나 실행되는 것.'],

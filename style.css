@@ -426,7 +426,7 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 }
 .last-read[hidden] { display:none; }
 .last-read h3 { margin:0; font-size:14px; }
-.last-read a,.glossary-card a,.reader-related a {
+.last-read a,.glossary-card a {
   display:inline-flex;
   align-items:center;
   gap:8px;
@@ -435,14 +435,10 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
   font-size:14px;
   overflow-wrap:anywhere;
 }
-.last-read a:hover,.glossary-card a:hover,.reader-related a:hover { color:var(--ink); }
-.glossary,.reader-related { border-top:1px solid var(--line); }
-.glossary { margin-top:28px; padding-top:24px; }
+.last-read a:hover,.glossary-card a:hover { color:var(--ink); }
+.glossary { border-top:1px solid var(--line); margin-top:28px; padding-top:24px; }
 .glossary-card { display:flex; flex-direction:column; align-items:flex-start; padding:16px; }
 .glossary-card h4 { margin:0; font-size:17px; }
 .glossary-card h4 small { color:var(--muted); font-weight:400; }
 .glossary-card p { margin:8px 0; }
 .glossary-card a { margin-top:auto; }
-.reader-related { margin-top:22px; padding-top:16px; }
-.reader-related h3 { margin:0; font-size:17px; }
-.reader-related ul { list-style:none; margin:4px 0 0; padding:0; }

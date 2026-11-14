@@ -81,9 +81,8 @@ const lastReadKey = 'escape-files-last-read';
 let lastReadId;
 try { lastReadId = localStorage.getItem(lastReadKey); } catch {}
 
-function fileLink(file, label, inReader = false) {
-  const action = inReader ? 'data-reader-step' : 'data-open';
-  return `<a href="#file-${file.id}" ${action}="${file.id}">
+function fileLink(file, label) {
+  return `<a href="#file-${file.id}" data-open="${file.id}">
     <span>${escapeHTML(label)}</span><span aria-hidden="true"> →</span>
   </a>`;
 }
@@ -112,17 +111,6 @@ function renderGlossary() {
   }).join('');
 }
 
-function relatedFiles(file) {
-  return readingOrder.filter(candidate => candidate !== file)
-    .map(candidate => ({
-      file:candidate,
-      relevance:2 * candidate.tags.filter(tag => file.tags.includes(tag)).length + Number(candidate.week === file.week)
-    }))
-    .filter(candidate => candidate.relevance > 0)
-    .sort((a, b) => b.relevance - a.relevance || Math.abs(a.file.n - file.n) - Math.abs(b.file.n - file.n))
-    .slice(0, 3)
-    .map(candidate => candidate.file);
-}
 const formatFileDate = date => new Intl.DateTimeFormat(
   archiveLanguage === 'pt' ? 'pt-BR' : archiveLanguage,
   {dateStyle:'medium', timeZone:'UTC'}
@@ -323,8 +311,6 @@ function renderReader(file) {
   const [,,,, readingLabel, previousLabel, nextLabel] = guideLabels[archiveLanguage];
   const previous = readingOrder.findLast(candidate => candidate.n < file.n);
   const next = readingOrder.find(candidate => candidate.n > file.n);
-  const related = relatedFiles(file);
-  const relatedLabel = glossaryTranslations[archiveLanguage][0][2];
   const readerLink = (target, label, arrow) => target
     ? `<button type="button" data-reader-step="${target.id}"><span aria-hidden="true">${arrow}</span>
       <span>${label}<small>${copy.file} ${target.id}</small></span></button>`
@@ -343,10 +329,6 @@ function renderReader(file) {
       ${readerLink(previous, previousLabel, '←')}
       ${readerLink(next, nextLabel, '→')}
     </nav>
-    ${related.length ? `<section class="reader-related" aria-labelledby="relatedTitle">
-      <h3 id="relatedTitle">${relatedLabel}</h3>
-      <ul>${related.map(target => `<li>${fileLink(target, '#' + target.id + ' · ' + fileText(target).title, true)}</li>`).join('')}</ul>
-    </section>` : ''}
   </div>${cover}`;
   if (!$('#reader').open) $('#reader').showModal();
   $('#reader').scrollTop = 0;
@@ -380,7 +362,6 @@ function resetArchive() {
 document.addEventListener('click', event => {
   const readerStep = event.target.closest('[data-reader-step]');
   if (readerStep) {
-    if (readerStep.matches('a') && (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)) return;
     event.preventDefault();
     history.replaceState(history.state, '', '#file-' + readerStep.dataset.readerStep);
     updateReaderFromUrl();
