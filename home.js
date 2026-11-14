@@ -44,9 +44,87 @@ for (const [index, file] of featureFiles.entries()) {
   const control = document.createElement('button');
   control.type = 'button';
   control.setAttribute('aria-label', 'File ' + file.id);
-  control.addEventListener('click', () => setFeature(index));
+  control.addEventListener('click', () => {
+    setFeature(index);
+    scheduleFeatureRotation();
+  });
   document.querySelector('#featurePages').append(control);
 }
+
+const rotationText = {
+  en: ['Pause automatic rotation', 'Start automatic rotation'],
+  de: ['Automatischen Wechsel pausieren', 'Automatischen Wechsel starten'],
+  es: ['Pausar la rotación automática', 'Iniciar la rotación automática'],
+  fr: ['Mettre en pause le défilement automatique', 'Lancer le défilement automatique'],
+  pt: ['Pausar a rotação automática', 'Iniciar a rotação automática'],
+  tr: ['Otomatik geçişi duraklat', 'Otomatik geçişi başlat'],
+  ru: ['Приостановить автоматическую смену', 'Запустить автоматическую смену'],
+  'zh-CN': ['暂停自动切换', '开始自动切换'],
+  ja: ['自動切り替えを一時停止', '自動切り替えを開始'],
+  ko: ['자동 전환 일시 정지', '자동 전환 시작']
+};
+const featureCard = document.querySelector('#featured');
+const featureControls = document.querySelector('.feature-controls');
+const featurePlay = document.querySelector('#featurePlay');
+const featureMotion = matchMedia('(prefers-reduced-motion: reduce)');
+const featureReader = document.querySelector('#reader');
+const featureDelay = 8000;
+let rotateFeatures = !featureMotion.matches;
+let featureInView = false;
+let featureHovered = false;
+let featureTimer;
+
+function updateRotationButton() {
+  const label = rotationText[homepageLanguage][rotateFeatures ? 0 : 1];
+  featurePlay.setAttribute('aria-label', label);
+  featurePlay.title = label;
+  featurePlay.firstElementChild.textContent = rotateFeatures ? 'Ⅱ' : '▶';
+}
+
+function scheduleFeatureRotation() {
+  clearTimeout(featureTimer);
+  const focus = document.activeElement;
+  if (!rotateFeatures || !featureInView || featureHovered || document.hidden ||
+      featureReader.open || featureFiles.length < 2 ||
+      featureCard.contains(focus) || featureControls.contains(focus)) return;
+  featureTimer = setTimeout(() => {
+    setFeature((featureIndex + 1) % featureFiles.length);
+    scheduleFeatureRotation();
+  }, featureDelay);
+}
+
+for (const area of [featureCard, featureControls]) {
+  area.addEventListener('pointerenter', event => {
+    if (event.pointerType === 'touch') return;
+    featureHovered = true;
+    scheduleFeatureRotation();
+  });
+  area.addEventListener('pointerleave', () => {
+    featureHovered = false;
+    scheduleFeatureRotation();
+  });
+  area.addEventListener('focusin', scheduleFeatureRotation);
+  area.addEventListener('focusout', () => queueMicrotask(scheduleFeatureRotation));
+}
+
+featurePlay.hidden = featureFiles.length < 2;
+featurePlay.addEventListener('click', () => {
+  rotateFeatures = !rotateFeatures;
+  updateRotationButton();
+  scheduleFeatureRotation();
+});
+featureMotion.addEventListener('change', event => {
+  rotateFeatures = !event.matches;
+  updateRotationButton();
+  scheduleFeatureRotation();
+});
+document.addEventListener('visibilitychange', scheduleFeatureRotation);
+new MutationObserver(scheduleFeatureRotation)
+  .observe(featureReader, {attributes:true, attributeFilter:['open']});
+new IntersectionObserver(([entry]) => {
+  featureInView = entry.isIntersecting && entry.intersectionRatio >= 0.5;
+  scheduleFeatureRotation();
+}, {threshold:0.5}).observe(featureCard);
 
 const knowledgeTranslations = {
   "de": {
@@ -278,6 +356,8 @@ function applyHomepageLanguage(code) {
   }
   setArchiveLanguage(homepageLanguage);
   setFeature(featureIndex);
+  updateRotationButton();
+  scheduleFeatureRotation();
 }
 
 function initialHomepageLanguage() {
