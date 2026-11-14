@@ -4,7 +4,7 @@ A static visual library for GitHub Pages. No build step or backend required.
 
 ## Content
 
-30 archive entries across six topic weeks, imported from the earlier Escape Files website package dated 11 November 2026. Includes the 25 X post links supplied in that archive, official source links, and known Paragraph article links. Files 006–011 additionally include original full text and covers from the user's Week 02 package. Titles 007 and 009 were resolved from those originals. Other covers and missing article links remain explicitly marked pending.
+30 archive entries across six topic weeks, imported from the earlier Escape Files website package dated 11 November 2026. Includes the 25 X post links supplied in that archive, official source links, and known Paragraph article links. Files 006–011 additionally include original full text and covers from the user's Week 02 package. Titles 007 and 009 were resolved from those originals. Published covers for 001–005, 012–025 and 027–030 were recovered from Tankothek’s original X posts. File 026 is still missing its cover.
 
 Original editions, editorial summaries, documented information and open questions are distinguished. Published/planned/review statuses reflect the imported archive date, not a live synchronization with X. Official fees and whitelist documentation checked 12 November 2026.
 
@@ -16,7 +16,7 @@ The homepage and navigation support ten languages. Archive controls and indexed 
 
 ## Hosting
 
-Publish the repository root from the main branch using GitHub Pages. All files, including six original PNG covers, are in the root directory. `.nojekyll` disables Jekyll processing. Expected address after successful deployment: https://tankothek.github.io/the-escape-files/
+Publish the repository root from the main branch using GitHub Pages. All files, including the PNG and WebP covers, are in the root directory. `.nojekyll` disables Jekyll processing. Expected address after successful deployment: https://tankothek.github.io/the-escape-files/
 
 ## Maintenance
 

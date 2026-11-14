@@ -126,3 +126,6 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
   .site-nav a { min-height:40px; }
   .front-title h1 { overflow-wrap:normal; }
 }
+
+/* Preserve text and graphics at the edges of the published covers. */
+.card .cover img { object-fit:contain; object-position:center; }
