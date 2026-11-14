@@ -40,30 +40,9 @@
 }
 body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46rem),var(--bg); }
 .masthead { display:block; height:auto; padding:0; max-width:none; background:#06090e; }
-.panorama { position:relative; isolation:isolate; overflow:hidden; height:clamp(98px,9vw,153px); }
-.panorama::before {
-  content:""; position:absolute; z-index:-1; inset:0 0 0 auto; width:69%;
-  background:url(design-art.png) right top / 199% auto no-repeat;
-  mask-image:linear-gradient(90deg,transparent,#000 24%);
-}
-.panorama::after {
-  content:""; position:absolute; z-index:-1; inset:0 auto 0 0; width:17%;
-  background:url(design-art.png) left top / 630% auto no-repeat;
-  mask-image:linear-gradient(90deg,#000 24%,transparent);
-}
-.wordmark { display:flex; flex-direction:column; justify-content:center; height:100%; width:min(32vw,440px); margin-left:max(7%,calc((100% - 1220px)/2)); }
-.wordmark-art {
-  width:100%; aspect-ratio:592 / 78;
-  background:url(tankothek-banner-original.jpg) 26.10% 41.23% / 253.38% auto no-repeat;
-  mask-image:linear-gradient(90deg,transparent,#000 0.7%,#000 99%,transparent);
-  clip-path:polygon(0 6%,15.8% 6%,15.8% 25%,100% 25%,100% 97%,0 97%);
-  filter:contrast(1.18);
-  mix-blend-mode:screen;
-}
-.wordmark small { font-size:clamp(8px,1vw,15px); letter-spacing:.24em; margin:.65em 0 0 .3em; }
 .site-nav {
   display:flex; align-items:center; gap:clamp(14px,4.5vw,72px); min-height:58px;
-  padding:0 clamp(16px,4.6vw,78px); border-top:1px solid #777061; background:#06090f;
+  padding:0 clamp(16px,4.6vw,78px); border-bottom:1px solid var(--line); background:#06090f;
 }
 .site-nav a { position:relative; display:block; padding:17px 0; font-size:clamp(12px,1.3vw,19px); white-space:nowrap; }
 .site-nav .nav-current { color:#ffcc64; box-shadow:inset 0 -3px #f0bc54; }
@@ -248,9 +227,6 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
   .featured-cover { aspect-ratio:1.6; }
 }
 @media (max-width:640px) {
-  .wordmark { width:min(60vw,265px); margin-left:5%; }
-  .panorama::before { width:73%; background-size:auto 620%; }
-  .panorama::after { background-size:auto 620%; }
   .site-nav { flex-wrap:wrap; gap:0 17px; padding-block:3px; }
   .site-nav a { padding:10px 0; font-size:12px; }
   .language-picker { margin-left:0; }
@@ -274,7 +250,6 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 }
 .portal-icon { mask-image:radial-gradient(ellipse 79% 78%,#000 69%,transparent 100%); }
 @media (max-width:640px) {
-  .panorama::before { mask-image:linear-gradient(90deg,transparent,#0005 50%,#000 90%); }
   .featured-cover img { object-position:center 25%; }
 }
 
