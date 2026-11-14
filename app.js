@@ -196,7 +196,7 @@ function articleLinkLabel(article, label) {
 function renderArticles() {
   const copy = strings();
   $('#articlesGrid').lang = archiveLanguage;
-  $('#articlesGrid').innerHTML = Object.entries(WEEKS).map(([n,week]) => {
+  $('#articlesGrid').innerHTML = Object.entries(WEEKS).reverse().map(([n,week]) => {
     const article = weeklyArticle(week);
     if (!article.url) return '';
     return `<article class="week-card">
