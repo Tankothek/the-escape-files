@@ -390,27 +390,47 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
   .guide-card h3 { margin:0; font-size:20px; }
   .guide-card a { font-size:15px; }
 }
-.reader-pagination {
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:18px;
+#reader {
+  height:90vh;
+  height:90dvh;
+  max-height:90dvh;
+  overflow:hidden;
+}
+#readerScroll {
+  height:100%;
+  overflow:auto;
+  overscroll-behavior:contain;
+  padding-inline:48px;
+}
+#reader .close {
+  position:absolute;
+  inset:8px 8px auto auto;
+  margin:0;
+  z-index:3;
 }
 .reader-pagination button {
-  display:flex;
-  align-items:center;
-  gap:9px;
-  min-height:44px;
-  padding:8px 12px;
-  border:1px solid var(--line);
+  position:absolute;
+  top:50%;
+  z-index:2;
+  transform:translateY(-50%);
+  display:grid;
+  place-items:center;
+  width:44px;
+  height:48px;
+  padding:0;
+  border:0;
   border-radius:8px;
-  background:var(--bg);
-  color:var(--ink);
-  text-align:start;
+  color:#ffd074;
+  background:transparent;
+  font:400 36px/1 system-ui,sans-serif;
 }
-.reader-pagination button:hover { border-color:#e4b45b; }
-.reader-pagination button > [aria-hidden] { color:#f0b952; }
-.reader-pagination small { display:block; color:var(--muted); }
+.reader-pagination button:hover,.reader-pagination button:focus-visible { background:#e4b45b16; }
+.reader-pagination .reader-previous { left:2px; }
+.reader-pagination .reader-next { right:2px; }
+
+@media(max-width:600px) {
+  #readerScroll .reader-text { padding-inline:0; }
+}
 
 .last-read {
   display:flex;

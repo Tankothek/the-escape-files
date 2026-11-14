@@ -311,10 +311,14 @@ function renderReader(file) {
   const [,,,, readingLabel, previousLabel, nextLabel] = guideLabels[archiveLanguage];
   const previous = readingOrder.findLast(candidate => candidate.n < file.n);
   const next = readingOrder.find(candidate => candidate.n > file.n);
-  const readerLink = (target, label, arrow) => target
-    ? `<button type="button" data-reader-step="${target.id}"><span aria-hidden="true">${arrow}</span>
-      <span>${label}<small>${copy.file} ${target.id}</small></span></button>`
+  const readerLink = (target, label, direction, arrow) => target
+    ? `<button type="button" class="reader-${direction}" data-reader-step="${target.id}"
+      aria-label="${escapeHTML(label + ' · ' + copy.file + ' ' + target.id)}" title="${escapeHTML(label)}">
+      <span aria-hidden="true">${arrow}</span></button>`
     : '';
+  $('.reader-pagination').setAttribute('aria-label', readingLabel);
+  $('.reader-pagination').innerHTML =
+    readerLink(previous, previousLabel, 'previous', '‹') + readerLink(next, nextLabel, 'next', '›');
   $('#readerContent').innerHTML = `<div class="reader-text">
     <div class="eyebrow">${copy.file} ${file.id} · ${copy.week} ${weekNumber(file.week)} · ${formatFileDate(file.date)}</div>
     <h2 id="readerTitle" tabindex="-1">${escapeHTML(title)}</h2>
@@ -325,13 +329,9 @@ function renderReader(file) {
       ${externalLink(source?.url,sourceLabel)}
       ${externalLink(article.url,articleLinkLabel(article,copy.paragraph))}</div>
     <p class="edition">${copy.snapshot}</p>
-    <nav class="reader-pagination" aria-label="${readingLabel}">
-      ${readerLink(previous, previousLabel, '←')}
-      ${readerLink(next, nextLabel, '→')}
-    </nav>
   </div>${cover}`;
   if (!$('#reader').open) $('#reader').showModal();
-  $('#reader').scrollTop = 0;
+  $('#readerScroll').scrollTop = 0;
 }
 
 function updateReaderFromUrl() {
@@ -365,7 +365,8 @@ document.addEventListener('click', event => {
     event.preventDefault();
     history.replaceState(history.state, '', '#file-' + readerStep.dataset.readerStep);
     updateReaderFromUrl();
-    $('#readerTitle').focus({preventScroll:true});
+    const sameDirection = readerStep.classList.contains('reader-next') ? '.reader-next' : '.reader-previous';
+    ($(sameDirection) || $('#readerTitle')).focus({preventScroll:true});
     return;
   }
 
