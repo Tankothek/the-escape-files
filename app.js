@@ -63,6 +63,20 @@ archiveStrings.de.file = 'File';
 
 const englishSourceLabels = {"de": "Englisch", "es": "en inglés", "fr": "en anglais", "pt": "em inglês", "tr": "İngilizce", "ru": "на английском", "zh-CN": "英文", "ja": "英語", "ko": "영어"};
 const strings = () => archiveStrings[archiveLanguage];
+const guideLabels = {
+  en: ['Start here', 'Buy a token', 'Create a token', 'Understand EscapeHub', 'Reading order', 'Previous file', 'Next file'],
+  de: ['Hier starten', 'Einen Token kaufen', 'Einen Token erstellen', 'EscapeHub verstehen', 'Lesereihenfolge', 'Vorheriges File', 'Nächstes File'],
+  es: ['Empieza aquí', 'Comprar un token', 'Crear un token', 'Entender EscapeHub', 'Orden de lectura', 'Archivo anterior', 'Archivo siguiente'],
+  fr: ['Commencer ici', 'Acheter un jeton', 'Créer un jeton', 'Comprendre EscapeHub', 'Ordre de lecture', 'Dossier précédent', 'Dossier suivant'],
+  pt: ['Comece aqui', 'Comprar um token', 'Criar um token', 'Entender a EscapeHub', 'Ordem de leitura', 'Arquivo anterior', 'Próximo arquivo'],
+  tr: ['Buradan başlayın', 'Token satın alın', 'Token oluşturun', 'EscapeHub’ı tanıyın', 'Okuma sırası', 'Önceki dosya', 'Sonraki dosya'],
+  ru: ['Начните здесь', 'Купить токен', 'Создать токен', 'Разобраться в EscapeHub', 'Порядок чтения', 'Предыдущий выпуск', 'Следующий выпуск'],
+  'zh-CN': ['从这里开始', '购买代币', '创建代币', '了解 EscapeHub', '阅读顺序', '上一篇档案', '下一篇档案'],
+  ja: ['ここから始める', 'トークンを購入する', 'トークンを作成する', 'EscapeHub を理解する', '読む順番', '前のファイル', '次のファイル'],
+  ko: ['여기서 시작하기', '토큰 구매하기', '토큰 만들기', 'EscapeHub 이해하기', '읽는 순서', '이전 파일', '다음 파일']
+};
+const guidePaths = [[27, 28, 29, 30], [11, 1, 4, 18], [12, 6, 16, 21]];
+const readingOrder = files.filter(file => file.status !== 'planned').sort((a, b) => a.n - b.n);
 const formatFileDate = date => new Intl.DateTimeFormat(
   archiveLanguage === 'pt' ? 'pt-BR' : archiveLanguage,
   {dateStyle:'medium', timeZone:'UTC'}
@@ -125,6 +139,7 @@ function setArchiveLanguage(language) {
   setOptions('#status', [['all',copy.allStatuses], ...['published','archive-review','planned'].map(value => [value,copy[value]])]);
   renderWeeks();
   renderArticles();
+  renderGuide();
   renderArchive();
   if ($('#reader').open) renderReader(fileAtHash());
 }
@@ -206,6 +221,18 @@ function renderArticles() {
   }).join('');
 }
 
+function renderGuide() {
+  const [heading, ...pathLabels] = guideLabels[archiveLanguage];
+  $('#guideTitle').textContent = heading;
+  $('#guidePaths').innerHTML = guidePaths.map((path, index) => `<article class="week-card guide-card">
+    <h3>${pathLabels[index]}</h3>
+    <ol>${path.map(number => {
+      const file = files.find(candidate => candidate.n === number);
+      return `<li><button type="button" data-open="${file.id}">${escapeHTML(fileText(file).title)}</button></li>`;
+    }).join('')}</ol>
+  </article>`).join('');
+}
+
 function renderWeeks() {
   const copy = strings();
   $('#weeksGrid').innerHTML = Object.entries(WEEKS).map(([n,week]) => {
@@ -236,9 +263,16 @@ function renderReader(file) {
   const cover = file.cover
     ? `<img class="reader-img" src="${escapeHTML(file.cover)}" alt="${copy.cover} · ${copy.file} ${file.id}">`
     : poster(file);
+  const [,,,, readingLabel, previousLabel, nextLabel] = guideLabels[archiveLanguage];
+  const previous = readingOrder.findLast(candidate => candidate.n < file.n);
+  const next = readingOrder.find(candidate => candidate.n > file.n);
+  const readerLink = (target, label, arrow) => target
+    ? `<button type="button" data-reader-step="${target.id}"><span aria-hidden="true">${arrow}</span>
+      <span>${label}<small>${copy.file} ${target.id}</small></span></button>`
+    : '';
   $('#readerContent').innerHTML = `<div class="reader-text">
     <div class="eyebrow">${copy.file} ${file.id} · ${copy.week} ${weekNumber(file.week)} · ${formatFileDate(file.date)}</div>
-    <h2 id="readerTitle">${escapeHTML(title)}</h2>
+    <h2 id="readerTitle" tabindex="-1">${escapeHTML(title)}</h2>
     <span class="status ${file.status}">${copy[file.status]}</span>
     <p class="label">${original ? copy.originalText : copy.summary}</p>
     <p>${escapeHTML(body)}</p>
@@ -247,6 +281,10 @@ function renderReader(file) {
       ${externalLink(article.url,articleLinkLabel(article,copy.paragraph))}
       ${externalLink(file.cover,copy.cover)}</div>
     <p class="edition">${copy.snapshot}</p>
+    <nav class="reader-pagination" aria-label="${readingLabel}">
+      ${readerLink(previous, previousLabel, '←')}
+      ${readerLink(next, nextLabel, '→')}
+    </nav>
   </div>${cover}`;
   if (!$('#reader').open) $('#reader').showModal();
   $('#reader').scrollTop = 0;
@@ -278,6 +316,14 @@ function resetArchive() {
 }
 
 document.addEventListener('click', event => {
+  const readerStep = event.target.closest('[data-reader-step]');
+  if (readerStep) {
+    history.replaceState(history.state, '', '#file-' + readerStep.dataset.readerStep);
+    updateReaderFromUrl();
+    $('#readerTitle').focus({preventScroll:true});
+    return;
+  }
+
   if (event.target.closest('[data-reset-archive]') &&
       !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
     resetArchive();

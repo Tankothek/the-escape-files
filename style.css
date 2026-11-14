@@ -347,3 +347,40 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 .back-to-top[hidden] { display:none; }
 .back-to-top:hover { background:#292219; }
 .back-to-top:focus-visible { outline:2px solid currentColor; outline-offset:3px; }
+
+#guide + .library { border-top:1px solid var(--line); }
+.guide-card h3 { hyphens:auto; }
+.guide-card ol { display:grid; gap:7px; margin:16px 0 0; padding-inline-start:1.6em; }
+.guide-card li::marker { color:#f0b952; font-weight:700; }
+.guide-card button {
+  width:100%;
+  min-height:44px;
+  padding:8px;
+  border:1px solid transparent;
+  border-radius:7px;
+  background:transparent;
+  color:var(--ink);
+  text-align:start;
+}
+.guide-card button:hover { background:#ffffff09; border-color:var(--line); }
+.reader-pagination {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:18px;
+}
+.reader-pagination button {
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-height:44px;
+  padding:8px 12px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--bg);
+  color:var(--ink);
+  text-align:start;
+}
+.reader-pagination button:hover { border-color:#e4b45b; }
+.reader-pagination button > [aria-hidden] { color:#f0b952; }
+.reader-pagination small { display:block; color:var(--muted); }
