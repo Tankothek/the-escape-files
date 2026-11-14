@@ -226,9 +226,13 @@ function renderGuide() {
   $('#guideTitle').textContent = heading;
   $('#guidePaths').innerHTML = guidePaths.map((path, index) => `<article class="week-card guide-card">
     <h3>${pathLabels[index]}</h3>
-    <ol>${path.map(number => {
+    <ol role="list">${path.map((number, step) => {
       const file = files.find(candidate => candidate.n === number);
-      return `<li><a href="#file-${file.id}" data-open="${file.id}"><span>${escapeHTML(fileText(file).title)}</span><span aria-hidden="true">→</span></a></li>`;
+      return `<li><a href="#file-${file.id}" data-open="${file.id}">
+        <span class="guide-step" aria-hidden="true">${step + 1}</span>
+        <span class="guide-link-title">${escapeHTML(fileText(file).title)}</span>
+        <span class="guide-arrow" aria-hidden="true">→</span>
+      </a></li>`;
     }).join('')}</ol>
   </article>`).join('');
 }

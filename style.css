@@ -350,12 +350,11 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 
 #guide + .library { border-top:1px solid var(--line); }
 .guide-card h3 { hyphens:auto; }
-.guide-card ol { display:grid; gap:6px; margin:14px 0 0; padding-inline-start:1.25em; }
-.guide-card li::marker { color:#e4b45b; font-size:.85em; font-weight:600; }
+.guide-card ol { display:grid; gap:6px; margin:14px 0 0; padding:0; list-style:none; }
 .guide-card a {
-  display:flex;
+  display:grid;
+  grid-template-columns:1.75rem minmax(0,1fr) auto;
   align-items:center;
-  justify-content:space-between;
   gap:10px;
   width:100%;
   min-height:44px;
@@ -368,8 +367,18 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
   line-height:1.35;
   text-decoration:none;
 }
-.guide-card a > span:first-child { min-width:0; hyphens:auto; }
-.guide-card a > [aria-hidden] { flex-shrink:0; color:#ffd074; font-size:1.15em; }
+.guide-link-title { hyphens:auto; }
+.guide-step {
+  display:grid;
+  place-items:center;
+  aspect-ratio:1;
+  border-radius:5px;
+  background:#e4b45b12;
+  color:#ffd074;
+  font-size:.8em;
+  font-weight:700;
+}
+.guide-arrow { color:#ffd074; font-size:1.15em; }
 .guide-card a:hover,.guide-card a:focus-visible,.guide-card a:active {
   background:#e4b45b12;
   border-color:#e4b45b;
