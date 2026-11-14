@@ -3,7 +3,7 @@ const escapeHTML = value => String(value).replace(/[&<>"']/g, char => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
 }[char]));
 const externalLink = (url, label) => url
-  ? `<a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)} ↗</a>`
+  ? `<a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)} <span aria-hidden="true">↗︎</span></a>`
   : '';
 const weekNumber = number => String(number).padStart(2, '0');
 
@@ -319,9 +319,12 @@ function renderReader(file) {
   $('.reader-pagination').setAttribute('aria-label', readingLabel);
   $('.reader-pagination').innerHTML =
     readerLink(previous, previousLabel, 'previous', '‹') + readerLink(next, nextLabel, 'next', '›');
-  $('#readerContent').innerHTML = `<div class="reader-text">
+  $('#readerContent').innerHTML = `<div class="reader-heading">
     <div class="eyebrow">${copy.file} ${file.id} · ${copy.week} ${weekNumber(file.week)} · ${formatFileDate(file.date)}</div>
     <h2 id="readerTitle" tabindex="-1">${escapeHTML(title)}</h2>
+  </div>
+  ${cover}
+  <div class="reader-text">
     <span class="status ${file.status}">${copy[file.status]}</span>
     <p class="label">${original ? copy.originalText : copy.summary}</p>
     <p>${escapeHTML(body)}</p>
@@ -329,7 +332,7 @@ function renderReader(file) {
       ${externalLink(source?.url,sourceLabel)}
       ${externalLink(article.url,articleLinkLabel(article,copy.paragraph))}</div>
     <p class="edition">${copy.snapshot}</p>
-  </div>${cover}`;
+  </div>`;
   if (!$('#reader').open) $('#reader').showModal();
   $('#readerScroll').scrollTop = 0;
 }
