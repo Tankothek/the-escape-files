@@ -25,17 +25,18 @@ function setFeature(index) {
   const file = featureFiles[index];
   const image = document.querySelector('#featuredImage');
   image.src = file.cover;
-  image.alt = 'File ' + file.id;
-  const localized = homepageLanguage === 'de' && germanFiles[file.id];
+  image.alt = strings().file + ' ' + file.id;
+  const localized = fileText(file, homepageLanguage);
   const title = document.querySelector('#featuredTitle');
   const summary = document.querySelector('#featuredSummary');
-  title.textContent = '#' + file.id + ' – ' + (localized ? localized[0] : file.title);
-  summary.textContent = localized ? localized[1] : file.topic;
-  title.lang = summary.lang = localized ? 'de' : 'en';
+  title.textContent = '#' + file.id + ' – ' + localized.title;
+  summary.textContent = localized.topic;
+  title.lang = summary.lang = homepageLanguage;
   document.querySelector('#featuredCover').dataset.open = file.id;
   document.querySelector('#featuredAction').dataset.open = file.id;
   for (const [page, control] of [...document.querySelector('#featurePages').children].entries()) {
     control.setAttribute('aria-pressed', String(page === index));
+    control.setAttribute('aria-label', strings().file + ' ' + featureFiles[page].id);
   }
 }
 

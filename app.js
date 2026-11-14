@@ -61,14 +61,38 @@ const germanTopics = {
   'fair launch':'Fairer Start', 'anti-snipe':'Schutz vor Sniping', graduation:'Phasenwechsel',
   overview:'Übersicht', sharing:'Teilen', utility:'Nutzen', platform:'Plattform'
 };
-const strings = () => archiveStrings[archiveLanguage];
-function fileText(file) {
-  const translated = archiveLanguage === 'de' && germanFiles[file.id];
-  return translated
-    ? {title:translated[0], topic:translated[1], body:translated[2]}
-    : file;
+for (const [language, locale] of Object.entries(fileLocales)) {
+  const {rangePattern, explorePattern, ...labels} = locale.labels;
+  archiveStrings[language] = {
+    ...labels,
+    range: (count, total) => rangePattern.replace('{n}', count).replace('{t}', total),
+    explore: count => explorePattern.replace('{n}', count)
+  };
 }
-const weekTitle = number => archiveLanguage === 'de' ? germanWeeks[number - 1] : WEEKS[number].title;
+archiveStrings.en.file = 'File';
+archiveStrings.de.file = 'File';
+
+const strings = () => archiveStrings[archiveLanguage];
+const formatFileDate = date => new Intl.DateTimeFormat(
+  archiveLanguage === 'pt' ? 'pt-BR' : archiveLanguage,
+  {dateStyle:'medium', timeZone:'UTC'}
+).format(new Date(date));
+function fileText(file, language = archiveLanguage) {
+  if (language === 'de') {
+    const [title, topic, body] = germanFiles[file.id];
+    return {title, topic, body, original: file.original};
+  }
+  const translated = fileLocales[language]?.files[file.id];
+  if (translated) {
+    const [title, topic] = translated;
+    return {title, topic, body: topic, original: false};
+  }
+  return file;
+}
+const weekTitle = number => {
+  if (archiveLanguage === 'de') return germanWeeks[number - 1];
+  return fileLocales[archiveLanguage]?.weeks[number - 1] ?? WEEKS[number].title;
+};
 const topicTitle = tag => archiveLanguage === 'de' && germanTopics[tag] ? germanTopics[tag] : tag;
 const topics = [...new Set(files.flatMap(file => file.tags))];
 const cleanSearch = text => text.toLowerCase().normalize('NFD').replace(/\p{M}/gu, '');
@@ -81,7 +105,7 @@ function setOptions(id, options) {
 }
 
 function setArchiveLanguage(language) {
-  archiveLanguage = language === 'de' ? 'de' : 'en';
+  archiveLanguage = Object.hasOwn(archiveStrings, language) ? language : 'en';
   const copy = strings();
   for (const section of ['#library', '#weeks', '#reader', '#toast']) $(section).lang = archiveLanguage;
   document.querySelectorAll('[data-archive]').forEach(node => {
@@ -117,11 +141,11 @@ function fileCard(file) {
   return `<article class="card">
     <button class="cover" data-open="${file.id}" aria-label="${copy.open} ${file.id}: ${escapeHTML(title)}">${cover}</button>
     <div class="card-body">
-      <div class="card-meta"><span>FILE ${file.id} / ${copy.week} ${weekNumber(file.week)}</span>
-      <button class="bookmark" data-save="${file.id}" aria-label="${marked ? copy.unsave : copy.save} · File ${file.id}" aria-pressed="${marked}">${marked ? '♥' : '♡'}</button></div>
+      <div class="card-meta"><span>${copy.file} ${file.id} / ${copy.week} ${weekNumber(file.week)}</span>
+      <button class="bookmark" data-save="${file.id}" aria-label="${marked ? copy.unsave : copy.save} · ${copy.file} ${file.id}" aria-pressed="${marked}">${marked ? '♥' : '♡'}</button></div>
       <h3><button class="title-button" data-open="${file.id}">${escapeHTML(title)}</button></h3>
       <p>${escapeHTML(topic)}</p><span class="status ${file.status}">${copy[file.status]}</span>
-      <div class="card-foot"><time datetime="${file.date}">${file.date}</time><button data-open="${file.id}">${copy.open} ↗</button></div>
+      <div class="card-foot"><time datetime="${file.date}">${formatFileDate(file.date)}</time><button data-open="${file.id}">${copy.open} ↗</button></div>
     </div>
   </article>`;
 }
@@ -137,10 +161,10 @@ function renderArchive() {
     if (week !== 'all' && Number(week) !== file.week) return false;
     if (topic !== 'all' && !file.tags.includes(topic)) return false;
     if (status !== 'all' && status !== file.status) return false;
-    const translated = germanFiles[file.id] || [];
+    const {title, topic: summary, body} = fileText(file);
     const haystack = cleanSearch([file.id, file.n, file.title, file.body, file.topic,
       WEEKS[file.week].title, germanWeeks[file.week - 1], ...file.tags,
-      ...file.tags.map(topicTitle), ...translated].join(' '));
+      ...file.tags.map(topicTitle), ...(germanFiles[file.id] || []), title, summary, body, weekTitle(file.week)].join(' '));
     return terms.every(term => haystack.includes(term));
   });
   if ($('#sort').value === 'desc') shown.reverse();
@@ -192,16 +216,16 @@ function fileAtHash() {
 function renderReader(file) {
   if (!file) return;
   const copy = strings();
-  const {title,body} = fileText(file);
+  const {title,body,original} = fileText(file);
   const source = SOURCES[file.source];
   const cover = file.cover
-    ? `<img class="reader-img" src="${escapeHTML(file.cover)}" alt="${copy.cover} · File ${file.id}">`
+    ? `<img class="reader-img" src="${escapeHTML(file.cover)}" alt="${copy.cover} · ${copy.file} ${file.id}">`
     : poster(file);
   $('#readerContent').innerHTML = `${cover}<div class="reader-text">
-    <div class="eyebrow">FILE ${file.id} · ${copy.week} ${weekNumber(file.week)} · ${file.date}</div>
+    <div class="eyebrow">${copy.file} ${file.id} · ${copy.week} ${weekNumber(file.week)} · ${formatFileDate(file.date)}</div>
     <h2 id="readerTitle">${escapeHTML(title)}</h2>
     <span class="status ${file.status}">${copy[file.status]}</span>
-    <p class="label">${file.original ? copy.originalText : copy.summary}</p>
+    <p class="label">${original ? copy.originalText : copy.summary}</p>
     <p>${escapeHTML(body)}</p>
     <div class="reader-links">${externalLink(file.x,copy.post)}
       ${externalLink(source?.url,copy.source + ' · ' + source?.name)}
