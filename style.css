@@ -350,8 +350,8 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 
 #guide + .library { border-top:1px solid var(--line); }
 .guide-card h3 { hyphens:auto; }
-.guide-card ol { display:grid; gap:7px; margin:16px 0 0; padding-inline-start:1.6em; }
-.guide-card li::marker { color:#f0b952; font-weight:700; }
+.guide-card ol { display:grid; gap:6px; margin:14px 0 0; padding-inline-start:1.25em; }
+.guide-card li::marker { color:#e4b45b; font-size:.85em; font-weight:600; }
 .guide-card a {
   display:flex;
   align-items:center;
@@ -360,14 +360,27 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
   width:100%;
   min-height:44px;
   padding:8px 10px;
-  border:1px solid #675333;
-  border-radius:7px;
-  background:#e4b45b0d;
-  color:#ffd074;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--bg);
+  color:var(--ink);
+  font-size:clamp(14px,1.1vw,16px);
+  line-height:1.35;
+  text-decoration:none;
 }
-.guide-card a > span:first-child { min-width:0; text-decoration:underline; text-underline-offset:.18em; }
-.guide-card a > [aria-hidden] { flex-shrink:0; font-size:1.15em; }
-.guide-card a:hover,.guide-card a:focus-visible { background:#e4b45b22; border-color:#e4b45b; }
+.guide-card a > span:first-child { min-width:0; hyphens:auto; }
+.guide-card a > [aria-hidden] { flex-shrink:0; color:#ffd074; font-size:1.15em; }
+.guide-card a:hover,.guide-card a:focus-visible,.guide-card a:active {
+  background:#e4b45b12;
+  border-color:#e4b45b;
+  text-decoration:none;
+}
+@media (max-width:640px) {
+  #guidePaths { grid-template-columns:1fr; gap:12px; }
+  .guide-card { padding:16px 14px; }
+  .guide-card h3 { margin:0; font-size:20px; }
+  .guide-card a { font-size:15px; }
+}
 .reader-pagination {
   display:flex;
   flex-wrap:wrap;
