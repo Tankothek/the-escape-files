@@ -272,7 +272,7 @@ function renderGuide() {
 
 function renderWeeks() {
   const copy = strings();
-  $('#weeksGrid').innerHTML = Object.entries(WEEKS).map(([n,week]) => {
+  $('#weeksGrid').innerHTML = Object.entries(WEEKS).reverse().map(([n,week]) => {
     const article = weeklyArticle(week);
     const count = files.filter(file => file.week === Number(n)).length;
     return `<article class="week-card">
