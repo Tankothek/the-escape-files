@@ -213,6 +213,7 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 @media(max-width:640px) { .portal-icon.portal-knowledge { width:50px; } }
 .portal-icon { mix-blend-mode:screen; }
 .featured { margin-top:clamp(21px,2vw,34px); display:grid; grid-template-columns:40% 1fr auto; align-items:center; gap:clamp(14px,3.1vw,52px); overflow:hidden; border:1px solid #675333; border-radius:14px; background:#0b0f16; }
+.featured { touch-action:pan-y pinch-zoom; }
 .featured-cover { width:100%; aspect-ratio:2.9; overflow:hidden; display:block; background:#100f24; padding:0; border:0; border-right:1px solid #675333; }
 .featured-cover img { width:100%; height:100%; display:block; object-fit:cover; object-position:center 38%; }
 .featured-copy { padding:14px 0; min-width:0; }

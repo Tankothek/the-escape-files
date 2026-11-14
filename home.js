@@ -73,6 +73,8 @@ let rotateFeatures = !featureMotion.matches;
 let featureInView = false;
 let featureHovered = false;
 let featureTimer;
+let touchStart;
+let suppressSwipeClick = false;
 
 function updateRotationButton() {
   const label = rotationText[homepageLanguage][rotateFeatures ? 0 : 1];
@@ -84,7 +86,7 @@ function updateRotationButton() {
 function scheduleFeatureRotation() {
   clearTimeout(featureTimer);
   const focus = document.activeElement;
-  if (!rotateFeatures || !featureInView || featureHovered || document.hidden ||
+  if (!rotateFeatures || !featureInView || featureHovered || touchStart || document.hidden ||
       featureReader.open || featureFiles.length < 2 ||
       featureCard.contains(focus) || featureControls.contains(focus)) return;
   featureTimer = setTimeout(() => {
@@ -106,6 +108,40 @@ for (const area of [featureCard, featureControls]) {
   area.addEventListener('focusin', scheduleFeatureRotation);
   area.addEventListener('focusout', () => queueMicrotask(scheduleFeatureRotation));
 }
+
+featureCard.addEventListener('pointerdown', event => {
+  if (!event.isPrimary) return;
+  suppressSwipeClick = false;
+  if (event.pointerType !== 'touch' || featureFiles.length < 2) return;
+  touchStart = {id:event.pointerId, x:event.clientX, y:event.clientY};
+  scheduleFeatureRotation();
+});
+
+featureCard.addEventListener('pointerup', event => {
+  if (event.pointerId !== touchStart?.id) return;
+  const dx = event.clientX - touchStart.x;
+  const dy = event.clientY - touchStart.y;
+  touchStart = undefined;
+  if (Math.abs(dx) >= 45 && Math.abs(dx) > 1.35 * Math.abs(dy)) {
+    const direction = dx < 0 ? 1 : -1;
+    setFeature((featureIndex + direction + featureFiles.length) % featureFiles.length);
+    suppressSwipeClick = true;
+  }
+  scheduleFeatureRotation();
+});
+
+featureCard.addEventListener('pointercancel', event => {
+  if (event.pointerId !== touchStart?.id) return;
+  touchStart = undefined;
+  scheduleFeatureRotation();
+});
+
+featureCard.addEventListener('click', event => {
+  if (!suppressSwipeClick || event.detail === 0) return;
+  suppressSwipeClick = false;
+  event.preventDefault();
+  event.stopPropagation();
+}, {capture:true});
 
 featurePlay.hidden = featureFiles.length < 2;
 featurePlay.addEventListener('click', () => {
