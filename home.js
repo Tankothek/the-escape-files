@@ -591,3 +591,4 @@ window.addEventListener('popstate', () => {
 });
 applyHomepageLanguage(initialHomepageLanguage());
 updateReaderFromUrl();
+document.documentElement.classList.remove('preparing-language');
