@@ -19,21 +19,40 @@ const featureFiles = files.filter(file => file.cover && file.status === 'publish
 let featureIndex = 0;
 let homepageLanguage = 'en';
 const languagePicker = document.querySelector('#language');
+const featureCard = document.querySelector('#featured');
+const firstFeatureSlide = featureCard.querySelector('.featured-slide');
+const featureSlides = featureFiles.map((file, index) => {
+  const slide = index === 0 ? firstFeatureSlide : firstFeatureSlide.cloneNode(true);
+  const image = slide.querySelector('img');
+  if (index !== 0) {
+    image.removeAttribute('fetchpriority');
+    featureCard.append(slide);
+  }
+  image.src = fileThumbnail(file);
+  slide.querySelector('h2').id = 'featuredTitle-' + file.id;
+  for (const button of slide.querySelectorAll('button')) button.dataset.open = file.id;
+  return slide;
+});
+
+function renderFeatureText() {
+  for (const [index, file] of featureFiles.entries()) {
+    const slide = featureSlides[index];
+    const localized = fileText(file, homepageLanguage);
+    const title = slide.querySelector('h2');
+    const summary = slide.querySelector('p');
+    title.textContent = '#' + file.id + ' – ' + localized.title;
+    summary.textContent = localized.topic;
+    title.lang = summary.lang = homepageLanguage;
+    slide.querySelector('img').alt = strings().file + ' ' + file.id;
+  }
+}
 
 function setFeature(index) {
   featureIndex = index;
-  const file = featureFiles[index];
-  const image = document.querySelector('#featuredImage');
-  image.src = fileThumbnail(file);
-  image.alt = strings().file + ' ' + file.id;
-  const localized = fileText(file, homepageLanguage);
-  const title = document.querySelector('#featuredTitle');
-  const summary = document.querySelector('#featuredSummary');
-  title.textContent = '#' + file.id + ' – ' + localized.title;
-  summary.textContent = localized.topic;
-  title.lang = summary.lang = homepageLanguage;
-  document.querySelector('#featuredCover').dataset.open = file.id;
-  document.querySelector('#featuredAction').dataset.open = file.id;
+  featureCard.querySelectorAll('.featured-slide').forEach((slide, page) => {
+    slide.inert = page !== index;
+  });
+  featureCard.setAttribute('aria-labelledby', featureSlides[index].querySelector('h2').id);
   for (const [page, control] of [...document.querySelector('#featurePages').children].entries()) {
     control.setAttribute('aria-pressed', String(page === index));
     control.setAttribute('aria-label', strings().file + ' ' + featureFiles[page].id);
@@ -45,7 +64,7 @@ for (const [index, file] of featureFiles.entries()) {
   control.type = 'button';
   control.setAttribute('aria-label', 'File ' + file.id);
   control.addEventListener('click', () => {
-    setFeature(index);
+    slideToFeature(index, index > featureIndex ? 1 : -1);
     scheduleFeatureRotation();
   });
   document.querySelector('#featurePages').append(control);
@@ -63,7 +82,6 @@ const rotationText = {
   ja: ['自動切り替えを一時停止', '自動切り替えを開始'],
   ko: ['자동 전환 일시 정지', '자동 전환 시작']
 };
-const featureCard = document.querySelector('#featured');
 const featureControls = document.querySelector('.feature-controls');
 const featurePlay = document.querySelector('#featurePlay');
 const featureMotion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -75,6 +93,80 @@ let featureHovered = false;
 let featureTimer;
 let touchStart;
 let suppressSwipeClick = false;
+let featureAnimations = [];
+
+function resetFeatureSlides() {
+  for (const animation of featureAnimations) animation.cancel();
+  featureAnimations = [];
+  for (const [index, slide] of featureSlides.entries()) {
+    slide.classList.toggle('is-visible', index === featureIndex);
+    slide.style.transform = '';
+  }
+}
+
+function adjacentFeature(direction) {
+  return (featureIndex + direction + featureFiles.length) % featureFiles.length;
+}
+
+function animateFeatureSlides(outgoing, incoming, endOffset, incomingEndOffset) {
+  const options = {duration:320, easing:'cubic-bezier(.22,.61,.36,1)', fill:'forwards'};
+  const animations = [
+    outgoing.animate([{transform:outgoing.style.transform || 'translateX(0)'}, {transform:endOffset}], options),
+    incoming.animate([{transform:incoming.style.transform}, {transform:incomingEndOffset}], options)
+  ];
+  featureAnimations = animations;
+  animations[0].onfinish = () => {
+    if (featureAnimations === animations) resetFeatureSlides();
+  };
+}
+
+function slideToFeature(index, direction, fromDrag = false) {
+  if (index === featureIndex) return;
+  if (!fromDrag) resetFeatureSlides();
+  const outgoing = featureSlides[featureIndex];
+  const incoming = featureSlides[index];
+  setFeature(index);
+  if (featureMotion.matches) {
+    resetFeatureSlides();
+    return;
+  }
+  incoming.classList.add('is-visible');
+  if (!fromDrag) incoming.style.transform = `translateX(${direction * 100}%)`;
+  animateFeatureSlides(outgoing, incoming, `translateX(${-direction * 100}%)`, 'translateX(0)');
+}
+
+function moveFeatureSlides(dx) {
+  const direction = dx < 0 ? 1 : -1;
+  const offset = Math.max(-featureCard.clientWidth, Math.min(dx, featureCard.clientWidth));
+  resetFeatureSlides();
+  const incoming = featureSlides[adjacentFeature(direction)];
+  incoming.classList.add('is-visible');
+  incoming.style.transform = `translateX(calc(${direction * 100}% + ${offset}px))`;
+  featureSlides[featureIndex].style.transform = `translateX(${offset}px)`;
+  return direction;
+}
+
+function finishFeatureTouch(event, cancelled = false) {
+  if (event.pointerId !== touchStart?.id) return;
+  const {x, y, direction} = touchStart;
+  touchStart = undefined;
+  const dx = event.clientX - x;
+  const dy = event.clientY - y;
+  if (!cancelled && Math.abs(dx) >= 45 && Math.abs(dx) > 1.35 * Math.abs(dy)) {
+    const nextDirection = featureMotion.matches ? (dx < 0 ? 1 : -1) : moveFeatureSlides(dx);
+    slideToFeature(adjacentFeature(nextDirection), nextDirection, !featureMotion.matches);
+    suppressSwipeClick = true;
+  } else if (direction && !featureMotion.matches) {
+    animateFeatureSlides(
+      featureSlides[featureIndex], featureSlides[adjacentFeature(direction)],
+      'translateX(0)', `translateX(${direction * 100}%)`
+    );
+    suppressSwipeClick = true;
+  } else {
+    resetFeatureSlides();
+  }
+  scheduleFeatureRotation();
+}
 
 function updateRotationButton() {
   const label = rotationText[homepageLanguage][rotateFeatures ? 0 : 1];
@@ -90,7 +182,7 @@ function scheduleFeatureRotation() {
       featureReader.open || featureFiles.length < 2 ||
       featureCard.contains(focus) || featureControls.contains(focus)) return;
   featureTimer = setTimeout(() => {
-    setFeature((featureIndex + 1) % featureFiles.length);
+    slideToFeature(adjacentFeature(1), 1);
     scheduleFeatureRotation();
   }, featureDelay);
 }
@@ -113,28 +205,22 @@ featureCard.addEventListener('pointerdown', event => {
   if (!event.isPrimary) return;
   suppressSwipeClick = false;
   if (event.pointerType !== 'touch' || featureFiles.length < 2) return;
+  resetFeatureSlides();
   touchStart = {id:event.pointerId, x:event.clientX, y:event.clientY};
   scheduleFeatureRotation();
 });
 
-featureCard.addEventListener('pointerup', event => {
-  if (event.pointerId !== touchStart?.id) return;
+featureCard.addEventListener('pointermove', event => {
+  if (event.pointerId !== touchStart?.id || featureMotion.matches) return;
   const dx = event.clientX - touchStart.x;
   const dy = event.clientY - touchStart.y;
-  touchStart = undefined;
-  if (Math.abs(dx) >= 45 && Math.abs(dx) > 1.35 * Math.abs(dy)) {
-    const direction = dx < 0 ? 1 : -1;
-    setFeature((featureIndex + direction + featureFiles.length) % featureFiles.length);
-    suppressSwipeClick = true;
+  if (touchStart.direction || Math.abs(dx) >= 8 && Math.abs(dx) > 1.35 * Math.abs(dy)) {
+    touchStart.direction = moveFeatureSlides(dx);
   }
-  scheduleFeatureRotation();
 });
 
-featureCard.addEventListener('pointercancel', event => {
-  if (event.pointerId !== touchStart?.id) return;
-  touchStart = undefined;
-  scheduleFeatureRotation();
-});
+featureCard.addEventListener('pointerup', finishFeatureTouch);
+featureCard.addEventListener('pointercancel', event => finishFeatureTouch(event, true));
 
 featureCard.addEventListener('click', event => {
   if (!suppressSwipeClick || event.detail === 0) return;
@@ -150,6 +236,8 @@ featurePlay.addEventListener('click', () => {
   scheduleFeatureRotation();
 });
 featureMotion.addEventListener('change', event => {
+  touchStart = undefined;
+  resetFeatureSlides();
   rotateFeatures = !event.matches;
   updateRotationButton();
   scheduleFeatureRotation();
@@ -391,7 +479,9 @@ function applyHomepageLanguage(code) {
     node.textContent = knowledgeTranslations[homepageLanguage]?.[node.dataset.knowledge] ?? english;
   }
   setArchiveLanguage(homepageLanguage);
+  renderFeatureText();
   setFeature(featureIndex);
+  resetFeatureSlides();
   updateRotationButton();
   scheduleFeatureRotation();
 }
