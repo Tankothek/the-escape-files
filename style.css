@@ -594,3 +594,43 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 .learn-list p { margin:0 0 4px; }
 .learn-list a { display:inline-flex; align-items:center; gap:.35em; min-height:44px; color:#ffd074; }
 .learn-list a:hover { text-decoration:underline; }
+
+.nav-icon { display:none; }
+.site-nav .nav-home { display:inline; margin-inline-end:.25em; }
+
+@media (max-width:767px) and (orientation:portrait) {
+  .front > .portals { display:none; }
+  .front-hero { margin-bottom:0; }
+  .site-nav .nav-links a { gap:12px; }
+  .site-nav .nav-icon {
+    position:relative;
+    display:grid;
+    flex:0 0 28px;
+    height:28px;
+    place-items:center;
+    margin:0;
+    color:#ffd074;
+  }
+  .nav-icon .portal-icon { width:26px; }
+  .nav-home { font:500 27px/1 system-ui,sans-serif; }
+  .nav-article::before {
+    content:"";
+    box-sizing:border-box;
+    width:17px;
+    height:21px;
+    border:1.5px solid currentColor;
+    border-radius:3px;
+    background:
+      linear-gradient(currentColor,currentColor) center 6px / 8px 1px no-repeat,
+      linear-gradient(currentColor,currentColor) center 10px / 8px 1px no-repeat,
+      linear-gradient(currentColor,currentColor) 3px 14px / 5px 1px no-repeat;
+  }
+  .nav-question { font:700 14px/1 system-ui,sans-serif; }
+  .nav-question::before {
+    content:"";
+    position:absolute;
+    inset:4px;
+    border:1.5px solid currentColor;
+    border-radius:50%;
+  }
+}
