@@ -520,17 +520,22 @@ function applyHomepageLanguage(code) {
   scheduleFeatureRotation();
 }
 
+function supportedHomepageLanguage(locale) {
+  const base = locale?.trim().toLowerCase().split(/[-_]/)[0];
+  const code = base === 'zh' ? 'zh-CN' : base;
+  return Object.hasOwn(homepageTranslations, code) ? code : undefined;
+}
+
 function initialHomepageLanguage() {
-  const urlLanguage = new URL(location.href).searchParams.get('lang');
-  if (urlLanguage && Object.hasOwn(homepageTranslations, urlLanguage)) return urlLanguage;
+  const urlLanguage = supportedHomepageLanguage(new URL(location.href).searchParams.get('lang'));
+  if (urlLanguage) return urlLanguage;
   try {
-    const savedLanguage = localStorage.getItem('tankothek-language');
-    if (Object.hasOwn(homepageTranslations, savedLanguage)) return savedLanguage;
+    const savedLanguage = supportedHomepageLanguage(localStorage.getItem('tankothek-language'));
+    if (savedLanguage) return savedLanguage;
   } catch {}
-  for (const browserLanguage of navigator.languages) {
-    const base = browserLanguage.split('-')[0].toLowerCase();
-    const code = base === 'zh' ? 'zh-CN' : base;
-    if (Object.hasOwn(homepageTranslations, code)) return code;
+  for (const locale of [...(navigator.languages ?? []), navigator.language]) {
+    const language = supportedHomepageLanguage(locale);
+    if (language) return language;
   }
   return 'en';
 }
