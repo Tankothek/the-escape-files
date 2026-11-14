@@ -170,7 +170,6 @@ function setArchiveLanguage(language) {
     [n,`${copy.week} ${weekNumber(n)} · ${weekTitle(Number(n))}`])]);
   setOptions('#topic', [['all',copy.allTopics], ...topics.map(tag => [tag,topicTitle(tag)])
     .sort((a,b) => a[1].localeCompare(b[1],archiveLanguage))]);
-  setOptions('#status', [['all',copy.allStatuses], ...['published','archive-review','planned'].map(value => [value,copy[value]])]);
   renderWeeks();
   renderArticles();
   renderGuide();
@@ -201,7 +200,7 @@ function fileCard(file) {
       <div class="card-meta"><span>${copy.file} ${file.id} / ${copy.week} ${weekNumber(file.week)}</span>
       <button class="bookmark" data-save="${file.id}" aria-label="${marked ? copy.unsave : copy.save} · ${copy.file} ${file.id}" aria-pressed="${marked}">${marked ? '♥' : '♡'}</button></div>
       <h3><button class="title-button" data-open="${file.id}">${escapeHTML(title)}</button></h3>
-      <p>${escapeHTML(topic)}</p><span class="status ${file.status}">${copy[file.status]}</span>
+      <p>${escapeHTML(topic)}</p>
       <div class="card-foot"><time datetime="${file.date}">${formatFileDate(file.date)}</time><button data-open="${file.id}">${copy.open} ↗</button></div>
     </div>
   </article>`;
@@ -211,13 +210,11 @@ function renderArchive() {
   const terms = cleanSearch($('#search').value.trim()).split(/\s+/).filter(Boolean);
   const week = $('#week').value;
   const topic = $('#topic').value;
-  const status = $('#status').value;
   const shown = files.filter(file => {
     if (filter === 'saved' && !saved.has(file.id)) return false;
     if (filter === 'original' && !file.cover) return false;
     if (week !== 'all' && Number(week) !== file.week) return false;
     if (topic !== 'all' && !file.tags.includes(topic)) return false;
-    if (status !== 'all' && status !== file.status) return false;
     const {title, topic: summary, body} = fileText(file);
     const haystack = cleanSearch([file.id, file.n, file.title, file.body, file.topic,
       WEEKS[file.week].title, germanWeeks[file.week - 1], ...file.tags,
@@ -348,7 +345,6 @@ function renderReader(file) {
   </div>
   ${cover}
   <div class="reader-text">
-    <span class="status ${file.status}">${copy[file.status]}</span>
     <p class="label">${original ? copy.originalText : copy.summary}</p>
     <p>${escapeHTML(body)}</p>
     <div class="reader-links">${externalLink(file.x,copy.post)}
@@ -385,7 +381,7 @@ function openFile(id) {
 function resetArchive() {
   filter = 'all';
   $('#search').value = '';
-  for (const id of ['#week','#topic','#status']) $(id).value = 'all';
+  for (const id of ['#week','#topic']) $(id).value = 'all';
   $('#sort').value = 'desc';
 }
 
@@ -447,7 +443,7 @@ document.addEventListener('click', event => {
 });
 
 $('#search').addEventListener('input',renderArchive);
-for (const id of ['#sort','#topic','#status']) $(id).addEventListener('change',renderArchive);
+for (const id of ['#sort','#topic']) $(id).addEventListener('change',renderArchive);
 $('#week').addEventListener('change', () => {
   $('#sort').value = $('#week').value === 'all' ? 'desc' : 'asc';
   renderArchive();
