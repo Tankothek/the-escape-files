@@ -440,8 +440,8 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
     grid-template-rows:auto auto auto;
   }
   .reader-heading { padding:38px 0 14px; }
-  .reader-heading h2 { font-size:clamp(23px,6.4vw,30px); }
-  #readerContent > .reader-img { position:static; max-height:33vh; max-height:33dvh; object-fit:contain; border-radius:7px; }
+  .reader-heading h2 { font-size:clamp(23px,6.4vw,30px); min-height:2.2em; }
+  #readerContent > .reader-img { position:static; height:33vh; height:33dvh; max-height:none; object-fit:contain; border-radius:7px; }
   #readerContent > .reader-text { padding:12px 0 22px; }
   #readerContent .reader-text .status { margin-top:0; }
   #readerContent .reader-links { margin-top:16px; gap:12px; }
