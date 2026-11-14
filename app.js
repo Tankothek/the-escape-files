@@ -301,7 +301,8 @@ function fitDesktopReader() {
   const lockHeight = () => {
     if (reader.open && desktopReader.matches && content.firstElementChild === openedFile &&
         !reader.style.getPropertyValue('--reader-height')) {
-      reader.style.setProperty('--reader-height', reader.getBoundingClientRect().height + 'px');
+      const frameHeight = reader.offsetHeight - reader.clientHeight;
+      reader.style.setProperty('--reader-height', content.offsetHeight + frameHeight + 'px');
     }
   };
   const cover = content.querySelector('.reader-img');
