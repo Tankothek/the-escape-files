@@ -66,10 +66,109 @@ const germanKnowledge = {
 const knowledgeNodes = [...document.querySelectorAll('[data-knowledge]')]
   .map(node => ({node, english:node.textContent}));
 
+const aboutTranslations = {
+  "de": {
+    "aboutLabel": "Über das Archiv",
+    "aboutTitle": "Weniger Lärm.",
+    "aboutAccent": "Mehr Durchblick.",
+    "aboutIntro": "The Escape Files ist eine unabhängige Reihe von Tankothek. Kurze Erklärungen und Bilder zeigen, welche Ideen hinter EscapeHub stecken und wie die Plattform funktioniert.",
+    "aboutArchive": "Das Archiv enthält Originalausgaben und Zusammenfassungen aus Oktober und November 2026. Einzelne Angaben können sich seit der Veröffentlichung geändert haben. Aktuelle offizielle Informationen findest du bei EscapeHub.",
+    "aboutLink": "Zu EscapeHub ↗",
+    "footerNote": "Unabhängiges Archiv von Tankothek",
+    "footerBack": "Zurück zum Archiv ↑"
+  },
+  "es": {
+    "aboutLabel": "Sobre el archivo",
+    "aboutTitle": "Menos ruido.",
+    "aboutAccent": "Más claridad.",
+    "aboutIntro": "The Escape Files es una serie editorial independiente de Tankothek que explica las ideas y el funcionamiento de EscapeHub con textos breves e historias visuales.",
+    "aboutArchive": "El archivo reúne ediciones originales y resúmenes de octubre y noviembre de 2026. Algunos detalles pueden haber cambiado desde su publicación. Consulta EscapeHub para obtener información oficial actualizada.",
+    "aboutLink": "Visitar EscapeHub ↗",
+    "footerNote": "Archivo independiente de Tankothek",
+    "footerBack": "Volver al archivo ↑"
+  },
+  "fr": {
+    "aboutLabel": "À propos des archives",
+    "aboutTitle": "Moins de bruit.",
+    "aboutAccent": "Plus de clarté.",
+    "aboutIntro": "The Escape Files est une série éditoriale indépendante de Tankothek. Des explications courtes et des récits en images présentent les idées et le fonctionnement d’EscapeHub.",
+    "aboutArchive": "Les archives réunissent des éditions originales et des résumés d’octobre et novembre 2026. Certains détails peuvent avoir changé depuis leur publication. Consultez EscapeHub pour obtenir les informations officielles à jour.",
+    "aboutLink": "Consulter EscapeHub ↗",
+    "footerNote": "Archives indépendantes de Tankothek",
+    "footerBack": "Retour aux archives ↑"
+  },
+  "pt": {
+    "aboutLabel": "Sobre o acervo",
+    "aboutTitle": "Menos ruído.",
+    "aboutAccent": "Mais clareza.",
+    "aboutIntro": "The Escape Files é uma série editorial independente da Tankothek. Explicações breves e histórias visuais mostram as ideias por trás da EscapeHub e como a plataforma funciona.",
+    "aboutArchive": "O acervo reúne edições originais e resumos de outubro e novembro de 2026. Alguns detalhes podem ter mudado desde a publicação. Consulte a EscapeHub para obter informações oficiais atualizadas.",
+    "aboutLink": "Visitar a EscapeHub ↗",
+    "footerNote": "Acervo independente da Tankothek",
+    "footerBack": "Voltar ao acervo ↑"
+  },
+  "tr": {
+    "aboutLabel": "Arşiv hakkında",
+    "aboutTitle": "Daha az gürültü.",
+    "aboutAccent": "Daha çok anlayış.",
+    "aboutIntro": "The Escape Files, Tankothek’in bağımsız yayın dizisidir. Kısa açıklamalar ve görsel anlatımlar, EscapeHub’ın ardındaki fikirleri ve platformun nasıl çalıştığını gösterir.",
+    "aboutArchive": "Arşiv, Ekim ve Kasım 2026’ya ait özgün sayıları ve özetleri bir araya getirir. Bazı ayrıntılar yayımlandıktan sonra değişmiş olabilir. Güncel resmî bilgiler için EscapeHub’a bakın.",
+    "aboutLink": "EscapeHub’ı ziyaret edin ↗",
+    "footerNote": "Tankothek’in bağımsız arşivi",
+    "footerBack": "Arşive dön ↑"
+  },
+  "ru": {
+    "aboutLabel": "Об архиве",
+    "aboutTitle": "Меньше шума.",
+    "aboutAccent": "Больше ясности.",
+    "aboutIntro": "The Escape Files — независимая серия Tankothek. Краткие объяснения и иллюстрации показывают, какие идеи лежат в основе EscapeHub и как работает платформа.",
+    "aboutArchive": "В архиве собраны оригинальные выпуски и краткие пересказы за октябрь и ноябрь 2026 года. Некоторые детали могли измениться после публикации. Актуальная официальная информация доступна на сайте EscapeHub.",
+    "aboutLink": "Перейти на сайт EscapeHub ↗",
+    "footerNote": "Независимый архив Tankothek",
+    "footerBack": "Вернуться к архиву ↑"
+  },
+  "zh-CN": {
+    "aboutLabel": "关于档案",
+    "aboutTitle": "少一点喧嚣。",
+    "aboutAccent": "多一点理解。",
+    "aboutIntro": "The Escape Files 是 Tankothek 的独立编辑系列，通过简明的解说和图文故事介绍 EscapeHub 背后的理念及其运作方式。",
+    "aboutArchive": "档案收录了 2026 年 10 月和 11 月的原版内容及摘要。部分细节可能在发布后有所变动。最新官方信息请查阅 EscapeHub。",
+    "aboutLink": "访问 EscapeHub ↗",
+    "footerNote": "Tankothek 独立档案",
+    "footerBack": "返回档案 ↑"
+  },
+  "ja": {
+    "aboutLabel": "アーカイブについて",
+    "aboutTitle": "雑音を減らし、",
+    "aboutAccent": "理解を深める。",
+    "aboutIntro": "The Escape Files は Tankothek が独自に制作する連載です。短い解説と画像を通じて、EscapeHub の背景にある考え方や仕組みを紹介します。",
+    "aboutArchive": "アーカイブには、2026年10月と11月のオリジナル記事と要約を収録しています。公開後に内容が変更されている場合があります。最新の公式情報は EscapeHub をご覧ください。",
+    "aboutLink": "EscapeHub を見る ↗",
+    "footerNote": "Tankothek の独立アーカイブ",
+    "footerBack": "アーカイブに戻る ↑"
+  },
+  "ko": {
+    "aboutLabel": "아카이브 소개",
+    "aboutTitle": "소음은 줄이고,",
+    "aboutAccent": "이해는 깊게.",
+    "aboutIntro": "The Escape Files는 Tankothek의 독립 기획 시리즈입니다. 짧은 설명과 이미지로 EscapeHub의 배경과 작동 방식을 소개합니다.",
+    "aboutArchive": "아카이브에는 2026년 10월과 11월의 원본과 요약이 담겨 있습니다. 게시 후 일부 내용이 달라졌을 수 있습니다. 최신 공식 정보는 EscapeHub에서 확인하세요.",
+    "aboutLink": "EscapeHub 방문 ↗",
+    "footerNote": "Tankothek의 독립 아카이브",
+    "footerBack": "아카이브로 돌아가기 ↑"
+  }
+};
+const aboutNodes = [...document.querySelectorAll('[data-about]')]
+  .map(node => ({ node, english: node.textContent }));
+
 function applyHomepageLanguage(code) {
   homepageLanguage = Object.hasOwn(homepageTranslations, code) ? code : 'en';
   document.documentElement.lang = homepageLanguage;
   languagePicker.value = homepageLanguage;
+  const aboutCopy = aboutTranslations[homepageLanguage];
+  for (const { node, english } of aboutNodes) {
+    node.textContent = aboutCopy?.[node.dataset.about] ?? english;
+  }
   const labels = Object.fromEntries(homepageLabels.map((key, index) => [key, homepageTranslations[homepageLanguage][index]]));
   for (const element of document.querySelectorAll('[data-label]')) {
     element.textContent = labels[element.dataset.label];
