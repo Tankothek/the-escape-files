@@ -24,7 +24,7 @@ function setFeature(index) {
   featureIndex = index;
   const file = featureFiles[index];
   const image = document.querySelector('#featuredImage');
-  image.src = file.cover;
+  image.src = fileThumbnail(file);
   image.alt = strings().file + ' ' + file.id;
   const localized = fileText(file, homepageLanguage);
   const title = document.querySelector('#featuredTitle');
@@ -299,9 +299,13 @@ languagePicker.addEventListener('change', () => {
   applyHomepageLanguage(languagePicker.value);
   const url = new URL(location.href);
   url.searchParams.set('lang', homepageLanguage);
-  history.replaceState(null, '', url);
+  history.replaceState(history.state, '', url);
   try { localStorage.setItem('tankothek-language', homepageLanguage); } catch {}
 });
 
+window.addEventListener('popstate', () => {
+  const language = initialHomepageLanguage();
+  if (language !== homepageLanguage) applyHomepageLanguage(language);
+});
 applyHomepageLanguage(initialHomepageLanguage());
 updateReaderFromUrl();

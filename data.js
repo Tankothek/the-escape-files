@@ -37,7 +37,7 @@ const FILES = [
  e(17,4,'2026-10-27','DOES THE START PRICE STAY THE SAME?','Every buy or sell recalculates the price along the curve.',['bonding curve','price'],'published','fees'),
  e(18,4,'2026-10-28','WHEN DOES THE NEXT STAGE BEGIN?','A token moves to its next stage automatically when the required launch conditions are completed.',['graduation','bonding curve'],'published','fees'),
  e(19,4,'2026-10-29','SAME TOKEN. NEXT STAGE.','On Solana, trading continues on EscapeSwap after graduation while the token and network stay the same.',['Solana','EscapeSwap','graduation'],'published','fees'),
- e(20,4,'2026-10-30','AFTER THE START.','EVM-side post-launch trading continues through exchange infrastructure such as Uniswap.',['EVM','Uniswap','graduation'],'published','fees'),
+ e(20,4,'2026-10-30','AFTER THE START.','EscapeHub names Uniswap v4 as the next trading venue for supported Ethereum-compatible networks after the initial phase.',['EVM','Uniswap','graduation'],'published','fees'),
  e(21,5,'2026-11-02','ONE PLATFORM. TWO LAUNCHES.','The EscapeHub Launchpad and the $ESC token launch are separate milestones.',['launchpad','$ESC','TGE'],'published','home'),
  e(22,5,'2026-11-03','THE PLATFORM HELPS FUND THE NEXT STEP.','Before $ESC launches, Launchpad revenue can contribute toward the remaining presale funding target.',['revenue','presale','$ESC'],'published','faq'),
  e(23,5,'2026-11-04','HOW BUYBACKS WILL WORK.','The planned relationship between platform fees and future $ESC market buybacks.',['buybacks','$ESC','fees'],'published','faq'),
@@ -51,6 +51,10 @@ const FILES = [
 ];
 
 const SOURCES = {
+ signless:{name:'Signless Trading',url:'https://escapehub.ai/learn/signless-trading/'},
+ funding:{name:'In-App Fiat On-Ramp',url:'https://escapehub.ai/learn/buy-crypto-with-card/'},
+ wallet:{name:'EscapeHub App',url:'https://escapehub.ai/learn/escapehub-app/'},
+
  whitelist:{name:'Whitelisted Launches',url:'https://escapehub.ai/blog/whitelisted-token-launches-anti-snipe/'},
  fees:{name:'EscapeHub Fees Explained',url:'https://escapehub.ai/learn/escapehub-fees/'},
  faq:{name:'EscapeHub FAQ',url:'https://escapehub.ai/faq/'},
@@ -184,8 +188,8 @@ const germanFiles = {
   ],
   "020": [
     "Nach dem Start auf EVM",
-    "In EVM-Netzwerken kann der Handel anschließend über Börsen wie Uniswap weiterlaufen.",
-    "In EVM-Netzwerken kann der Handel anschließend über Börsen wie Uniswap weiterlaufen."
+    "Für unterstützte Ethereum-kompatible Netzwerke nennt EscapeHub Uniswap v4 als Handelsplatz nach der Startphase.",
+    "Für unterstützte Ethereum-kompatible Netzwerke nennt EscapeHub Uniswap v4 als Handelsplatz nach der Startphase."
   ],
   "021": [
     "Eine Plattform, zwei Starts",
@@ -266,3 +270,8 @@ Object.assign(files.find(file => file.id === '027'), {
 });
 germanFiles['027'][1] = 'Eine Wallet direkt in EscapeHub erstellen.';
 germanFiles['027'][2] = 'Mit der integrierten Wallet kannst du digitale Token halten, senden und empfangen. Eine separate Wallet-App brauchst du dafür nicht.';
+
+const firstStepsSources = {'027':'wallet', '028':'funding', '030':'signless'};
+for (const [id, source] of Object.entries(firstStepsSources)) {
+  files.find(file => file.id === id).source = source;
+}

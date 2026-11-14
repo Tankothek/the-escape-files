@@ -50,15 +50,6 @@ const archiveStrings = {
 };
 const germanWeeks = ['Starts mit Whitelist','Gebührenanteile für Ersteller','Netzwerke und Suche',
   'Preisbildung und Wechsel zur DEX','Plattformeinnahmen, $ESC und Rückkäufe','Startwoche: die ersten Schritte'];
-const germanTopics = {
-  'creator rewards':'Gebührenanteile für Ersteller', fees:'Gebühren', 'fee options':'Gebührenverteilung',
-  networks:'Netzwerke', 'bonding curve':'Preisbildungskurve', price:'Preis', buybacks:'Rückkäufe',
-  revenue:'Einnahmen', presale:'Vorverkauf', access:'Zugang', discovery:'Entdecken',
-  'first steps':'Erste Schritte', watchlist:'Merkliste', trading:'Handel', launch:'Start',
-  development:'Entwicklung', 'after launch':'Nach dem Start', 'public trading':'Öffentlicher Handel',
-  'fair launch':'Fairer Start', 'anti-snipe':'Schutz vor Sniping', graduation:'Phasenwechsel',
-  overview:'Übersicht', sharing:'Teilen', utility:'Nutzen', platform:'Plattform'
-};
 for (const [language, locale] of Object.entries(fileLocales)) {
   const {rangePattern, explorePattern, ...labels} = locale.labels;
   archiveStrings[language] = {
@@ -92,7 +83,7 @@ const weekTitle = number => {
   if (archiveLanguage === 'de') return germanWeeks[number - 1];
   return fileLocales[archiveLanguage]?.weeks[number - 1] ?? WEEKS[number].title;
 };
-const topicTitle = tag => archiveLanguage === 'de' && germanTopics[tag] ? germanTopics[tag] : tag;
+const topicTitle = tag => localizedTopics[archiveLanguage]?.[tag] ?? tag;
 const topics = [...new Set(files.flatMap(file => file.tags))];
 const cleanSearch = text => text.toLowerCase().normalize('NFD').replace(/\p{M}/gu, '');
 
@@ -132,11 +123,13 @@ function poster(file) {
   </div>`;
 }
 
+const fileThumbnail = file => `thumb-file-${file.id}.jpg`;
+
 function fileCard(file) {
   const copy = strings();
   const {title,topic} = fileText(file);
   const marked = saved.has(file.id);
-  const cover = file.cover ? `<img src="${escapeHTML(file.cover)}" alt="" loading="lazy" decoding="async">` : poster(file);
+  const cover = file.cover ? `<img src="${escapeHTML(fileThumbnail(file))}" alt="" loading="lazy" decoding="async">` : poster(file);
   return `<article class="card">
     <button class="cover" data-open="${file.id}" aria-label="${copy.open} ${file.id}: ${escapeHTML(title)}">${cover}</button>
     <div class="card-body">
@@ -180,6 +173,11 @@ function weeklyArticle(week) {
   return {title:week.article, url:week.articleUrl, lang:'en'};
 }
 
+function articleLinkLabel(article, label) {
+  const languageNote = article.lang === 'en' && englishSourceLabels[archiveLanguage];
+  return languageNote ? `${label} (${languageNote})` : label;
+}
+
 function renderArticles() {
   const copy = strings();
   $('#articlesGrid').lang = archiveLanguage;
@@ -188,7 +186,7 @@ function renderArticles() {
     if (!article.url) return '';
     return `<article class="week-card">
       <span class="eyebrow">${copy.week} ${weekNumber(n)} · PARAGRAPH</span>
-      <h3 lang="${article.lang}">${externalLink(article.url,article.title)}</h3>
+      <h3>${externalLink(article.url,articleLinkLabel(article, article.title))}</h3>
     </article>`;
   }).join('');
 }
@@ -203,7 +201,7 @@ function renderWeeks() {
       <h3>${escapeHTML(weekTitle(Number(n)))}</h3>
       ${article.url ? `<p lang="${article.lang}">${escapeHTML(article.title)}</p>` : ''}
       <div><button data-week="${n}">${copy.explore(count)} ↗</button>
-      ${externalLink(article.url,copy.paragraph)}</div>
+      ${externalLink(article.url,articleLinkLabel(article,copy.paragraph))}</div>
     </article>`;
   }).join('');
 }
@@ -217,12 +215,13 @@ function renderReader(file) {
   const copy = strings();
   const {title,body,original} = fileText(file);
   const source = SOURCES[file.source];
+  const article = weeklyArticle(WEEKS[file.week]);
   const languageNote = file.source !== 'home' && englishSourceLabels[archiveLanguage];
   const sourceLabel = copy.source + (languageNote ? ' (' + languageNote + ')' : '') + ' · ' + (source?.name || '');
   const cover = file.cover
     ? `<img class="reader-img" src="${escapeHTML(file.cover)}" alt="${copy.cover} · ${copy.file} ${file.id}">`
     : poster(file);
-  $('#readerContent').innerHTML = `${cover}<div class="reader-text">
+  $('#readerContent').innerHTML = `<div class="reader-text">
     <div class="eyebrow">${copy.file} ${file.id} · ${copy.week} ${weekNumber(file.week)} · ${formatFileDate(file.date)}</div>
     <h2 id="readerTitle">${escapeHTML(title)}</h2>
     <span class="status ${file.status}">${copy[file.status]}</span>
@@ -230,10 +229,10 @@ function renderReader(file) {
     <p>${escapeHTML(body)}</p>
     <div class="reader-links">${externalLink(file.x,copy.post)}
       ${externalLink(source?.url,sourceLabel)}
-      ${externalLink(weeklyArticle(WEEKS[file.week]).url,copy.paragraph)}
+      ${externalLink(article.url,articleLinkLabel(article,copy.paragraph))}
       ${externalLink(file.cover,copy.cover)}</div>
     <p class="edition">${copy.snapshot}</p>
-  </div>`;
+  </div>${cover}`;
   if (!$('#reader').open) $('#reader').showModal();
   $('#reader').scrollTop = 0;
 }
@@ -264,6 +263,12 @@ function resetArchive() {
 }
 
 document.addEventListener('click', event => {
+  if (event.target.closest('[data-reset-archive]') &&
+      !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+    resetArchive();
+    renderArchive();
+  }
+
   const open = event.target.closest('[data-open]');
   if (open) openFile(open.dataset.open);
 
