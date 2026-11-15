@@ -728,3 +728,16 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 #siteSearchResults a:hover { border-color:var(--gold-edge); }
 .site-search-type { color:#ffd074; font-size:.8rem; }
 .site-search-excerpt { color:var(--muted); font-size:.875rem; }
+
+footer { flex-wrap:wrap; row-gap:14px; }
+.visit-count {
+  flex:0 0 100%;
+  order:4;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  margin:0;
+  font-size:.75rem;
+}
+.visit-count img { height:20px; }

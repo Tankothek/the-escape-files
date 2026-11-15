@@ -24,4 +24,4 @@ Archive content and sources live in data.js. FILES defines the original index, W
 
 ## Privacy
 
-Saved files stay in browser localStorage on the current device. No analytics, account system or submission forms. Google Fonts provides typography, with system fallbacks. External links use separate tabs.
+Saved files stay in browser localStorage on the current device. The footer uses a shared [Hits](https://hits.sh/) counter for page visits from the date it was added. No account system or submission forms. Google Fonts provides typography, with system fallbacks. External links use separate tabs.

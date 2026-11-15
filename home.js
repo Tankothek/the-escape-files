@@ -410,7 +410,8 @@ const aboutTranslations = {
     "aboutArchive": "Das Archiv enthält Originalausgaben und Zusammenfassungen aus Oktober und November 2026. Einzelne Angaben können sich seit der Veröffentlichung geändert haben. Aktuelle offizielle Informationen findest du bei EscapeHub.",
     "aboutLink": "Zu EscapeHub ↗",
     "footerNote": "Unabhängiges Archiv von Tankothek",
-    "footerBack": "Zurück zum Archiv ↑"
+    "footerBack": "Zurück zum Archiv ↑",
+    "footerVisits": "Seitenbesuche"
   },
   "es": {
     "aboutLabel": "Sobre el archivo",
@@ -420,7 +421,8 @@ const aboutTranslations = {
     "aboutArchive": "El archivo reúne ediciones originales y resúmenes de octubre y noviembre de 2026. Algunos detalles pueden haber cambiado desde su publicación. Consulta EscapeHub para obtener información oficial actualizada.",
     "aboutLink": "Visitar EscapeHub ↗",
     "footerNote": "Archivo independiente de Tankothek",
-    "footerBack": "Volver al archivo ↑"
+    "footerBack": "Volver al archivo ↑",
+    "footerVisits": "Visitas a la página"
   },
   "fr": {
     "aboutLabel": "À propos des archives",
@@ -430,7 +432,8 @@ const aboutTranslations = {
     "aboutArchive": "Les archives réunissent des éditions originales et des résumés d’octobre et novembre 2026. Certains détails peuvent avoir changé depuis leur publication. Consultez EscapeHub pour obtenir les informations officielles à jour.",
     "aboutLink": "Consulter EscapeHub ↗",
     "footerNote": "Archives indépendantes de Tankothek",
-    "footerBack": "Retour aux archives ↑"
+    "footerBack": "Retour aux archives ↑",
+    "footerVisits": "Visites de la page"
   },
   "pt": {
     "aboutLabel": "Sobre o acervo",
@@ -440,7 +443,8 @@ const aboutTranslations = {
     "aboutArchive": "O acervo reúne edições originais e resumos de outubro e novembro de 2026. Alguns detalhes podem ter mudado desde a publicação. Consulte a EscapeHub para obter informações oficiais atualizadas.",
     "aboutLink": "Visitar a EscapeHub ↗",
     "footerNote": "Acervo independente da Tankothek",
-    "footerBack": "Voltar ao acervo ↑"
+    "footerBack": "Voltar ao acervo ↑",
+    "footerVisits": "Visitas à página"
   },
   "tr": {
     "aboutLabel": "Arşiv hakkında",
@@ -450,7 +454,8 @@ const aboutTranslations = {
     "aboutArchive": "Arşiv, Ekim ve Kasım 2026’ya ait özgün sayıları ve özetleri bir araya getirir. Bazı ayrıntılar yayımlandıktan sonra değişmiş olabilir. Güncel resmî bilgiler için EscapeHub’a bakın.",
     "aboutLink": "EscapeHub’ı ziyaret edin ↗",
     "footerNote": "Tankothek’in bağımsız arşivi",
-    "footerBack": "Arşive dön ↑"
+    "footerBack": "Arşive dön ↑",
+    "footerVisits": "Sayfa ziyaretleri"
   },
   "ru": {
     "aboutLabel": "Об архиве",
@@ -460,7 +465,8 @@ const aboutTranslations = {
     "aboutArchive": "В архиве собраны оригинальные выпуски и краткие пересказы за октябрь и ноябрь 2026 года. Некоторые детали могли измениться после публикации. Актуальная официальная информация доступна на сайте EscapeHub.",
     "aboutLink": "Перейти на сайт EscapeHub ↗",
     "footerNote": "Независимый архив Tankothek",
-    "footerBack": "Вернуться к архиву ↑"
+    "footerBack": "Вернуться к архиву ↑",
+    "footerVisits": "Посещения страницы"
   },
   "zh-CN": {
     "aboutLabel": "关于档案",
@@ -470,7 +476,8 @@ const aboutTranslations = {
     "aboutArchive": "档案收录了 2026 年 10 月和 11 月的原版内容及摘要。部分细节可能在发布后有所变动。最新官方信息请查阅 EscapeHub。",
     "aboutLink": "访问 EscapeHub ↗",
     "footerNote": "Tankothek 独立档案",
-    "footerBack": "返回档案 ↑"
+    "footerBack": "返回档案 ↑",
+    "footerVisits": "页面访问次数"
   },
   "ja": {
     "aboutLabel": "アーカイブについて",
@@ -480,7 +487,8 @@ const aboutTranslations = {
     "aboutArchive": "アーカイブには、2026年10月と11月のオリジナル記事と要約を収録しています。公開後に内容が変更されている場合があります。最新の公式情報は EscapeHub をご覧ください。",
     "aboutLink": "EscapeHub を見る ↗",
     "footerNote": "Tankothek の独立アーカイブ",
-    "footerBack": "アーカイブに戻る ↑"
+    "footerBack": "アーカイブに戻る ↑",
+    "footerVisits": "ページ訪問数"
   },
   "ko": {
     "aboutLabel": "아카이브 소개",
@@ -490,7 +498,8 @@ const aboutTranslations = {
     "aboutArchive": "아카이브에는 2026년 10월과 11월의 원본과 요약이 담겨 있습니다. 게시 후 일부 내용이 달라졌을 수 있습니다. 최신 공식 정보는 EscapeHub에서 확인하세요.",
     "aboutLink": "EscapeHub 방문 ↗",
     "footerNote": "Tankothek의 독립 아카이브",
-    "footerBack": "아카이브로 돌아가기 ↑"
+    "footerBack": "아카이브로 돌아가기 ↑",
+    "footerVisits": "페이지 방문 수"
   }
 };
 const aboutNodes = [...document.querySelectorAll('[data-about]')]
