@@ -441,7 +441,7 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 }
 .reader-heading { grid-area:heading; padding:48px 35px 12px; min-width:0; overflow-wrap:anywhere; }
 .reader-heading h2 { margin:8px 0 0; font-size:36px; line-height:1.1; text-wrap:balance; }
-#readerContent > :is(.reader-img,.poster) { grid-area:cover; min-width:0; }
+#readerContent > :is(.reader-cover,.poster) { grid-area:cover; min-width:0; }
 #readerContent > .reader-text { grid-area:text; min-width:0; padding:0 35px 30px; }
 .reader-links a > span { font-family:system-ui,sans-serif; }
 .reader-pagination button {
@@ -473,7 +473,7 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
   }
   .reader-heading { padding:38px 0 14px; }
   .reader-heading h2 { font-size:clamp(23px,6.4vw,30px); min-height:2.2em; }
-  #readerContent > .reader-img { position:static; height:33vh; height:33dvh; max-height:none; object-fit:contain; border-radius:7px; }
+  #readerContent > .reader-cover .reader-img { position:static; height:33vh; height:33dvh; max-height:none; object-fit:contain; border-radius:7px; }
   #readerContent > .reader-text { padding:12px 0 22px; }
   #readerContent .reader-text .status { margin-top:0; }
   #readerContent .reader-links { margin-top:16px; gap:12px; }
@@ -487,9 +487,8 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
   #readerContent > .reader-text { padding:0 20px 22px; }
   #readerContent .reader-text p { margin-block:9px; line-height:1.55; }
   #readerContent .reader-links { margin-top:14px; gap:9px; }
-  #readerContent > .reader-img {
-    position:sticky;
-    top:0;
+  #readerContent > .reader-cover { position:sticky; top:0; }
+  #readerContent > .reader-cover .reader-img {
     max-height:calc(90vh - 2px);
     max-height:calc(90dvh - 2px);
     object-fit:contain;
@@ -611,4 +610,53 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
     border:1.5px solid currentColor;
     border-radius:50%;
   }
+}
+
+.reader-cover {
+  position:relative;
+  align-self:start;
+  display:block;
+  padding:0;
+  border:0;
+  background:transparent;
+  cursor:zoom-in;
+}
+.reader-cover .reader-img { display:block; position:static; }
+.reader-cover:focus-visible { outline-offset:-3px; }
+.reader-cover-expand {
+  position:absolute;
+  right:8px;
+  bottom:8px;
+  display:grid;
+  place-items:center;
+  width:30px;
+  height:30px;
+  border:1px solid #ffffff38;
+  border-radius:7px;
+  background:#080b10df;
+  color:#ffd074;
+  font:20px/1 system-ui,sans-serif;
+  pointer-events:none;
+}
+.cover-viewer {
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  max-width:none;
+  max-height:none;
+  margin:0;
+  padding:max(52px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right))
+    max(12px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+  border:0;
+  border-radius:0;
+  background:#05070cf5;
+  overflow:hidden;
+}
+.cover-viewer[open] { display:grid; place-items:center; grid-template: minmax(0,1fr) / minmax(0,1fr); }
+.cover-viewer img { display:block; max-width:100%; max-height:100%; object-fit:contain; }
+.cover-viewer .close {
+  position:absolute;
+  inset:max(4px, env(safe-area-inset-top)) max(4px, env(safe-area-inset-right)) auto auto;
+  margin:0;
 }

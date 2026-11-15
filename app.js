@@ -63,6 +63,18 @@ archiveStrings.de.file = 'File';
 
 const englishSourceLabels = {"de": "Englisch", "es": "en inglés", "fr": "en anglais", "pt": "em inglês", "tr": "İngilizce", "ru": "на английском", "zh-CN": "英文", "ja": "英語", "ko": "영어"};
 const strings = () => archiveStrings[archiveLanguage];
+const coverViewerLabels = {
+  en: ['Enlarge cover', 'Close image'],
+  de: ['Cover vergrößern', 'Bild schließen'],
+  es: ['Ampliar portada', 'Cerrar imagen'],
+  fr: ['Agrandir la couverture', 'Fermer l’image'],
+  pt: ['Ampliar capa', 'Fechar imagem'],
+  tr: ['Kapağı büyüt', 'Görseli kapat'],
+  ru: ['Увеличить обложку', 'Закрыть изображение'],
+  'zh-CN': ['放大封面', '关闭图片'],
+  ja: ['表紙を拡大', '画像を閉じる'],
+  ko: ['표지 확대', '이미지 닫기']
+};
 const guideLabels = {
   en: ['Start here', 'Buy a token', 'Create a token', 'Understand EscapeHub', 'Reading order', 'Previous file', 'Next file'],
   de: ['Hier starten', 'Einen Token kaufen', 'Einen Token erstellen', 'EscapeHub verstehen', 'Lesereihenfolge', 'Vorheriges File', 'Nächstes File'],
@@ -314,6 +326,8 @@ desktopReader.addEventListener('change', () => {
 
 function renderReader(file) {
   if (!file) return;
+  const viewer = $('#coverViewer');
+  if (viewer.open) viewer.close();
   if (file.status !== 'planned' && lastReadId !== file.id) {
     lastReadId = file.id;
     try { localStorage.setItem(lastReadKey, lastReadId); } catch {}
@@ -328,8 +342,12 @@ function renderReader(file) {
   const article = weeklyArticle(WEEKS[file.week]);
   const languageNote = file.source !== 'home' && englishSourceLabels[archiveLanguage];
   const sourceLabel = copy.source + (languageNote ? ' (' + languageNote + ')' : '') + ' · ' + (source?.name || '');
+  const [enlargeCover] = coverViewerLabels[archiveLanguage];
   const cover = file.cover
-    ? `<img class="reader-img" src="${escapeHTML(file.cover)}" alt="${copy.cover} · ${copy.file} ${file.id}">`
+    ? `<button type="button" class="reader-cover" aria-label="${escapeHTML(enlargeCover)}" title="${escapeHTML(enlargeCover)}">
+      <img class="reader-img" src="${escapeHTML(file.cover)}" alt="${escapeHTML(copy.file + ' ' + file.id + ' · ' + title)}">
+      <span class="reader-cover-expand" aria-hidden="true">⤢</span>
+    </button>`
     : poster(file);
   const [,,,, readingLabel, previousLabel, nextLabel] = guideLabels[archiveLanguage];
   const previous = readingOrder.findLast(candidate => candidate.n < file.n);
@@ -456,7 +474,27 @@ $('#reset').addEventListener('click',() => {
   $('#search').focus();
 });
 $('#close').addEventListener('click',() => $('#reader').close());
+$('#readerContent').addEventListener('click', event => {
+  const cover = event.target.closest('.reader-cover');
+  if (!cover) return;
+  const viewer = $('#coverViewer');
+  if (viewer.open) return;
+  const [label, closeLabel] = coverViewerLabels[archiveLanguage];
+  const source = cover.querySelector('img');
+  const image = viewer.querySelector('img');
+  image.src = source.src;
+  image.alt = source.alt;
+  viewer.lang = archiveLanguage;
+  viewer.setAttribute('aria-label', label);
+  $('#closeCover').setAttribute('aria-label', closeLabel);
+  viewer.showModal();
+});
+$('#closeCover').addEventListener('click', () => $('#coverViewer').close());
+$('#coverViewer').addEventListener('click', event => {
+  if (event.target === event.currentTarget) event.currentTarget.close();
+});
 $('#reader').addEventListener('close',() => {
+  if ($('#coverViewer').open) $('#coverViewer').close();
   if (!fileAtHash()) return;
   if (history.state?.fileReader) history.back();
   else {
