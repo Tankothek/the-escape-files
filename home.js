@@ -113,13 +113,15 @@ function renderFeatureText() {
   }
 }
 
+const featurePages = document.querySelector('#featurePages');
+
 function setFeature(index) {
   featureIndex = index;
   featureCard.querySelectorAll('.featured-slide').forEach((slide, page) => {
     slide.inert = page !== index;
   });
   featureCard.setAttribute('aria-labelledby', featureSlides[index].querySelector('h2').id);
-  for (const [page, control] of [...document.querySelector('#featurePages').children].entries()) {
+  for (const [page, control] of [...featurePages.children].entries()) {
     control.setAttribute('aria-pressed', String(page === index));
     control.setAttribute('aria-label', strings().file + ' ' + featureFiles[page].id);
   }
@@ -133,27 +135,12 @@ for (const [index, file] of featureFiles.entries()) {
     slideToFeature(index, index > featureIndex ? 1 : -1);
     scheduleFeatureRotation();
   });
-  document.querySelector('#featurePages').append(control);
+  featurePages.append(control);
 }
 
-const rotationText = {
-  en: ['Pause automatic rotation', 'Start automatic rotation'],
-  de: ['Automatischen Wechsel pausieren', 'Automatischen Wechsel starten'],
-  es: ['Pausar la rotación automática', 'Iniciar la rotación automática'],
-  fr: ['Mettre en pause le défilement automatique', 'Lancer le défilement automatique'],
-  pt: ['Pausar a rotação automática', 'Iniciar a rotação automática'],
-  tr: ['Otomatik geçişi duraklat', 'Otomatik geçişi başlat'],
-  ru: ['Приостановить автоматическую смену', 'Запустить автоматическую смену'],
-  'zh-CN': ['暂停自动切换', '开始自动切换'],
-  ja: ['自動切り替えを一時停止', '自動切り替えを開始'],
-  ko: ['자동 전환 일시 정지', '자동 전환 시작']
-};
-const featureControls = document.querySelector('.feature-controls');
-const featurePlay = document.querySelector('#featurePlay');
 const featureMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const featureReader = document.querySelector('#reader');
 const featureDelay = 8000;
-let rotateFeatures = !featureMotion.matches;
 let featureInView = false;
 let featureHovered = false;
 let featureTimer;
@@ -234,26 +221,19 @@ function finishFeatureTouch(event, cancelled = false) {
   scheduleFeatureRotation();
 }
 
-function updateRotationButton() {
-  const label = rotationText[homepageLanguage][rotateFeatures ? 0 : 1];
-  featurePlay.setAttribute('aria-label', label);
-  featurePlay.title = label;
-  featurePlay.firstElementChild.textContent = rotateFeatures ? 'Ⅱ' : '▶';
-}
-
 function scheduleFeatureRotation() {
   clearTimeout(featureTimer);
   const focus = document.activeElement;
-  if (!rotateFeatures || !featureInView || featureHovered || touchStart || document.hidden ||
+  if (featureMotion.matches || !featureInView || featureHovered || touchStart || document.hidden ||
       featureReader.open || featureFiles.length < 2 ||
-      featureCard.contains(focus) || featureControls.contains(focus)) return;
+      featureCard.contains(focus) || featurePages.contains(focus)) return;
   featureTimer = setTimeout(() => {
     slideToFeature(adjacentFeature(1), 1);
     scheduleFeatureRotation();
   }, featureDelay);
 }
 
-for (const area of [featureCard, featureControls]) {
+for (const area of [featureCard, featurePages]) {
   area.addEventListener('pointerenter', event => {
     if (event.pointerType === 'touch') return;
     featureHovered = true;
@@ -295,17 +275,9 @@ featureCard.addEventListener('click', event => {
   event.stopPropagation();
 }, {capture:true});
 
-featurePlay.hidden = featureFiles.length < 2;
-featurePlay.addEventListener('click', () => {
-  rotateFeatures = !rotateFeatures;
-  updateRotationButton();
-  scheduleFeatureRotation();
-});
-featureMotion.addEventListener('change', event => {
+featureMotion.addEventListener('change', () => {
   touchStart = undefined;
   resetFeatureSlides();
-  rotateFeatures = !event.matches;
-  updateRotationButton();
   scheduleFeatureRotation();
 });
 document.addEventListener('visibilitychange', scheduleFeatureRotation);
@@ -555,7 +527,6 @@ function applyHomepageLanguage(code) {
   renderFeatureText();
   setFeature(featureIndex);
   resetFeatureSlides();
-  updateRotationButton();
   scheduleFeatureRotation();
 }
 

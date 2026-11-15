@@ -299,27 +299,6 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 /* Keep the full featured artwork visible, including the original headline. */
 .featured-cover img { object-fit:contain; object-position:center; }
 
-.feature-controls {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-}
-.feature-play {
-  display:grid;
-  place-items:center;
-  width:34px;
-  height:34px;
-  padding:0;
-  border:0;
-  border-radius:50%;
-  background:transparent;
-  color:var(--cyan);
-  font:700 15px/1 system-ui,sans-serif;
-}
-.feature-play[hidden] { display:none; }
-.feature-play:hover { background:#ffffff12; }
-
 @media (max-width:767px) and (orientation:portrait) {
   .site-nav { position:relative; z-index:11; flex-wrap:nowrap; justify-content:space-between; gap:12px; min-height:60px; padding:7px 16px; }
   .nav-toggle {
