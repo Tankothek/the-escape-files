@@ -80,6 +80,14 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
   margin:0 auto 10px;
   filter:drop-shadow(0 0 12px #43c6ef40);
 }
+@media (prefers-reduced-motion:no-preference) {
+  .hero-mark { animation:hero-logo-pulse 5s ease-in-out 1s infinite; }
+}
+@keyframes hero-logo-pulse {
+  0%, 100% { transform:scale(1); filter:drop-shadow(0 0 12px #43c6ef40); }
+  33% { transform:scale(1.045); filter:drop-shadow(0 0 18px #43c6ef88); }
+  66% { transform:scale(1); filter:drop-shadow(0 0 12px #43c6ef40); }
+}
 .front-title h1 { margin:0; font-size:clamp(37px,5.55vw,90px); line-height:1.04; font-weight:700; letter-spacing:-.045em; font-style:italic; }
 .front-title em { color:#ffd36b; background:var(--gold-fill); background-clip:text; -webkit-text-fill-color:transparent; }
 .front-title p { color:#e1e5ed; font-size:clamp(13px,1.59vw,25px); margin:.55em 0 0; }
