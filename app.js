@@ -491,7 +491,7 @@ $('#readerContent').addEventListener('click', event => {
 });
 $('#closeCover').addEventListener('click', () => $('#coverViewer').close());
 $('#coverViewer').addEventListener('click', event => {
-  if (event.target === event.currentTarget) event.currentTarget.close();
+  if (event.target === event.currentTarget || event.target.matches('img')) event.currentTarget.close();
 });
 $('#reader').addEventListener('close',() => {
   if ($('#coverViewer').open) $('#coverViewer').close();

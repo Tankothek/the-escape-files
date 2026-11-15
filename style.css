@@ -654,7 +654,7 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
   overflow:hidden;
 }
 .cover-viewer[open] { display:grid; place-items:center; grid-template: minmax(0,1fr) / minmax(0,1fr); }
-.cover-viewer img { display:block; max-width:100%; max-height:100%; object-fit:contain; }
+.cover-viewer img { display:block; max-width:100%; max-height:100%; object-fit:contain; cursor:zoom-out; }
 .cover-viewer .close {
   position:absolute;
   inset:max(4px, env(safe-area-inset-top)) max(4px, env(safe-area-inset-right)) auto auto;
