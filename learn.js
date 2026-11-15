@@ -147,6 +147,19 @@ const learnTranslations = {
   ]
 };
 
+const fullArticleLabels = {
+  en: 'Read full article on EscapeHub',
+  de: 'Ganzen Artikel lesen (automatisch übersetzt)',
+  es: 'Leer el artículo completo (traducción automática)',
+  fr: 'Lire l’article complet (traduction automatique)',
+  pt: 'Ler o artigo completo (tradução automática)',
+  tr: 'Makalenin tamamını oku (otomatik çeviri)',
+  ru: 'Читать статью целиком (автоматический перевод)',
+  'zh-CN': '阅读完整文章（自动翻译）',
+  ja: '記事全文を読む（自動翻訳）',
+  ko: '전체 글 읽기(자동 번역)'
+};
+
 function renderLearn(language) {
   const [[title, linkLabel], ...questions] = learnTranslations[language];
   document.querySelector('#learnNav').textContent = title;
@@ -156,10 +169,19 @@ function renderLearn(language) {
   list.innerHTML = questions.map(([question, ...paragraphs], index) => {
     const slug = learnArticles[index];
     const id = 'learn-' + slug;
+    const original = 'https://escapehub.ai/learn/' + slug;
+    const fullArticle = language === 'en'
+      ? original
+      : 'https://escapehub-ai.translate.goog/learn/' + slug + '?' + new URLSearchParams({
+        _x_tr_sl: 'en', _x_tr_tl: language, _x_tr_hl: language
+      });
     return `<details id="${id}"${openIds.has(id) ? ' open' : ''}>
       <summary>${escapeHTML(question)}</summary>
       <div>${paragraphs.map(paragraph => `<p>${escapeHTML(paragraph)}</p>`).join('')}
-        <div class="learn-source">${externalLink('https://escapehub.ai/learn/' + slug, linkLabel)}</div>
+        <div class="learn-source">
+          <div class="learn-full-article">${externalLink(fullArticle, fullArticleLabels[language])}</div>
+          ${language === 'en' ? '' : externalLink(original, linkLabel)}
+        </div>
       </div>
     </details>`;
   }).join('');

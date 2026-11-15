@@ -580,6 +580,8 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 .learn-list p { max-width:68ch; margin:0 0 10px; overflow-wrap:anywhere; }
 .learn-source { margin-top:14px; border-top:1px solid var(--line); }
 .learn-list a { display:inline-flex; align-items:center; gap:.35em; min-height:44px; color:#ffd074; font-size:.875rem; }
+.learn-full-article a { font-weight:700; }
+.learn-source > a { color:var(--muted); }
 .learn-list a:hover { text-decoration:underline; }
 
 .nav-icon { display:none; }
