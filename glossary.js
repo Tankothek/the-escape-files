@@ -30,7 +30,7 @@ const glossaryTranslations = {
     ['Buyback', 'A project’s purchase of its own tokens from the market.']
   ],
   de: [
-    ['Glossar', 'Zuletzt gelesen'],
+    ['Begriffe erklärt', 'Zuletzt gelesen'],
     ['Whitelist', 'Eine Liste von Wallet-Adressen, die bei einem Start mit eingeschränktem Zugang kaufen dürfen.'],
     ['Sniper-Bot', 'Ein Programm, das versucht, einen Token direkt bei Handelsstart zu kaufen.'],
     ['On-Chain', 'Direkt auf einer Blockchain gespeichert oder ausgeführt.'],
