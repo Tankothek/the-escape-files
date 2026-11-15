@@ -1,5 +1,7 @@
 const bannerCanvas = document.querySelector('.hero-scene');
 const bannerContext = bannerCanvas.getContext('2d');
+const smokeCanvas = document.querySelector('.hero-smoke');
+const smokeContext = smokeCanvas.getContext('2d');
 const bannerMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const narrowBanner = matchMedia('(max-width:640px)');
 
@@ -13,63 +15,46 @@ if (bannerContext) {
   let bannerVisible = false;
   let bannerFrame;
   let lastFrame = -Infinity;
-  const smokeParticles = Array.from({length:220}, (_, index) => ({
-    phase:(index * .61803398875) % 1,
-    drift:Math.sin(index * 2.39),
-    curl:index * .71,
-    speed:.86 + .24 * Math.cos(index * 1.71)
-  }));
+  const artwork = new Image();
+  artwork.src = 'escapehub-token-hero.jpg';
+  const plume = document.createElement('canvas');
+  const plumeWidth = 368;
+  const plumeTop = 226;
+  const plumeHeight = 226;
+  plume.width = plumeWidth;
+  plume.height = plumeHeight;
+  const plumeContext = plume.getContext('2d');
+  const rightFade = plumeContext.createLinearGradient(270, 0, plumeWidth, 0);
+  rightFade.addColorStop(0, '#000');
+  rightFade.addColorStop(1, 'transparent');
+  const verticalFade = plumeContext.createLinearGradient(0, 0, 0, plumeHeight);
+  verticalFade.addColorStop(0, 'transparent');
+  verticalFade.addColorStop(.1, '#000');
+  verticalFade.addColorStop(.84, '#000');
+  verticalFade.addColorStop(1, 'transparent');
 
   function drawCoinSmoke(context, time) {
-    context.fillStyle = '#ffdb9b';
-    for (const {phase, drift, curl, speed} of smokeParticles) {
-      const age = (phase + time * .19 * speed) % 1;
-      const spread = 14 + 30 * age;
-      const x = 207 - 206 * age + drift * spread + Math.sin(age * 12 + curl) * spread * .45;
-      const y = 472 - 214 * age + Math.cos(age * 10 + curl) * spread * .6;
-      context.globalAlpha = .72 * Math.sin(Math.PI * age) * (1 - age * .65);
-      context.beginPath();
-      context.arc(x, y, 1, 0, Math.PI * 2);
-      context.fill();
+    if (!artwork.naturalWidth) return;
+    const sourceScale = artwork.naturalWidth / artWidth;
+    plumeContext.clearRect(0, 0, plumeWidth, plumeHeight);
+    for (let row = 0; row < plumeHeight; row++) {
+      const y = plumeTop + row;
+      const lift = 1 - row / plumeHeight;
+      const shift = lift * (4 * Math.sin(y * .058 - time * 2.1) + 2.5 * Math.sin(y * .11 - time * 3));
+      const sourceY = y * sourceScale;
+      if (shift > 0) {
+        plumeContext.drawImage(artwork, 0, sourceY, sourceScale, sourceScale, 0, row, shift, 1);
+      }
+      plumeContext.drawImage(artwork, 0, sourceY, (plumeWidth + 8) * sourceScale, sourceScale,
+        shift, row, plumeWidth + 8, 1);
     }
-    context.globalAlpha = 1;
-  }
-
-  function drawCoinLayers(context, time) {
-    const rise = (1 - Math.cos(time * Math.PI / 3.8)) / 2;
-    for (const [lift, radius] of [[13, 70], [28, 65]]) {
-      const travel = rise * lift;
-      if (travel < 1) continue;
-      const y = 477 - travel;
-      const shift = rise * lift * .12;
-      const x = 208 + shift;
-      const rim = context.createLinearGradient(x - radius, y, x + radius, y);
-      rim.addColorStop(0, '#704019');
-      rim.addColorStop(.28, '#ffd27b');
-      rim.addColorStop(.52, '#a45b1e');
-      rim.addColorStop(.84, '#ffe199');
-      rim.addColorStop(1, '#a86a29');
-      const face = context.createLinearGradient(x - radius, y + 14, x + radius, y - 14);
-      face.addColorStop(0, '#956124');
-      face.addColorStop(.44, '#e8ac55');
-      face.addColorStop(.58, '#ffe5a0');
-      face.addColorStop(.72, '#ca8d3e');
-      face.addColorStop(1, '#edbe70');
-
-      context.globalAlpha = Math.min(1, travel / 4);
-      context.beginPath();
-      context.ellipse(x, y + 3.5, radius, 16, 0, 0, Math.PI * 2);
-      context.fillStyle = rim;
-      context.fill();
-      context.beginPath();
-      context.ellipse(x, y, radius, 16, 0, 0, Math.PI * 2);
-      context.fillStyle = face;
-      context.fill();
-      context.strokeStyle = '#ffdc94';
-      context.lineWidth = 1.2;
-      context.stroke();
-    }
-    context.globalAlpha = 1;
+    plumeContext.globalCompositeOperation = 'destination-in';
+    plumeContext.fillStyle = rightFade;
+    plumeContext.fillRect(0, 0, plumeWidth, plumeHeight);
+    plumeContext.fillStyle = verticalFade;
+    plumeContext.fillRect(0, 0, plumeWidth, plumeHeight);
+    plumeContext.globalCompositeOperation = 'source-over';
+    context.drawImage(plume, 0, plumeTop);
   }
 
   function drawRisingChart(context, time) {
@@ -137,13 +122,14 @@ if (bannerContext) {
         : Math.max(bannerWidth / artWidth, bannerHeight / artHeight);
       const left = (bannerWidth - artWidth * scale) / 2;
       const top = (bannerHeight - artHeight * scale) * (narrowBanner.matches ? 1 : .96);
-      bannerContext.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-      bannerContext.clearRect(0, 0, bannerWidth, bannerHeight);
-      bannerContext.translate(left, top);
-      bannerContext.scale(scale, scale);
-      drawCoinSmoke(bannerContext, now / 1000);
-      drawCoinLayers(bannerContext, now / 1000);
-      drawRisingChart(bannerContext, now / 1000);
+      for (const [context, draw] of [[smokeContext, drawCoinSmoke], [bannerContext, drawRisingChart]]) {
+        if (!context) continue;
+        context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+        context.clearRect(0, 0, bannerWidth, bannerHeight);
+        context.translate(left, top);
+        context.scale(scale, scale);
+        draw(context, now / 1000);
+      }
     }
     bannerFrame = requestAnimationFrame(animateBanner);
   }
@@ -159,8 +145,10 @@ if (bannerContext) {
   new ResizeObserver(([entry]) => {
     ({width:bannerWidth, height:bannerHeight} = entry.contentRect);
     pixelRatio = Math.min(devicePixelRatio || 1, 2);
-    bannerCanvas.width = Math.round(bannerWidth * pixelRatio);
-    bannerCanvas.height = Math.round(bannerHeight * pixelRatio);
+    for (const canvas of [bannerCanvas, smokeCanvas]) {
+      canvas.width = Math.round(bannerWidth * pixelRatio);
+      canvas.height = Math.round(bannerHeight * pixelRatio);
+    }
   }).observe(bannerCanvas);
   new IntersectionObserver(([entry]) => {
     bannerVisible = entry.isIntersecting;

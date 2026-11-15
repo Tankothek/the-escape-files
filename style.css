@@ -70,14 +70,21 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
   padding:clamp(29px,4vw,58px) 18px 90px;
   border-bottom:1px solid #9c762f;
   border-radius:0 0 16px 16px;
-  background:
-    linear-gradient(180deg,#080b10b8 0%,#080b1088 39%,transparent 74%,#080b106e 100%),
-    #0a101a url(escapehub-token-hero.jpg) center 96% / cover no-repeat;
+  background:#0a101a url(escapehub-token-hero.jpg) center 96% / cover no-repeat;
 }
-.hero-scene { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
-.front-title { position:relative; text-align:center; max-width:100%; text-shadow:0 2px 18px #080b10; }
+.front-hero::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(180deg,#080b10b8 0%,#080b1088 39%,transparent 74%,#080b106e 100%);
+}
+.hero-scene,.hero-smoke { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+.hero-scene { z-index:2; }
+.front-title { position:relative; z-index:3; text-align:center; max-width:100%; text-shadow:0 2px 18px #080b10; }
 @media (prefers-reduced-motion:reduce) {
-  .hero-scene { display:none; }
+  .hero-scene,.hero-smoke { display:none; }
 }
 .hero-logo-link { display:block; width:fit-content; margin:0 auto 10px; border-radius:8px; }
 .hero-mark {
@@ -251,8 +258,8 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
   .front-hero {
     min-height:224px;
     padding:26px 10px 92px;
-    background-position:center, center bottom;
-    background-size:auto, 100% auto;
+    background-position:center bottom;
+    background-size:100% auto;
   }
   .front-title h1 { font-size:clamp(24px,6.45vw,40px); }
   .front-title p { font-size:12px; }
