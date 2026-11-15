@@ -583,25 +583,15 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 .learn-list .learn-local-link { font-weight:700; }
 .learn-list a:hover { text-decoration:underline; }
 
-.learn-page { max-width:1150px; margin-inline:auto; }
-.learn-page-bar .language-picker { margin-inline-start:auto; }
-.learn-page h1 { margin:0; font-size:clamp(30px,5vw,54px); letter-spacing:-.035em; }
-.learn-reading-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(230px,32%); gap:20px; align-items:start; }
-.learn-article,.learn-topics { padding:clamp(16px,3vw,32px); border:1px solid var(--line); border-radius:12px; background:var(--surface); overflow-wrap:anywhere; }
-.learn-article h2 { margin:0; font-size:clamp(23px,4vw,36px); text-wrap:balance; }
-.learn-editorial { color:var(--muted); font-size:.875rem; }
-#learnArticleText { max-width:65ch; color:#d8ddea; line-height:1.65; }
-.learn-article .learn-source a { display:inline-flex; align-items:center; min-height:44px; color:#ffd074; font-size:.875rem; }
-.learn-article a:hover,.learn-topics a:hover { text-decoration:underline; }
-.learn-topics h2 { margin:0 0 10px; font-size:1.125rem; }
-.learn-topics ul { display:grid; gap:2px; list-style:none; margin:0; padding:0; }
-.learn-topics a { display:flex; align-items:center; min-height:44px; padding:7px 9px; border-radius:6px; }
-.learn-topics a[aria-current] { color:#ffd074; background:#ffd07414; }
-@media (max-width:720px) {
-  .learn-reading-layout { grid-template-columns:minmax(0,1fr); }
-  .learn-page-bar { justify-content:space-between; }
-  .learn-page-bar select { font-size:16px; }
-}
+#learn h3 { margin:20px 0 12px; }
+#learnQuestionsTitle { padding-top:16px; }
+.learn-steps { max-width:68ch; padding-inline-start:1.5em; margin:0 0 12px; }
+.learn-steps li { padding-inline-start:.35em; margin-bottom:8px; }
+.learn-steps li::marker { color:#ffd074; font-weight:700; }
+.learn-file-links { display:flex; flex-wrap:wrap; gap:4px 8px; }
+.learn-file-links a { border:1px solid var(--line); border-radius:7px; padding:0 10px; }
+.learn-source { display:grid; justify-items:start; }
+
 
 .nav-icon { display:none; }
 .site-nav .nav-home { display:inline; margin-inline-end:.25em; }

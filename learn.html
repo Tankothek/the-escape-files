@@ -3,42 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#090b12">
-  <title>Questions &amp; answers | The Escape Files</title>
-  <link rel="stylesheet" href="style.css?v=40">
-  <script src="learn.js?v=4" defer></script>
+  <title>The Escape Files</title>
+  <script>
+    const destination = new URL('./', location.href);
+    const language = new URL(location.href).searchParams.get('lang');
+    if (language) destination.searchParams.set('lang', language);
+    destination.hash = /^#learn-[a-z-]+$/.test(location.hash) ? location.hash : '#learn';
+    location.replace(destination);
+  </script>
 </head>
-<body>
-  <header class="masthead">
-    <div class="site-nav learn-page-bar">
-      <a id="learnHome" href="./">← Home</a>
-      <label class="language-picker"><span aria-hidden="true">◎</span>
-        <select id="learnLanguage" aria-label="Language">
-          <option value="en">English</option><option value="de">Deutsch</option>
-          <option value="es">Español</option><option value="fr">Français</option>
-          <option value="pt">Português</option><option value="tr">Türkçe</option>
-          <option value="ru">Русский</option><option value="zh-CN">简体中文</option>
-          <option value="ja">日本語</option><option value="ko">한국어</option>
-        </select>
-      </label>
-    </div>
-  </header>
-  <main id="learnPage" class="library learn-page">
-    <div class="section-head"><h1 id="learnPageTitle">Questions &amp; answers</h1></div>
-    <div class="learn-reading-layout">
-      <article class="learn-article" aria-labelledby="learnArticleTitle">
-        <h2 id="learnArticleTitle" tabindex="-1"></h2>
-        <p id="learnEditorial" class="learn-editorial"></p>
-        <div id="learnArticleText"></div>
-        <div class="learn-source">
-          <a id="learnOriginal" href="https://escapehub.ai/learn/" target="_blank" rel="noopener noreferrer">Official source (English) ↗</a>
-        </div>
-      </article>
-      <nav class="learn-topics" aria-labelledby="learnTopicsTitle">
-        <h2 id="learnTopicsTitle">Topics</h2>
-        <ul id="learnTopics"></ul>
-      </nav>
-    </div>
-  </main>
-</body>
+<body><a href="./#learn">The Escape Files</a></body>
 </html>

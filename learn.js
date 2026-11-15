@@ -167,96 +167,108 @@ function initialHomepageLanguage() {
   return 'en';
 }
 
-const learnPageLabels = {
-  en: ['Read on The Escape Files', 'Home', 'Language', 'Topics', 'Editorial explanation by The Escape Files'],
-  de: ['Auf The Escape Files lesen', 'Startseite', 'Sprache', 'Themen', 'Redaktionelle Erklärung von The Escape Files'],
-  es: ['Leer en The Escape Files', 'Inicio', 'Idioma', 'Temas', 'Explicación editorial de The Escape Files'],
-  fr: ['Lire sur The Escape Files', 'Accueil', 'Langue', 'Thèmes', 'Explication de la rédaction de The Escape Files'],
-  pt: ['Ler em The Escape Files', 'Início', 'Idioma', 'Temas', 'Explicação editorial de The Escape Files'],
-  tr: ['The Escape Files’ta oku', 'Ana sayfa', 'Dil', 'Konular', 'The Escape Files editörlerinin açıklaması'],
-  ru: ['Читать на The Escape Files', 'Главная', 'Язык', 'Темы', 'Пояснение редакции The Escape Files'],
-  'zh-CN': ['在 The Escape Files 阅读', '首页', '语言', '主题', 'The Escape Files 编辑解读'],
-  ja: ['The Escape Files で読む', 'ホーム', '言語', 'トピック', 'The Escape Files 編集部による解説'],
-  ko: ['The Escape Files에서 읽기', '홈', '언어', '주제', 'The Escape Files 편집팀의 설명']
+const practicalLearnTranslations = {
+  "en": [
+    ["Guides", "Quick answers"],
+    ["How do I buy my first token?", "Open the integrated wallet and check the network used by the token you want to buy.", "Add funds. If you use a card or mobile payment, review the amount and the payment provider’s fee before confirming.", "Search for the project and verify the token’s network and contract address against the project’s official information. A familiar name or logo can be copied.", "Open the trade screen and review the token, amount and quote. With signless trading, tapping Buy may submit the order immediately."],
+    ["How do I create a token?", "Choose the network where your token will launch. Consider where your community already has wallets and funds.", "Enter the token’s name, symbol and description, and add an image. Review the details before deployment.", "Review the available launch settings, such as who can buy at the start and how any creator fee is allocated.", "Deploy the token on the selected network and share its official link or contract address so people can find the correct token."],
+    ["What happens after a token launches?", "During initial trading, the bonding curve sets the price according to buying and selling activity. The price can change between trades.", "If the curve reaches its target, trading moves to an exchange pool. EscapeHub documents EscapeSwap for Solana and Uniswap v4 for supported EVM networks.", "The token stays on its network. The trading venue and fee schedule can change after the move.", "The creator’s share and the protocol’s share are separate. Check the applicable fee for the token’s current trading stage."]
+  ],
+  "de": [
+    ["Schritt für Schritt", "Kurze Antworten"],
+    ["Wie kaufe ich zum ersten Mal einen Token?", "Öffne die integrierte Wallet und prüfe, auf welchem Netzwerk der gewünschte Token gehandelt wird.", "Lade Guthaben auf. Bei Kartenzahlung oder mobiler Zahlung siehst du den Betrag und die Gebühr des Zahlungsanbieters vor der Bestätigung.", "Suche nach dem Projekt und gleiche Netzwerk und Vertragsadresse mit den offiziellen Angaben des Projekts ab. Name und Logo lassen sich kopieren.", "Prüfe im Handelsfenster Token, Betrag und das angezeigte Angebot. Bei Signless Trading kann ein Tipp auf „Kaufen“ den Auftrag direkt auslösen."],
+    ["Wie erstelle ich einen Token?", "Wähle das Startnetzwerk. Berücksichtige, auf welchem Netzwerk deine Community bereits Wallets und Guthaben hat.", "Gib Name, Kürzel und Beschreibung ein und lade ein Bild hoch. Prüfe diese Angaben vor dem Veröffentlichen.", "Prüfe die verfügbaren Starteinstellungen, etwa wer anfangs kaufen darf und wie der Gebührenanteil für Ersteller verteilt wird.", "Veröffentliche den Token auf dem gewählten Netzwerk. Teile den offiziellen Link oder die Vertragsadresse, damit andere den richtigen Token finden."],
+    ["Was passiert nach dem Tokenstart?", "Zu Beginn bestimmt die Bonding Curve den Preis anhand der Käufe und Verkäufe. Der Preis kann sich zwischen zwei Trades ändern.", "Erreicht die Kurve ihr Ziel, wechselt der Handel in einen Börsenpool. EscapeHub nennt EscapeSwap für Solana und Uniswap v4 für unterstützte EVM-Netzwerke.", "Der Token bleibt auf seinem Netzwerk. Handelsplatz und Gebühren können sich beim Wechsel ändern.", "Ersteller und Protokoll können unterschiedliche Anteile erhalten. Welche Gebühr gilt, hängt von der aktuellen Handelsphase ab."]
+  ],
+  "es": [
+    ["Guías paso a paso", "Respuestas breves"],
+    ["¿Cómo compro mi primer token?", "Abre la billetera integrada y comprueba en qué red se negocia el token que quieres comprar.", "Añade fondos. Si pagas con tarjeta o un medio móvil, revisa el importe y la comisión antes de confirmar.", "Busca el proyecto y verifica la red y la dirección del contrato con la información oficial. El nombre y el logotipo pueden copiarse.", "Revisa el token, el importe y la cotización. Con las operaciones sin ventanas de confirmación, pulsar Comprar puede enviar la orden de inmediato."],
+    ["¿Cómo creo un token?", "Elige la red de lanzamiento. Ten en cuenta dónde tiene ya tu comunidad sus billeteras y fondos.", "Indica el nombre, el símbolo y la descripción, y sube una imagen. Revisa los datos antes de publicar.", "Comprueba los ajustes de lanzamiento disponibles, como quién puede comprar al principio y cómo se reparte la comisión del creador.", "Publica el token en la red elegida y comparte su enlace oficial o dirección del contrato para que los demás puedan identificarlo."],
+    ["¿Qué sucede después del lanzamiento?", "Durante la fase inicial, la curva de vinculación determina el precio según las compras y ventas. El precio puede cambiar entre operaciones.", "Si la curva alcanza su objetivo, la negociación pasa a un fondo en un mercado descentralizado. EscapeHub indica EscapeSwap en Solana y Uniswap v4 en las redes EVM compatibles.", "El token permanece en su red. El mercado y las comisiones pueden cambiar tras la transición.", "El creador y el protocolo reciben partes distintas. Comprueba la comisión que corresponde a la fase actual."]
+  ],
+  "fr": [
+    ["Guides pas à pas", "Réponses courtes"],
+    ["Comment acheter mon premier jeton ?", "Ouvrez le portefeuille intégré et vérifiez sur quel réseau le jeton qui vous intéresse est échangé.", "Approvisionnez le portefeuille. Par carte ou paiement mobile, vérifiez le montant et les frais avant de valider.", "Recherchez le projet et comparez le réseau et l’adresse du contrat avec ses informations officielles. Un nom ou un logo peut être copié.", "Vérifiez le jeton, le montant et le prix proposé. Sans fenêtre de confirmation par opération, appuyer sur Acheter peut envoyer l’ordre immédiatement."],
+    ["Comment créer un jeton ?", "Choisissez le réseau de lancement. Tenez compte des réseaux sur lesquels votre communauté a déjà des portefeuilles et des fonds.", "Renseignez le nom, le symbole et la description, et ajoutez une image. Relisez les informations avant le déploiement.", "Vérifiez les options de lancement disponibles, notamment qui peut acheter au départ et comment la part des frais du créateur est distribuée.", "Déployez le jeton sur le réseau choisi et partagez son lien officiel ou son adresse de contrat pour qu’il soit identifiable."],
+    ["Que se passe-t-il après le lancement ?", "Au début, la courbe de prix tient compte des achats et des ventes. Le prix peut varier d’une transaction à l’autre.", "Si la courbe atteint son objectif, les échanges passent dans un pool sur une plateforme décentralisée. EscapeHub indique EscapeSwap sur Solana et Uniswap v4 sur les réseaux EVM pris en charge.", "Le jeton reste sur son réseau. Le lieu d’échange et les frais peuvent changer au moment de la transition.", "Le créateur et le protocole peuvent recevoir des parts différentes. Consultez le tarif de la phase en cours."]
+  ],
+  "pt": [
+    ["Guias passo a passo", "Respostas rápidas"],
+    ["Como comprar meu primeiro token?", "Abra a carteira integrada e confira em qual rede o token desejado é negociado.", "Adicione saldo. Ao pagar com cartão ou por um meio móvel, confira o valor e a taxa antes de confirmar.", "Busque o projeto e compare a rede e o endereço do contrato com os dados oficiais. O nome e o logotipo podem ser copiados.", "Confira o token, o valor e a cotação. Na negociação sem janela de confirmação, tocar em Comprar pode enviar a ordem imediatamente."],
+    ["Como criar um token?", "Escolha a rede de lançamento. Considere onde sua comunidade já tem carteiras e saldo.", "Informe o nome, o símbolo e a descrição e envie uma imagem. Confira tudo antes de implantar.", "Revise as configurações disponíveis, como quem pode comprar no início e como a parcela das taxas do criador é distribuída.", "Implante o token na rede escolhida e compartilhe o link oficial ou o endereço do contrato para ajudar as pessoas a identificá-lo."],
+    ["O que acontece após o lançamento?", "Na fase inicial, uma curva determina o preço com base em compras e vendas. O preço pode mudar entre operações.", "Se a curva atingir a meta, as negociações passam para um pool numa corretora descentralizada. A EscapeHub indica EscapeSwap na Solana e Uniswap v4 nas redes EVM compatíveis.", "O token permanece na rede. O local de negociação e as taxas podem mudar após a transição.", "Criador e protocolo podem receber parcelas diferentes. Confira a taxa da etapa atual de negociação."]
+  ],
+  "tr": [
+    ["Adım adım rehberler", "Kısa yanıtlar"],
+    ["İlk tokenımı nasıl alırım?", "Entegre cüzdanı açın ve almak istediğiniz tokenın hangi ağda işlem gördüğünü kontrol edin.", "Bakiye ekleyin. Kartla veya mobil ödeme ile yükleme yaparken onaydan önce tutarı ve ücreti inceleyin.", "Projeyi arayın. Ağı ve sözleşme adresini projenin resmî bilgileriyle karşılaştırın. Ad ve logo kopyalanabilir.", "Tokenı, tutarı ve fiyat teklifini kontrol edin. Ayrı onay penceresi olmayan işlemlerde Al düğmesi emri hemen gönderebilir."],
+    ["Nasıl token oluştururum?", "Başlangıç ağını seçin. Topluluğunuzun hangi ağlarda cüzdanı ve bakiyesi olduğunu göz önünde bulundurun.", "Adı, sembolü ve açıklamayı girip bir görsel ekleyin. Yayımlamadan önce bilgileri kontrol edin.", "Başlangıçta kimlerin alım yapabileceği ve üretici payının nasıl dağıtılacağı gibi mevcut ayarları inceleyin.", "Tokenı seçtiğiniz ağda yayımlayın. Doğru tokenın bulunabilmesi için resmî bağlantıyı veya sözleşme adresini paylaşın."],
+    ["Token piyasaya çıktıktan sonra ne olur?", "İlk aşamada fiyat eğrisi, alım ve satımlara göre fiyatı belirler. İşlemler arasında fiyat değişebilir.", "Eğri hedefe ulaşırsa işlemler bir borsa havuzuna geçer. EscapeHub, Solana için EscapeSwap’ı ve desteklenen EVM ağları için Uniswap v4’ü belirtiyor.", "Token kendi ağında kalır. İşlem yeri ve ücretler geçişten sonra değişebilir.", "Üreticinin ve protokolün payları ayrıdır. Geçerli ücreti tokenın işlem aşamasına göre kontrol edin."]
+  ],
+  "ru": [
+    ["Пошаговые инструкции", "Краткие ответы"],
+    ["Как купить первый токен?", "Откройте встроенный кошелёк и проверьте, в какой сети торгуется нужный токен.", "Пополните кошелёк. При оплате картой или через мобильный сервис проверьте сумму и комиссию перед подтверждением.", "Найдите проект и сверяйте сеть и адрес контракта с официальными данными проекта. Название и логотип можно скопировать.", "Проверьте токен, сумму и котировку. Без отдельного окна подтверждения нажатие «Купить» может сразу отправить заявку."],
+    ["Как создать токен?", "Выберите сеть запуска. Учтите, в какой сети у сообщества уже есть кошельки и средства.", "Укажите название, символ и описание и добавьте изображение. Проверьте данные перед выпуском.", "Проверьте доступные параметры запуска, например кто сможет покупать вначале и как распределяется доля комиссии создателя.", "Выпустите токен в выбранной сети и поделитесь его официальной ссылкой или адресом контракта."],
+    ["Что происходит после запуска токена?", "На первом этапе кривая ценообразования определяет цену по покупкам и продажам. Цена может меняться между сделками.", "Если кривая достигает цели, торги переходят в биржевой пул. EscapeHub указывает EscapeSwap для Solana и Uniswap v4 для поддерживаемых сетей EVM.", "Токен остаётся в своей сети. Торговая площадка и комиссии после перехода могут измениться.", "Создатель и протокол получают разные доли. Смотрите комиссию для текущего этапа торгов."]
+  ],
+  "zh-CN": [
+    ["分步指南", "简明问答"],
+    ["如何购买第一个代币？", "打开内置钱包，查看你想购买的代币在哪个网络上交易。", "为钱包充值。使用银行卡或移动支付时，在确认前检查金额和支付服务商的费用。", "搜索项目，并通过项目的官方信息核对网络和合约地址。名称与标志可能被仿冒。", "核对代币、金额和报价。使用免弹窗确认交易时，点击买入可能立即提交订单。"],
+    ["如何创建代币？", "选择代币发行网络。考虑你的社区已经在哪些网络上拥有钱包和资金。", "填写名称、符号和描述，并上传图片。部署前核对信息。", "查看可用的发行设置，例如初期购买资格以及创建者手续费份额的分配方式。", "在选定网络上部署代币，分享官方链接或合约地址，方便他人找到正确的代币。"],
+    ["代币发行后会发生什么？", "初期交易时，联合曲线会根据买卖活动确定价格。两笔交易之间的价格可能变化。", "曲线达到目标后，交易会转入交易池。EscapeHub 提到 Solana 上的 EscapeSwap，以及受支持的 EVM 网络上的 Uniswap v4。", "代币仍在原网络上。交易场所和费用可能随交易阶段转换而变化。", "创建者与协议的手续费份额分别计算。请按代币当前的交易阶段查看适用费率。"]
+  ],
+  "ja": [
+    ["手順ガイド", "短い回答"],
+    ["初めてトークンを買うには？", "内蔵ウォレットを開き、購入したいトークンがどのネットワークで取引されているか確認します。", "入金します。カードやモバイル決済を使う場合は、確定前に金額と決済事業者の手数料を確認します。", "プロジェクトを検索し、ネットワークとコントラクトアドレスを公式情報と照合します。名前やロゴは模倣されることがあります。", "トークン、金額、提示価格を確認します。確認画面のない取引では、購入ボタンを押すとすぐに注文される場合があります。"],
+    ["トークンを作成するには？", "ローンチするネットワークを選びます。コミュニティがウォレットや資金を持っているネットワークを考慮しましょう。", "名前・シンボル・説明を入力し、画像を追加します。デプロイ前に内容を確認します。", "最初に購入できる人や作成者の手数料の配分など、利用できるローンチ設定を確認します。", "選んだネットワークにデプロイし、公式リンクやコントラクトアドレスを共有します。"],
+    ["ローンチ後はどうなりますか？", "初期取引では、売買に応じてボンディングカーブが価格を決めます。取引の間に価格が変わることがあります。", "カーブが目標に達すると、取引は取引所のプールに移ります。EscapeHub は Solana では EscapeSwap、対応する EVM ネットワークでは Uniswap v4 を案内しています。", "トークンは同じネットワークにとどまります。移行後は取引場所や手数料が変わることがあります。", "作成者とプロトコルの取り分は別々です。現在の取引段階に適用される手数料を確認してください。"]
+  ],
+  "ko": [
+    ["단계별 안내", "짧은 답변"],
+    ["첫 토큰은 어떻게 사나요?", "내장 지갑을 열고 구매하려는 토큰이 어느 네트워크에서 거래되는지 확인합니다.", "지갑을 충전합니다. 카드나 모바일 결제를 사용할 때는 확정 전에 금액과 결제 수수료를 확인합니다.", "프로젝트를 검색하고 공식 정보에서 네트워크와 계약 주소를 대조합니다. 이름과 로고는 모방될 수 있습니다.", "토큰, 금액, 견적을 확인합니다. 별도의 확인 팝업이 없는 거래에서는 매수 버튼을 누르면 주문이 바로 제출될 수 있습니다."],
+    ["토큰은 어떻게 만드나요?", "출시할 네트워크를 고릅니다. 커뮤니티가 이미 지갑과 자금을 보유한 네트워크를 고려합니다.", "이름, 심볼, 설명을 입력하고 이미지를 올립니다. 배포 전에 정보를 확인합니다.", "출시 초기에 누가 매수할 수 있는지, 제작자 수수료를 어떻게 배분할지 등 가능한 설정을 확인합니다.", "선택한 네트워크에 토큰을 배포하고 공식 링크나 계약 주소를 공유합니다."],
+    ["토큰 출시 후에는 어떻게 되나요?", "초기 거래 단계에서는 본딩 커브가 매수와 매도에 따라 가격을 결정합니다. 거래 사이에 가격이 바뀔 수 있습니다.", "곡선이 목표에 도달하면 거래소 풀로 이동합니다. EscapeHub는 Solana에서는 EscapeSwap, 지원되는 EVM 네트워크에서는 Uniswap v4를 안내합니다.", "토큰은 같은 네트워크에 남습니다. 전환 후 거래 장소와 수수료는 달라질 수 있습니다.", "제작자 몫과 프로토콜 몫은 별개입니다. 현재 거래 단계에 적용되는 수수료를 확인합니다."]
+  ]
 };
 
-function learnPageUrl(language, slug) {
-  return 'learn.html?lang=' + encodeURIComponent(language) + (slug ? '#learn-' + slug : '');
-}
+const practicalLearnGuides = [
+  {slug:'first-purchase', files:[27, 28, 29, 30], sources:[8, 7]},
+  {slug:'token-creation', files:[11, 1, 4], sources:[1]},
+  {slug:'after-launch', files:[16, 18, 19, 20], sources:[3, 6]}
+];
 
 function renderLearn(language) {
-  const [[title], ...questions] = learnTranslations[language];
-  const [readLabel] = learnPageLabels[language];
-  const navLabel = document.querySelector('#learnNav');
-  navLabel.textContent = title;
-  navLabel.closest('a').href = learnPageUrl(language);
+  const [[title, sourceLabel], ...questions] = learnTranslations[language];
+  const [[guideTitle, questionsTitle], ...guides] = practicalLearnTranslations[language];
+  document.querySelector('#learnNav').textContent = title;
   document.querySelector('#learnTitle').textContent = title;
-  const list = document.querySelector('#learnList');
-  const openIds = new Set([...list.querySelectorAll('details[open]')].map(item => item.id));
-  list.innerHTML = questions.map(([question, introduction], index) => {
-    const slug = learnArticles[index];
-    const id = 'learn-' + slug;
-    return `<details id="${id}"${openIds.has(id) ? ' open' : ''}>
-      <summary>${escapeHTML(question)}</summary>
-      <div><p>${escapeHTML(introduction)}</p>
-        <a class="learn-local-link" href="${escapeHTML(learnPageUrl(language, slug))}">${escapeHTML(readLabel)} <span aria-hidden="true">→</span></a>
-      </div>
-    </details>`;
+  document.querySelector('#learnGuidesTitle').textContent = guideTitle;
+  document.querySelector('#learnQuestionsTitle').textContent = questionsTitle;
+  const openIds = new Set([...document.querySelectorAll('#learn details[open]')].map(item => item.id));
+  const disclosure = (itemId, heading, body) => `<details id="${itemId}"${openIds.has(itemId) || location.hash === '#' + itemId ? ' open' : ''}>
+    <summary>${escapeHTML(heading)}</summary><div>${body}</div>
+  </details>`;
+  const official = (index, label) => externalLink('https://escapehub.ai/learn/' + learnArticles[index], label);
+
+  document.querySelector('#learnGuides').innerHTML = guides.map(([heading, ...steps], index) => {
+    const guide = practicalLearnGuides[index];
+    const stepsHtml = steps.map(step => `<li>${escapeHTML(step)}</li>`).join('');
+    const fileLinks = guide.files.map(number => {
+      const file = files.find(candidate => candidate.n === number);
+      return file ? fileLink(file, archiveStrings[language].file + ' ' + file.id) : '';
+    }).join('');
+    const sources = guide.sources.map(source => official(source, sourceLabel + ' · ' + questions[source][0])).join('');
+    return disclosure('guide-' + guide.slug, heading, `<ol class="learn-steps">${stepsHtml}</ol>
+      <div class="learn-file-links">${fileLinks}</div><div class="learn-source">${sources}</div>`);
   }).join('');
+
+  document.querySelector('#learnList').innerHTML = questions.map(([question, ...paragraphs], index) =>
+    disclosure('learn-' + learnArticles[index], question,
+      paragraphs.map(paragraph => `<p>${escapeHTML(paragraph)}</p>`).join('') +
+      `<div class="learn-source">${official(index, sourceLabel)}</div>`)
+  ).join('');
 }
 
-const learnPage = document.querySelector('#learnPage');
-if (learnPage) {
-  const select = document.querySelector('#learnLanguage');
-  const heading = document.querySelector('#learnArticleTitle');
-  const topics = document.querySelector('#learnTopics');
-  function renderLearnPage() {
-    const language = initialHomepageLanguage();
-    const [[title, sourceLabel], ...questions] = learnTranslations[language];
-    const [, homeLabel, languageLabel, topicsLabel, editorialLabel] = learnPageLabels[language];
-    const active = Math.max(0, learnArticles.findIndex(slug => '#learn-' + slug === location.hash));
-    const [question, ...paragraphs] = questions[active];
-    document.documentElement.lang = language;
-    document.title = question + ' | The Escape Files';
-    select.value = language;
-    select.setAttribute('aria-label', languageLabel);
-    const home = document.querySelector('#learnHome');
-    home.textContent = '← ' + homeLabel;
-    home.href = './?lang=' + encodeURIComponent(language);
-    document.querySelector('#learnPageTitle').textContent = title;
-    document.querySelector('#learnTopicsTitle').textContent = topicsLabel;
-    document.querySelector('#learnEditorial').textContent = editorialLabel;
-    heading.textContent = question;
-    document.querySelector('#learnArticleText').replaceChildren(...paragraphs.map(text => {
-      const p = document.createElement('p');
-      p.textContent = text;
-      return p;
-    }));
-    const source = document.querySelector('#learnOriginal');
-    source.textContent = sourceLabel + ' ↗︎';
-    source.href = 'https://escapehub.ai/learn/' + learnArticles[active];
-    topics.replaceChildren(...questions.map(([name], index) => {
-      const link = document.createElement('a');
-      link.href = learnPageUrl(language, learnArticles[index]);
-      link.textContent = name;
-      if (index === active) link.setAttribute('aria-current', 'location');
-      const item = document.createElement('li');
-      item.append(link);
-      return item;
-    }));
-  }
-
-  select.addEventListener('change', () => {
-    const url = new URL(location.href);
-    url.searchParams.set('lang', select.value);
-    history.replaceState(history.state, '', url);
-    try { localStorage.setItem('tankothek-language', select.value); } catch {}
-    renderLearnPage();
-  });
-  window.addEventListener('hashchange', () => {
-    renderLearnPage();
-    heading.focus();
-    heading.scrollIntoView({block:'start'});
-  });
-  renderLearnPage();
-}
+window.addEventListener('hashchange', () => {
+  const item = document.getElementById(location.hash.slice(1));
+  if (item?.matches('#learn details')) item.open = true;
+});
