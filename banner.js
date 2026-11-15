@@ -19,8 +19,12 @@ if (bannerContext) {
   artwork.src = 'escapehub-token-hero.jpg';
   const plume = document.createElement('canvas');
   const plumeWidth = 368;
-  const plumeTop = 226;
-  const plumeHeight = 226;
+  const plumeTop = 180;
+  const plumeHeight = 243;
+  const plumeRise = 28;
+  const plumeDrift = 14;
+  const plumePeriod = 1.6;
+  const plumeOverlap = .4;
   plume.width = plumeWidth;
   plume.height = plumeHeight;
   const plumeContext = plume.getContext('2d');
@@ -33,21 +37,29 @@ if (bannerContext) {
   verticalFade.addColorStop(.84, '#000');
   verticalFade.addColorStop(1, 'transparent');
 
+  function drawPlumeFrame(age, opacity) {
+    const progress = age / (plumePeriod + plumeOverlap);
+    const sourceScale = artwork.naturalWidth / artWidth;
+    plumeContext.globalAlpha = opacity;
+    plumeContext.drawImage(artwork,
+      plumeDrift * progress * sourceScale, (plumeTop + plumeRise * progress) * sourceScale,
+      plumeWidth * sourceScale, plumeHeight * sourceScale,
+      0, 0, plumeWidth, plumeHeight);
+  }
+
   function drawCoinSmoke(context, time) {
     if (!artwork.naturalWidth) return;
-    const sourceScale = artwork.naturalWidth / artWidth;
     plumeContext.clearRect(0, 0, plumeWidth, plumeHeight);
-    for (let row = 0; row < plumeHeight; row++) {
-      const y = plumeTop + row;
-      const lift = 1 - row / plumeHeight;
-      const shift = lift * (4 * Math.sin(y * .058 - time * 2.1) + 2.5 * Math.sin(y * .11 - time * 3));
-      const sourceY = y * sourceScale;
-      if (shift > 0) {
-        plumeContext.drawImage(artwork, 0, sourceY, sourceScale, sourceScale, 0, row, shift, 1);
-      }
-      plumeContext.drawImage(artwork, 0, sourceY, (plumeWidth + 8) * sourceScale, sourceScale,
-        shift, row, plumeWidth + 8, 1);
+    const age = time % plumePeriod;
+    // Blend only at the loop boundary. Both frames move up and left along the original plume.
+    const blend = Math.min(age / plumeOverlap, 1);
+    const opacity = blend * blend * (3 - 2 * blend);
+    if (opacity < 1) {
+      drawPlumeFrame(age + plumePeriod, 1 - opacity);
     }
+    plumeContext.globalCompositeOperation = 'lighter';
+    drawPlumeFrame(age, opacity);
+    plumeContext.globalAlpha = 1;
     plumeContext.globalCompositeOperation = 'destination-in';
     plumeContext.fillStyle = rightFade;
     plumeContext.fillRect(0, 0, plumeWidth, plumeHeight);
