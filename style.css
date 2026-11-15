@@ -544,7 +544,7 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 .glossary-card a { margin-top:auto; }
 
 /* Keep the additional navigation item compact alongside the existing links. */
-.site-nav { column-gap:clamp(12px,2.25vw,38px); }
+.site-nav { column-gap:clamp(12px,1.85vw,34px); }
 @media (max-width:767px) and (orientation:portrait) {
   .site-nav { column-gap:12px; }
   .nav-links { max-height:calc(100dvh - 76px); overflow:auto; }
@@ -609,6 +609,16 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
       linear-gradient(currentColor,currentColor) center 6px / 8px 1px no-repeat,
       linear-gradient(currentColor,currentColor) center 10px / 8px 1px no-repeat,
       linear-gradient(currentColor,currentColor) 3px 14px / 5px 1px no-repeat;
+  }
+  .nav-glossary::before {
+    content:"";
+    width:20px;
+    height:16px;
+    background:
+      radial-gradient(circle,currentColor 1.2px,transparent 1.5px) left center / 4px 6px repeat-y,
+      linear-gradient(currentColor,currentColor) right 1px / 13px 2px no-repeat,
+      linear-gradient(currentColor,currentColor) right center / 13px 2px no-repeat,
+      linear-gradient(currentColor,currentColor) right 13px / 13px 2px no-repeat;
   }
   .nav-question { font:700 14px/1 system-ui,sans-serif; }
   .nav-question::before {

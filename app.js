@@ -110,6 +110,7 @@ function renderLastRead() {
 
 function renderGlossary() {
   const [labels, ...entries] = glossaryTranslations[archiveLanguage];
+  $('#glossaryNav').textContent = labels[0];
   $('#glossaryTitle').textContent = labels[0];
   $('#glossaryGrid').innerHTML = glossaryTerms.map(([term, id], index) => {
     const [title, definition] = entries[index];
