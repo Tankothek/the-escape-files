@@ -551,6 +551,7 @@ function applyHomepageLanguage(code) {
   }
   renderLearn(homepageLanguage);
   setArchiveLanguage(homepageLanguage);
+  localizeSiteSearch(homepageLanguage);
   renderFeatureText();
   setFeature(featureIndex);
   resetFeatureSlides();

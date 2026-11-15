@@ -116,7 +116,7 @@ function renderGlossary() {
     const [title, definition] = entries[index];
     const file = files.find(candidate => candidate.id === id);
     const showEnglish = title.toLowerCase() !== term.toLowerCase();
-    return `<article class="week-card glossary-card">
+    return `<article id="term-${id}" class="week-card glossary-card">
       <h4>${escapeHTML(title)}${showEnglish ? ` <small lang="en">(${escapeHTML(term)})</small>` : ''}</h4>
       <p>${escapeHTML(definition)}</p>
       ${fileLink(file, strings().file + ' ' + id + ' · ' + fileText(file).title)}
@@ -219,19 +219,23 @@ function fileCard(file) {
   </article>`;
 }
 
+function fileSearchText(file) {
+  const {title, topic:summary, body} = fileText(file);
+  return [file.id, file.n, file.title, file.body, file.topic, WEEKS[file.week].title,
+    germanWeeks[file.week - 1], ...file.tags, ...file.tags.map(topicTitle),
+    ...(germanFiles[file.id] || []), title, summary, body, weekTitle(file.week)].join(' ');
+}
+
 function renderArchive() {
   const terms = cleanSearch($('#search').value.trim()).split(/\s+/).filter(Boolean);
   const week = $('#week').value;
   const topic = $('#topic').value;
   const shown = files.filter(file => {
     if (filter === 'saved' && !saved.has(file.id)) return false;
-    if (filter === 'original' && !file.cover) return false;
     if (week !== 'all' && Number(week) !== file.week) return false;
     if (topic !== 'all' && !file.tags.includes(topic)) return false;
-    const {title, topic: summary, body} = fileText(file);
-    const haystack = cleanSearch([file.id, file.n, file.title, file.body, file.topic,
-      WEEKS[file.week].title, germanWeeks[file.week - 1], ...file.tags,
-      ...file.tags.map(topicTitle), ...(germanFiles[file.id] || []), title, summary, body, weekTitle(file.week)].join(' '));
+    if (!terms.length) return true;
+    const haystack = cleanSearch(fileSearchText(file));
     return terms.every(term => haystack.includes(term));
   });
   shown.sort((first, second) => first.date.localeCompare(second.date) || first.id.localeCompare(second.id));
@@ -260,7 +264,7 @@ function renderArticles() {
   $('#articlesGrid').innerHTML = Object.entries(WEEKS).reverse().map(([n,week]) => {
     const article = weeklyArticle(week);
     if (!article.url) return '';
-    return `<article class="week-card">
+    return `<article id="article-${n}" class="week-card">
       <span class="eyebrow">${copy.week} ${weekNumber(n)} · PARAGRAPH</span>
       <h3>${externalLink(article.url,articleLinkLabel(article, article.title))}</h3>
     </article>`;
@@ -288,7 +292,7 @@ function renderWeeks() {
   $('#weeksGrid').innerHTML = Object.entries(WEEKS).reverse().map(([n,week]) => {
     const article = weeklyArticle(week);
     const count = files.filter(file => file.week === Number(n)).length;
-    return `<article class="week-card">
+    return `<article id="week-${n}" class="week-card">
       <span class="eyebrow">${copy.week} ${weekNumber(n)}</span>
       <h3>${escapeHTML(weekTitle(Number(n)))}</h3>
       ${article.url ? `<p lang="${article.lang}">${escapeHTML(article.title)}</p>` : ''}
@@ -510,12 +514,5 @@ $('#reader').addEventListener('click',event => {
   const rect = event.target.getBoundingClientRect();
   if (event.clientX < rect.left || event.clientX > rect.right ||
       event.clientY < rect.top || event.clientY > rect.bottom) event.target.close();
-});
-document.addEventListener('keydown',event => {
-  if (event.key === '/' && !event.metaKey && !event.ctrlKey && !event.altKey &&
-      !event.target.closest('input, textarea, select, [contenteditable]') && !$('#reader').open) {
-    event.preventDefault();
-    $('#search').focus();
-  }
 });
 window.addEventListener('hashchange',updateReaderFromUrl);

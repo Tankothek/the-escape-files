@@ -7,7 +7,7 @@
     document.documentElement.classList.remove('preparing-language');
   }, {once:true});
 </script>
-<link rel="stylesheet" href="style.css?v=41"></head><body>
+<link rel="stylesheet" href="style.css?v=42"></head><body>
 <a class="skip" href="#library" data-label="skip">Skip to archive</a>
 <header id="start" class="masthead" tabindex="-1">
   <nav class="site-nav" aria-label="Navigation">
@@ -23,7 +23,11 @@
       <a href="#glossaryTitle"><span class="nav-icon nav-glossary" aria-hidden="true"></span><span id="glossaryNav">Glossary</span></a>
       <a href="#learn"><span class="nav-icon nav-question" aria-hidden="true">?</span><span id="learnNav">Questions &amp; answers</span></a>
     </div>
-    <label class="language-picker"><span aria-hidden="true">◎</span>
+    <div class="nav-tools">
+      <button type="button" id="openSiteSearch" class="site-search-trigger" aria-label="Search website" aria-haspopup="dialog">
+        <span class="search-symbol" aria-hidden="true"></span>
+      </button>
+      <label class="language-picker"><span aria-hidden="true">◎</span>
       <select id="language" aria-label="Language">
         <option value="en">English</option><option value="de">Deutsch</option>
         <option value="es">Español</option><option value="fr">Français</option>
@@ -31,7 +35,8 @@
         <option value="ru">Русский</option><option value="zh-CN">简体中文</option>
         <option value="ja">日本語</option><option value="ko">한국어</option>
       </select>
-    </label>
+      </label>
+    </div>
   </nav>
 </header>
 <main>
@@ -69,13 +74,11 @@
   <div class="section-head"><h2 id="archiveTitle" tabindex="-1" data-archive="archive">Escape Files archive</h2></div>
   <div class="tools">
     <label class="search"><span aria-hidden="true">⌕</span>
-    <input type="search" id="search" placeholder="Search files…" aria-label="Search files">
-    <kbd aria-hidden="true">/</kbd></label>
+    <input type="search" id="search" placeholder="Search files…" aria-label="Search files"></label>
     <label class="sort"><span data-archive="sort">Sort by</span><select id="sort"></select></label>
   </div>
   <div class="filters" role="group" aria-label="Archive view">
     <button data-filter="all" data-archive="all" aria-pressed="true">All files</button>
-    <button data-filter="original" data-archive="original" aria-pressed="false">Original covers</button>
     <button data-filter="saved" aria-pressed="false">♡ <span data-archive="saved">Saved</span> <span id="savedCount">0</span></button>
   </div>
   <div class="select-filters">
@@ -115,4 +118,17 @@
   <button type="button" id="closeCover" class="close" aria-label="Close image" autofocus><span aria-hidden="true">×</span></button>
   <img alt="">
 </dialog>
-<div id="toast" role="status"></div><script src="data.js?v=6"></script><script src="file-locales.js?v=3"></script><script src="glossary.js?v=3"></script><script src="app.js?v=27"></script><script src="learn.js?v=5"></script><script src="home.js?v=22"></script></body></html>
+<dialog id="siteSearch" class="site-search-dialog" aria-labelledby="siteSearchTitle">
+  <div class="site-search-head">
+    <h2 id="siteSearchTitle">Search website</h2>
+    <button type="button" id="closeSiteSearch" aria-label="Close search"><span aria-hidden="true">×</span></button>
+  </div>
+  <label class="search">
+    <span class="search-symbol" aria-hidden="true"></span>
+    <input type="search" id="siteSearchInput" aria-label="Search website" autocomplete="off" autofocus>
+    <kbd aria-hidden="true">/</kbd>
+  </label>
+  <p id="siteSearchStatus" class="site-search-status" role="status"></p>
+  <ul id="siteSearchResults"></ul>
+</dialog>
+<div id="toast" role="status"></div><script src="data.js?v=6"></script><script src="file-locales.js?v=3"></script><script src="glossary.js?v=3"></script><script src="app.js?v=28"></script><script src="learn.js?v=5"></script><script src="search.js?v=1"></script><script src="home.js?v=23"></script></body></html>
