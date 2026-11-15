@@ -49,7 +49,7 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 .nav-links { display:contents; }
 .nav-toggle { display:none; }
 .language-picker { display:flex; align-items:center; gap:5px; margin-left:auto; border:1px solid #edb63a; border-radius:32px; padding:0 9px; }
-.language-picker select { background:transparent; border:0; padding:9px 0; color:var(--ink); max-width:115px; }
+.language-picker select { background:transparent; border:0; padding:9px 0; color:var(--ink); }
 .language-picker option { background:#111721; }
 .language-picker:has(select:focus-visible) {
   border-color:var(--cyan);
