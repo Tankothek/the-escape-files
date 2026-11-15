@@ -13,6 +13,27 @@ if (bannerContext) {
   let bannerVisible = false;
   let bannerFrame;
   let lastFrame = -Infinity;
+  const smokeParticles = Array.from({length:220}, (_, index) => ({
+    phase:(index * .61803398875) % 1,
+    drift:Math.sin(index * 2.39),
+    curl:index * .71,
+    speed:.86 + .24 * Math.cos(index * 1.71)
+  }));
+
+  function drawCoinSmoke(context, time) {
+    context.fillStyle = '#ffdb9b';
+    for (const {phase, drift, curl, speed} of smokeParticles) {
+      const age = (phase + time * .19 * speed) % 1;
+      const spread = 14 + 30 * age;
+      const x = 207 - 206 * age + drift * spread + Math.sin(age * 12 + curl) * spread * .45;
+      const y = 472 - 214 * age + Math.cos(age * 10 + curl) * spread * .6;
+      context.globalAlpha = .72 * Math.sin(Math.PI * age) * (1 - age * .65);
+      context.beginPath();
+      context.arc(x, y, 1, 0, Math.PI * 2);
+      context.fill();
+    }
+    context.globalAlpha = 1;
+  }
 
   function drawCoinLayers(context, time) {
     const rise = (1 - Math.cos(time * Math.PI / 3.8)) / 2;
@@ -77,21 +98,33 @@ if (bannerContext) {
     const advance = time * 2.25;
     const offset = advance % 1;
     const sample = Math.floor(advance);
-    const trend = index => Math.sin(index * 1.42) * .07 + Math.sin(index * .54) * .085 + Math.sin(index * 2.3) * .02;
-    const points = Array.from({length:24}, (_, index) => {
-      const x = (index - offset) / 22;
-      return point(x, .78 - x * .53 + trend(sample + index));
-    });
-    context.beginPath();
-    context.moveTo(...points[0]);
-    for (const p of points.slice(1)) context.lineTo(...p);
-    context.lineWidth = 1.7;
-    context.lineJoin = 'round';
-    context.strokeStyle = '#71ddd9';
-    context.shadowColor = '#4ae2fc';
-    context.shadowBlur = 4;
-    context.stroke();
-    context.shadowBlur = 0;
+    const slot = 1 / 18;
+    const price = (index, x) => .77 - x * .53
+      + Math.sin(index * 1.42) * .055 + Math.sin(index * .54) * .081 + Math.sin(index * 2.3) * .018;
+    for (let index = 0; index <= 19; index++) {
+      const x = (index - offset) * slot;
+      const open = price(sample + index, x);
+      const close = price(sample + index + 1, x + slot);
+      const high = Math.min(open, close) - .035;
+      const low = Math.max(open, close) + .04;
+      const color = close < open ? '#4aee9b' : '#ff6f83';
+      const halfWidth = slot * .29;
+      const bodyEnd = Math.abs(close - open) < .018
+        ? open + (close < open ? -.018 : .018) : close;
+      context.strokeStyle = context.fillStyle = color;
+      context.lineWidth = 1.25;
+      context.beginPath();
+      context.moveTo(...point(x, high));
+      context.lineTo(...point(x, low));
+      context.stroke();
+      context.beginPath();
+      context.moveTo(...point(x - halfWidth, open));
+      context.lineTo(...point(x + halfWidth, open));
+      context.lineTo(...point(x + halfWidth, bodyEnd));
+      context.lineTo(...point(x - halfWidth, bodyEnd));
+      context.closePath();
+      context.fill();
+    }
     context.restore();
   }
 
@@ -108,6 +141,7 @@ if (bannerContext) {
       bannerContext.clearRect(0, 0, bannerWidth, bannerHeight);
       bannerContext.translate(left, top);
       bannerContext.scale(scale, scale);
+      drawCoinSmoke(bannerContext, now / 1000);
       drawCoinLayers(bannerContext, now / 1000);
       drawRisingChart(bannerContext, now / 1000);
     }
