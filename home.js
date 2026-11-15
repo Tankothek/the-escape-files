@@ -1,18 +1,18 @@
 const homepageLabels = [
-  'home', 'weeks', 'articles', 'knowledge', 'subtitle', 'all', 'allDesc',
-  'weeksDesc', 'knowledgeDesc', 'featured', 'open', 'skip', 'language', 'search'
+  'home', 'weeks', 'articles', 'knowledge', 'subtitle',
+  'featured', 'open', 'skip', 'language', 'search'
 ];
 const homepageTranslations = {
-  en: ['Home','Weekly analyses','Articles','Knowledge Base','How to create, discover and buy tokens on EscapeHub.','All files','Explore the complete series','Summaries and perspectives','Terms, answers and context','Featured Escape File','Open file','Skip to archive','Language','Search files'],
-  de: ['Start','Wochenanalysen','Artikel','Wissensdatenbank','Token erstellen, entdecken und kaufen auf EscapeHub.','Alle Files','Die komplette Serie im Überblick','Zusammenfassungen und Einordnungen','Begriffe, Antworten und Hintergründe','Escape File im Fokus','Zum File','Zum Archiv springen','Sprache','Files suchen'],
-  es: ['Inicio','Análisis semanales','Artículos','Base de conocimientos','Cómo crear, descubrir y comprar tokens en EscapeHub.','Todos los archivos','Explora la serie completa','Resúmenes y perspectivas','Conceptos, respuestas y contexto','Escape File destacado','Abrir archivo','Ir al archivo','Idioma','Buscar archivos'],
-  fr: ['Accueil','Analyses hebdomadaires','Articles','Base de connaissances','Comment créer, découvrir et acheter des jetons sur EscapeHub.','Tous les dossiers','Explorez la série complète','Synthèses et perspectives','Notions, réponses et contexte','Dossier à la une','Ouvrir le dossier','Accéder aux archives','Langue','Rechercher un dossier'],
-  pt: ['Início','Análises semanais','Artigos','Base de conhecimento','Como criar, descobrir e comprar tokens na EscapeHub.','Todos os arquivos','Explore a série completa','Resumos e perspectivas','Termos, respostas e contexto','Escape File em destaque','Abrir arquivo','Ir ao arquivo','Idioma','Buscar arquivos'],
-  tr: ['Ana sayfa','Haftalık analizler','Makaleler','Bilgi bankası','EscapeHub’da token oluşturma, keşfetme ve satın alma.','Tüm dosyalar','Serinin tamamını keşfedin','Özetler ve değerlendirmeler','Kavramlar, yanıtlar ve arka plan','Öne çıkan Escape File','Dosyayı aç','Arşive git','Dil','Dosya ara'],
-  ru: ['Главная','Обзоры недели','Статьи','База знаний','Как создавать, находить и покупать токены на EscapeHub.','Все выпуски','Вся серия в одном месте','Итоги и комментарии','Термины, ответы и контекст','Избранный выпуск','Открыть выпуск','Перейти к архиву','Язык','Поиск выпусков'],
-  'zh-CN': ['首页','每周分析','文章','知识库','了解如何在 EscapeHub 创建、发现和购买代币。','所有档案','浏览完整系列','摘要与解读','术语、解答与背景','精选 Escape File','打开档案','跳至档案','语言','搜索档案'],
-  ja: ['ホーム','週間分析','記事','ナレッジベース','EscapeHub でトークンを作成・発見・購入する方法。','すべてのファイル','シリーズ全体を見る','要約と解説','用語、回答、背景','注目の Escape File','ファイルを開く','アーカイブへ移動','言語','ファイルを検索'],
-  ko: ['홈','주간 분석','기사','지식 베이스','EscapeHub에서 토큰을 만들고, 찾고, 구매하는 방법.','모든 파일','전체 시리즈 보기','요약과 해설','용어, 답변과 배경','추천 Escape File','파일 열기','아카이브로 이동','언어','파일 검색']
+  en: ['Home','Weekly analyses','Articles','Knowledge Base','How to create, discover and buy tokens on EscapeHub.','Featured Escape File','Open file','Skip to archive','Language','Search files'],
+  de: ['Start','Wochenanalysen','Artikel','Wissensdatenbank','Token erstellen, entdecken und kaufen auf EscapeHub.','Escape File im Fokus','Zum File','Zum Archiv springen','Sprache','Files suchen'],
+  es: ['Inicio','Análisis semanales','Artículos','Base de conocimientos','Cómo crear, descubrir y comprar tokens en EscapeHub.','Escape File destacado','Abrir archivo','Ir al archivo','Idioma','Buscar archivos'],
+  fr: ['Accueil','Analyses hebdomadaires','Articles','Base de connaissances','Comment créer, découvrir et acheter des jetons sur EscapeHub.','Dossier à la une','Ouvrir le dossier','Accéder aux archives','Langue','Rechercher un dossier'],
+  pt: ['Início','Análises semanais','Artigos','Base de conhecimento','Como criar, descobrir e comprar tokens na EscapeHub.','Escape File em destaque','Abrir arquivo','Ir ao arquivo','Idioma','Buscar arquivos'],
+  tr: ['Ana sayfa','Haftalık analizler','Makaleler','Bilgi bankası','EscapeHub’da token oluşturma, keşfetme ve satın alma.','Öne çıkan Escape File','Dosyayı aç','Arşive git','Dil','Dosya ara'],
+  ru: ['Главная','Обзоры недели','Статьи','База знаний','Как создавать, находить и покупать токены на EscapeHub.','Избранный выпуск','Открыть выпуск','Перейти к архиву','Язык','Поиск выпусков'],
+  'zh-CN': ['首页','每周分析','文章','知识库','了解如何在 EscapeHub 创建、发现和购买代币。','精选 Escape File','打开档案','跳至档案','语言','搜索档案'],
+  ja: ['ホーム','週間分析','記事','ナレッジベース','EscapeHub でトークンを作成・発見・購入する方法。','注目の Escape File','ファイルを開く','アーカイブへ移動','言語','ファイルを検索'],
+  ko: ['홈','주간 분석','기사','지식 베이스','EscapeHub에서 토큰을 만들고, 찾고, 구매하는 방법.','추천 Escape File','파일 열기','아카이브로 이동','언어','파일 검색']
 };
 
 const featureFiles = files.filter(file => file.cover && file.status === 'published').slice(-3).reverse();
