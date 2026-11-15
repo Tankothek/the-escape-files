@@ -580,9 +580,28 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 .learn-list p { max-width:68ch; margin:0 0 10px; overflow-wrap:anywhere; }
 .learn-source { margin-top:14px; border-top:1px solid var(--line); }
 .learn-list a { display:inline-flex; align-items:center; gap:.35em; min-height:44px; color:#ffd074; font-size:.875rem; }
-.learn-full-article a { font-weight:700; }
-.learn-source > a { color:var(--muted); }
+.learn-list .learn-local-link { font-weight:700; }
 .learn-list a:hover { text-decoration:underline; }
+
+.learn-page { max-width:1150px; margin-inline:auto; }
+.learn-page-bar .language-picker { margin-inline-start:auto; }
+.learn-page h1 { margin:0; font-size:clamp(30px,5vw,54px); letter-spacing:-.035em; }
+.learn-reading-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(230px,32%); gap:20px; align-items:start; }
+.learn-article,.learn-topics { padding:clamp(16px,3vw,32px); border:1px solid var(--line); border-radius:12px; background:var(--surface); overflow-wrap:anywhere; }
+.learn-article h2 { margin:0; font-size:clamp(23px,4vw,36px); text-wrap:balance; }
+.learn-editorial { color:var(--muted); font-size:.875rem; }
+#learnArticleText { max-width:65ch; color:#d8ddea; line-height:1.65; }
+.learn-article .learn-source a { display:inline-flex; align-items:center; min-height:44px; color:#ffd074; font-size:.875rem; }
+.learn-article a:hover,.learn-topics a:hover { text-decoration:underline; }
+.learn-topics h2 { margin:0 0 10px; font-size:1.125rem; }
+.learn-topics ul { display:grid; gap:2px; list-style:none; margin:0; padding:0; }
+.learn-topics a { display:flex; align-items:center; min-height:44px; padding:7px 9px; border-radius:6px; }
+.learn-topics a[aria-current] { color:#ffd074; background:#ffd07414; }
+@media (max-width:720px) {
+  .learn-reading-layout { grid-template-columns:minmax(0,1fr); }
+  .learn-page-bar { justify-content:space-between; }
+  .learn-page-bar select { font-size:16px; }
+}
 
 .nav-icon { display:none; }
 .site-nav .nav-home { display:inline; margin-inline-end:.25em; }

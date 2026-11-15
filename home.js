@@ -558,26 +558,6 @@ function applyHomepageLanguage(code) {
   scheduleFeatureRotation();
 }
 
-function supportedHomepageLanguage(locale) {
-  const base = locale?.trim().toLowerCase().split(/[-_]/)[0];
-  const code = base === 'zh' ? 'zh-CN' : base;
-  return Object.hasOwn(homepageTranslations, code) ? code : undefined;
-}
-
-function initialHomepageLanguage() {
-  const urlLanguage = supportedHomepageLanguage(new URL(location.href).searchParams.get('lang'));
-  if (urlLanguage) return urlLanguage;
-  try {
-    const savedLanguage = supportedHomepageLanguage(localStorage.getItem('tankothek-language'));
-    if (savedLanguage) return savedLanguage;
-  } catch {}
-  for (const locale of [...(navigator.languages ?? []), navigator.language]) {
-    const language = supportedHomepageLanguage(locale);
-    if (language) return language;
-  }
-  return 'en';
-}
-
 languagePicker.addEventListener('change', () => {
   applyHomepageLanguage(languagePicker.value);
   const url = new URL(location.href);

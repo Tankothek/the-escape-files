@@ -147,42 +147,116 @@ const learnTranslations = {
   ]
 };
 
-const fullArticleLabels = {
-  en: 'Read full article on EscapeHub',
-  de: 'Ganzen Artikel lesen (automatisch übersetzt)',
-  es: 'Leer el artículo completo (traducción automática)',
-  fr: 'Lire l’article complet (traduction automatique)',
-  pt: 'Ler o artigo completo (tradução automática)',
-  tr: 'Makalenin tamamını oku (otomatik çeviri)',
-  ru: 'Читать статью целиком (автоматический перевод)',
-  'zh-CN': '阅读完整文章（自动翻译）',
-  ja: '記事全文を読む（自動翻訳）',
-  ko: '전체 글 읽기(자동 번역)'
+function supportedHomepageLanguage(locale) {
+  const base = locale?.trim().toLowerCase().split(/[-_]/)[0];
+  const code = base === 'zh' ? 'zh-CN' : base;
+  return Object.hasOwn(learnTranslations, code) ? code : undefined;
+}
+
+function initialHomepageLanguage() {
+  const urlLanguage = supportedHomepageLanguage(new URL(location.href).searchParams.get('lang'));
+  if (urlLanguage) return urlLanguage;
+  try {
+    const savedLanguage = supportedHomepageLanguage(localStorage.getItem('tankothek-language'));
+    if (savedLanguage) return savedLanguage;
+  } catch {}
+  for (const locale of [...(navigator.languages ?? []), navigator.language]) {
+    const language = supportedHomepageLanguage(locale);
+    if (language) return language;
+  }
+  return 'en';
+}
+
+const learnPageLabels = {
+  en: ['Read on The Escape Files', 'Home', 'Language', 'Topics', 'Editorial explanation by The Escape Files'],
+  de: ['Auf The Escape Files lesen', 'Startseite', 'Sprache', 'Themen', 'Redaktionelle Erklärung von The Escape Files'],
+  es: ['Leer en The Escape Files', 'Inicio', 'Idioma', 'Temas', 'Explicación editorial de The Escape Files'],
+  fr: ['Lire sur The Escape Files', 'Accueil', 'Langue', 'Thèmes', 'Explication de la rédaction de The Escape Files'],
+  pt: ['Ler em The Escape Files', 'Início', 'Idioma', 'Temas', 'Explicação editorial de The Escape Files'],
+  tr: ['The Escape Files’ta oku', 'Ana sayfa', 'Dil', 'Konular', 'The Escape Files editörlerinin açıklaması'],
+  ru: ['Читать на The Escape Files', 'Главная', 'Язык', 'Темы', 'Пояснение редакции The Escape Files'],
+  'zh-CN': ['在 The Escape Files 阅读', '首页', '语言', '主题', 'The Escape Files 编辑解读'],
+  ja: ['The Escape Files で読む', 'ホーム', '言語', 'トピック', 'The Escape Files 編集部による解説'],
+  ko: ['The Escape Files에서 읽기', '홈', '언어', '주제', 'The Escape Files 편집팀의 설명']
 };
 
+function learnPageUrl(language, slug) {
+  return 'learn.html?lang=' + encodeURIComponent(language) + (slug ? '#learn-' + slug : '');
+}
+
 function renderLearn(language) {
-  const [[title, linkLabel], ...questions] = learnTranslations[language];
-  document.querySelector('#learnNav').textContent = title;
+  const [[title], ...questions] = learnTranslations[language];
+  const [readLabel] = learnPageLabels[language];
+  const navLabel = document.querySelector('#learnNav');
+  navLabel.textContent = title;
+  navLabel.closest('a').href = learnPageUrl(language);
   document.querySelector('#learnTitle').textContent = title;
   const list = document.querySelector('#learnList');
   const openIds = new Set([...list.querySelectorAll('details[open]')].map(item => item.id));
-  list.innerHTML = questions.map(([question, ...paragraphs], index) => {
+  list.innerHTML = questions.map(([question, introduction], index) => {
     const slug = learnArticles[index];
     const id = 'learn-' + slug;
-    const original = 'https://escapehub.ai/learn/' + slug;
-    const fullArticle = language === 'en'
-      ? original
-      : 'https://escapehub-ai.translate.goog/learn/' + slug + '?' + new URLSearchParams({
-        _x_tr_sl: 'en', _x_tr_tl: language, _x_tr_hl: language
-      });
     return `<details id="${id}"${openIds.has(id) ? ' open' : ''}>
       <summary>${escapeHTML(question)}</summary>
-      <div>${paragraphs.map(paragraph => `<p>${escapeHTML(paragraph)}</p>`).join('')}
-        <div class="learn-source">
-          <div class="learn-full-article">${externalLink(fullArticle, fullArticleLabels[language])}</div>
-          ${language === 'en' ? '' : externalLink(original, linkLabel)}
-        </div>
+      <div><p>${escapeHTML(introduction)}</p>
+        <a class="learn-local-link" href="${escapeHTML(learnPageUrl(language, slug))}">${escapeHTML(readLabel)} <span aria-hidden="true">→</span></a>
       </div>
     </details>`;
   }).join('');
+}
+
+const learnPage = document.querySelector('#learnPage');
+if (learnPage) {
+  const select = document.querySelector('#learnLanguage');
+  const heading = document.querySelector('#learnArticleTitle');
+  const topics = document.querySelector('#learnTopics');
+  function renderLearnPage() {
+    const language = initialHomepageLanguage();
+    const [[title, sourceLabel], ...questions] = learnTranslations[language];
+    const [, homeLabel, languageLabel, topicsLabel, editorialLabel] = learnPageLabels[language];
+    const active = Math.max(0, learnArticles.findIndex(slug => '#learn-' + slug === location.hash));
+    const [question, ...paragraphs] = questions[active];
+    document.documentElement.lang = language;
+    document.title = question + ' | The Escape Files';
+    select.value = language;
+    select.setAttribute('aria-label', languageLabel);
+    const home = document.querySelector('#learnHome');
+    home.textContent = '← ' + homeLabel;
+    home.href = './?lang=' + encodeURIComponent(language);
+    document.querySelector('#learnPageTitle').textContent = title;
+    document.querySelector('#learnTopicsTitle').textContent = topicsLabel;
+    document.querySelector('#learnEditorial').textContent = editorialLabel;
+    heading.textContent = question;
+    document.querySelector('#learnArticleText').replaceChildren(...paragraphs.map(text => {
+      const p = document.createElement('p');
+      p.textContent = text;
+      return p;
+    }));
+    const source = document.querySelector('#learnOriginal');
+    source.textContent = sourceLabel + ' ↗︎';
+    source.href = 'https://escapehub.ai/learn/' + learnArticles[active];
+    topics.replaceChildren(...questions.map(([name], index) => {
+      const link = document.createElement('a');
+      link.href = learnPageUrl(language, learnArticles[index]);
+      link.textContent = name;
+      if (index === active) link.setAttribute('aria-current', 'location');
+      const item = document.createElement('li');
+      item.append(link);
+      return item;
+    }));
+  }
+
+  select.addEventListener('change', () => {
+    const url = new URL(location.href);
+    url.searchParams.set('lang', select.value);
+    history.replaceState(history.state, '', url);
+    try { localStorage.setItem('tankothek-language', select.value); } catch {}
+    renderLearnPage();
+  });
+  window.addEventListener('hashchange', () => {
+    renderLearnPage();
+    heading.focus();
+    heading.scrollIntoView({block:'start'});
+  });
+  renderLearnPage();
 }
