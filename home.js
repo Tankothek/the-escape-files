@@ -15,7 +15,9 @@ const homepageTranslations = {
   ko: ['홈','주간 분석','기사','지식 베이스','EscapeHub에서 토큰을 만들고, 찾고, 구매하는 방법.','추천 Escape File','파일 열기','아카이브로 이동','언어','파일 검색']
 };
 
-const featureFiles = files.filter(file => file.cover && file.status === 'published').slice(-3).reverse();
+const featureFiles = files.filter(file => file.status === 'published')
+  .sort((a, b) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id))
+  .slice(0, 3);
 let featureIndex = 0;
 let homepageLanguage = 'en';
 const languagePicker = document.querySelector('#language');
@@ -87,14 +89,16 @@ backToTop.addEventListener('click', () => {
 
 const featureCard = document.querySelector('#featured');
 const firstFeatureSlide = featureCard.querySelector('.featured-slide');
+const featureTemplate = firstFeatureSlide.cloneNode(true);
 const featureSlides = featureFiles.map((file, index) => {
-  const slide = index === 0 ? firstFeatureSlide : firstFeatureSlide.cloneNode(true);
+  const slide = index === 0 ? firstFeatureSlide : featureTemplate.cloneNode(true);
   const image = slide.querySelector('img');
   if (index !== 0) {
     image.removeAttribute('fetchpriority');
     featureCard.append(slide);
   }
-  image.src = fileThumbnail(file);
+  if (file.cover) image.src = fileThumbnail(file);
+  else image.remove();
   slide.querySelector('h2').id = 'featuredTitle-' + file.id;
   for (const button of slide.querySelectorAll('button')) button.dataset.open = file.id;
   return slide;
@@ -109,7 +113,9 @@ function renderFeatureText() {
     title.textContent = '#' + file.id + ' – ' + localized.title;
     summary.textContent = localized.topic;
     title.lang = summary.lang = homepageLanguage;
-    slide.querySelector('img').alt = strings().file + ' ' + file.id;
+    const cover = slide.querySelector('.featured-cover');
+    cover.setAttribute('aria-label', strings().file + ' ' + file.id);
+    if (!file.cover) cover.innerHTML = poster(file);
   }
 }
 

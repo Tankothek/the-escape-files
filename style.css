@@ -298,6 +298,10 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 
 /* Keep the full featured artwork visible, including the original headline. */
 .featured-cover img { object-fit:contain; object-position:center; }
+.featured-cover .poster { min-height:0; padding:8px 16px; gap:2px; }
+.featured-cover .poster strong { font-size:clamp(24px,4.5vw,56px); letter-spacing:-.04em; }
+.featured-cover .poster b { font-size:clamp(9px,1.15vw,15px); }
+.featured-cover .poster small { margin:0; }
 
 @media (max-width:767px) and (orientation:portrait) {
   .site-nav { position:relative; z-index:11; flex-wrap:nowrap; justify-content:space-between; gap:12px; min-height:60px; padding:7px 16px; }
