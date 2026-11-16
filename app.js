@@ -49,7 +49,7 @@ const archiveStrings = {
   }
 };
 const germanWeeks = ['Starts mit Whitelist','Gebührenanteile für Ersteller','Netzwerke und Suche',
-  'Preisbildung und Wechsel zur DEX','Plattformeinnahmen, $ESC und Rückkäufe','Startwoche: die ersten Schritte'];
+  'Preisbildung und Wechsel zur DEX','Plattformeinnahmen, $ESC und Rückkäufe','Startwoche: die ersten Schritte','Offizieller Zugang'];
 for (const [language, locale] of Object.entries(fileLocales)) {
   const {rangePattern, explorePattern, ...labels} = locale.labels;
   archiveStrings[language] = {

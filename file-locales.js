@@ -120,6 +120,10 @@ const fileLocales = {
       "030": [
         "Compra sin ventanas adicionales",
         "La billetera integrada permite operar sin abrir otra ventana de confirmación en cada operación."
+      ],
+      "031": [
+        "Acude a la fuente",
+        "En escapehub.ai encontrarás los enlaces oficiales a la plataforma de lanzamiento y las novedades sobre su apertura."
       ]
     },
     "labels": {
@@ -166,7 +170,8 @@ const fileLocales = {
       "Redes y descubrimiento",
       "Formación del precio y cambio a DEX",
       "Ingresos, $ESC y recompras",
-      "Semana de lanzamiento: primeros pasos"
+      "Semana de lanzamiento: primeros pasos",
+      "Acceso oficial"
     ]
   },
   "fr": {
@@ -290,6 +295,10 @@ const fileLocales = {
       "030": [
         "Achète sans fenêtres supplémentaires",
         "Le portefeuille intégré permet de passer des ordres sans autre fenêtre de confirmation à chaque opération."
+      ],
+      "031": [
+        "À la source",
+        "Rends-toi sur escapehub.ai pour trouver les liens officiels vers le Launchpad et les dernières nouvelles sur son ouverture."
       ]
     },
     "labels": {
@@ -336,7 +345,8 @@ const fileLocales = {
       "Réseaux et découverte",
       "Formation du prix et passage à un DEX",
       "Revenus, $ESC et rachats",
-      "Semaine de lancement : premiers pas"
+      "Semaine de lancement : premiers pas",
+      "Accès officiel"
     ]
   },
   "pt": {
@@ -460,6 +470,10 @@ const fileLocales = {
       "030": [
         "Compre sem janelas adicionais",
         "A carteira integrada permite negociar sem outra janela de confirmação a cada operação."
+      ],
+      "031": [
+        "Vá direto à fonte",
+        "Acesse escapehub.ai para encontrar os links oficiais do Launchpad e acompanhar as novidades sobre o lançamento."
       ]
     },
     "labels": {
@@ -506,7 +520,8 @@ const fileLocales = {
       "Redes e descoberta",
       "Formação de preço e migração para DEX",
       "Receitas, $ESC e recompras",
-      "Semana de lançamento: primeiros passos"
+      "Semana de lançamento: primeiros passos",
+      "Acesso oficial"
     ]
   },
   "tr": {
@@ -630,6 +645,10 @@ const fileLocales = {
       "030": [
         "Ek pencere olmadan satın al",
         "Yerleşik cüzdan, her işlemde ayrı bir onay penceresine gerek kalmadan işlem yapmayı sağlar."
+      ],
+      "031": [
+        "Doğrudan kaynağa git",
+        "Launchpad’in resmî bağlantıları ve açılışla ilgili güncellemeler için escapehub.ai adresine git."
       ]
     },
     "labels": {
@@ -676,7 +695,8 @@ const fileLocales = {
       "Ağlar ve keşif",
       "Fiyat oluşumu ve DEX’e geçiş",
       "Gelir, $ESC ve geri alımlar",
-      "Lansman haftası: ilk adımlar"
+      "Lansman haftası: ilk adımlar",
+      "Resmî erişim"
     ]
   },
   "ru": {
@@ -800,6 +820,10 @@ const fileLocales = {
       "030": [
         "Покупай без лишних окон",
         "Встроенный кошелёк позволяет торговать без отдельного окна подтверждения для каждой сделки."
+      ],
+      "031": [
+        "Начни с источника",
+        "На escapehub.ai можно найти официальные ссылки на платформу запуска токенов и новости о её запуске."
       ]
     },
     "labels": {
@@ -846,7 +870,8 @@ const fileLocales = {
       "Сети и поиск",
       "Формирование цены и переход на DEX",
       "Доходы, $ESC и выкупы",
-      "Неделя запуска: первые шаги"
+      "Неделя запуска: первые шаги",
+      "Официальный доступ"
     ]
   },
   "zh-CN": {
@@ -970,6 +995,10 @@ const fileLocales = {
       "030": [
         "交易无需额外弹窗",
         "使用内置钱包交易时，每笔交易无需单独弹出确认窗口。"
+      ],
+      "031": [
+        "从官方渠道开始",
+        "访问 escapehub.ai，查找代币发行平台的官方链接和上线动态。"
       ]
     },
     "labels": {
@@ -1016,7 +1045,8 @@ const fileLocales = {
       "网络与项目探索",
       "价格形成与转入 DEX",
       "收入、$ESC 与回购",
-      "上线周：入门指南"
+      "上线周：入门指南",
+      "官方入口"
     ]
   },
   "ja": {
@@ -1140,6 +1170,10 @@ const fileLocales = {
       "030": [
         "余分なポップアップなしで購入",
         "内蔵ウォレットなら、取引ごとに別の確認画面を開かずに売買できます。"
+      ],
+      "031": [
+        "まずは公式サイトへ",
+        "escapehub.ai でローンチパッドへの公式リンクと公開に関する最新情報を確認できます。"
       ]
     },
     "labels": {
@@ -1186,7 +1220,8 @@ const fileLocales = {
       "ネットワークとプロジェクト探し",
       "価格形成と DEX への移行",
       "収益、$ESC、買い戻し",
-      "ローンチ週：最初のステップ"
+      "ローンチ週：最初のステップ",
+      "公式アクセス"
     ]
   },
   "ko": {
@@ -1310,6 +1345,10 @@ const fileLocales = {
       "030": [
         "추가 팝업 없이 구매하기",
         "내장 지갑을 이용하면 거래마다 별도의 확인 팝업을 열지 않고 매매할 수 있습니다."
+      ],
+      "031": [
+        "공식 사이트에서 시작하기",
+        "escapehub.ai에서 런치패드 공식 링크와 출시 소식을 확인할 수 있습니다."
       ]
     },
     "labels": {
@@ -1356,7 +1395,8 @@ const fileLocales = {
       "네트워크와 프로젝트 탐색",
       "가격 형성과 DEX 전환",
       "수익, $ESC와 재매입",
-      "출시 주간: 첫걸음"
+      "출시 주간: 첫걸음",
+      "공식 접속 방법"
     ]
   }
 };

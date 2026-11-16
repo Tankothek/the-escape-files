@@ -4,7 +4,8 @@ const WEEKS = {
   3:{title:'Networks & Discovery',article:'Several Networks, One Platform: How EscapeHub Aims to Bring Ideas and People Together',articleUrl:'https://paragraph.com/@tankothek-2c2d/several-networks-one-platform'},
   4:{title:'Bonding & DEX Graduation',article:'Your Token Has Launched. What Happens Next?',articleUrl:'https://paragraph.com/@tankothek-2c2d/your-token-has-launched-what-happens-next'},
   5:{title:'Platform Revenue, $ESC & Buybacks',article:'EscapeHub Launches First: How the Platform, Presale and $ESC Connect',articleUrl:null},
-  6:{title:'Launch Week: First Steps',article:'Getting Started with EscapeHub: From Signing In to Your First Purchase',articleUrl:'https://paragraph.com/@tankothek-2c2d/getting-started-with-escapehub'}
+  6:{title:'Launch Week: First Steps',article:'Getting Started with EscapeHub: From Signing In to Your First Purchase',articleUrl:'https://paragraph.com/@tankothek-2c2d/getting-started-with-escapehub'},
+  7:{title:'Official Access',articleUrl:null}
 };
 
 const XIDS = [
@@ -47,7 +48,8 @@ const FILES = [
  e(27,6,'2026-11-10','ARCHIVE TITLE TO BE IMPORTED','Launch-week first steps and account access.',['first steps','access'],'archive-review','home','Published File; final headline will be imported from the original post.'),
  e(28,6,'2026-11-11','ARCHIVE TITLE TO BE IMPORTED','Launch-week walkthrough: wallet and account flow.',['wallet','first steps'],'planned','home','Scheduled in the Week 06 sequence; final headline will be added after publication.'),
  e(29,6,'2026-11-12','EXPLORE BEFORE YOU BUY.','Discover projects, read details and use watchlists before making a purchase.',['discovery','watchlist'],'planned','home'),
- e(30,6,'2026-11-13','BUY WITHOUT THE EXTRA POPUPS.','Integrated wallet flow for buying and selling without a separate wallet confirmation on every trade.',['wallet','trading','UX'],'planned','home')
+ e(30,6,'2026-11-13','BUY WITHOUT THE EXTRA POPUPS.','Integrated wallet flow for buying and selling without a separate wallet confirmation on every trade.',['wallet','trading','UX'],'planned','home'),
+ {...e(31,7,'2026-11-16','START AT THE SOURCE.','Start at escapehub.ai to find the official Launchpad links and launch updates.',['access','launchpad','web'],'published','home'), x:'https://x.com/Tankothek/status/2122374136441806955'}
 ];
 
 const SOURCES = {
@@ -240,6 +242,11 @@ const germanFiles = {
     "Kaufen ohne zusätzliche Pop-ups",
     "Die integrierte Wallet ermöglicht Käufe und Verkäufe ohne eigene Wallet-Bestätigung für jeden Handel.",
     "Die integrierte Wallet ermöglicht Käufe und Verkäufe ohne eigene Wallet-Bestätigung für jeden Handel."
+  ],
+  "031": [
+    "Direkt zur Quelle",
+    "Auf escapehub.ai findest du die offiziellen Links zum Launchpad und Neuigkeiten zum Start.",
+    "Auf escapehub.ai findest du die offiziellen Links zum Launchpad und Neuigkeiten zum Start."
   ]
 };
 
