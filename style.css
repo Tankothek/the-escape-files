@@ -465,6 +465,10 @@ body { background: radial-gradient(ellipse at 50% 510px,#101722,transparent 46re
 .reader-contacts strong { color:var(--ink); font-weight:600; }
 .reader-contacts a > span { color:var(--muted); }
 .reader-contacts a > span:last-child { color:#ffd074; }
+@media (max-width:640px) {
+  .reader-contacts a { grid-template-columns:minmax(0,1fr) auto; gap:2px 10px; }
+  .reader-contacts a > span:last-child { grid-area:1 / 2 / 3 / 3; }
+}
 .reader-pagination button {
   position:absolute;
   top:50%;
