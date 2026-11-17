@@ -127,7 +127,7 @@ const fileLocales = {
       ],
       "032": [
         "¿Necesitas ayuda con EscapeHub?",
-        "Contacta con el soporte oficial por Telegram (@escapehub_official), por mensaje directo en X (@escape_hub) o por correo electrónico (support@escapehub.ai)."
+        "Tres formas oficiales de contactar con el soporte de EscapeHub."
       ]
     },
     "labels": {
@@ -306,7 +306,7 @@ const fileLocales = {
       ],
       "032": [
         "Besoin d’aide avec EscapeHub ?",
-        "Contacte l’assistance officielle sur Telegram (@escapehub_official), par message privé sur X (@escape_hub) ou par e-mail (support@escapehub.ai)."
+        "Trois façons officielles de contacter l’assistance EscapeHub."
       ]
     },
     "labels": {
@@ -485,7 +485,7 @@ const fileLocales = {
       ],
       "032": [
         "Precisa de ajuda com a EscapeHub?",
-        "Fale com o suporte oficial pelo Telegram (@escapehub_official), por mensagem direta no X (@escape_hub) ou por e-mail (support@escapehub.ai)."
+        "Três canais oficiais para falar com o suporte da EscapeHub."
       ]
     },
     "labels": {
@@ -664,7 +664,7 @@ const fileLocales = {
       ],
       "032": [
         "EscapeHub ile ilgili yardıma mı ihtiyacın var?",
-        "Resmî desteğe Telegram (@escapehub_official), X’te doğrudan mesaj (@escape_hub) veya e-posta (support@escapehub.ai) üzerinden ulaşabilirsin."
+        "EscapeHub desteğine ulaşmanın üç resmî yolu."
       ]
     },
     "labels": {
@@ -843,7 +843,7 @@ const fileLocales = {
       ],
       "032": [
         "Нужна помощь с EscapeHub?",
-        "Связаться с официальной поддержкой можно в Telegram (@escapehub_official), личным сообщением в X (@escape_hub) или по электронной почте (support@escapehub.ai)."
+        "Три официальных способа связаться с поддержкой EscapeHub."
       ]
     },
     "labels": {
@@ -1022,7 +1022,7 @@ const fileLocales = {
       ],
       "032": [
         "需要 EscapeHub 帮助？",
-        "可通过 Telegram（@escapehub_official）、X 私信（@escape_hub）或电子邮件（support@escapehub.ai）联系官方支持。"
+        "联系 EscapeHub 官方支持的三种方式。"
       ]
     },
     "labels": {
@@ -1201,7 +1201,7 @@ const fileLocales = {
       ],
       "032": [
         "EscapeHub についてサポートが必要ですか？",
-        "公式サポートには、Telegram（@escapehub_official）、Xのダイレクトメッセージ（@escape_hub）、またはメール（support@escapehub.ai）で問い合わせできます。"
+        "EscapeHub の公式サポートに問い合わせる3つの方法。"
       ]
     },
     "labels": {
@@ -1380,7 +1380,7 @@ const fileLocales = {
       ],
       "032": [
         "EscapeHub 이용에 도움이 필요하신가요?",
-        "공식 지원팀에 텔레그램(@escapehub_official), X 쪽지(@escape_hub) 또는 이메일(support@escapehub.ai)로 문의할 수 있습니다."
+        "EscapeHub 공식 지원팀에 문의하는 세 가지 방법입니다."
       ]
     },
     "labels": {

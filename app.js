@@ -347,6 +347,15 @@ function renderReader(file) {
   const article = weeklyArticle(WEEKS[file.week]);
   const languageNote = file.source !== 'home' && englishSourceLabels[archiveLanguage];
   const sourceLabel = copy.source + (languageNote ? ' (' + languageNote + ')' : '') + ' · ' + (source?.name || '');
+  const emailLabels = {en:'Email', de:'E-Mail', es:'Correo electrónico', fr:'E-mail', pt:'E-mail',
+    tr:'E-posta', ru:'Эл. почта', 'zh-CN':'电子邮件', ja:'メール', ko:'이메일'};
+  const contacts = file.contacts?.map(({channel, label, url}) => {
+    const email = channel === 'email';
+    return `<li><a href="${escapeHTML(url)}"${email ? '' : ' target="_blank" rel="noopener noreferrer"'}>
+      <strong>${escapeHTML(email ? emailLabels[archiveLanguage] : channel)}</strong>
+      <span>${escapeHTML(label)}</span><span aria-hidden="true">↗</span>
+    </a></li>`;
+  }).join('');
   const [enlargeCover] = coverViewerLabels[archiveLanguage];
   const cover = file.cover
     ? `<button type="button" class="reader-cover" aria-label="${escapeHTML(enlargeCover)}" title="${escapeHTML(enlargeCover)}">
@@ -372,6 +381,7 @@ function renderReader(file) {
   ${cover}
   <div class="reader-text">
     <p>${escapeHTML(readerBody)}</p>
+    ${contacts ? `<ul class="reader-contacts" role="list">${contacts}</ul>` : ''}
     <div class="reader-links">${externalLink(file.x,copy.post)}
       ${externalLink(source?.url,sourceLabel)}
       ${externalLink(article.url,articleLinkLabel(article,copy.paragraph))}</div>

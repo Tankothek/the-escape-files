@@ -50,7 +50,13 @@ const FILES = [
  e(29,6,'2026-11-12','EXPLORE BEFORE YOU BUY.','Discover projects, read details and use watchlists before making a purchase.',['discovery','watchlist'],'planned','home'),
  e(30,6,'2026-11-13','BUY WITHOUT THE EXTRA POPUPS.','Integrated wallet flow for buying and selling without a separate wallet confirmation on every trade.',['wallet','trading','UX'],'planned','home'),
  {...e(31,7,'2026-11-16','START AT THE SOURCE.','Start at escapehub.ai to find the official Launchpad links and launch updates.',['access','launchpad','web'],'published','home'), x:'https://x.com/Tankothek/status/2122374136441806955'},
- {...e(32,7,'2026-11-17','NEED HELP WITH ESCAPEHUB?','Three official ways to reach EscapeHub support: Telegram (@escapehub_official), direct message on X (@escape_hub), or email (support@escapehub.ai).',['access','first steps'],'published','support'), x:'https://x.com/Tankothek/status/2122736529823166780', cover:'file-032.jpg'}
+ {...e(32,7,'2026-11-17','NEED HELP WITH ESCAPEHUB?','Three official ways to reach EscapeHub support.',['access','first steps'],'published','support'), x:'https://x.com/Tankothek/status/2122736529823166780', cover:'file-032.jpg',
+   contacts:[
+     {channel:'Telegram', label:'@escapehub_official', url:'https://t.me/escapehub_official'},
+     {channel:'X', label:'@escape_hub', url:'https://x.com/escape_hub'},
+     {channel:'email', label:'support@escapehub.ai', url:'mailto:support@escapehub.ai'}
+   ]
+ }
 ];
 
 const SOURCES = {
@@ -252,8 +258,8 @@ const germanFiles = {
   ],
   "032": [
     "Brauchst du Hilfe mit EscapeHub?",
-    "Den offiziellen EscapeHub-Support erreichst du über Telegram (@escapehub_official), per Direktnachricht auf X (@escape_hub) oder per E-Mail (support@escapehub.ai).",
-    "Den offiziellen EscapeHub-Support erreichst du über Telegram (@escapehub_official), per Direktnachricht auf X (@escape_hub) oder per E-Mail (support@escapehub.ai)."
+    "Drei offizielle Wege zum EscapeHub-Support.",
+    "Drei offizielle Wege zum EscapeHub-Support."
   ]
 };
 
