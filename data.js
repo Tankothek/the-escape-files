@@ -49,10 +49,12 @@ const FILES = [
  e(28,6,'2026-11-11','ARCHIVE TITLE TO BE IMPORTED','Launch-week walkthrough: wallet and account flow.',['wallet','first steps'],'planned','home','Scheduled in the Week 06 sequence; final headline will be added after publication.'),
  e(29,6,'2026-11-12','EXPLORE BEFORE YOU BUY.','Discover projects, read details and use watchlists before making a purchase.',['discovery','watchlist'],'planned','home'),
  e(30,6,'2026-11-13','BUY WITHOUT THE EXTRA POPUPS.','Integrated wallet flow for buying and selling without a separate wallet confirmation on every trade.',['wallet','trading','UX'],'planned','home'),
- {...e(31,7,'2026-11-16','START AT THE SOURCE.','Start at escapehub.ai to find the official Launchpad links and launch updates.',['access','launchpad','web'],'published','home'), x:'https://x.com/Tankothek/status/2122374136441806955'}
+ {...e(31,7,'2026-11-16','START AT THE SOURCE.','Start at escapehub.ai to find the official Launchpad links and launch updates.',['access','launchpad','web'],'published','home'), x:'https://x.com/Tankothek/status/2122374136441806955'},
+ {...e(32,7,'2026-11-17','NEED HELP WITH ESCAPEHUB?','Three official ways to reach EscapeHub support: Telegram (@escapehub_official), direct message on X (@escape_hub), or email (support@escapehub.ai).',['access','first steps'],'published','support'), x:'https://x.com/Tankothek/status/2122736529823166780', cover:'file-032.jpg'}
 ];
 
 const SOURCES = {
+ support:{name:'EscapeHub Support',url:'https://escapehub.ai/support/'},
  signless:{name:'Signless Trading',url:'https://escapehub.ai/learn/signless-trading/'},
  funding:{name:'In-App Fiat On-Ramp',url:'https://escapehub.ai/learn/buy-crypto-with-card/'},
  wallet:{name:'EscapeHub App',url:'https://escapehub.ai/learn/escapehub-app/'},
@@ -76,9 +78,9 @@ const KNOWLEDGE = [
 const originalEditions = [{"id": "006", "title": "A Share For The Creator", "body": "This week: how can trading fees support a project?\n\nIn EscapeHub’s model, creators receive a share of the fees when their tokens are bought or sold.\n\nTomorrow: a simple example.", "date": "2026-10-12", "tag": "Creator rewards"}, {"id": "007", "title": "What Does 0.5% Mean?", "body": "On a $100 trade, EscapeHub lists $0.50 for the digital asset’s creator and $0.70 for the platform in the initial phase: a $1.20 trading fee in total.\n\nTomorrow: how could the creator use that share?", "date": "2026-10-13", "tag": "Trading fees"}, {"id": "008", "title": "Support The Next Step", "body": "A feature the community has asked for: a project could use its share of EscapeHub trading fees to help bring that idea to life.\n\nThe image shows possible uses.\n\nTomorrow: who receives the share?", "date": "2026-10-14", "tag": "Project growth"}, {"id": "009", "title": "Choose Where It Goes", "body": "Who receives the fee share?\n\nEscapeHub’s model offers creators of digital assets three options: keep it, split it with others, or return it to buyers and sellers.\n\nTomorrow: what happens after the initial phase?", "date": "2026-10-15", "tag": "Distribution"}, {"id": "010", "title": "Beyond The Launch", "body": "In EscapeHub’s model, token creators still receive a share of trading fees after the initial phase.\n\nTomorrow on Paragraph: how trading fees can support a project.", "date": "2026-10-16", "tag": "Creator rewards"}];
 
 WEEKS[5].articleUrl='https://paragraph.com/@tankothek-2c2d/escapehub-launches-first';
-const files = FILES.map(f=>{const id=String(f.n).padStart(3,'0');const original=originalEditions.find(o=>o.id===id);return {...f,id,title:original?original.title:(f.title==='ARCHIVE TITLE TO BE IMPORTED'?'Title awaiting archive review':f.title.toLowerCase().replace(/(^|[.!?] )\w/g,c=>c.toUpperCase())),body:original?original.body:f.topic,tag:WEEKS[f.week].title,cover:original?`file-${id}.png`:null,status:original?'published':f.status,original:!!original};});
+const files = FILES.map(f=>{const id=String(f.n).padStart(3,'0');const original=originalEditions.find(o=>o.id===id);return {...f,id,title:original?original.title:(f.title==='ARCHIVE TITLE TO BE IMPORTED'?'Title awaiting archive review':f.title.toLowerCase().replace(/(^|[.!?] )\w/g,c=>c.toUpperCase())),body:original?original.body:f.topic,tag:WEEKS[f.week].title,cover:original?`file-${id}.png`:(f.cover??null),status:original?'published':f.status,original:!!original};});
 
-files.forEach(f=>{f.title=f.title.replace(/\$esc/g,"$ESC");});
+files.forEach(f=>{f.title=f.title.replace(/\$esc/g,"$ESC").replace(/\bescapehub\b/g,"EscapeHub");});
 WEEKS[5].article="EscapeHub Launches First: How the Platform, Presale and $ESC Fit Together";
 
 Object.assign(files.find(file => file.id === '011'), {"cover": "file-011.png", "original": true, "title": "Choose Your Network", "body": "Where should your token start? Consider the people you want to reach, the costs and the features your project needs.\n\nThis week: several networks, one platform."});
@@ -247,6 +249,11 @@ const germanFiles = {
     "Direkt zur Quelle",
     "Auf escapehub.ai findest du die offiziellen Links zum Launchpad und Neuigkeiten zum Start.",
     "Auf escapehub.ai findest du die offiziellen Links zum Launchpad und Neuigkeiten zum Start."
+  ],
+  "032": [
+    "Brauchst du Hilfe mit EscapeHub?",
+    "Den offiziellen EscapeHub-Support erreichst du über Telegram (@escapehub_official), per Direktnachricht auf X (@escape_hub) oder per E-Mail (support@escapehub.ai).",
+    "Den offiziellen EscapeHub-Support erreichst du über Telegram (@escapehub_official), per Direktnachricht auf X (@escape_hub) oder per E-Mail (support@escapehub.ai)."
   ]
 };
 

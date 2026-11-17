@@ -124,6 +124,10 @@ const fileLocales = {
       "031": [
         "Acude a la fuente",
         "En escapehub.ai encontrarás los enlaces oficiales a la plataforma de lanzamiento y las novedades sobre su apertura."
+      ],
+      "032": [
+        "¿Necesitas ayuda con EscapeHub?",
+        "Contacta con el soporte oficial por Telegram (@escapehub_official), por mensaje directo en X (@escape_hub) o por correo electrónico (support@escapehub.ai)."
       ]
     },
     "labels": {
@@ -299,6 +303,10 @@ const fileLocales = {
       "031": [
         "À la source",
         "Rends-toi sur escapehub.ai pour trouver les liens officiels vers le Launchpad et les dernières nouvelles sur son ouverture."
+      ],
+      "032": [
+        "Besoin d’aide avec EscapeHub ?",
+        "Contacte l’assistance officielle sur Telegram (@escapehub_official), par message privé sur X (@escape_hub) ou par e-mail (support@escapehub.ai)."
       ]
     },
     "labels": {
@@ -474,6 +482,10 @@ const fileLocales = {
       "031": [
         "Vá direto à fonte",
         "Acesse escapehub.ai para encontrar os links oficiais do Launchpad e acompanhar as novidades sobre o lançamento."
+      ],
+      "032": [
+        "Precisa de ajuda com a EscapeHub?",
+        "Fale com o suporte oficial pelo Telegram (@escapehub_official), por mensagem direta no X (@escape_hub) ou por e-mail (support@escapehub.ai)."
       ]
     },
     "labels": {
@@ -649,6 +661,10 @@ const fileLocales = {
       "031": [
         "Doğrudan kaynağa git",
         "Launchpad’in resmî bağlantıları ve açılışla ilgili güncellemeler için escapehub.ai adresine git."
+      ],
+      "032": [
+        "EscapeHub ile ilgili yardıma mı ihtiyacın var?",
+        "Resmî desteğe Telegram (@escapehub_official), X’te doğrudan mesaj (@escape_hub) veya e-posta (support@escapehub.ai) üzerinden ulaşabilirsin."
       ]
     },
     "labels": {
@@ -824,6 +840,10 @@ const fileLocales = {
       "031": [
         "Начни с источника",
         "На escapehub.ai можно найти официальные ссылки на платформу запуска токенов и новости о её запуске."
+      ],
+      "032": [
+        "Нужна помощь с EscapeHub?",
+        "Связаться с официальной поддержкой можно в Telegram (@escapehub_official), личным сообщением в X (@escape_hub) или по электронной почте (support@escapehub.ai)."
       ]
     },
     "labels": {
@@ -999,6 +1019,10 @@ const fileLocales = {
       "031": [
         "从官方渠道开始",
         "访问 escapehub.ai，查找代币发行平台的官方链接和上线动态。"
+      ],
+      "032": [
+        "需要 EscapeHub 帮助？",
+        "可通过 Telegram（@escapehub_official）、X 私信（@escape_hub）或电子邮件（support@escapehub.ai）联系官方支持。"
       ]
     },
     "labels": {
@@ -1174,6 +1198,10 @@ const fileLocales = {
       "031": [
         "まずは公式サイトへ",
         "escapehub.ai でローンチパッドへの公式リンクと公開に関する最新情報を確認できます。"
+      ],
+      "032": [
+        "EscapeHub についてサポートが必要ですか？",
+        "公式サポートには、Telegram（@escapehub_official）、Xのダイレクトメッセージ（@escape_hub）、またはメール（support@escapehub.ai）で問い合わせできます。"
       ]
     },
     "labels": {
@@ -1349,6 +1377,10 @@ const fileLocales = {
       "031": [
         "공식 사이트에서 시작하기",
         "escapehub.ai에서 런치패드 공식 링크와 출시 소식을 확인할 수 있습니다."
+      ],
+      "032": [
+        "EscapeHub 이용에 도움이 필요하신가요?",
+        "공식 지원팀에 텔레그램(@escapehub_official), X 쪽지(@escape_hub) 또는 이메일(support@escapehub.ai)로 문의할 수 있습니다."
       ]
     },
     "labels": {
