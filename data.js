@@ -56,10 +56,12 @@ const FILES = [
      {channel:'X', label:'@escape_hub', url:'https://x.com/escape_hub'},
      {channel:'email', label:'support@escapehub.ai', url:'mailto:support@escapehub.ai'}
    ]
- }
+ },
+ {...e(33,7,'2026-11-18','CHECK WHO CONTACTED YOU.','Before replying to someone claiming to be on the EscapeHub team, check the exact Telegram username or email address with EscapeHub’s official verification tool.',['access','first steps'],'published','verify'), x:'https://x.com/Tankothek/status/2123098915297698011', cover:'file-033.webp'}
 ];
 
 const SOURCES = {
+ verify:{name:'EscapeHub Official Verify',url:'https://escapehub.ai/official-verify/'},
  support:{name:'EscapeHub Support',url:'https://escapehub.ai/support/'},
  signless:{name:'Signless Trading',url:'https://escapehub.ai/learn/signless-trading/'},
  funding:{name:'In-App Fiat On-Ramp',url:'https://escapehub.ai/learn/buy-crypto-with-card/'},
@@ -260,6 +262,11 @@ const germanFiles = {
     "Brauchst du Hilfe mit EscapeHub?",
     "Drei offizielle Wege zum EscapeHub-Support.",
     "Drei offizielle Wege zum EscapeHub-Support."
+  ],
+  "033": [
+    "Prüfe, wer dich kontaktiert hat",
+    "Wenn sich jemand als Mitglied des EscapeHub-Teams ausgibt, prüfe vor deiner Antwort den genauen Telegram-Nutzernamen oder die E-Mail-Adresse mit dem offiziellen Prüftool.",
+    "Wenn sich jemand als Mitglied des EscapeHub-Teams ausgibt, prüfe vor deiner Antwort den genauen Telegram-Nutzernamen oder die E-Mail-Adresse mit dem offiziellen Prüftool."
   ]
 };
 

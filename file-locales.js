@@ -128,6 +128,10 @@ const fileLocales = {
       "032": [
         "¿Necesitas ayuda con EscapeHub?",
         "Tres formas oficiales de contactar con el soporte de EscapeHub."
+      ],
+      "033": [
+        "Comprueba quién te contactó",
+        "Si alguien dice ser del equipo de EscapeHub, verifica su nombre de usuario exacto en Telegram o su correo electrónico con la herramienta oficial antes de responder."
       ]
     },
     "labels": {
@@ -307,6 +311,10 @@ const fileLocales = {
       "032": [
         "Besoin d’aide avec EscapeHub ?",
         "Trois façons officielles de contacter l’assistance EscapeHub."
+      ],
+      "033": [
+        "Vérifie qui t’a contacté",
+        "Si quelqu’un prétend faire partie de l’équipe EscapeHub, vérifie son nom d’utilisateur Telegram exact ou son adresse e-mail avec l’outil officiel avant de répondre."
       ]
     },
     "labels": {
@@ -486,6 +494,10 @@ const fileLocales = {
       "032": [
         "Precisa de ajuda com a EscapeHub?",
         "Três canais oficiais para falar com o suporte da EscapeHub."
+      ],
+      "033": [
+        "Confira quem entrou em contato com você",
+        "Se alguém disser que faz parte da equipe da EscapeHub, confira o nome de usuário exato no Telegram ou o endereço de e-mail na ferramenta oficial antes de responder."
       ]
     },
     "labels": {
@@ -665,6 +677,10 @@ const fileLocales = {
       "032": [
         "EscapeHub ile ilgili yardıma mı ihtiyacın var?",
         "EscapeHub desteğine ulaşmanın üç resmî yolu."
+      ],
+      "033": [
+        "Sana kimin ulaştığını doğrula",
+        "Biri EscapeHub ekibinden olduğunu söylerse yanıt vermeden önce tam Telegram kullanıcı adını veya e-posta adresini resmî araçla doğrula."
       ]
     },
     "labels": {
@@ -844,6 +860,10 @@ const fileLocales = {
       "032": [
         "Нужна помощь с EscapeHub?",
         "Три официальных способа связаться с поддержкой EscapeHub."
+      ],
+      "033": [
+        "Проверь, кто с тобой связался",
+        "Если кто-то представляется членом команды EscapeHub, перед ответом проверь точное имя пользователя в Telegram или адрес электронной почты с помощью официального инструмента."
       ]
     },
     "labels": {
@@ -1023,6 +1043,10 @@ const fileLocales = {
       "032": [
         "需要 EscapeHub 帮助？",
         "联系 EscapeHub 官方支持的三种方式。"
+      ],
+      "033": [
+        "核实联系你的人",
+        "如果有人声称是 EscapeHub 团队成员，请在回复前使用官方工具核对其完整的 Telegram 用户名或电子邮箱地址。"
       ]
     },
     "labels": {
@@ -1202,6 +1226,10 @@ const fileLocales = {
       "032": [
         "EscapeHub についてサポートが必要ですか？",
         "EscapeHub の公式サポートに問い合わせる3つの方法。"
+      ],
+      "033": [
+        "連絡してきた相手を確認しよう",
+        "EscapeHub チームを名乗る人から連絡が来たら、返信する前に、正確な Telegram のユーザー名かメールアドレスを公式ツールで確認しましょう。"
       ]
     },
     "labels": {
@@ -1381,6 +1409,10 @@ const fileLocales = {
       "032": [
         "EscapeHub 이용에 도움이 필요하신가요?",
         "EscapeHub 공식 지원팀에 문의하는 세 가지 방법입니다."
+      ],
+      "033": [
+        "누가 연락했는지 확인하세요",
+        "누군가 EscapeHub 팀원이라고 주장하면 답장하기 전에 정확한 텔레그램 사용자 이름이나 이메일 주소를 공식 도구에서 확인하세요."
       ]
     },
     "labels": {
