@@ -58,6 +58,7 @@ const FILES = [
    ]
  },
  {...e(33,7,'2026-11-18','CHECK WHO CONTACTED YOU.','Before replying to someone claiming to be on the EscapeHub team, check the exact Telegram username or email address with EscapeHub’s official verification tool.',['access','first steps'],'published','verify'), x:'https://x.com/Tankothek/status/2123098915297698011', cover:'file-033.webp'},
+ {...e(34,7,'2026-11-19',"Help should not start with a payment.","EscapeHub says its staff never ask you to send money upfront for help. If someone does, leave the chat and avoid links in the message.",['access','first steps'],'published','verify'), x:'https://x.com/Tankothek/status/2123461305797574922', cover:'file-034.webp'},
  {...e(35,7,'2026-11-20',"What should you tell support?","Tell EscapeHub support which platform you used, what you tried and what went wrong. Include the exact error message if you saw one. Keep passwords and wallet recovery words private.",['access','first steps'],'published','support'), x:'https://x.com/Tankothek/status/2123823693214429426', cover:'file-035.webp'}
 ];
 
@@ -103,6 +104,12 @@ Object.assign(files.find(file => file.id === '028'), {
 });
 WEEKS[6].article = 'Getting started with EscapeHub';
 
+Object.assign(files.find(file => file.id === '034'), {
+  title: "Help should not start with a payment.",
+  body: "Someone asks you to pay before they’ll help? EscapeHub says its team never asks you to send money first. Don’t pay or use a link from the message. Leave the chat.\n\nNext: launch updates.\n\n#TheEscapeFiles",
+  original: true
+});
+
 Object.assign(files.find(file => file.id === '035'), {
   title: "What should you tell support?",
   body: "Need EscapeHub support? Say where it happened (web, Android or iOS), what you tried and what went wrong. Include the exact error if you saw one. Keep passwords and wallet recovery words private.\n\nSaturday: support guide.\n\n#TheEscapeFiles",
@@ -110,6 +117,11 @@ Object.assign(files.find(file => file.id === '035'), {
 });
 
 const germanFiles = {
+  "034": [
+    "Hilfe sollte nicht mit einer Zahlung beginnen.",
+    "Laut EscapeHub verlangt das Team keine Vorauszahlung für Hilfe. Wenn jemand Geld verlangt, verlasse den Chat und öffne keine Links aus der Nachricht.",
+    "Jemand verlangt Geld, bevor er dir hilft? Laut EscapeHub bittet dich das Team nie, zuerst Geld zu senden. Zahle nichts, öffne keine Links aus der Nachricht und verlasse den Chat."
+  ],
   "035": [
     "Was solltest du dem Support sagen?",
     "Nenne dem EscapeHub-Support die Plattform, deine Schritte und das Problem. Gib eine Fehlermeldung im Wortlaut an. Passwörter und Wiederherstellungswörter bleiben privat.",

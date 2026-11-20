@@ -133,6 +133,10 @@ const fileLocales = {
         "Comprueba quién te contactó",
         "Si alguien dice ser del equipo de EscapeHub, verifica su nombre de usuario exacto en Telegram o su correo electrónico con la herramienta oficial antes de responder."
       ],
+      "034": [
+        "La ayuda no debería empezar con un pago.",
+        "EscapeHub afirma que su equipo nunca pide un pago por adelantado para ayudarte. Si alguien lo pide, abandona el chat y evita los enlaces del mensaje."
+      ],
       "035": [
         "¿Qué debes decirle al equipo de soporte?",
         "Indica a soporte de EscapeHub qué plataforma usaste, qué intentaste y qué salió mal. Incluye el mensaje de error exacto si apareció. Mantén en privado tus contraseñas y las palabras de recuperación de tu cartera."
@@ -319,6 +323,10 @@ const fileLocales = {
       "033": [
         "Vérifie qui t’a contacté",
         "Si quelqu’un prétend faire partie de l’équipe EscapeHub, vérifie son nom d’utilisateur Telegram exact ou son adresse e-mail avec l’outil officiel avant de répondre."
+      ],
+      "034": [
+        "L’assistance ne devrait pas commencer par un paiement.",
+        "EscapeHub indique que son équipe ne demande jamais d’argent à l’avance pour t’aider. Si quelqu’un le fait, quitte la conversation et évite les liens du message."
       ],
       "035": [
         "Que dire au support ?",
@@ -507,6 +515,10 @@ const fileLocales = {
         "Confira quem entrou em contato com você",
         "Se alguém disser que faz parte da equipe da EscapeHub, confira o nome de usuário exato no Telegram ou o endereço de e-mail na ferramenta oficial antes de responder."
       ],
+      "034": [
+        "A ajuda não deve começar com um pagamento.",
+        "A EscapeHub afirma que a sua equipa nunca pede dinheiro adiantado para ajudar. Se alguém o pedir, sai da conversa e evita as ligações da mensagem."
+      ],
       "035": [
         "O que deves dizer ao suporte?",
         "Indica ao suporte da EscapeHub a plataforma que usaste, o que tentaste e o que correu mal. Inclui a mensagem de erro exata, se apareceu. Mantém privadas as palavras-passe e as palavras de recuperação da carteira."
@@ -693,6 +705,10 @@ const fileLocales = {
       "033": [
         "Sana kimin ulaştığını doğrula",
         "Biri EscapeHub ekibinden olduğunu söylerse yanıt vermeden önce tam Telegram kullanıcı adını veya e-posta adresini resmî araçla doğrula."
+      ],
+      "034": [
+        "Yardım ödemeyle başlamamalı.",
+        "EscapeHub, ekibinin yardım için asla önceden para istemediğini belirtiyor. Biri para isterse sohbetten çık ve mesajdaki bağlantıları açma."
       ],
       "035": [
         "Destek ekibine ne söylemelisin?",
@@ -881,6 +897,10 @@ const fileLocales = {
         "Проверь, кто с тобой связался",
         "Если кто-то представляется членом команды EscapeHub, перед ответом проверь точное имя пользователя в Telegram или адрес электронной почты с помощью официального инструмента."
       ],
+      "034": [
+        "Помощь не должна начинаться с оплаты.",
+        "По словам EscapeHub, её команда никогда не просит предоплату за помощь. Если кто-то требует деньги, выйди из чата и не переходи по ссылкам из сообщения."
+      ],
       "035": [
         "Что сообщить службе поддержки?",
         "Расскажи службе поддержки EscapeHub, какой платформой ты пользовался, что попробовал и что пошло не так. Если появилось сообщение об ошибке, приведи его дословно. Храни пароли и слова восстановления кошелька в секрете."
@@ -1067,6 +1087,10 @@ const fileLocales = {
       "033": [
         "核实联系你的人",
         "如果有人声称是 EscapeHub 团队成员，请在回复前使用官方工具核对其完整的 Telegram 用户名或电子邮箱地址。"
+      ],
+      "034": [
+        "寻求帮助不应从付款开始。",
+        "EscapeHub 表示，其团队绝不会要求你先付钱才提供帮助。如果有人要求付款，请退出聊天，不要点击消息中的链接。"
       ],
       "035": [
         "应该告诉客服哪些信息？",
@@ -1255,6 +1279,10 @@ const fileLocales = {
         "連絡してきた相手を確認しよう",
         "EscapeHub チームを名乗る人から連絡が来たら、返信する前に、正確な Telegram のユーザー名かメールアドレスを公式ツールで確認しましょう。"
       ],
+      "034": [
+        "サポートを受けるのに先払いは不要です。",
+        "EscapeHubによると、チームがサポートの前に送金を求めることはありません。送金を求められたら、メッセージのリンクを開かず、チャットを退出しましょう。"
+      ],
       "035": [
         "サポートに何を伝えればいい？",
         "利用したプラットフォーム、試した操作、起きた問題をEscapeHubのサポートに伝えましょう。エラーが表示されたら、メッセージをそのまま添えてください。パスワードやウォレットの復元フレーズは共有しないでください。"
@@ -1441,6 +1469,10 @@ const fileLocales = {
       "033": [
         "누가 연락했는지 확인하세요",
         "누군가 EscapeHub 팀원이라고 주장하면 답장하기 전에 정확한 텔레그램 사용자 이름이나 이메일 주소를 공식 도구에서 확인하세요."
+      ],
+      "034": [
+        "도움은 결제부터 시작하지 않습니다.",
+        "EscapeHub는 지원팀이 도움을 주기 전에 돈을 보내라고 요청하는 일은 없다고 설명합니다. 누군가 돈을 요구하면 채팅을 나가고 메시지의 링크를 열지 마세요."
       ],
       "035": [
         "지원팀에 무엇을 알려야 할까요?",
