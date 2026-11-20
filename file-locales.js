@@ -132,6 +132,10 @@ const fileLocales = {
       "033": [
         "Comprueba quién te contactó",
         "Si alguien dice ser del equipo de EscapeHub, verifica su nombre de usuario exacto en Telegram o su correo electrónico con la herramienta oficial antes de responder."
+      ],
+      "035": [
+        "¿Qué debes decirle al equipo de soporte?",
+        "Indica a soporte de EscapeHub qué plataforma usaste, qué intentaste y qué salió mal. Incluye el mensaje de error exacto si apareció. Mantén en privado tus contraseñas y las palabras de recuperación de tu cartera."
       ]
     },
     "labels": {
@@ -315,6 +319,10 @@ const fileLocales = {
       "033": [
         "Vérifie qui t’a contacté",
         "Si quelqu’un prétend faire partie de l’équipe EscapeHub, vérifie son nom d’utilisateur Telegram exact ou son adresse e-mail avec l’outil officiel avant de répondre."
+      ],
+      "035": [
+        "Que dire au support ?",
+        "Indique au support d’EscapeHub la plateforme utilisée, ce que tu as essayé et ce qui s’est mal passé. Ajoute le message d’erreur exact s’il s’est affiché. Garde tes mots de passe et les mots de récupération de ton portefeuille privés."
       ]
     },
     "labels": {
@@ -498,6 +506,10 @@ const fileLocales = {
       "033": [
         "Confira quem entrou em contato com você",
         "Se alguém disser que faz parte da equipe da EscapeHub, confira o nome de usuário exato no Telegram ou o endereço de e-mail na ferramenta oficial antes de responder."
+      ],
+      "035": [
+        "O que deves dizer ao suporte?",
+        "Indica ao suporte da EscapeHub a plataforma que usaste, o que tentaste e o que correu mal. Inclui a mensagem de erro exata, se apareceu. Mantém privadas as palavras-passe e as palavras de recuperação da carteira."
       ]
     },
     "labels": {
@@ -681,6 +693,10 @@ const fileLocales = {
       "033": [
         "Sana kimin ulaştığını doğrula",
         "Biri EscapeHub ekibinden olduğunu söylerse yanıt vermeden önce tam Telegram kullanıcı adını veya e-posta adresini resmî araçla doğrula."
+      ],
+      "035": [
+        "Destek ekibine ne söylemelisin?",
+        "EscapeHub destek ekibine hangi platformu kullandığını, ne denediğini ve neyin ters gittiğini söyle. Bir hata mesajı gördüysen aynen aktar. Parolalarını ve cüzdan kurtarma kelimelerini gizli tut."
       ]
     },
     "labels": {
@@ -864,6 +880,10 @@ const fileLocales = {
       "033": [
         "Проверь, кто с тобой связался",
         "Если кто-то представляется членом команды EscapeHub, перед ответом проверь точное имя пользователя в Telegram или адрес электронной почты с помощью официального инструмента."
+      ],
+      "035": [
+        "Что сообщить службе поддержки?",
+        "Расскажи службе поддержки EscapeHub, какой платформой ты пользовался, что попробовал и что пошло не так. Если появилось сообщение об ошибке, приведи его дословно. Храни пароли и слова восстановления кошелька в секрете."
       ]
     },
     "labels": {
@@ -1047,6 +1067,10 @@ const fileLocales = {
       "033": [
         "核实联系你的人",
         "如果有人声称是 EscapeHub 团队成员，请在回复前使用官方工具核对其完整的 Telegram 用户名或电子邮箱地址。"
+      ],
+      "035": [
+        "应该告诉客服哪些信息？",
+        "向 EscapeHub 客服说明你使用的平台、尝试过的操作和遇到的问题。如果出现错误提示，请提供完整原文。请妥善保管密码和钱包助记词。"
       ]
     },
     "labels": {
@@ -1230,6 +1254,10 @@ const fileLocales = {
       "033": [
         "連絡してきた相手を確認しよう",
         "EscapeHub チームを名乗る人から連絡が来たら、返信する前に、正確な Telegram のユーザー名かメールアドレスを公式ツールで確認しましょう。"
+      ],
+      "035": [
+        "サポートに何を伝えればいい？",
+        "利用したプラットフォーム、試した操作、起きた問題をEscapeHubのサポートに伝えましょう。エラーが表示されたら、メッセージをそのまま添えてください。パスワードやウォレットの復元フレーズは共有しないでください。"
       ]
     },
     "labels": {
@@ -1413,6 +1441,10 @@ const fileLocales = {
       "033": [
         "누가 연락했는지 확인하세요",
         "누군가 EscapeHub 팀원이라고 주장하면 답장하기 전에 정확한 텔레그램 사용자 이름이나 이메일 주소를 공식 도구에서 확인하세요."
+      ],
+      "035": [
+        "지원팀에 무엇을 알려야 할까요?",
+        "사용한 플랫폼, 시도한 작업, 발생한 문제를 EscapeHub 지원팀에 알려 주세요. 오류 메시지가 표시됐다면 그대로 적어 주세요. 비밀번호와 지갑 복구 문구는 공유하지 마세요."
       ]
     },
     "labels": {

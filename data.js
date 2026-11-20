@@ -57,7 +57,8 @@ const FILES = [
      {channel:'email', label:'support@escapehub.ai', url:'mailto:support@escapehub.ai'}
    ]
  },
- {...e(33,7,'2026-11-18','CHECK WHO CONTACTED YOU.','Before replying to someone claiming to be on the EscapeHub team, check the exact Telegram username or email address with EscapeHub’s official verification tool.',['access','first steps'],'published','verify'), x:'https://x.com/Tankothek/status/2123098915297698011', cover:'file-033.webp'}
+ {...e(33,7,'2026-11-18','CHECK WHO CONTACTED YOU.','Before replying to someone claiming to be on the EscapeHub team, check the exact Telegram username or email address with EscapeHub’s official verification tool.',['access','first steps'],'published','verify'), x:'https://x.com/Tankothek/status/2123098915297698011', cover:'file-033.webp'},
+ {...e(35,7,'2026-11-20',"What should you tell support?","Tell EscapeHub support which platform you used, what you tried and what went wrong. Include the exact error message if you saw one. Keep passwords and wallet recovery words private.",['access','first steps'],'published','support'), x:'https://x.com/Tankothek/status/2123823693214429426', cover:'file-035.webp'}
 ];
 
 const SOURCES = {
@@ -102,7 +103,18 @@ Object.assign(files.find(file => file.id === '028'), {
 });
 WEEKS[6].article = 'Getting started with EscapeHub';
 
+Object.assign(files.find(file => file.id === '035'), {
+  title: "What should you tell support?",
+  body: "Need EscapeHub support? Say where it happened (web, Android or iOS), what you tried and what went wrong. Include the exact error if you saw one. Keep passwords and wallet recovery words private.\n\nSaturday: support guide.\n\n#TheEscapeFiles",
+  original: true
+});
+
 const germanFiles = {
+  "035": [
+    "Was solltest du dem Support sagen?",
+    "Nenne dem EscapeHub-Support die Plattform, deine Schritte und das Problem. Gib eine Fehlermeldung im Wortlaut an. Passwörter und Wiederherstellungswörter bleiben privat.",
+    "Frage an den EscapeHub-Support? Nenne Plattform (Web, Android oder iOS), Schritte und Problem. Gib Fehlermeldungen im Wortlaut an. Passwörter und Wiederherstellungswörter bleiben privat."
+  ],
   "001": [
     "Warum mit Whitelist starten?",
     "Wie früher Zugang eine Community vor automatisierten Käufen zum Start schützen kann.",
