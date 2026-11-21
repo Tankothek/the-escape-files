@@ -5,7 +5,7 @@ const WEEKS = {
   4:{title:'Bonding & DEX Graduation',article:'Your Token Has Launched. What Happens Next?',articleUrl:'https://paragraph.com/@tankothek-2c2d/your-token-has-launched-what-happens-next'},
   5:{title:'Platform Revenue, $ESC & Buybacks',article:'EscapeHub Launches First: How the Platform, Presale and $ESC Connect',articleUrl:null},
   6:{title:'Launch Week: First Steps',article:'Getting Started with EscapeHub: From Signing In to Your First Purchase',articleUrl:'https://paragraph.com/@tankothek-2c2d/getting-started-with-escapehub'},
-  7:{title:'Official Access',articleUrl:null}
+  7:{title:'Official Access',article:'How to Get Help with EscapeHub',articleUrl:'https://paragraph.com/@tankothek-2c2d/how-to-get-help-with-escapehub'}
 };
 
 const XIDS = [
