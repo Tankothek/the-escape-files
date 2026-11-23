@@ -5,7 +5,8 @@ const WEEKS = {
   4:{title:'Bonding & DEX Graduation',article:'Your Token Has Launched. What Happens Next?',articleUrl:'https://paragraph.com/@tankothek-2c2d/your-token-has-launched-what-happens-next'},
   5:{title:'Platform Revenue, $ESC & Buybacks',article:'EscapeHub Launches First: How the Platform, Presale and $ESC Connect',articleUrl:null},
   6:{title:'Launch Week: First Steps',article:'Getting Started with EscapeHub: From Signing In to Your First Purchase',articleUrl:'https://paragraph.com/@tankothek-2c2d/getting-started-with-escapehub'},
-  7:{title:'Official Access',article:'How to Get Help with EscapeHub',articleUrl:'https://paragraph.com/@tankothek-2c2d/how-to-get-help-with-escapehub'}
+  7:{title:'Official Access',article:'How to Get Help with EscapeHub',articleUrl:'https://paragraph.com/@tankothek-2c2d/how-to-get-help-with-escapehub'},
+  8:{title:'Project Spotlight: $ZDX',articleUrl:null}
 };
 
 const XIDS = [
@@ -59,10 +60,12 @@ const FILES = [
  },
  {...e(33,7,'2026-11-18','CHECK WHO CONTACTED YOU.','Before replying to someone claiming to be on the EscapeHub team, check the exact Telegram username or email address with EscapeHub’s official verification tool.',['access','first steps'],'published','verify'), x:'https://x.com/Tankothek/status/2123098915297698011', cover:'file-033.webp'},
  {...e(34,7,'2026-11-19',"Help should not start with a payment.","EscapeHub says its staff never ask you to send money upfront for help. If someone does, leave the chat and avoid links in the message.",['access','first steps'],'published','verify'), x:'https://x.com/Tankothek/status/2123461305797574922', cover:'file-034.webp'},
- {...e(35,7,'2026-11-20',"What should you tell support?","Tell EscapeHub support which platform you used, what you tried and what went wrong. Include the exact error message if you saw one. Keep passwords and wallet recovery words private.",['access','first steps'],'published','support'), x:'https://x.com/Tankothek/status/2123823693214429426', cover:'file-035.webp'}
+ {...e(35,7,'2026-11-20',"What should you tell support?","Tell EscapeHub support which platform you used, what you tried and what went wrong. Include the exact error message if you saw one. Keep passwords and wallet recovery words private.",['access','first steps'],'published','support'), x:'https://x.com/Tankothek/status/2123823693214429426', cover:'file-035.webp'},
+ {...e(36,8,'2026-11-23',"The buy that did it.","$ZDX was the first token on EscapeHub to complete its bonding curve and move to EscapeSwap. Its community also runs ZDX Services, a marketplace for crypto services.",['launchpad','graduation'],'published','firstGraduation'), x:'https://x.com/Tankothek/status/2124910858841227592', cover:'file-036.webp'}
 ];
 
 const SOURCES = {
+ firstGraduation:{name:'EscapeHub: First Token Graduation',url:'https://x.com/escape_hub/status/2123870004148072536'},
  verify:{name:'EscapeHub Official Verify',url:'https://escapehub.ai/official-verify/'},
  support:{name:'EscapeHub Support',url:'https://escapehub.ai/support/'},
  signless:{name:'Signless Trading',url:'https://escapehub.ai/learn/signless-trading/'},
@@ -116,7 +119,18 @@ Object.assign(files.find(file => file.id === '035'), {
   original: true
 });
 
+Object.assign(files.find(file => file.id === '036'), {
+  title: "The buy that did it.",
+  body: "$ZDX was the first token on EscapeHub to complete its bonding curve and move to EscapeSwap. Its community also runs ZDX Services, a marketplace for crypto services.\n\n#TheEscapeFiles \n\nhttps://x.com/escape_hub/status/2123870004148072536",
+  original: true
+});
+
 const germanFiles = {
+  "036": [
+    "Der Kauf, der den Wechsel auslöste.",
+    "$ZDX war der erste Token auf EscapeHub, der seine Bonding Curve abschloss und zu EscapeSwap wechselte. Die Community betreibt auch ZDX Services, einen Marktplatz für Krypto-Dienstleistungen.",
+    "$ZDX war der erste Token auf EscapeHub, der seine Bonding Curve abschloss und zu EscapeSwap wechselte. Die Community betreibt auch ZDX Services, einen Marktplatz für Krypto-Dienstleistungen."
+  ],
   "034": [
     "Hilfe sollte nicht mit einer Zahlung beginnen.",
     "Laut EscapeHub verlangt das Team keine Vorauszahlung für Hilfe. Wenn jemand Geld verlangt, verlasse den Chat und öffne keine Links aus der Nachricht.",

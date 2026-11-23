@@ -140,6 +140,10 @@ const fileLocales = {
       "035": [
         "¿Qué debes decirle al equipo de soporte?",
         "Indica a soporte de EscapeHub qué plataforma usaste, qué intentaste y qué salió mal. Incluye el mensaje de error exacto si apareció. Mantén en privado tus contraseñas y las palabras de recuperación de tu cartera."
+      ],
+      "036": [
+        "La compra que activó el cambio.",
+        "$ZDX fue el primer token de EscapeHub que completó su curva de vinculación y pasó a EscapeSwap. Su comunidad también gestiona ZDX Services, un mercado de servicios cripto."
       ]
     },
     "labels": {
@@ -187,7 +191,8 @@ const fileLocales = {
       "Formación del precio y cambio a DEX",
       "Ingresos, $ESC y recompras",
       "Semana de lanzamiento: primeros pasos",
-      "Acceso oficial"
+      "Acceso oficial",
+      "Proyecto destacado: $ZDX"
     ]
   },
   "fr": {
@@ -331,6 +336,10 @@ const fileLocales = {
       "035": [
         "Que dire au support ?",
         "Indique au support d’EscapeHub la plateforme utilisée, ce que tu as essayé et ce qui s’est mal passé. Ajoute le message d’erreur exact s’il s’est affiché. Garde tes mots de passe et les mots de récupération de ton portefeuille privés."
+      ],
+      "036": [
+        "L’achat qui a déclenché la transition.",
+        "$ZDX a été le premier jeton sur EscapeHub à terminer sa courbe de capitalisation et à passer à EscapeSwap. Sa communauté gère aussi ZDX Services, une place de marché de services crypto."
       ]
     },
     "labels": {
@@ -378,7 +387,8 @@ const fileLocales = {
       "Formation du prix et passage à un DEX",
       "Revenus, $ESC et rachats",
       "Semaine de lancement : premiers pas",
-      "Accès officiel"
+      "Accès officiel",
+      "Zoom sur le projet $ZDX"
     ]
   },
   "pt": {
@@ -522,6 +532,10 @@ const fileLocales = {
       "035": [
         "O que deves dizer ao suporte?",
         "Indica ao suporte da EscapeHub a plataforma que usaste, o que tentaste e o que correu mal. Inclui a mensagem de erro exata, se apareceu. Mantém privadas as palavras-passe e as palavras de recuperação da carteira."
+      ],
+      "036": [
+        "A compra que desencadeou a transição.",
+        "$ZDX foi o primeiro token na EscapeHub a completar a sua curva de vinculação e a passar para a EscapeSwap. A sua comunidade também gere a ZDX Services, um mercado de serviços cripto."
       ]
     },
     "labels": {
@@ -569,7 +583,8 @@ const fileLocales = {
       "Formação de preço e migração para DEX",
       "Receitas, $ESC e recompras",
       "Semana de lançamento: primeiros passos",
-      "Acesso oficial"
+      "Acesso oficial",
+      "Projeto em destaque: $ZDX"
     ]
   },
   "tr": {
@@ -713,6 +728,10 @@ const fileLocales = {
       "035": [
         "Destek ekibine ne söylemelisin?",
         "EscapeHub destek ekibine hangi platformu kullandığını, ne denediğini ve neyin ters gittiğini söyle. Bir hata mesajı gördüysen aynen aktar. Parolalarını ve cüzdan kurtarma kelimelerini gizli tut."
+      ],
+      "036": [
+        "Geçişi başlatan alım.",
+        "$ZDX, EscapeHub’da fiyat eğrisini tamamlayıp EscapeSwap’e geçen ilk token oldu. Topluluğu ayrıca kripto hizmetleri pazaryeri ZDX Services’i işletiyor."
       ]
     },
     "labels": {
@@ -760,7 +779,8 @@ const fileLocales = {
       "Fiyat oluşumu ve DEX’e geçiş",
       "Gelir, $ESC ve geri alımlar",
       "Lansman haftası: ilk adımlar",
-      "Resmî erişim"
+      "Resmî erişim",
+      "Proje incelemesi: $ZDX"
     ]
   },
   "ru": {
@@ -904,6 +924,10 @@ const fileLocales = {
       "035": [
         "Что сообщить службе поддержки?",
         "Расскажи службе поддержки EscapeHub, какой платформой ты пользовался, что попробовал и что пошло не так. Если появилось сообщение об ошибке, приведи его дословно. Храни пароли и слова восстановления кошелька в секрете."
+      ],
+      "036": [
+        "Покупка, которая запустила переход.",
+        "$ZDX стал первым токеном на EscapeHub, который завершил этап торговли по кривой и перешёл на EscapeSwap. Его сообщество также управляет ZDX Services — площадкой для криптоуслуг."
       ]
     },
     "labels": {
@@ -951,7 +975,8 @@ const fileLocales = {
       "Формирование цены и переход на DEX",
       "Доходы, $ESC и выкупы",
       "Неделя запуска: первые шаги",
-      "Официальный доступ"
+      "Официальный доступ",
+      "Обзор проекта $ZDX"
     ]
   },
   "zh-CN": {
@@ -1095,6 +1120,10 @@ const fileLocales = {
       "035": [
         "应该告诉客服哪些信息？",
         "向 EscapeHub 客服说明你使用的平台、尝试过的操作和遇到的问题。如果出现错误提示，请提供完整原文。请妥善保管密码和钱包助记词。"
+      ],
+      "036": [
+        "触发迁移的那笔买入。",
+        "$ZDX 是 EscapeHub 上首个完成联合曲线阶段并迁移到 EscapeSwap 的代币。其社区还运营加密服务市场 ZDX Services。"
       ]
     },
     "labels": {
@@ -1142,7 +1171,8 @@ const fileLocales = {
       "价格形成与转入 DEX",
       "收入、$ESC 与回购",
       "上线周：入门指南",
-      "官方入口"
+      "官方入口",
+      "项目聚焦：$ZDX"
     ]
   },
   "ja": {
@@ -1286,6 +1316,10 @@ const fileLocales = {
       "035": [
         "サポートに何を伝えればいい？",
         "利用したプラットフォーム、試した操作、起きた問題をEscapeHubのサポートに伝えましょう。エラーが表示されたら、メッセージをそのまま添えてください。パスワードやウォレットの復元フレーズは共有しないでください。"
+      ],
+      "036": [
+        "移行を引き起こした購入。",
+        "$ZDXはEscapeHubでボンディングカーブを完了し、EscapeSwapに移行した最初のトークンです。コミュニティは暗号資産関連サービスのマーケットプレイス、ZDX Servicesも運営しています。"
       ]
     },
     "labels": {
@@ -1333,7 +1367,8 @@ const fileLocales = {
       "価格形成と DEX への移行",
       "収益、$ESC、買い戻し",
       "ローンチ週：最初のステップ",
-      "公式アクセス"
+      "公式アクセス",
+      "プロジェクト特集：$ZDX"
     ]
   },
   "ko": {
@@ -1477,6 +1512,10 @@ const fileLocales = {
       "035": [
         "지원팀에 무엇을 알려야 할까요?",
         "사용한 플랫폼, 시도한 작업, 발생한 문제를 EscapeHub 지원팀에 알려 주세요. 오류 메시지가 표시됐다면 그대로 적어 주세요. 비밀번호와 지갑 복구 문구는 공유하지 마세요."
+      ],
+      "036": [
+        "전환을 이끈 매수.",
+        "$ZDX는 EscapeHub에서 본딩 커브를 완료하고 EscapeSwap으로 옮겨 간 첫 토큰입니다. 커뮤니티는 암호화폐 관련 서비스 마켓플레이스인 ZDX Services도 운영합니다."
       ]
     },
     "labels": {
@@ -1524,7 +1563,8 @@ const fileLocales = {
       "가격 형성과 DEX 전환",
       "수익, $ESC와 재매입",
       "출시 주간: 첫걸음",
-      "공식 접속 방법"
+      "공식 접속 방법",
+      "프로젝트 집중 조명: $ZDX"
     ]
   }
 };
