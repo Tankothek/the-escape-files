@@ -144,6 +144,10 @@ const fileLocales = {
       "036": [
         "La compra que activó el cambio.",
         "$ZDX fue el primer token de EscapeHub que completó su curva de vinculación y pasó a EscapeSwap. Su comunidad también gestiona ZDX Services, un mercado de servicios cripto."
+      ],
+      "037": [
+        "Fin de la primera fase.",
+        "$ZDX apareció en la sección «Graduated» de EscapeHub al finalizar su primera fase de negociación. La negociación pasó a EscapeSwap en Solana."
       ]
     },
     "labels": {
@@ -340,6 +344,10 @@ const fileLocales = {
       "036": [
         "L’achat qui a déclenché la transition.",
         "$ZDX a été le premier jeton sur EscapeHub à terminer sa courbe de capitalisation et à passer à EscapeSwap. Sa communauté gère aussi ZDX Services, une place de marché de services crypto."
+      ],
+      "037": [
+        "Fin de la première phase.",
+        "$ZDX est apparu dans l’onglet « Graduated » d’EscapeHub à la fin de sa première phase d’échange. Les échanges se poursuivent sur EscapeSwap, sur Solana."
       ]
     },
     "labels": {
@@ -536,6 +544,10 @@ const fileLocales = {
       "036": [
         "A compra que desencadeou a transição.",
         "$ZDX foi o primeiro token na EscapeHub a completar a sua curva de vinculação e a passar para a EscapeSwap. A sua comunidade também gere a ZDX Services, um mercado de serviços cripto."
+      ],
+      "037": [
+        "Fim da primeira fase.",
+        "$ZDX apareceu na secção «Graduated» da EscapeHub após o fim da primeira fase de negociação. A negociação passou para a EscapeSwap na Solana."
       ]
     },
     "labels": {
@@ -732,6 +744,10 @@ const fileLocales = {
       "036": [
         "Geçişi başlatan alım.",
         "$ZDX, EscapeHub’da fiyat eğrisini tamamlayıp EscapeSwap’e geçen ilk token oldu. Topluluğu ayrıca kripto hizmetleri pazaryeri ZDX Services’i işletiyor."
+      ],
+      "037": [
+        "İlk aşama sona erdi.",
+        "İlk işlem aşaması sona erince $ZDX, EscapeHub’da «Graduated» sekmesinde göründü. İşlemler Solana üzerindeki EscapeSwap’e geçti."
       ]
     },
     "labels": {
@@ -928,6 +944,10 @@ const fileLocales = {
       "036": [
         "Покупка, которая запустила переход.",
         "$ZDX стал первым токеном на EscapeHub, который завершил этап торговли по кривой и перешёл на EscapeSwap. Его сообщество также управляет ZDX Services — площадкой для криптоуслуг."
+      ],
+      "037": [
+        "Первый этап завершён.",
+        "После завершения первого этапа торгов $ZDX появился в разделе «Graduated» на EscapeHub. Торги перешли на EscapeSwap в сети Solana."
       ]
     },
     "labels": {
@@ -1124,6 +1144,10 @@ const fileLocales = {
       "036": [
         "触发迁移的那笔买入。",
         "$ZDX 是 EscapeHub 上首个完成联合曲线阶段并迁移到 EscapeSwap 的代币。其社区还运营加密服务市场 ZDX Services。"
+      ],
+      "037": [
+        "第一阶段结束。",
+        "第一阶段交易结束后，$ZDX 出现在 EscapeHub 的「Graduated」栏中。交易随后转至 Solana 上的 EscapeSwap。"
       ]
     },
     "labels": {
@@ -1320,6 +1344,10 @@ const fileLocales = {
       "036": [
         "移行を引き起こした購入。",
         "$ZDXはEscapeHubでボンディングカーブを完了し、EscapeSwapに移行した最初のトークンです。コミュニティは暗号資産関連サービスのマーケットプレイス、ZDX Servicesも運営しています。"
+      ],
+      "037": [
+        "最初の取引段階が終了。",
+        "最初の取引段階が終わると、$ZDXはEscapeHubの「Graduated」欄に表示されました。取引はSolana上のEscapeSwapに移行しました。"
       ]
     },
     "labels": {
@@ -1516,6 +1544,10 @@ const fileLocales = {
       "036": [
         "전환을 이끈 매수.",
         "$ZDX는 EscapeHub에서 본딩 커브를 완료하고 EscapeSwap으로 옮겨 간 첫 토큰입니다. 커뮤니티는 암호화폐 관련 서비스 마켓플레이스인 ZDX Services도 운영합니다."
+      ],
+      "037": [
+        "첫 거래 단계가 끝났습니다.",
+        "첫 거래 단계가 끝난 뒤 $ZDX는 EscapeHub의 ‘Graduated’ 탭에 표시됐습니다. 거래는 Solana의 EscapeSwap으로 옮겨 갔습니다."
       ]
     },
     "labels": {

@@ -61,7 +61,8 @@ const FILES = [
  {...e(33,7,'2026-11-18','CHECK WHO CONTACTED YOU.','Before replying to someone claiming to be on the EscapeHub team, check the exact Telegram username or email address with EscapeHub’s official verification tool.',['access','first steps'],'published','verify'), x:'https://x.com/Tankothek/status/2123098915297698011', cover:'file-033.webp'},
  {...e(34,7,'2026-11-19',"Help should not start with a payment.","EscapeHub says its staff never ask you to send money upfront for help. If someone does, leave the chat and avoid links in the message.",['access','first steps'],'published','verify'), x:'https://x.com/Tankothek/status/2123461305797574922', cover:'file-034.webp'},
  {...e(35,7,'2026-11-20',"What should you tell support?","Tell EscapeHub support which platform you used, what you tried and what went wrong. Include the exact error message if you saw one. Keep passwords and wallet recovery words private.",['access','first steps'],'published','support'), x:'https://x.com/Tankothek/status/2123823693214429426', cover:'file-035.webp'},
- {...e(36,8,'2026-11-23',"The buy that did it.","$ZDX was the first token on EscapeHub to complete its bonding curve and move to EscapeSwap. Its community also runs ZDX Services, a marketplace for crypto services.",['launchpad','graduation'],'published','firstGraduation'), x:'https://x.com/Tankothek/status/2124910858841227592', cover:'file-036.webp'}
+ {...e(36,8,'2026-11-23',"The buy that did it.","$ZDX was the first token on EscapeHub to complete its bonding curve and move to EscapeSwap. Its community also runs ZDX Services, a marketplace for crypto services.",['launchpad','graduation'],'published','firstGraduation'), x:'https://x.com/Tankothek/status/2124910858841227592', cover:'file-036.webp'},
+ {...e(37,8,'2026-11-24',"First phase over.","$ZDX appeared under “Graduated” on EscapeHub after its first trading phase ended. Trading moved to EscapeSwap on Solana.",['launchpad','graduation'],'published','firstGraduation'), x:'https://x.com/Tankothek/status/2125273243879890945', cover:'file-037.webp'}
 ];
 
 const SOURCES = {
@@ -125,7 +126,18 @@ Object.assign(files.find(file => file.id === '036'), {
   original: true
 });
 
+Object.assign(files.find(file => file.id === '037'), {
+  title: "First phase over.",
+  body: "The $ZDX order showed “Migration Buy”. Later, $ZDX appeared under “Graduated” on EscapeHub. That label marks the end of its first trading phase. Trading moved to EscapeSwap on Solana.\n\n#TheEscapeFiles",
+  original: true
+});
+
 const germanFiles = {
+  "037": [
+    "Die erste Handelsphase ist vorbei.",
+    "$ZDX erschien auf EscapeHub unter „Graduated“, nachdem die erste Handelsphase endete. Der Handel wechselte zu EscapeSwap auf Solana.",
+    "Bei der $ZDX-Order stand „Migration Buy“. Später erschien $ZDX auf EscapeHub unter „Graduated“. Dieser Status markiert das Ende der ersten Handelsphase. Der Handel wechselte zu EscapeSwap auf Solana."
+  ],
   "036": [
     "Der Kauf, der den Wechsel auslöste.",
     "$ZDX war der erste Token auf EscapeHub, der seine Bonding Curve abschloss und zu EscapeSwap wechselte. Die Community betreibt auch ZDX Services, einen Marktplatz für Krypto-Dienstleistungen.",
