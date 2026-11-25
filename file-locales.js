@@ -148,6 +148,10 @@ const fileLocales = {
       "037": [
         "Fin de la primera fase.",
         "$ZDX apareció en la sección «Graduated» de EscapeHub al finalizar su primera fase de negociación. La negociación pasó a EscapeSwap en Solana."
+      ],
+      "038": [
+        "Encuentra profesionales para tu proyecto cripto.",
+        "ZDX Services reúne a diseñadores, desarrolladores y otros profesionales. Según el proveedor, puedes pagar en $ZDX, SOL o USDC."
       ]
     },
     "labels": {
@@ -348,6 +352,10 @@ const fileLocales = {
       "037": [
         "Fin de la première phase.",
         "$ZDX est apparu dans l’onglet « Graduated » d’EscapeHub à la fin de sa première phase d’échange. Les échanges se poursuivent sur EscapeSwap, sur Solana."
+      ],
+      "038": [
+        "Trouve des professionnels pour ton projet crypto.",
+        "ZDX Services répertorie des designers, des développeurs et d’autres prestataires. Selon le prestataire, tu peux payer en $ZDX, SOL ou USDC."
       ]
     },
     "labels": {
@@ -548,6 +556,10 @@ const fileLocales = {
       "037": [
         "Fim da primeira fase.",
         "$ZDX apareceu na secção «Graduated» da EscapeHub após o fim da primeira fase de negociação. A negociação passou para a EscapeSwap na Solana."
+      ],
+      "038": [
+        "Encontra profissionais para o teu projeto cripto.",
+        "A ZDX Services lista designers, programadores e outros prestadores. Consoante o prestador, podes pagar em $ZDX, SOL ou USDC."
       ]
     },
     "labels": {
@@ -748,6 +760,10 @@ const fileLocales = {
       "037": [
         "İlk aşama sona erdi.",
         "İlk işlem aşaması sona erince $ZDX, EscapeHub’da «Graduated» sekmesinde göründü. İşlemler Solana üzerindeki EscapeSwap’e geçti."
+      ],
+      "038": [
+        "Kripto projen için uzman bul.",
+        "ZDX Services, tasarımcıları, geliştiricileri ve diğer hizmet sağlayıcılarını listeler. Sağlayıcıya bağlı olarak $ZDX, SOL veya USDC ile ödeme yapabilirsin."
       ]
     },
     "labels": {
@@ -948,6 +964,10 @@ const fileLocales = {
       "037": [
         "Первый этап завершён.",
         "После завершения первого этапа торгов $ZDX появился в разделе «Graduated» на EscapeHub. Торги перешли на EscapeSwap в сети Solana."
+      ],
+      "038": [
+        "Найди специалистов для криптопроекта.",
+        "На ZDX Services представлены дизайнеры, разработчики и другие исполнители. В зависимости от исполнителя можно заплатить в $ZDX, SOL или USDC."
       ]
     },
     "labels": {
@@ -1148,6 +1168,10 @@ const fileLocales = {
       "037": [
         "第一阶段结束。",
         "第一阶段交易结束后，$ZDX 出现在 EscapeHub 的「Graduated」栏中。交易随后转至 Solana 上的 EscapeSwap。"
+      ],
+      "038": [
+        "为加密项目寻找专业人才。",
+        "ZDX Services 汇集了设计师、开发者及其他服务商。根据服务商的选择，可以使用 $ZDX、SOL 或 USDC 付款。"
       ]
     },
     "labels": {
@@ -1348,6 +1372,10 @@ const fileLocales = {
       "037": [
         "最初の取引段階が終了。",
         "最初の取引段階が終わると、$ZDXはEscapeHubの「Graduated」欄に表示されました。取引はSolana上のEscapeSwapに移行しました。"
+      ],
+      "038": [
+        "暗号資産プロジェクトの専門家を探そう。",
+        "ZDX Servicesにはデザイナー、開発者などが掲載されています。提供者によっては、$ZDX、SOL、USDCで支払えます。"
       ]
     },
     "labels": {
@@ -1548,6 +1576,10 @@ const fileLocales = {
       "037": [
         "첫 거래 단계가 끝났습니다.",
         "첫 거래 단계가 끝난 뒤 $ZDX는 EscapeHub의 ‘Graduated’ 탭에 표시됐습니다. 거래는 Solana의 EscapeSwap으로 옮겨 갔습니다."
+      ],
+      "038": [
+        "암호화폐 프로젝트에 필요한 전문가를 찾아보세요.",
+        "ZDX Services에는 디자이너, 개발자 등 다양한 서비스 제공자가 등록되어 있습니다. 제공자에 따라 $ZDX, SOL 또는 USDC로 결제할 수 있습니다."
       ]
     },
     "labels": {

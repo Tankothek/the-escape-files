@@ -62,10 +62,12 @@ const FILES = [
  {...e(34,7,'2026-11-19',"Help should not start with a payment.","EscapeHub says its staff never ask you to send money upfront for help. If someone does, leave the chat and avoid links in the message.",['access','first steps'],'published','verify'), x:'https://x.com/Tankothek/status/2123461305797574922', cover:'file-034.webp'},
  {...e(35,7,'2026-11-20',"What should you tell support?","Tell EscapeHub support which platform you used, what you tried and what went wrong. Include the exact error message if you saw one. Keep passwords and wallet recovery words private.",['access','first steps'],'published','support'), x:'https://x.com/Tankothek/status/2123823693214429426', cover:'file-035.webp'},
  {...e(36,8,'2026-11-23',"The buy that did it.","$ZDX was the first token on EscapeHub to complete its bonding curve and move to EscapeSwap. Its community also runs ZDX Services, a marketplace for crypto services.",['launchpad','graduation'],'published','firstGraduation'), x:'https://x.com/Tankothek/status/2124910858841227592', cover:'file-036.webp'},
- {...e(37,8,'2026-11-24',"First phase over.","$ZDX appeared under “Graduated” on EscapeHub after its first trading phase ended. Trading moved to EscapeSwap on Solana.",['launchpad','graduation'],'published','firstGraduation'), x:'https://x.com/Tankothek/status/2125273243879890945', cover:'file-037.webp'}
+ {...e(37,8,'2026-11-24',"First phase over.","$ZDX appeared under “Graduated” on EscapeHub after its first trading phase ended. Trading moved to EscapeSwap on Solana.",['launchpad','graduation'],'published','firstGraduation'), x:'https://x.com/Tankothek/status/2125273243879890945', cover:'file-037.webp'},
+ {...e(38,8,'2026-11-25',"Find crypto talent.","ZDX Services lists designers, developers and other providers for crypto projects. Payment options depend on the provider and may include $ZDX, SOL or USDC.",['utility','development'],'published','zdxServices'), x:'https://x.com/Tankothek/status/2125635632802189519', cover:'file-038.webp'}
 ];
 
 const SOURCES = {
+ zdxServices:{name:'ZDX Services',url:'https://zdxhub.io/'},
  firstGraduation:{name:'EscapeHub: First Token Graduation',url:'https://x.com/escape_hub/status/2123870004148072536'},
  verify:{name:'EscapeHub Official Verify',url:'https://escapehub.ai/official-verify/'},
  support:{name:'EscapeHub Support',url:'https://escapehub.ai/support/'},
@@ -132,7 +134,18 @@ Object.assign(files.find(file => file.id === '037'), {
   original: true
 });
 
+Object.assign(files.find(file => file.id === '038'), {
+  title: "Find crypto talent.",
+  body: "Need a logo for a crypto project? ZDX Services lists designers, developers and other providers. Depending on the provider, you can pay for their work in $ZDX, SOL or USDC.\n\nhttps://zdxhub.io/\n\n#TheEscapeFiles",
+  original: true
+});
+
 const germanFiles = {
+  "038": [
+    "Finde Fachleute für dein Kryptoprojekt.",
+    "ZDX Services listet Design-, Entwicklungs- und weitere Dienstleistungen für Kryptoprojekte. Je nach Anbieter kommen $ZDX, SOL oder USDC als Zahlungsmittel infrage.",
+    "Du brauchst ein Logo für ein Kryptoprojekt? Auf ZDX Services findest du Designer, Entwickler und weitere Dienstleister. Je nach Anbieter kannst du ihre Arbeit in $ZDX, SOL oder USDC bezahlen."
+  ],
   "037": [
     "Die erste Handelsphase ist vorbei.",
     "$ZDX erschien auf EscapeHub unter „Graduated“, nachdem die erste Handelsphase endete. Der Handel wechselte zu EscapeSwap auf Solana.",
