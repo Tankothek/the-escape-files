@@ -152,6 +152,10 @@ const fileLocales = {
       "038": [
         "Encuentra profesionales para tu proyecto cripto.",
         "ZDX Services reúne a diseñadores, desarrolladores y otros profesionales. Según el proveedor, puedes pagar en $ZDX, SOL o USDC."
+      ],
+      "039": [
+        "Bots de Telegram a medida.",
+        "El equipo de ZDX ofrece bots de Telegram a medida. Un bot podría dar la bienvenida a nuevos miembros y mostrarles los enlaces oficiales del proyecto."
       ]
     },
     "labels": {
@@ -356,6 +360,10 @@ const fileLocales = {
       "038": [
         "Trouve des professionnels pour ton projet crypto.",
         "ZDX Services répertorie des designers, des développeurs et d’autres prestataires. Selon le prestataire, tu peux payer en $ZDX, SOL ou USDC."
+      ],
+      "039": [
+        "Bots Telegram sur mesure.",
+        "L’équipe de ZDX propose des bots Telegram sur mesure. Un bot pourrait accueillir les nouveaux membres et les orienter vers les liens officiels d’un projet."
       ]
     },
     "labels": {
@@ -560,6 +568,10 @@ const fileLocales = {
       "038": [
         "Encontra profissionais para o teu projeto cripto.",
         "A ZDX Services lista designers, programadores e outros prestadores. Consoante o prestador, podes pagar em $ZDX, SOL ou USDC."
+      ],
+      "039": [
+        "Bots do Telegram à medida.",
+        "A equipa da ZDX oferece bots do Telegram à medida. Um bot poderia dar as boas-vindas a novos membros e encaminhá-los para as ligações oficiais do projeto."
       ]
     },
     "labels": {
@@ -764,6 +776,10 @@ const fileLocales = {
       "038": [
         "Kripto projen için uzman bul.",
         "ZDX Services, tasarımcıları, geliştiricileri ve diğer hizmet sağlayıcılarını listeler. Sağlayıcıya bağlı olarak $ZDX, SOL veya USDC ile ödeme yapabilirsin."
+      ],
+      "039": [
+        "Özel Telegram botları.",
+        "ZDX ekibi özel Telegram botları sunuyor. Bir bot yeni üyeleri karşılayabilir ve onları projenin resmî bağlantılarına yönlendirebilir."
       ]
     },
     "labels": {
@@ -968,6 +984,10 @@ const fileLocales = {
       "038": [
         "Найди специалистов для криптопроекта.",
         "На ZDX Services представлены дизайнеры, разработчики и другие исполнители. В зависимости от исполнителя можно заплатить в $ZDX, SOL или USDC."
+      ],
+      "039": [
+        "Telegram-боты на заказ.",
+        "Команда ZDX предлагает Telegram-ботов на заказ. Бот может приветствовать новых участников и направлять их к официальным ссылкам проекта."
       ]
     },
     "labels": {
@@ -1172,6 +1192,10 @@ const fileLocales = {
       "038": [
         "为加密项目寻找专业人才。",
         "ZDX Services 汇集了设计师、开发者及其他服务商。根据服务商的选择，可以使用 $ZDX、SOL 或 USDC 付款。"
+      ],
+      "039": [
+        "定制 Telegram 机器人。",
+        "ZDX 团队提供 Telegram 机器人定制服务。机器人可以欢迎新成员，并向他们提供项目的官方链接。"
       ]
     },
     "labels": {
@@ -1376,6 +1400,10 @@ const fileLocales = {
       "038": [
         "暗号資産プロジェクトの専門家を探そう。",
         "ZDX Servicesにはデザイナー、開発者などが掲載されています。提供者によっては、$ZDX、SOL、USDCで支払えます。"
+      ],
+      "039": [
+        "カスタムTelegramボット。",
+        "ZDXチームはカスタムTelegramボットを提供しています。ボットは新しいメンバーを歓迎し、プロジェクトの公式リンクへ案内できます。"
       ]
     },
     "labels": {
@@ -1580,6 +1608,10 @@ const fileLocales = {
       "038": [
         "암호화폐 프로젝트에 필요한 전문가를 찾아보세요.",
         "ZDX Services에는 디자이너, 개발자 등 다양한 서비스 제공자가 등록되어 있습니다. 제공자에 따라 $ZDX, SOL 또는 USDC로 결제할 수 있습니다."
+      ],
+      "039": [
+        "맞춤형 텔레그램 봇.",
+        "ZDX 팀은 맞춤형 텔레그램 봇을 제공합니다. 봇은 새 멤버를 환영하고 프로젝트의 공식 링크를 안내할 수 있습니다."
       ]
     },
     "labels": {

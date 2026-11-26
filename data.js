@@ -63,7 +63,8 @@ const FILES = [
  {...e(35,7,'2026-11-20',"What should you tell support?","Tell EscapeHub support which platform you used, what you tried and what went wrong. Include the exact error message if you saw one. Keep passwords and wallet recovery words private.",['access','first steps'],'published','support'), x:'https://x.com/Tankothek/status/2123823693214429426', cover:'file-035.webp'},
  {...e(36,8,'2026-11-23',"The buy that did it.","$ZDX was the first token on EscapeHub to complete its bonding curve and move to EscapeSwap. Its community also runs ZDX Services, a marketplace for crypto services.",['launchpad','graduation'],'published','firstGraduation'), x:'https://x.com/Tankothek/status/2124910858841227592', cover:'file-036.webp'},
  {...e(37,8,'2026-11-24',"First phase over.","$ZDX appeared under “Graduated” on EscapeHub after its first trading phase ended. Trading moved to EscapeSwap on Solana.",['launchpad','graduation'],'published','firstGraduation'), x:'https://x.com/Tankothek/status/2125273243879890945', cover:'file-037.webp'},
- {...e(38,8,'2026-11-25',"Find crypto talent.","ZDX Services lists designers, developers and other providers for crypto projects. Payment options depend on the provider and may include $ZDX, SOL or USDC.",['utility','development'],'published','zdxServices'), x:'https://x.com/Tankothek/status/2125635632802189519', cover:'file-038.webp'}
+ {...e(38,8,'2026-11-25',"Find crypto talent.","ZDX Services lists designers, developers and other providers for crypto projects. Payment options depend on the provider and may include $ZDX, SOL or USDC.",['utility','development'],'published','zdxServices'), x:'https://x.com/Tankothek/status/2125635632802189519', cover:'file-038.webp'},
+ {...e(39,8,'2026-11-26',"Custom Telegram bots.","The ZDX team offers custom Telegram bots. A bot could welcome new members and guide them to a project’s official links.",['utility','development'],'published','zdxServices'), x:'https://x.com/Tankothek/status/2125998015832068299', cover:'file-039.webp'}
 ];
 
 const SOURCES = {
@@ -141,7 +142,18 @@ Object.assign(files.find(file => file.id === '038'), {
   original: true
 });
 
+Object.assign(files.find(file => file.id === '039'), {
+  title: "Custom Telegram bots.",
+  body: "A custom Telegram bot could welcome new members and point them to a project’s official links. Custom Telegram bots are one of the services the ZDX team offers directly.\n\n#TheEscapeFiles",
+  original: true
+});
+
 const germanFiles = {
+  "039": [
+    "Individuelle Telegram-Bots.",
+    "Das ZDX-Team bietet individuelle Telegram-Bots an. Ein Bot kann neue Mitglieder begrüßen und ihnen die offiziellen Links eines Projekts zeigen.",
+    "Ein individueller Telegram-Bot könnte neue Mitglieder begrüßen und auf die offiziellen Links eines Projekts hinweisen. Individuelle Telegram-Bots gehören zu den Dienstleistungen, die das ZDX-Team direkt anbietet."
+  ],
   "038": [
     "Finde Fachleute für dein Kryptoprojekt.",
     "ZDX Services listet Design-, Entwicklungs- und weitere Dienstleistungen für Kryptoprojekte. Je nach Anbieter kommen $ZDX, SOL oder USDC als Zahlungsmittel infrage.",
