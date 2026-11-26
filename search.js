@@ -33,17 +33,19 @@ function localizeSiteSearch(language) {
   ];
   const sections = [
     ['#weeksGrid article', 'h3', '#weeks h2'],
-    ['#articlesGrid article', 'h3', '#articles h2'],
-    ['#glossaryGrid article', 'h4', '#glossaryTitle'],
+    ['#weeksGrid .week-feature-article', '.week-feature-title', '#weeks h2'],
+    ['#glossaryExamples details', 'summary', '#glossaryExamplesTitle'],
     ['#learn details', 'summary', '#learnTitle']
   ];
   for (const [selector, heading, category] of sections) {
     for (const item of document.querySelectorAll(selector)) {
+      const title = item.querySelector(heading);
+      const description = item.querySelector('p, .learn-steps li');
       siteSearchItems.push({
         href:'#' + item.id,
-        title:item.querySelector(heading).textContent.trim(),
+        title:title.textContent.trim(),
         text:item.textContent,
-        excerpt:item.querySelector('p, .learn-steps li')?.textContent.trim(),
+        excerpt:description !== title ? description?.textContent.trim() : '',
         group:$(category).textContent.trim()
       });
     }
@@ -101,12 +103,14 @@ siteSearchResults.addEventListener('click', event => {
   const link = event.target.closest('a');
   if (!link || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   siteSearchDialog.close();
-  const target = document.getElementById(link.getAttribute('href').slice(1));
-  if (target?.matches('details')) target.open = true;
-  if (target) {
-    target.tabIndex = -1;
-    target.focus({preventScroll:true});
-  }
+  const target = document.getElementById(link.hash.slice(1));
+  if (!target) return;
+  event.preventDefault();
+  if (location.hash !== link.hash) history.pushState(null, '', link.hash);
+  updateViewFromUrl();
+  if (target.tabIndex < 0) target.tabIndex = -1;
+  target.focus({preventScroll:true});
+  target.scrollIntoView({block:'start'});
 });
 document.addEventListener('keydown', event => {
   if (event.key === '/' && !event.metaKey && !event.ctrlKey && !event.altKey &&

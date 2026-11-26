@@ -22,6 +22,10 @@ Publish the repository root from the main branch using GitHub Pages. All files, 
 
 Archive content and sources live in data.js. FILES defines the original index, WEEKS the weekly reading paths, SOURCES official references and originalEditions the six full original texts. Each edition has a unique three-digit ID. Add original covers and update the mapping when new originals become available. Review archive statuses against original publications before changing them. Knowledge Base text is in index.html with a source-check date. Never invent missing titles or links.
 
+## File share previews
+
+Run `node tools/build-file-share.mjs` on macOS after adding a published File or updating its English title, summary, or cover. The generator uses Swift and the original covers to prepare a public link and a wide JPEG for each File under `file/<id>/`. Include the generated pages, images, and `share-files.js` with the archive update. Files awaiting a generated preview use their existing reader links.
+
 ## Privacy
 
 Saved files stay in browser localStorage on the current device. The footer uses a shared [Hits](https://hits.sh/) counter for page visits from the date it was added. No account system or submission forms. Google Fonts provides typography, with system fallbacks. External links use separate tabs.

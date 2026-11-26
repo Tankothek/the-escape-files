@@ -4,7 +4,7 @@
       !window.CSS?.supports('clip-path', 'polygon(0 0, 100% 0, 100% 100%, 0 100%)')) return;
 
   const main = document.querySelector('main');
-  const grids = [...main.querySelectorAll('#grid, #articlesGrid')];
+  const grid = main.querySelector('#grid');
   const headings = main.querySelectorAll(
     '#guideTitle, #weeks .section-head h2, #knowledge .section-head h2, #glossaryTitle, #learnTitle, #learn > h3, #about h2'
   );
@@ -77,7 +77,7 @@
     const items = [];
     for (const tile of nodes) {
       if (tile.nodeType !== Node.ELEMENT_NODE) continue;
-      const element = tile.querySelector('.cover, .article-card-cover');
+      const element = tile.querySelector('.cover');
       const image = element?.querySelector('img');
       if (image) items.push({element, tile, image, key: tile.id || 'file:' + element.dataset.open});
     }
@@ -115,7 +115,7 @@
     }
     watch(added);
   });
-  for (const grid of grids) changes.observe(grid, {childList: true});
+  changes.observe(grid, {childList: true});
 
   function revealDestination(target) {
     if (!target) return;
@@ -136,6 +136,6 @@
   requestAnimationFrame(() => {
     const headingItems = [...headings].map(element => ({element, tile: element}));
     for (const element of headings) element.dataset.scrollLine = '';
-    watch([...headingItems, ...grids.flatMap(grid => cardItems(grid.children))]);
+    watch([...headingItems, ...cardItems(grid.children)]);
   });
 })();

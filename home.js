@@ -1,18 +1,18 @@
 const homepageLabels = [
-  'home', 'weeks', 'articles', 'knowledge', 'subtitle',
+  'home', 'weeks', 'knowledge', 'subtitle',
   'featured', 'open', 'skip', 'language', 'search'
 ];
 const homepageTranslations = {
-  en: ['Home','Weekly analyses','Articles','Knowledge Base','How to create, discover and buy tokens on EscapeHub.','Featured Escape File','Open file','Skip to archive','Language','Search files'],
-  de: ['Start','Wochenanalysen','Artikel','Wissensdatenbank','Token erstellen, entdecken und kaufen auf EscapeHub.','Escape File im Fokus','Zum File','Zum Archiv springen','Sprache','Files suchen'],
-  es: ['Inicio','Análisis semanales','Artículos','Base de conocimientos','Cómo crear, descubrir y comprar tokens en EscapeHub.','Escape File destacado','Abrir archivo','Ir al archivo','Idioma','Buscar archivos'],
-  fr: ['Accueil','Analyses hebdomadaires','Articles','Base de connaissances','Comment créer, découvrir et acheter des jetons sur EscapeHub.','Dossier à la une','Ouvrir le dossier','Accéder aux archives','Langue','Rechercher un dossier'],
-  pt: ['Início','Análises semanais','Artigos','Base de conhecimento','Como criar, descobrir e comprar tokens na EscapeHub.','Escape File em destaque','Abrir arquivo','Ir ao arquivo','Idioma','Buscar arquivos'],
-  tr: ['Ana sayfa','Haftalık analizler','Makaleler','Bilgi bankası','EscapeHub’da token oluşturma, keşfetme ve satın alma.','Öne çıkan Escape File','Dosyayı aç','Arşive git','Dil','Dosya ara'],
-  ru: ['Главная','Обзоры недели','Статьи','База знаний','Как создавать, находить и покупать токены на EscapeHub.','Избранный выпуск','Открыть выпуск','Перейти к архиву','Язык','Поиск выпусков'],
-  'zh-CN': ['首页','每周分析','文章','知识库','了解如何在 EscapeHub 创建、发现和购买代币。','精选 Escape File','打开档案','跳至档案','语言','搜索档案'],
-  ja: ['ホーム','週間分析','記事','ナレッジベース','EscapeHub でトークンを作成・発見・購入する方法。','注目の Escape File','ファイルを開く','アーカイブへ移動','言語','ファイルを検索'],
-  ko: ['홈','주간 분석','기사','지식 베이스','EscapeHub에서 토큰을 만들고, 찾고, 구매하는 방법.','추천 Escape File','파일 열기','아카이브로 이동','언어','파일 검색']
+  en: ['Home','Weekly analyses','Knowledge Base','How to create, discover and buy tokens on EscapeHub.','Featured Escape File','Open file','Skip to archive','Language','Search files'],
+  de: ['Start','Wochenanalysen','Wissensdatenbank','Token erstellen, entdecken und kaufen auf EscapeHub.','Escape File im Fokus','Zum File','Zum Archiv springen','Sprache','Files suchen'],
+  es: ['Inicio','Análisis semanales','Base de conocimientos','Cómo crear, descubrir y comprar tokens en EscapeHub.','Escape File destacado','Abrir archivo','Ir al archivo','Idioma','Buscar archivos'],
+  fr: ['Accueil','Analyses hebdomadaires','Base de connaissances','Comment créer, découvrir et acheter des jetons sur EscapeHub.','Dossier à la une','Ouvrir le dossier','Accéder aux archives','Langue','Rechercher un dossier'],
+  pt: ['Início','Análises semanais','Base de conhecimento','Como criar, descobrir e comprar tokens na EscapeHub.','Escape File em destaque','Abrir arquivo','Ir ao arquivo','Idioma','Buscar arquivos'],
+  tr: ['Ana sayfa','Haftalık analizler','Bilgi bankası','EscapeHub’da token oluşturma, keşfetme ve satın alma.','Öne çıkan Escape File','Dosyayı aç','Arşive git','Dil','Dosya ara'],
+  ru: ['Главная','Обзоры недели','База знаний','Как создавать, находить и покупать токены на EscapeHub.','Избранный выпуск','Открыть выпуск','Перейти к архиву','Язык','Поиск выпусков'],
+  'zh-CN': ['首页','每周分析','知识库','了解如何在 EscapeHub 创建、发现和购买代币。','精选 Escape File','打开档案','跳至档案','语言','搜索档案'],
+  ja: ['ホーム','週間分析','ナレッジベース','EscapeHub でトークンを作成・発見・購入する方法。','注目の Escape File','ファイルを開く','アーカイブへ移動','言語','ファイルを検索'],
+  ko: ['홈','주간 분석','지식 베이스','EscapeHub에서 토큰을 만들고, 찾고, 구매하는 방법.','추천 Escape File','파일 열기','아카이브로 이동','언어','파일 검색']
 };
 
 const featureFiles = files.filter(file => file.status === 'published')
@@ -79,9 +79,9 @@ window.addEventListener('scroll', () => {
 }, {passive:true});
 
 backToTop.addEventListener('click', () => {
-  if (location.hash && location.hash !== '#start' && !fileAtHash()) {
+  if (location.hash && location.hash !== '#start' && location.hash !== '#library' && !fileAtHash()) {
     history.replaceState(history.state, '', '#start');
-    updateReaderFromUrl();
+    updateViewFromUrl();
   }
   pageStart.focus({preventScroll:true});
   window.scrollTo({top:0});
@@ -559,5 +559,5 @@ window.addEventListener('popstate', () => {
   if (language !== homepageLanguage) applyHomepageLanguage(language);
 });
 applyHomepageLanguage(initialHomepageLanguage());
-updateReaderFromUrl();
+updateViewFromUrl();
 document.documentElement.classList.remove('preparing-language');

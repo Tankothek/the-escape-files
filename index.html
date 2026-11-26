@@ -22,7 +22,7 @@
     document.documentElement.classList.remove('preparing-language');
   }, {once:true});
 </script>
-<link rel="stylesheet" href="style.css?v=56"></head><body>
+<link rel="stylesheet" href="style.css?v=60"></head><body>
 <a class="skip" href="#library" data-label="skip">Skip to archive</a>
 <header id="start" class="masthead" tabindex="-1">
   <nav class="site-nav" aria-label="Navigation">
@@ -31,9 +31,8 @@
     </button>
     <div class="nav-links" id="navLinks">
       <a class="nav-current" href="#start"><span class="nav-icon nav-home" aria-hidden="true">⌂</span><span data-label="home">Home</span></a>
-      <a href="#library" data-reset-archive><span class="nav-icon"><span class="portal-icon portal-files" aria-hidden="true"><span class="portal-file-front"><span class="portal-file-mark"></span></span></span></span><span>The Escape Files</span></a>
+      <a href="#library" data-reset-archive><span class="nav-icon"><span class="portal-icon portal-files" aria-hidden="true"><span class="portal-file-front"><span class="portal-file-mark"></span></span></span></span><span data-archive="all">All files</span></a>
       <a href="#weeks"><span class="nav-icon"><span class="portal-icon portal-weeks" aria-hidden="true"><span class="calendar-page"><span class="calendar-dates"></span></span></span></span><span data-label="weeks">Weekly analyses</span></a>
-      <a href="#articles"><span class="nav-icon nav-article" aria-hidden="true"></span><span data-label="articles">Articles</span></a>
       <a href="#knowledge"><span class="nav-icon"><span class="portal-icon portal-knowledge" aria-hidden="true"><span class="book-page book-page-left"></span><span class="book-page book-page-right"></span></span></span><span data-label="knowledge">Knowledge Base</span></a>
       <a href="#glossaryTitle"><span class="nav-icon nav-glossary" aria-hidden="true"></span><span id="glossaryNav">Glossary</span></a>
       <a href="#learn"><span class="nav-icon nav-question" aria-hidden="true">?</span><span id="learnNav">Questions &amp; answers</span></a>
@@ -55,6 +54,7 @@
   </nav>
 </header>
 <main>
+<div id="homeView">
   <section class="front" aria-labelledby="front-title">
     <div class="front-hero">
       <canvas class="hero-scene" aria-hidden="true"></canvas>
@@ -80,35 +80,10 @@
   <div id="lastRead" class="last-read" hidden></div>
   <div class="weeks-grid" id="guidePaths"></div>
 </section>
-<section id="library" lang="en" class="library" aria-labelledby="archiveTitle">
-  <div class="section-head"><h2 id="archiveTitle" tabindex="-1" data-archive="archive">Escape Files archive</h2></div>
-  <div class="tools">
-    <label class="search"><span aria-hidden="true">⌕</span>
-    <input type="search" id="search" placeholder="Search files…" aria-label="Search files"></label>
-    <label class="sort"><span data-archive="sort">Sort by</span><select id="sort"></select></label>
-  </div>
-  <div class="filters" role="group" aria-label="Archive view">
-    <button data-filter="all" data-archive="all" aria-pressed="true">All files</button>
-    <button data-filter="saved" aria-pressed="false">♡ <span data-archive="saved">Saved</span> <span id="savedCount">0</span></button>
-  </div>
-  <div class="select-filters">
-    <label><span data-archive="week">Week</span><select id="week"></select></label>
-    <label><span data-archive="topic">Topic</span><select id="topic"></select></label>
-  </div>
-  <p class="results-line" id="results" role="status"></p>
-  
-  <div id="grid" class="grid"></div>
-  <div id="empty" hidden><h3 data-archive="empty">No files found.</h3>
-    <p data-archive="retry">Try another search or clear the filters.</p>
-    <button id="reset" class="primary" data-archive="reset">Show all files</button>
-  </div>
-  <noscript>Enable JavaScript to search and read the archive.</noscript>
-</section>
 <section id="weeks" lang="en" class="library extra-section">
   <div class="section-head"><h2 data-archive="weeks">Weekly analyses</h2></div>
-  <div id="weeksGrid" class="weeks-grid"></div>
+  <div id="weeksGrid" class="week-timeline"></div>
 </section>
-<section id="articles" class="library extra-section"><div class="section-head"><div><h2 data-label="articles">Articles</h2></div></div><div lang="en" id="articlesGrid" class="weeks-grid"></div></section>
 <section id="knowledge" lang="en" class="library extra-section">
   <div class="section-head"><div><div class="eyebrow" data-label="knowledge">Knowledge Base</div><h2 data-knowledge="0">Start with the source.</h2></div></div>
   <div class="knowledge-grid">
@@ -140,7 +115,7 @@
   <p class="checked" data-knowledge="12">Documentation checked 12 November 2026. A documented feature is not a claim of independent product testing.</p>
 <div class="glossary" aria-labelledby="glossaryTitle">
   <h3 id="glossaryTitle">Glossary</h3>
-  <div id="glossaryGrid" class="weeks-grid"></div>
+  <section id="glossaryExamples" class="glossary-examples" aria-labelledby="glossaryExamplesTitle"></section>
 </div>
 </section>
 <section id="learn" class="library extra-section" aria-labelledby="learnTitle">
@@ -150,7 +125,33 @@
   <h3 id="learnQuestionsTitle">Quick answers</h3>
   <div class="learn-list" id="learnList"></div>
 </section>
-<section id="about" class="about"><div><div class="eyebrow" data-about="aboutLabel">BEHIND THE LIBRARY</div><h2><span data-about="aboutTitle">Less noise.</span><br><em data-about="aboutAccent">More understanding.</em></h2></div><div><p data-about="aboutIntro">The Escape Files is an independent editorial series by Tankothek, exploring the ideas and mechanics behind EscapeHub through concise explanations and visual stories.</p><p data-about="aboutArchive">The library combines original editions and archive summaries from October–November 2026. It is not live product documentation. Details may have changed since publication. Visit EscapeHub for current official information.</p><a href="https://escapehub.ai" target="_blank" rel="noopener noreferrer" data-about="aboutLink">Visit EscapeHub ↗</a></div></section></main><footer><a href="#" class="brand">THE ESCAPE FILES<span class="symbol">↗</span></a><span data-about="footerNote">Independent editorial archive · Tankothek</span><a href="#library" data-about="footerBack">Back to the library ↑</a>
+<section id="about" class="about"><div><div class="eyebrow" data-about="aboutLabel">BEHIND THE LIBRARY</div><h2><span data-about="aboutTitle">Less noise.</span><br><em data-about="aboutAccent">More understanding.</em></h2></div><div><p data-about="aboutIntro">The Escape Files is an independent editorial series by Tankothek, exploring the ideas and mechanics behind EscapeHub through concise explanations and visual stories.</p><p data-about="aboutArchive">The library combines original editions and archive summaries from October–November 2026. It is not live product documentation. Details may have changed since publication. Visit EscapeHub for current official information.</p><a href="https://escapehub.ai" target="_blank" rel="noopener noreferrer" data-about="aboutLink">Visit EscapeHub ↗</a></div></section>
+</div>
+<section id="library" lang="en" class="library" aria-labelledby="archiveTitle" hidden>
+  <div class="section-head"><h2 id="archiveTitle" tabindex="-1" data-archive="archive">Escape Files archive</h2></div>
+  <div class="tools">
+    <label class="search"><span aria-hidden="true">⌕</span>
+    <input type="search" id="search" placeholder="Search files…" aria-label="Search files"></label>
+    <label class="sort"><span data-archive="sort">Sort by</span><select id="sort"></select></label>
+  </div>
+  <div class="filters" role="group" aria-label="Archive view">
+    <button data-filter="all" data-archive="all" aria-pressed="true">All files</button>
+    <button data-filter="saved" aria-pressed="false">♡ <span data-archive="saved">Saved</span> <span id="savedCount">0</span></button>
+  </div>
+  <div class="select-filters">
+    <label><span data-archive="week">Week</span><select id="week"></select></label>
+    <label><span data-archive="topic">Topic</span><select id="topic"></select></label>
+  </div>
+  <p class="results-line" id="results" role="status"></p>
+  <div id="grid" class="grid"></div>
+  <div id="empty" hidden><h3 data-archive="empty">No files found.</h3>
+    <p data-archive="retry">Try another search or clear the filters.</p>
+    <button id="reset" class="primary" data-archive="reset">Show all files</button>
+  </div>
+</section>
+<noscript><p class="library">Enable JavaScript to search and read the archive.</p></noscript>
+</main>
+<footer><a href="#start" class="brand">THE ESCAPE FILES<span class="symbol">↗</span></a><span data-about="footerNote">Independent editorial archive · Tankothek</span><a href="#library" data-about="footerBack">Back to the library ↑</a>
   <p class="visit-count">
     <span data-about="footerVisits">Page visits</span>
     <img src="https://hits.sh/tankothek.github.io/the-escape-files.svg?label=%20&amp;labelColor=090b12&amp;color=252b38&amp;style=flat-square" alt="" height="20" referrerpolicy="no-referrer">
@@ -175,4 +176,4 @@
   <p id="siteSearchStatus" class="site-search-status" role="status"></p>
   <ul id="siteSearchResults"></ul>
 </dialog>
-<div id="toast" role="status"></div><script src="data.js?v=19"></script><script src="file-locales.js?v=13"></script><script src="glossary.js?v=3"></script><script src="app.js?v=34"></script><script src="learn.js?v=5"></script><script src="search.js?v=1"></script><script src="home.js?v=27"></script><script src="banner.js?v=5" defer></script><script src="scroll-reveal.js?v=2" defer></script></body></html>
+<div id="toast" role="status"></div><script src="data.js?v=19"></script><script src="file-locales.js?v=13"></script><script src="glossary.js?v=3"></script><script src="term-examples.js?v=1"></script><script src="examples.js?v=2"></script><script src="share-files.js"></script><script src="app.js?v=39"></script><script src="learn.js?v=5"></script><script src="search.js?v=4"></script><script src="home.js?v=28"></script><script src="banner.js?v=5" defer></script><script src="scroll-reveal.js?v=3" defer></script></body></html>

@@ -31,8 +31,7 @@ const archiveStrings = {
     stored:'Saved on this device', removed:'Removed from saved files',
     archive:'Escape Files archive', weeks:'Weekly analyses',
     snapshot:'The File documents the state of the series at the time of publication.',
-    range:(count,total)=>`${count} of ${total} files`,
-    explore:count=>`Explore ${count} files`
+    range:(count,total)=>`${count} of ${total} files`
   },
   de: {
     week:'Woche', allWeeks:'Alle Wochen', topic:'Thema', allTopics:'Alle Themen',
@@ -46,18 +45,16 @@ const archiveStrings = {
     stored:'Auf diesem Gerät gemerkt', removed:'Aus der Merkliste entfernt',
     archive:'Escape Files Archiv', weeks:'Wochenanalysen',
     snapshot:'Das File dokumentiert den Stand zum Zeitpunkt der jeweiligen Ausgabe.',
-    range:(count,total)=>`${count} von ${total} Files`,
-    explore:count=>`${count} Files ansehen`
+    range:(count,total)=>`${count} von ${total} Files`
   }
 };
 const germanWeeks = ['Starts mit Whitelist','Gebührenanteile für Ersteller','Netzwerke und Suche',
   'Preisbildung und Wechsel zur DEX','Plattformeinnahmen, $ESC und Rückkäufe','Startwoche: die ersten Schritte','Offizieller Zugang','Projektporträt: $ZDX'];
 for (const [language, locale] of Object.entries(fileLocales)) {
-  const {rangePattern, explorePattern, ...labels} = locale.labels;
+  const {rangePattern, ...labels} = locale.labels;
   archiveStrings[language] = {
     ...labels,
-    range: (count, total) => rangePattern.replace('{n}', count).replace('{t}', total),
-    explore: count => explorePattern.replace('{n}', count)
+    range: (count, total) => rangePattern.replace('{n}', count).replace('{t}', total)
   };
 }
 archiveStrings.en.file = 'File';
@@ -76,6 +73,18 @@ const coverViewerLabels = {
   'zh-CN': ['放大封面', '关闭图片'],
   ja: ['表紙を拡大', '画像を閉じる'],
   ko: ['표지 확대', '이미지 닫기']
+};
+const shareLabels = {
+  en: ['Share file', 'Copy link', 'Link copied'],
+  de: ['File teilen', 'Link kopieren', 'Link kopiert'],
+  es: ['Compartir archivo', 'Copiar enlace', 'Enlace copiado'],
+  fr: ['Partager le dossier', 'Copier le lien', 'Lien copié'],
+  pt: ['Compartilhar arquivo', 'Copiar link', 'Link copiado'],
+  tr: ['Dosyayı paylaş', 'Bağlantıyı kopyala', 'Bağlantı kopyalandı'],
+  ru: ['Поделиться выпуском', 'Скопировать ссылку', 'Ссылка скопирована'],
+  'zh-CN': ['分享档案', '复制链接', '链接已复制'],
+  ja: ['ファイルを共有', 'リンクをコピー', 'リンクをコピーしました'],
+  ko: ['파일 공유', '링크 복사', '링크를 복사했습니다']
 };
 const guideLabels = {
   en: ['Start here', 'Buy a token', 'Create a token', 'Understand EscapeHub', 'Reading order', 'Previous file', 'Next file'],
@@ -111,20 +120,10 @@ function renderLastRead() {
 }
 
 function renderGlossary() {
-  const [labels, ...entries] = glossaryTranslations[archiveLanguage];
+  const [labels] = glossaryTranslations[archiveLanguage];
   $('#glossaryNav').textContent = labels[0];
   $('#glossaryTitle').textContent = labels[0];
-  $('#glossaryGrid').innerHTML = glossaryTerms.map(([term, id], index) => {
-    const [title, definition] = entries[index];
-    const showEnglish = title.toLowerCase() !== term.toLowerCase();
-    return `<article id="term-${id}" class="week-card glossary-card reference-card">
-      <a class="reference-card-link" href="#file-${id}" data-open="${id}" aria-labelledby="term-title-${id}">
-        <h4 id="term-title-${id}">${escapeHTML(title)}${showEnglish ? ` <small lang="en">(${escapeHTML(term)})</small>` : ''}</h4>
-        <p>${escapeHTML(definition)}</p>
-        <span class="reference-card-arrow" aria-hidden="true">→</span>
-      </a>
-    </article>`;
-  }).join('');
+  renderGlossaryExamples(archiveLanguage);
 }
 
 const formatFileDate = date => new Intl.DateTimeFormat(
@@ -187,7 +186,6 @@ function setArchiveLanguage(language) {
   setOptions('#topic', [['all',copy.allTopics], ...topics.map(tag => [tag,topicTitle(tag)])
     .sort((a,b) => a[1].localeCompare(b[1],archiveLanguage))]);
   renderWeeks();
-  renderArticles();
   renderGuide();
   renderLastRead();
   renderGlossary();
@@ -230,6 +228,7 @@ function fileSearchText(file) {
 }
 
 function renderArchive() {
+  if ($('#library').hidden) return;
   const terms = cleanSearch($('#search').value.trim()).split(/\s+/).filter(Boolean);
   const week = $('#week').value;
   const topic = $('#topic').value;
@@ -265,28 +264,6 @@ function paragraphLink(article) {
   return externalLink(article.url, articleLinkLabel(article, strings().paragraph), {newTab: false});
 }
 
-function renderArticles() {
-  const copy = strings();
-  $('#articlesGrid').lang = archiveLanguage;
-  $('#articlesGrid').innerHTML = Object.entries(WEEKS).reverse().map(([n,week]) => {
-    const article = weeklyArticle(week);
-    if (!article.url) return '';
-    return `<article id="article-${n}" class="article-card">
-      <a class="article-card-link" href="${escapeHTML(article.url)}" rel="noreferrer"
-        aria-labelledby="article-title-${n}" aria-describedby="article-action-${n}">
-        ${article.cover ? `<div class="article-card-cover"><img src="${escapeHTML(article.cover)}" alt="" loading="lazy" decoding="async"></div>` : ''}
-        <div class="article-card-copy">
-          <span class="eyebrow">${copy.week} ${weekNumber(n)}</span>
-          <h3 id="article-title-${n}" lang="${article.lang}">${escapeHTML(article.title)}</h3>
-          <span id="article-action-${n}" class="article-card-action">
-            ${escapeHTML(articleLinkLabel(article, copy.paragraph))} <span aria-hidden="true">→</span>
-          </span>
-        </div>
-      </a>
-    </article>`;
-  }).join('');
-}
-
 function renderGuide() {
   const [heading, ...pathLabels] = guideLabels[archiveLanguage];
   $('#guideTitle').textContent = heading;
@@ -305,17 +282,64 @@ function renderGuide() {
 
 function renderWeeks() {
   const copy = strings();
-  $('#weeksGrid').innerHTML = Object.entries(WEEKS).reverse().map(([n,week]) => {
+  const timeline = $('#weeksGrid');
+  const weeks = Object.entries(WEEKS).reverse();
+  const openWeek = timeline.childElementCount
+    ? timeline.querySelector('details[open]')?.parentElement.id
+    : weeks.length && 'week-' + weeks[0][0];
+  timeline.innerHTML = weeks.map(([n,week]) => {
     const article = weeklyArticle(week);
-    const count = files.filter(file => file.week === Number(n)).length;
-    return `<article id="week-${n}" class="week-card">
-      <span class="eyebrow">${copy.week} ${weekNumber(n)}</span>
-      <h3>${escapeHTML(weekTitle(Number(n)))}</h3>
-      ${article.url ? `<p lang="${article.lang}">${escapeHTML(article.title)}</p>` : ''}
-      <div><button data-week="${n}">${copy.explore(count)} ↗</button>
-      ${paragraphLink(article)}</div>
+    const weekFiles = files.filter(file => file.week === Number(n)).sort((a, b) => a.n - b.n);
+    const title = escapeHTML(weekTitle(Number(n)));
+    const weekId = 'week-' + n;
+    let feature = '';
+    if (article.url) {
+      feature = `<a id="article-${n}" class="week-feature week-feature-article${article.cover ? '' : ' week-feature-text'}" href="${escapeHTML(article.url)}" rel="noreferrer" aria-describedby="${weekId}-article-link">
+        ${article.cover ? `<img src="${escapeHTML(article.cover)}" alt="" loading="lazy" decoding="async">` : ''}
+        <div class="week-feature-copy">
+          <p class="week-feature-title" lang="${article.lang}">${escapeHTML(article.title)}</p>
+        </div>
+        <span id="${weekId}-article-link" hidden>${escapeHTML(articleLinkLabel(article, copy.paragraph))}</span>
+      </a>`;
+    }
+    return `<article id="${weekId}" class="week-timeline-item">
+      <details name="weekly-analyses"${openWeek === weekId ? ' open' : ''}>
+        <summary class="disclosure-summary">
+          <h3>
+            <span class="week-timeline-number">${copy.week} ${weekNumber(n)}</span>
+            <span>${title}</span>
+          </h3>
+        </summary>
+        <div class="week-timeline-content">
+          ${feature}
+          ${weekFiles.length ? `<ul class="week-file-strip" role="list">${weekFiles.map(file => `<li>
+            <a href="#file-${file.id}" data-open="${file.id}">
+              <div class="week-file-art">${file.cover
+                ? `<img src="${escapeHTML(fileThumbnail(file))}" alt="" loading="lazy" decoding="async">`
+                : poster(file)}</div>
+              <div class="week-file-copy"><span>${copy.file} ${file.id}</span><strong>${escapeHTML(fileText(file).title)}</strong></div>
+            </a>
+          </li>`).join('')}</ul>` : ''}
+        </div>
+      </details>
     </article>`;
   }).join('');
+}
+
+function keepDisclosurePosition(event) {
+  const summary = event.target.closest('summary');
+  if (!summary || summary.parentElement.open) return;
+
+  // Opening a panel can collapse the previous one above its heading.
+  const top = summary.getBoundingClientRect().top;
+  requestAnimationFrame(() => {
+    if (!summary.isConnected || !summary.parentElement.open) return;
+    const offset = summary.getBoundingClientRect().top - top;
+    if (Math.abs(offset) > 0.5) window.scrollBy({top:offset, behavior:'instant'});
+  });
+}
+for (const selector of ['#weeksGrid', '#glossaryExamples']) {
+  $(selector).addEventListener('click', keepDisclosurePosition);
 }
 
 function fileAtHash() {
@@ -373,6 +397,7 @@ function renderReader(file) {
     </a></li>`;
   }).join('');
   const [enlargeCover] = coverViewerLabels[archiveLanguage];
+  const [shareLabel, copyLabel] = shareLabels[archiveLanguage];
   const cover = file.cover
     ? `<button type="button" class="reader-cover" aria-label="${escapeHTML(enlargeCover)}" title="${escapeHTML(enlargeCover)}">
       <img class="reader-img" src="${escapeHTML(file.cover)}" alt="${escapeHTML(copy.file + ' ' + file.id + ' · ' + title)}">
@@ -401,6 +426,11 @@ function renderReader(file) {
     <div class="reader-links">${externalLink(file.x,copy.post)}
       ${externalLink(source?.url,sourceLabel)}
       ${paragraphLink(article)}</div>
+    <div class="reader-share">
+      <button type="button" data-share-file>${escapeHTML(typeof navigator.share === 'function' ? shareLabel : copyLabel)}</button>
+      <span role="status"></span>
+      <input type="url" readonly aria-label="${escapeHTML(copyLabel)}" hidden>
+    </div>
   </div>`;
   const reader = $('#reader');
   if (!reader.open) {
@@ -411,12 +441,41 @@ function renderReader(file) {
   $('#readerScroll').scrollTop = 0;
 }
 
-function updateReaderFromUrl() {
+function updateViewFromUrl() {
+  const articlesBookmark = location.hash === '#articles';
+  if (articlesBookmark) history.replaceState(history.state, '', '#weeks');
   const file = fileAtHash();
+  const section = file ? (history.state?.returnSection || '#library') : (location.hash || '#start');
+  const library = $('#library');
+  const showArchive = section === '#library';
+  const switchedView = library.hidden === showArchive;
+  if (switchedView) {
+    library.hidden = !showArchive;
+    $('#homeView').hidden = showArchive;
+    if (showArchive) renderArchive();
+  }
+
+  const target = document.getElementById(section.slice(1));
+  const details = target?.closest('details') || target?.querySelector(':scope > details');
+  const openedDetails = !file && details && !details.open;
+  if (openedDetails) details.open = true;
+  if (switchedView || openedDetails || articlesBookmark) {
+    if (showArchive) {
+      window.scrollTo({top:0, behavior:'instant'});
+      if (!file) $('#archiveTitle').focus({preventScroll:true});
+    } else if (target) {
+      target.scrollIntoView({block:'start'});
+    }
+  }
+
   if (file) renderReader(file);
   else if ($('#reader').open) $('#reader').close();
+
+  let navigationSection = section;
+  if (target?.closest('#weeks')) navigationSection = '#weeks';
+  else if (target?.closest('.glossary')) navigationSection = '#glossaryTitle';
   document.querySelectorAll('.site-nav a').forEach(link => {
-    const isCurrent = link.hash === (location.hash || '#start') || link.hash === '#library' && !!file;
+    const isCurrent = link.hash === navigationSection;
     link.classList.toggle('nav-current', isCurrent);
     if (isCurrent) link.setAttribute('aria-current','location');
     else link.removeAttribute('aria-current');
@@ -425,8 +484,43 @@ function updateReaderFromUrl() {
 
 function openFile(id) {
   if (!files.some(file => file.id === id)) return;
-  if (location.hash !== '#file-' + id) history.pushState({fileReader:true}, '', '#file-' + id);
-  updateReaderFromUrl();
+  if (location.hash !== '#file-' + id) {
+    const returnSection = fileAtHash()
+      ? (history.state?.returnSection || '#library')
+      : (location.hash || '#start');
+    history.pushState({fileReader:true, returnSection}, '', '#file-' + id);
+  }
+  updateViewFromUrl();
+}
+
+async function shareFile(button) {
+  const file = fileAtHash();
+  if (!file) return;
+  const url = new URL('./', location.href);
+  if (typeof shareableFiles !== 'undefined' && shareableFiles.has(file.id)) {
+    url.pathname += 'file/' + file.id + '/';
+  } else {
+    url.hash = 'file-' + file.id;
+  }
+  if (typeof navigator.share === 'function') {
+    try {
+      await navigator.share({title:'File ' + file.id + ' · ' + file.title, url:url.href});
+      return;
+    } catch (error) {
+      if (error.name === 'AbortError') return;
+    }
+  }
+  const controls = button.closest('.reader-share');
+  try {
+    await navigator.clipboard.writeText(url.href);
+    controls.querySelector('[role="status"]').textContent = shareLabels[archiveLanguage][2];
+  } catch {
+    const input = controls.querySelector('input');
+    input.hidden = false;
+    input.value = url.href;
+    input.focus();
+    input.select();
+  }
 }
 
 function resetArchive() {
@@ -441,7 +535,7 @@ document.addEventListener('click', event => {
   if (readerStep) {
     event.preventDefault();
     history.replaceState(history.state, '', '#file-' + readerStep.dataset.readerStep);
-    updateReaderFromUrl();
+    updateViewFromUrl();
     const sameDirection = readerStep.classList.contains('reader-next') ? '.reader-next' : '.reader-previous';
     ($(sameDirection) || $('#readerTitle')).focus({preventScroll:true});
     return;
@@ -480,17 +574,6 @@ document.addEventListener('click', event => {
     filter = view.dataset.filter;
     renderArchive();
   }
-
-  const week = event.target.closest('[data-week]');
-  if (week) {
-    resetArchive();
-    $('#week').value = week.dataset.week;
-    $('#sort').value = 'asc';
-    renderArchive();
-    location.hash = 'library';
-    $('#archiveTitle').focus({preventScroll:true});
-    $('#library').scrollIntoView();
-  }
 });
 
 $('#search').addEventListener('input',renderArchive);
@@ -506,6 +589,11 @@ $('#reset').addEventListener('click',() => {
 });
 $('#close').addEventListener('click',() => $('#reader').close());
 $('#readerContent').addEventListener('click', event => {
+  const share = event.target.closest('[data-share-file]');
+  if (share) {
+    shareFile(share);
+    return;
+  }
   const cover = event.target.closest('.reader-cover');
   if (!cover) return;
   const viewer = $('#coverViewer');
@@ -530,8 +618,8 @@ $('#reader').addEventListener('close',() => {
   if (history.state?.fileReader) history.back();
   else {
     history.replaceState(null,'','#library');
-    updateReaderFromUrl();
-    $('#library').scrollIntoView();
+    updateViewFromUrl();
+    window.scrollTo({top:0, behavior:'instant'});
     $('#archiveTitle').focus({preventScroll:true});
   }
 });
@@ -541,4 +629,4 @@ $('#reader').addEventListener('click',event => {
   if (event.clientX < rect.left || event.clientX > rect.right ||
       event.clientY < rect.top || event.clientY > rect.bottom) event.target.close();
 });
-window.addEventListener('hashchange',updateReaderFromUrl);
+window.addEventListener('hashchange',updateViewFromUrl);
