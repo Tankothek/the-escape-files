@@ -1,11 +1,11 @@
 const WEEKS = {
-  1:{title:'Whitelisted Launches',article:'Community First, Then the Open Market',articleUrl:'https://paragraph.com/@tankothek-2c2d/community-first'},
-  2:{title:'Creator Rewards',article:'From an Idea to a Token: What EscapeHub Makes Possible',articleUrl:'https://paragraph.com/@tankothek-2c2d/from-an-idea-to-a-token-what-escapehub-makes-possible'},
-  3:{title:'Networks & Discovery',article:'Several Networks, One Platform: How EscapeHub Aims to Bring Ideas and People Together',articleUrl:'https://paragraph.com/@tankothek-2c2d/several-networks-one-platform'},
-  4:{title:'Bonding & DEX Graduation',article:'Your Token Has Launched. What Happens Next?',articleUrl:'https://paragraph.com/@tankothek-2c2d/your-token-has-launched-what-happens-next'},
+  1:{title:'Whitelisted Launches',article:'Community First, Then the Open Market',articleUrl:'https://paragraph.com/@tankothek-2c2d/community-first', articleCover:'article-cover-community-first.jpg'},
+  2:{title:'Creator Rewards',article:'From an Idea to a Token: What EscapeHub Makes Possible',articleUrl:'https://paragraph.com/@tankothek-2c2d/from-an-idea-to-a-token-what-escapehub-makes-possible', articleCover:'article-cover-from-an-idea-to-a-token-what-escapehub-makes-possible.jpg'},
+  3:{title:'Networks & Discovery',article:'Several Networks, One Platform: How EscapeHub Aims to Bring Ideas and People Together',articleUrl:'https://paragraph.com/@tankothek-2c2d/several-networks-one-platform', articleCover:'article-cover-several-networks-one-platform.jpg'},
+  4:{title:'Bonding & DEX Graduation',article:'Your Token Has Launched. What Happens Next?',articleUrl:'https://paragraph.com/@tankothek-2c2d/your-token-has-launched-what-happens-next', articleCover:'article-cover-your-token-has-launched-what-happens-next.jpg'},
   5:{title:'Platform Revenue, $ESC & Buybacks',article:'EscapeHub Launches First: How the Platform, Presale and $ESC Connect',articleUrl:null},
-  6:{title:'Launch Week: First Steps',article:'Getting Started with EscapeHub: From Signing In to Your First Purchase',articleUrl:'https://paragraph.com/@tankothek-2c2d/getting-started-with-escapehub'},
-  7:{title:'Official Access',article:'How to Get Help with EscapeHub',articleUrl:'https://paragraph.com/@tankothek-2c2d/how-to-get-help-with-escapehub'},
+  6:{title:'Launch Week: First Steps',article:'Getting Started with EscapeHub: From Signing In to Your First Purchase',articleUrl:'https://paragraph.com/@tankothek-2c2d/getting-started-with-escapehub', articleCover:'article-cover-getting-started-with-escapehub.jpg'},
+  7:{title:'Official Access',article:'How to Get Help with EscapeHub',articleUrl:'https://paragraph.com/@tankothek-2c2d/how-to-get-help-with-escapehub', articleCover:'article-cover-how-to-get-help-with-escapehub.jpg'},
   8:{title:'Project Spotlight: $ZDX',articleUrl:null}
 };
 
@@ -94,6 +94,7 @@ const KNOWLEDGE = [
 const originalEditions = [{"id": "006", "title": "A Share For The Creator", "body": "This week: how can trading fees support a project?\n\nIn EscapeHub’s model, creators receive a share of the fees when their tokens are bought or sold.\n\nTomorrow: a simple example.", "date": "2026-10-12", "tag": "Creator rewards"}, {"id": "007", "title": "What Does 0.5% Mean?", "body": "On a $100 trade, EscapeHub lists $0.50 for the digital asset’s creator and $0.70 for the platform in the initial phase: a $1.20 trading fee in total.\n\nTomorrow: how could the creator use that share?", "date": "2026-10-13", "tag": "Trading fees"}, {"id": "008", "title": "Support The Next Step", "body": "A feature the community has asked for: a project could use its share of EscapeHub trading fees to help bring that idea to life.\n\nThe image shows possible uses.\n\nTomorrow: who receives the share?", "date": "2026-10-14", "tag": "Project growth"}, {"id": "009", "title": "Choose Where It Goes", "body": "Who receives the fee share?\n\nEscapeHub’s model offers creators of digital assets three options: keep it, split it with others, or return it to buyers and sellers.\n\nTomorrow: what happens after the initial phase?", "date": "2026-10-15", "tag": "Distribution"}, {"id": "010", "title": "Beyond The Launch", "body": "In EscapeHub’s model, token creators still receive a share of trading fees after the initial phase.\n\nTomorrow on Paragraph: how trading fees can support a project.", "date": "2026-10-16", "tag": "Creator rewards"}];
 
 WEEKS[5].articleUrl='https://paragraph.com/@tankothek-2c2d/escapehub-launches-first';
+WEEKS[5].articleCover='article-cover-escapehub-launches-first.jpg';
 const files = FILES.map(f=>{const id=String(f.n).padStart(3,'0');const original=originalEditions.find(o=>o.id===id);return {...f,id,title:original?original.title:(f.title==='ARCHIVE TITLE TO BE IMPORTED'?'Title awaiting archive review':f.title.toLowerCase().replace(/(^|[.!?] )\w/g,c=>c.toUpperCase())),body:original?original.body:f.topic,tag:WEEKS[f.week].title,cover:original?`file-${id}.png`:(f.cover??null),status:original?'published':f.status,original:!!original};});
 
 files.forEach(f=>{f.title=f.title.replace(/\$esc/g,"$ESC").replace(/\bescapehub\b/g,"EscapeHub");});
@@ -333,7 +334,7 @@ const germanFiles = {
   ]
 };
 
-WEEKS[1].articleDe = { title:'Erst die Community, dann der offene Markt', url:'https://paragraph.com/@tankothek-2c2d/erst-die-community' };
+WEEKS[1].articleDe = { title:'Erst die Community, dann der offene Markt', url:'https://paragraph.com/@tankothek-2c2d/erst-die-community', cover:'article-cover-community-first.jpg' };
 
 // Cover images matched to the published File numbers on Tankothek’s X account.
 const recoveredCovers = ["001", "002", "003", "004", "005", "012", "013", "014", "015", "016", "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029", "030", "031"];

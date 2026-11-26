@@ -99,8 +99,11 @@ const featureSlides = featureFiles.map((file, index) => {
   }
   if (file.cover) image.src = fileThumbnail(file);
   else image.remove();
-  slide.querySelector('h2').id = 'featuredTitle-' + file.id;
-  for (const button of slide.querySelectorAll('button')) button.dataset.open = file.id;
+  const title = slide.querySelector('h2');
+  title.id = 'featuredTitle-' + file.id;
+  slide.href = '#file-' + file.id;
+  slide.dataset.open = file.id;
+  slide.setAttribute('aria-labelledby', title.id);
   return slide;
 });
 
@@ -113,9 +116,7 @@ function renderFeatureText() {
     title.textContent = '#' + file.id + ' – ' + localized.title;
     summary.textContent = localized.topic;
     title.lang = summary.lang = homepageLanguage;
-    const cover = slide.querySelector('.featured-cover');
-    cover.setAttribute('aria-label', strings().file + ' ' + file.id);
-    if (!file.cover) cover.innerHTML = poster(file);
+    if (!file.cover) slide.querySelector('.featured-cover').innerHTML = poster(file);
   }
 }
 

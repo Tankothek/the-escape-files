@@ -2,9 +2,11 @@ const $ = selector => document.querySelector(selector);
 const escapeHTML = value => String(value).replace(/[&<>"']/g, char => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
 }[char]));
-const externalLink = (url, label) => url
-  ? `<a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)} <span aria-hidden="true">↗︎</span></a>`
-  : '';
+const externalLink = (url, label, {newTab = true} = {}) => {
+  if (!url) return '';
+  const linkTarget = newTab ? ' target="_blank" rel="noopener noreferrer"' : ' rel="noreferrer"';
+  return `<a href="${escapeHTML(url)}"${linkTarget}>${escapeHTML(label)} <span aria-hidden="true">${newTab ? '↗︎' : '→'}</span></a>`;
+};
 const weekNumber = number => String(number).padStart(2, '0');
 
 let saved = new Set();
@@ -114,12 +116,13 @@ function renderGlossary() {
   $('#glossaryTitle').textContent = labels[0];
   $('#glossaryGrid').innerHTML = glossaryTerms.map(([term, id], index) => {
     const [title, definition] = entries[index];
-    const file = files.find(candidate => candidate.id === id);
     const showEnglish = title.toLowerCase() !== term.toLowerCase();
-    return `<article id="term-${id}" class="week-card glossary-card">
-      <h4>${escapeHTML(title)}${showEnglish ? ` <small lang="en">(${escapeHTML(term)})</small>` : ''}</h4>
-      <p>${escapeHTML(definition)}</p>
-      ${fileLink(file, strings().file + ' ' + id + ' · ' + fileText(file).title)}
+    return `<article id="term-${id}" class="week-card glossary-card reference-card">
+      <a class="reference-card-link" href="#file-${id}" data-open="${id}" aria-labelledby="term-title-${id}">
+        <h4 id="term-title-${id}">${escapeHTML(title)}${showEnglish ? ` <small lang="en">(${escapeHTML(term)})</small>` : ''}</h4>
+        <p>${escapeHTML(definition)}</p>
+        <span class="reference-card-arrow" aria-hidden="true">→</span>
+      </a>
     </article>`;
   }).join('');
 }
@@ -250,12 +253,16 @@ function renderArchive() {
 
 function weeklyArticle(week) {
   if (archiveLanguage === 'de' && week.articleDe) return {...week.articleDe, lang:'de'};
-  return {title:week.article, url:week.articleUrl, lang:'en'};
+  return {title:week.article, url:week.articleUrl, cover:week.articleCover, lang:'en'};
 }
 
 function articleLinkLabel(article, label) {
   const languageNote = article.lang === 'en' && englishSourceLabels[archiveLanguage];
   return languageNote ? `${label} (${languageNote})` : label;
+}
+
+function paragraphLink(article) {
+  return externalLink(article.url, articleLinkLabel(article, strings().paragraph), {newTab: false});
 }
 
 function renderArticles() {
@@ -264,9 +271,18 @@ function renderArticles() {
   $('#articlesGrid').innerHTML = Object.entries(WEEKS).reverse().map(([n,week]) => {
     const article = weeklyArticle(week);
     if (!article.url) return '';
-    return `<article id="article-${n}" class="week-card">
-      <span class="eyebrow">${copy.week} ${weekNumber(n)} · PARAGRAPH</span>
-      <h3>${externalLink(article.url,articleLinkLabel(article, article.title))}</h3>
+    return `<article id="article-${n}" class="article-card">
+      <a class="article-card-link" href="${escapeHTML(article.url)}" rel="noreferrer"
+        aria-labelledby="article-title-${n}" aria-describedby="article-action-${n}">
+        ${article.cover ? `<div class="article-card-cover"><img src="${escapeHTML(article.cover)}" alt="" loading="lazy" decoding="async"></div>` : ''}
+        <div class="article-card-copy">
+          <span class="eyebrow">${copy.week} ${weekNumber(n)}</span>
+          <h3 id="article-title-${n}" lang="${article.lang}">${escapeHTML(article.title)}</h3>
+          <span id="article-action-${n}" class="article-card-action">
+            ${escapeHTML(articleLinkLabel(article, copy.paragraph))} <span aria-hidden="true">→</span>
+          </span>
+        </div>
+      </a>
     </article>`;
   }).join('');
 }
@@ -297,7 +313,7 @@ function renderWeeks() {
       <h3>${escapeHTML(weekTitle(Number(n)))}</h3>
       ${article.url ? `<p lang="${article.lang}">${escapeHTML(article.title)}</p>` : ''}
       <div><button data-week="${n}">${copy.explore(count)} ↗</button>
-      ${externalLink(article.url,articleLinkLabel(article,copy.paragraph))}</div>
+      ${paragraphLink(article)}</div>
     </article>`;
   }).join('');
 }
@@ -384,7 +400,7 @@ function renderReader(file) {
     ${contacts ? `<ul class="reader-contacts" role="list">${contacts}</ul>` : ''}
     <div class="reader-links">${externalLink(file.x,copy.post)}
       ${externalLink(source?.url,sourceLabel)}
-      ${externalLink(article.url,articleLinkLabel(article,copy.paragraph))}</div>
+      ${paragraphLink(article)}</div>
   </div>`;
   const reader = $('#reader');
   if (!reader.open) {

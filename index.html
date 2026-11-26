@@ -22,7 +22,7 @@
     document.documentElement.classList.remove('preparing-language');
   }, {once:true});
 </script>
-<link rel="stylesheet" href="style.css?v=51"></head><body>
+<link rel="stylesheet" href="style.css?v=56"></head><body>
 <a class="skip" href="#library" data-label="skip">Skip to archive</a>
 <header id="start" class="masthead" tabindex="-1">
   <nav class="site-nav" aria-label="Navigation">
@@ -67,12 +67,11 @@
       </div>
     </div>
     <article class="featured" id="featured" aria-labelledby="featuredTitle">
-      <div class="featured-slide">
-        <button class="featured-cover" type="button"><img alt="" fetchpriority="high"></button>
+      <a class="featured-slide" draggable="false">
+        <div class="featured-cover"><img alt="" fetchpriority="high" draggable="false"></div>
         <div class="featured-copy"><div class="eyebrow" data-label="featured">Featured Escape File</div>
-        <h2 id="featuredTitle"></h2><p></p></div>
-        <button class="primary featured-action" type="button"><span data-label="open">Open file</span> →</button>
-      </div>
+        <h2 id="featuredTitle"></h2><p></p><span class="featured-arrow" aria-hidden="true">→</span></div>
+      </a>
     </article>
     <div class="feature-pages" id="featurePages"></div>
   </section>
@@ -109,7 +108,36 @@
   <div class="section-head"><h2 data-archive="weeks">Weekly analyses</h2></div>
   <div id="weeksGrid" class="weeks-grid"></div>
 </section>
-<section id="articles" class="library extra-section"><div class="section-head"><div><h2 data-label="articles">Articles</h2></div></div><div lang="en" id="articlesGrid" class="weeks-grid"></div></section><section id="knowledge" lang="en" class="library extra-section"><div class="section-head"><div><div class="eyebrow" data-label="knowledge">Knowledge Base</div><h2 data-knowledge="0">Start with the source.</h2></div></div><div class="knowledge-grid"><article><span class="label" data-knowledge="5">OFFICIAL DOCUMENTATION</span><h3 data-knowledge="1">Trading fees</h3><p data-knowledge="8">EscapeHub documents a 1.2% bonding-curve trading fee: 0.5% for creators and 0.7% for the protocol. Rates change after graduation.</p><a href="https://escapehub.ai/learn/escapehub-fees/" target="_blank" rel="noopener" data-knowledge="11">Read official documentation ↗</a></article><article><span class="label" data-knowledge="5">OFFICIAL DOCUMENTATION</span><h3 data-knowledge="2">Creator choices</h3><p data-knowledge="9">Creators can retain their share, divide it between wallets, or redirect it to traders as cashback.</p><a href="https://escapehub.ai/learn/escapehub-fees/" target="_blank" rel="noopener" data-knowledge="11">Read official documentation ↗</a></article><article><span class="label" data-knowledge="5">OFFICIAL DOCUMENTATION</span><h3 data-knowledge="3">Whitelisted launches</h3><p data-knowledge="10">The whitelist is created with the token and enforced on-chain. Its membership is fixed; the creator may open trading permanently, and graduation also makes trading public.</p><a href="https://escapehub.ai/blog/whitelisted-token-launches-anti-snipe/" target="_blank" rel="noopener" data-knowledge="11">Read official documentation ↗</a></article></div><p class="checked" data-knowledge="12">Documentation checked 12 November 2026. A documented feature is not a claim of independent product testing.</p>
+<section id="articles" class="library extra-section"><div class="section-head"><div><h2 data-label="articles">Articles</h2></div></div><div lang="en" id="articlesGrid" class="weeks-grid"></div></section>
+<section id="knowledge" lang="en" class="library extra-section">
+  <div class="section-head"><div><div class="eyebrow" data-label="knowledge">Knowledge Base</div><h2 data-knowledge="0">Start with the source.</h2></div></div>
+  <div class="knowledge-grid">
+    <article class="reference-card">
+      <a class="reference-card-link" href="https://escapehub.ai/learn/escapehub-fees/" target="_blank" rel="noopener noreferrer" aria-labelledby="knowledge-fees-title">
+        <span class="label" data-knowledge="5">OFFICIAL DOCUMENTATION</span>
+        <h3 id="knowledge-fees-title" data-knowledge="1">Trading fees</h3>
+        <p data-knowledge="8">EscapeHub documents a 1.2% bonding-curve trading fee: 0.5% for creators and 0.7% for the protocol. Rates change after graduation.</p>
+        <span class="reference-card-arrow" aria-hidden="true">↗</span>
+      </a>
+    </article>
+    <article class="reference-card">
+      <a class="reference-card-link" href="https://escapehub.ai/learn/escapehub-fees/" target="_blank" rel="noopener noreferrer" aria-labelledby="knowledge-creator-title">
+        <span class="label" data-knowledge="5">OFFICIAL DOCUMENTATION</span>
+        <h3 id="knowledge-creator-title" data-knowledge="2">Creator choices</h3>
+        <p data-knowledge="9">Creators can retain their share, divide it between wallets, or redirect it to traders as cashback.</p>
+        <span class="reference-card-arrow" aria-hidden="true">↗</span>
+      </a>
+    </article>
+    <article class="reference-card">
+      <a class="reference-card-link" href="https://escapehub.ai/blog/whitelisted-token-launches-anti-snipe/" target="_blank" rel="noopener noreferrer" aria-labelledby="knowledge-whitelist-title">
+        <span class="label" data-knowledge="5">OFFICIAL DOCUMENTATION</span>
+        <h3 id="knowledge-whitelist-title" data-knowledge="3">Whitelisted launches</h3>
+        <p data-knowledge="10">The whitelist is created with the token and enforced on-chain. Its membership is fixed; the creator may open trading permanently, and graduation also makes trading public.</p>
+        <span class="reference-card-arrow" aria-hidden="true">↗</span>
+      </a>
+    </article>
+  </div>
+  <p class="checked" data-knowledge="12">Documentation checked 12 November 2026. A documented feature is not a claim of independent product testing.</p>
 <div class="glossary" aria-labelledby="glossaryTitle">
   <h3 id="glossaryTitle">Glossary</h3>
   <div id="glossaryGrid" class="weeks-grid"></div>
@@ -147,4 +175,4 @@
   <p id="siteSearchStatus" class="site-search-status" role="status"></p>
   <ul id="siteSearchResults"></ul>
 </dialog>
-<div id="toast" role="status"></div><script src="data.js?v=17"></script><script src="file-locales.js?v=12"></script><script src="glossary.js?v=3"></script><script src="app.js?v=31"></script><script src="learn.js?v=5"></script><script src="search.js?v=1"></script><script src="home.js?v=26"></script><script src="banner.js?v=5" defer></script></body></html>
+<div id="toast" role="status"></div><script src="data.js?v=18"></script><script src="file-locales.js?v=12"></script><script src="glossary.js?v=3"></script><script src="app.js?v=34"></script><script src="learn.js?v=5"></script><script src="search.js?v=1"></script><script src="home.js?v=27"></script><script src="banner.js?v=5" defer></script><script src="scroll-reveal.js?v=2" defer></script></body></html>
