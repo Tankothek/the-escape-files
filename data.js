@@ -64,10 +64,12 @@ const FILES = [
  {...e(36,8,'2026-11-23',"The buy that did it.","$ZDX was the first token on EscapeHub to complete its bonding curve and move to EscapeSwap. Its community also runs ZDX Services, a marketplace for crypto services.",['launchpad','graduation'],'published','firstGraduation'), x:'https://x.com/Tankothek/status/2124910858841227592', cover:'file-036.webp'},
  {...e(37,8,'2026-11-24',"First phase over.","$ZDX appeared under “Graduated” on EscapeHub after its first trading phase ended. Trading moved to EscapeSwap on Solana.",['launchpad','graduation'],'published','firstGraduation'), x:'https://x.com/Tankothek/status/2125273243879890945', cover:'file-037.webp'},
  {...e(38,8,'2026-11-25',"Find crypto talent.","ZDX Services lists designers, developers and other providers for crypto projects. Payment options depend on the provider and may include $ZDX, SOL or USDC.",['utility','development'],'published','zdxServices'), x:'https://x.com/Tankothek/status/2125635632802189519', cover:'file-038.webp'},
- {...e(39,8,'2026-11-26',"Custom Telegram bots.","The ZDX team offers custom Telegram bots. A bot could welcome new members and guide them to a project’s official links.",['utility','development'],'published','zdxServices'), x:'https://x.com/Tankothek/status/2125998015832068299', cover:'file-039.webp'}
+ {...e(39,8,'2026-11-26',"Custom Telegram bots.","The ZDX team offers custom Telegram bots. A bot could welcome new members and guide them to a project’s official links.",['utility','development'],'published','zdxServices'), x:'https://x.com/Tankothek/status/2125998015832068299', cover:'file-039.webp'},
+ {...e(40,8,'2026-11-27',"What is token vesting?","Vesting sets when some of a project’s tokens become available. The team behind $ZDX has outlined a tool for setting that schedule.",['utility','development'],'published','zdxVesting'), x:'https://x.com/Tankothek/status/2126360416393810365', cover:'file-040.webp'}
 ];
 
 const SOURCES = {
+ zdxVesting:{name:'ZDX Hub specification announcement',url:'https://x.com/zerdexmarket/status/2124371074959941636'},
  zdxServices:{name:'ZDX Services',url:'https://zdxhub.io/'},
  firstGraduation:{name:'EscapeHub: First Token Graduation',url:'https://x.com/escape_hub/status/2123870004148072536'},
  verify:{name:'EscapeHub Official Verify',url:'https://escapehub.ai/official-verify/'},
@@ -148,7 +150,18 @@ Object.assign(files.find(file => file.id === '039'), {
   original: true
 });
 
+Object.assign(files.find(file => file.id === '040'), {
+  title: "What is token vesting?",
+  body: "Vesting sets when some of a project’s tokens become available. The team behind $ZDX has outlined a tool for setting that schedule.\n\nTomorrow on Paragraph: what ZDX offers beyond trading.\n\n#TheEscapeFiles",
+  original: true
+});
+
 const germanFiles = {
+  "040": [
+    "Was ist Token-Vesting?",
+    "Ein Vesting-Zeitplan legt fest, wann ein Teil der Token eines Projekts verfügbar wird. Das Team hinter $ZDX hat ein Tool für solche Zeitpläne vorgestellt.",
+    "Vesting legt fest, wann ein Teil der Token eines Projekts verfügbar wird. Das Team hinter $ZDX hat ein Tool beschrieben, mit dem sich dieser Zeitplan festlegen lässt.\n\nMorgen auf Paragraph geht es darum, was ZDX über den Handel hinaus bietet.\n\n#TheEscapeFiles"
+  ],
   "039": [
     "Individuelle Telegram-Bots.",
     "Das ZDX-Team bietet individuelle Telegram-Bots an. Ein Bot kann neue Mitglieder begrüßen und ihnen die offiziellen Links eines Projekts zeigen.",

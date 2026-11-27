@@ -156,6 +156,10 @@ const fileLocales = {
       "039": [
         "Bots de Telegram a medida.",
         "El equipo de ZDX ofrece bots de Telegram a medida. Un bot podría dar la bienvenida a nuevos miembros y mostrarles los enlaces oficiales del proyecto."
+      ],
+      "040": [
+        "¿Qué es el vesting de tokens?",
+        "El vesting determina cuándo se libera una parte de los tokens de un proyecto. El equipo de $ZDX ha descrito una herramienta para definir ese calendario."
       ]
     },
     "labels": {
@@ -364,6 +368,10 @@ const fileLocales = {
       "039": [
         "Bots Telegram sur mesure.",
         "L’équipe de ZDX propose des bots Telegram sur mesure. Un bot pourrait accueillir les nouveaux membres et les orienter vers les liens officiels d’un projet."
+      ],
+      "040": [
+        "Qu’est-ce que le vesting des jetons ?",
+        "Le vesting fixe les dates de mise à disposition d’une partie des jetons d’un projet. L’équipe derrière $ZDX a décrit un outil permettant de définir ce calendrier."
       ]
     },
     "labels": {
@@ -572,6 +580,10 @@ const fileLocales = {
       "039": [
         "Bots do Telegram à medida.",
         "A equipa da ZDX oferece bots do Telegram à medida. Um bot poderia dar as boas-vindas a novos membros e encaminhá-los para as ligações oficiais do projeto."
+      ],
+      "040": [
+        "O que é o vesting de tokens?",
+        "O vesting define quando é disponibilizada uma parte dos tokens de um projeto. A equipa de $ZDX descreveu uma ferramenta para definir esse calendário."
       ]
     },
     "labels": {
@@ -780,6 +792,10 @@ const fileLocales = {
       "039": [
         "Özel Telegram botları.",
         "ZDX ekibi özel Telegram botları sunuyor. Bir bot yeni üyeleri karşılayabilir ve onları projenin resmî bağlantılarına yönlendirebilir."
+      ],
+      "040": [
+        "Token vesting nedir?",
+        "Vesting, bir projenin tokenlarının bir bölümünün ne zaman kullanılabilir olacağını belirler. $ZDX ekibi bu takvimi belirlemek için bir araç taslağı açıkladı."
       ]
     },
     "labels": {
@@ -988,6 +1004,10 @@ const fileLocales = {
       "039": [
         "Telegram-боты на заказ.",
         "Команда ZDX предлагает Telegram-ботов на заказ. Бот может приветствовать новых участников и направлять их к официальным ссылкам проекта."
+      ],
+      "040": [
+        "Что такое вестинг токенов?",
+        "Вестинг определяет, когда часть токенов проекта станет доступной. Команда $ZDX описала инструмент для настройки такого графика."
       ]
     },
     "labels": {
@@ -1196,6 +1216,10 @@ const fileLocales = {
       "039": [
         "定制 Telegram 机器人。",
         "ZDX 团队提供 Telegram 机器人定制服务。机器人可以欢迎新成员，并向他们提供项目的官方链接。"
+      ],
+      "040": [
+        "什么是代币归属（Vesting）？",
+        "代币归属计划规定项目的部分代币何时可以释放。$ZDX 团队已介绍用于设置这一时间表的工具方案。"
       ]
     },
     "labels": {
@@ -1404,6 +1428,10 @@ const fileLocales = {
       "039": [
         "カスタムTelegramボット。",
         "ZDXチームはカスタムTelegramボットを提供しています。ボットは新しいメンバーを歓迎し、プロジェクトの公式リンクへ案内できます。"
+      ],
+      "040": [
+        "トークンのベスティングとは？",
+        "ベスティングは、プロジェクトの一部のトークンがいつ利用可能になるかを定める仕組みです。$ZDXのチームは、そのスケジュールを設定するツールの概要を発表しました。"
       ]
     },
     "labels": {
@@ -1612,6 +1640,10 @@ const fileLocales = {
       "039": [
         "맞춤형 텔레그램 봇.",
         "ZDX 팀은 맞춤형 텔레그램 봇을 제공합니다. 봇은 새 멤버를 환영하고 프로젝트의 공식 링크를 안내할 수 있습니다."
+      ],
+      "040": [
+        "토큰 베스팅이란?",
+        "베스팅은 프로젝트 토큰의 일부를 언제 사용할 수 있게 할지 정하는 방식입니다. $ZDX 팀은 이 일정을 설정하는 도구의 개요를 공개했습니다."
       ]
     },
     "labels": {
